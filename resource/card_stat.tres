@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardStats" load_steps=3 format=3 uid="uid://pmsrqvokfj3s"]
+
+[ext_resource type="Script" path="res://resource/card_stat.gd" id="1_ci3vi"]
+[ext_resource type="Texture2D" uid="uid://ce67qce7ro4ec" path="res://Cards/CardSprite/cardback.png" id="1_vvhn1"]
+
+[resource]
+script = ExtResource("1_ci3vi")
+card_back = ExtResource("1_vvhn1")
+card_name = "card_name"
+card_codename = "NN"
+card_rarity = "COMMON"
+card_rarity_enum = 0
+card_seen = false
+card_collected = false
+card_copy = 0
+card_price = 0.0

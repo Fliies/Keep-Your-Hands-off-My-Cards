@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CardStats" load_steps=4 format=3 uid="uid://dj2eogokaaxsk"]
+
+[ext_resource type="Texture2D" uid="uid://c4wyfgihneuc1" path="res://assets/Kenny/cardback.png" id="1_bgjfe"]
+[ext_resource type="Texture2D" uid="uid://dptnfemnihyj1" path="res://assets/Kenny/ex_driver.png" id="2_vnp3s"]
+[ext_resource type="Script" path="res://resource/card_stat.gd" id="3_1avdo"]
+
+[resource]
+script = ExtResource("3_1avdo")
+card_texture = ExtResource("2_vnp3s")
+card_back = ExtResource("1_bgjfe")
+card_name = "driver_license"
+card_codename = "ex_driver"
+card_rarity = 4
+card_seen = false
+card_collected = false
+card_copy = 0
+card_price = 0.0

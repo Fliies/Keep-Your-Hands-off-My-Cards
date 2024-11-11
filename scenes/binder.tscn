@@ -1,0 +1,1298 @@
+[gd_scene load_steps=76 format=3 uid="uid://cpyorpde3h8g"]
+
+[ext_resource type="Script" path="res://scripts/binder.gd" id="1_1h60k"]
+[ext_resource type="Texture2D" uid="uid://dd6reruiixn83" path="res://Binder/Sprite/base.png" id="1_8gl4p"]
+[ext_resource type="Texture2D" uid="uid://b5f7mxmv58of6" path="res://Cards/CardSprite/ex_credit.png" id="2_lmq52"]
+[ext_resource type="Texture2D" uid="uid://egyxicnxktrq" path="res://Cards/CardSprite/ex_driver.png" id="3_ve05a"]
+[ext_resource type="Texture2D" uid="uid://bav72lsunyaqw" path="res://Binder/Sprite/base-front-holder.png" id="4_887xs"]
+[ext_resource type="Texture2D" uid="uid://bslresgjlrqo7" path="res://Binder/Sprite/page-R.png" id="5_qqk88"]
+[ext_resource type="Texture2D" uid="uid://c71tisjslci7" path="res://Binder/Sprite/price_sheet.png" id="6_5eqjx"]
+[ext_resource type="Texture2D" uid="uid://b126g00xpcysr" path="res://Cards/CardSprite/aa.png" id="6_o0bvp"]
+[ext_resource type="Texture2D" uid="uid://dpngi2jxa1bdn" path="res://Cards/CardSprite/bb.png" id="7_lmuvy"]
+[ext_resource type="Texture2D" uid="uid://drf1ybxkpuwqh" path="res://Cards/CardSprite/cc.png" id="8_fu41s"]
+[ext_resource type="Texture2D" uid="uid://de3l678uepiyv" path="res://Cards/CardSprite/dd.png" id="9_wt8mo"]
+[ext_resource type="Texture2D" uid="uid://bpcqjfpkxfie6" path="res://Cards/CardSprite/ee.png" id="10_ju15v"]
+[ext_resource type="Texture2D" uid="uid://c2bms07yb4mr0" path="res://Cards/CardSprite/ff.png" id="11_38cht"]
+[ext_resource type="Texture2D" uid="uid://sgqcv5fd587e" path="res://Cards/CardSprite/gg.png" id="12_n5y6m"]
+[ext_resource type="Texture2D" uid="uid://c3f58paky3w4p" path="res://Cards/CardSprite/hh.png" id="13_nvq6s"]
+[ext_resource type="Texture2D" uid="uid://f7d1mnc3ri4r" path="res://Cards/CardSprite/ii.png" id="14_y7m0l"]
+[ext_resource type="Texture2D" uid="uid://c0ol2jhoot2gr" path="res://Binder/Sprite/page-hilight-R.png" id="15_nhxst"]
+[ext_resource type="Texture2D" uid="uid://bphqicukr2o4l" path="res://Binder/Sprite/page-L.png" id="16_mryev"]
+[ext_resource type="Texture2D" uid="uid://b5n7s3njm213d" path="res://Cards/CardSprite/jj.png" id="17_0ob7k"]
+[ext_resource type="Texture2D" uid="uid://c7rcv21fo5obo" path="res://Cards/CardSprite/kk.png" id="18_c06gf"]
+[ext_resource type="Texture2D" uid="uid://cl3hiyxwiq4bt" path="res://Cards/CardSprite/ll.png" id="19_u84ip"]
+[ext_resource type="Texture2D" uid="uid://bpn82k1aju328" path="res://Cards/CardSprite/mm.png" id="20_jc7ou"]
+[ext_resource type="Texture2D" uid="uid://5t5yp05wcva0" path="res://Cards/CardSprite/nn.png" id="21_fct4l"]
+[ext_resource type="Texture2D" uid="uid://bb0tvs1i4x6wy" path="res://Cards/CardSprite/oo.png" id="22_3xil3"]
+[ext_resource type="Texture2D" uid="uid://ohwuj1g51arv" path="res://Cards/CardSprite/pp.png" id="23_227o2"]
+[ext_resource type="Texture2D" uid="uid://wq5ibex6q0gi" path="res://Cards/CardSprite/qq.png" id="24_lewe4"]
+[ext_resource type="Texture2D" uid="uid://l2buxm51wiaa" path="res://Cards/CardSprite/rr.png" id="25_rb2ra"]
+[ext_resource type="Texture2D" uid="uid://xxc2by8xvcrj" path="res://Binder/Sprite/page-hilight-L.png" id="26_p0uo5"]
+[ext_resource type="Texture2D" uid="uid://dxgqyrirjg7pj" path="res://Cards/CardSprite/ss.png" id="27_ojkbf"]
+[ext_resource type="Texture2D" uid="uid://srkhjrhj81xn" path="res://Cards/CardSprite/tt.png" id="28_n3crr"]
+[ext_resource type="Texture2D" uid="uid://bb5q0nw4lxs60" path="res://Cards/CardSprite/uu.png" id="29_w6n3b"]
+[ext_resource type="Texture2D" uid="uid://r8tu4so45y3w" path="res://Cards/CardSprite/vv.png" id="30_u37ci"]
+[ext_resource type="Texture2D" uid="uid://dmd87cjebdflc" path="res://Cards/CardSprite/ww.png" id="31_x6gcv"]
+[ext_resource type="Texture2D" uid="uid://c0rtenpu6nwih" path="res://Cards/CardSprite/xx.png" id="32_q1sji"]
+[ext_resource type="Texture2D" uid="uid://d3gc0fdpox6ct" path="res://Cards/CardSprite/yy.png" id="33_aigdf"]
+[ext_resource type="Texture2D" uid="uid://dbxwrgrcc77lu" path="res://Cards/CardSprite/zz.png" id="34_tp07b"]
+[ext_resource type="Texture2D" uid="uid://b4xv4dsgybwga" path="res://Cards/CardSprite/ex_promo.png" id="35_uat4u"]
+[ext_resource type="Texture2D" uid="uid://b6mqkugyspxw8" path="res://Cards/CardSprite/ex_misprint.png" id="36_pj7as"]
+[ext_resource type="Texture2D" uid="uid://utkbwj8l4ped" path="res://Binder/Sprite/base-center-ring.png" id="37_pbjqs"]
+[ext_resource type="Texture2D" uid="uid://qwdc4a7yncu5" path="res://Binder/Sprite/page-flip-L.png" id="38_6pdhl"]
+[ext_resource type="Texture2D" uid="uid://vvprw7qntxrr" path="res://Binder/Sprite/page-flip-R.png" id="39_274l5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y7qhl"]
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_guwlp"]
+font_size = 12
+font_color = Color(0.962847, 0.144296, 0.168559, 1)
+
+[sub_resource type="Animation" id="Animation_kwly3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Page/Page1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("AnimationPlayer/FlipRight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Page/Page3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("Page/Page2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("Page/Page4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("AnimationPlayer/FlipLeft:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_u61jj"]
+resource_name = "backward1"
+length = 0.2
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page/Page1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/FlipRight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.16, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Page/Page3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Page/Page2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Page/Page4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/FlipLeft:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false, false]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_flip_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_du1ik"]
+resource_name = "backward2"
+length = 0.2
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page/Page1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/FlipRight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.16, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Page/Page3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Page/Page2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Page/Page4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/FlipLeft:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false, false]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_flip_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_emya1"]
+resource_name = "forward1"
+length = 0.2
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page/Page1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/FlipRight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Page/Page3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Page/Page2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Page/Page4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/FlipLeft:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.16, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_flip_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_634n4"]
+resource_name = "forward2"
+length = 0.2
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Page/Page1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/FlipRight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Page/Page3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Page/Page2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.16, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Page/Page4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/FlipLeft:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.16, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_flip_finished"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tkf7y"]
+_data = {
+"RESET": SubResource("Animation_kwly3"),
+"backward1": SubResource("Animation_u61jj"),
+"backward2": SubResource("Animation_du1ik"),
+"forward1": SubResource("Animation_emya1"),
+"forward2": SubResource("Animation_634n4")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cloua"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amkht"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ddje"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_evym3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1dcpl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b01ir"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2x18o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ycs2u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yun0q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fcl5l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vb0mu"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_8hio1"]
+device = -1
+keycode = 4194319
+
+[sub_resource type="Shortcut" id="Shortcut_coimo"]
+events = [SubResource("InputEventKey_8hio1")]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m5w30"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lk608"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ahlh8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mq7am"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sy6ny"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2fjc3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ey6kv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n3kgc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ngun8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ubdpf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eqd00"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_d8xu8"]
+device = -1
+keycode = 4194321
+
+[sub_resource type="Shortcut" id="Shortcut_mrc07"]
+events = [SubResource("InputEventKey_d8xu8")]
+
+[node name="Binder" type="Node2D"]
+script = ExtResource("1_1h60k")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("1_8gl4p")
+centered = false
+
+[node name="Cover" type="Node2D" parent="."]
+
+[node name="Credit" type="Sprite2D" parent="Cover"]
+position = Vector2(464, 544)
+scale = Vector2(0.43, 0.43)
+texture = ExtResource("2_lmq52")
+
+[node name="Driver" type="Sprite2D" parent="Cover"]
+position = Vector2(292, 547)
+scale = Vector2(0.43, 0.43)
+texture = ExtResource("3_ve05a")
+
+[node name="FrontHolder" type="Sprite2D" parent="Cover"]
+texture = ExtResource("4_887xs")
+centered = false
+
+[node name="PriceSheet" type="Sprite2D" parent="Cover"]
+texture = ExtResource("6_5eqjx")
+centered = false
+
+[node name="Control" type="Control" parent="Cover/PriceSheet"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 862.0
+offset_top = 331.0
+offset_right = 1012.0
+offset_bottom = 619.0
+rotation = -0.330203
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Cover/PriceSheet/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Codename1" type="VBoxContainer" parent="Cover/PriceSheet/Control/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "01"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "02"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "03"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "04"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "05"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "06"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "07"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "08"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "09"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "10"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label11" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "11"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label12" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "12"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label13" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "13"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Price1" type="VBoxContainer" parent="Cover/PriceSheet/Control/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price1"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price1"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price1"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price1"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price1"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price1"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price1"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price1"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price1"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price1"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label11" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price1"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label12" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price1"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label13" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price1"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Codename2" type="VBoxContainer" parent="Cover/PriceSheet/Control/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "14"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "15"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "16"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "17"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "18"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "19"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "20"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "21"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "22"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "23"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label11" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "24"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label12" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "25"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label13" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "26"
+label_settings = SubResource("LabelSettings_y7qhl")
+vertical_alignment = 1
+
+[node name="Label14" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "**"
+label_settings = SubResource("LabelSettings_y7qhl")
+horizontal_alignment = 1
+
+[node name="Price2" type="VBoxContainer" parent="Cover/PriceSheet/Control/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label11" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label12" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label13" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Label14" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Price2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "$500.0"
+label_settings = SubResource("LabelSettings_guwlp")
+vertical_alignment = 1
+
+[node name="Page" type="Node2D" parent="."]
+
+[node name="Page1" type="Node2D" parent="Page"]
+scale = Vector2(0.4, 0.4)
+
+[node name="PageRight" type="Sprite2D" parent="Page/Page1"]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("5_qqk88")
+centered = false
+
+[node name="Slot_aa" type="Sprite2D" parent="Page/Page1"]
+position = Vector2(1977.5, 560)
+texture = ExtResource("6_o0bvp")
+
+[node name="Slot_bb" type="Sprite2D" parent="Page/Page1"]
+position = Vector2(2315, 560)
+texture = ExtResource("7_lmuvy")
+
+[node name="Slot_cc" type="Sprite2D" parent="Page/Page1"]
+position = Vector2(2645, 560)
+texture = ExtResource("8_fu41s")
+
+[node name="Slot_dd" type="Sprite2D" parent="Page/Page1"]
+position = Vector2(1977.5, 980)
+texture = ExtResource("9_wt8mo")
+
+[node name="Slot_ee" type="Sprite2D" parent="Page/Page1"]
+position = Vector2(2315, 980)
+texture = ExtResource("10_ju15v")
+
+[node name="Slot_ff" type="Sprite2D" parent="Page/Page1"]
+position = Vector2(2645, 980)
+texture = ExtResource("11_38cht")
+
+[node name="Slot_gg" type="Sprite2D" parent="Page/Page1"]
+position = Vector2(1977.5, 1400)
+texture = ExtResource("12_n5y6m")
+
+[node name="Slot_hh" type="Sprite2D" parent="Page/Page1"]
+position = Vector2(2315, 1400)
+texture = ExtResource("13_nvq6s")
+
+[node name="Slot_ii" type="Sprite2D" parent="Page/Page1"]
+position = Vector2(2645, 1400)
+texture = ExtResource("14_y7m0l")
+
+[node name="PageHilightRight" type="Sprite2D" parent="Page/Page1"]
+modulate = Color(1, 1, 1, 0.392157)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("15_nhxst")
+centered = false
+
+[node name="Page2" type="Node2D" parent="Page"]
+visible = false
+scale = Vector2(0.4, 0.4)
+
+[node name="PageLeft" type="Sprite2D" parent="Page/Page2"]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("16_mryev")
+centered = false
+
+[node name="Slot_jj" type="Sprite2D" parent="Page/Page2"]
+position = Vector2(595, 560)
+texture = ExtResource("17_0ob7k")
+
+[node name="Slot_kk" type="Sprite2D" parent="Page/Page2"]
+position = Vector2(932.5, 560)
+texture = ExtResource("18_c06gf")
+
+[node name="Slot_ll" type="Sprite2D" parent="Page/Page2"]
+position = Vector2(1262.5, 560)
+texture = ExtResource("19_u84ip")
+
+[node name="Slot_mm" type="Sprite2D" parent="Page/Page2"]
+position = Vector2(595, 980)
+texture = ExtResource("20_jc7ou")
+
+[node name="Slot_nn" type="Sprite2D" parent="Page/Page2"]
+position = Vector2(932.5, 980)
+texture = ExtResource("21_fct4l")
+
+[node name="Slot_oo" type="Sprite2D" parent="Page/Page2"]
+position = Vector2(1262.5, 980)
+texture = ExtResource("22_3xil3")
+
+[node name="Slot_pp" type="Sprite2D" parent="Page/Page2"]
+position = Vector2(595, 1400)
+texture = ExtResource("23_227o2")
+
+[node name="Slot_qq" type="Sprite2D" parent="Page/Page2"]
+position = Vector2(932.5, 1400)
+texture = ExtResource("24_lewe4")
+
+[node name="Slot_rr" type="Sprite2D" parent="Page/Page2"]
+position = Vector2(1262.5, 1400)
+texture = ExtResource("25_rb2ra")
+
+[node name="PageHilightLeft" type="Sprite2D" parent="Page/Page2"]
+modulate = Color(1, 1, 1, 0.392157)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("26_p0uo5")
+centered = false
+
+[node name="Page3" type="Node2D" parent="Page"]
+visible = false
+scale = Vector2(0.4, 0.4)
+
+[node name="PageRight" type="Sprite2D" parent="Page/Page3"]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("5_qqk88")
+centered = false
+
+[node name="Slot_ss" type="Sprite2D" parent="Page/Page3"]
+position = Vector2(1977.5, 560)
+texture = ExtResource("27_ojkbf")
+
+[node name="Slot_tt" type="Sprite2D" parent="Page/Page3"]
+position = Vector2(2315, 560)
+texture = ExtResource("28_n3crr")
+
+[node name="Slot_uu" type="Sprite2D" parent="Page/Page3"]
+position = Vector2(2645, 560)
+texture = ExtResource("29_w6n3b")
+
+[node name="Slot_vv" type="Sprite2D" parent="Page/Page3"]
+position = Vector2(1977.5, 980)
+texture = ExtResource("30_u37ci")
+
+[node name="Slot_ww" type="Sprite2D" parent="Page/Page3"]
+position = Vector2(2315, 980)
+texture = ExtResource("31_x6gcv")
+
+[node name="Slot_xx" type="Sprite2D" parent="Page/Page3"]
+position = Vector2(2645, 980)
+texture = ExtResource("32_q1sji")
+
+[node name="Slot_yy" type="Sprite2D" parent="Page/Page3"]
+position = Vector2(1977.5, 1400)
+texture = ExtResource("33_aigdf")
+
+[node name="Slot_zz" type="Sprite2D" parent="Page/Page3"]
+position = Vector2(2315, 1400)
+texture = ExtResource("34_tp07b")
+
+[node name="Slot_ex_promo" type="Sprite2D" parent="Page/Page3"]
+position = Vector2(2645, 1400)
+texture = ExtResource("35_uat4u")
+
+[node name="PageHilightRight" type="Sprite2D" parent="Page/Page3"]
+modulate = Color(1, 1, 1, 0.392157)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("15_nhxst")
+centered = false
+
+[node name="Page4" type="Node2D" parent="Page"]
+visible = false
+scale = Vector2(0.4, 0.4)
+
+[node name="PageLeft" type="Sprite2D" parent="Page/Page4"]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("16_mryev")
+centered = false
+
+[node name="Slot_ex_misprint" type="Sprite2D" parent="Page/Page4"]
+position = Vector2(595, 560)
+texture = ExtResource("36_pj7as")
+
+[node name="Slot_kk" type="Sprite2D" parent="Page/Page4"]
+visible = false
+position = Vector2(932.5, 560)
+texture = ExtResource("18_c06gf")
+
+[node name="Slot_ll" type="Sprite2D" parent="Page/Page4"]
+visible = false
+position = Vector2(1262.5, 560)
+texture = ExtResource("19_u84ip")
+
+[node name="Slot_mm" type="Sprite2D" parent="Page/Page4"]
+visible = false
+position = Vector2(595, 980)
+texture = ExtResource("20_jc7ou")
+
+[node name="Slot_nn" type="Sprite2D" parent="Page/Page4"]
+visible = false
+position = Vector2(932.5, 980)
+texture = ExtResource("21_fct4l")
+
+[node name="Slot_oo" type="Sprite2D" parent="Page/Page4"]
+visible = false
+position = Vector2(1262.5, 980)
+texture = ExtResource("22_3xil3")
+
+[node name="Slot_pp" type="Sprite2D" parent="Page/Page4"]
+visible = false
+position = Vector2(595, 1400)
+texture = ExtResource("23_227o2")
+
+[node name="Slot_qq" type="Sprite2D" parent="Page/Page4"]
+visible = false
+position = Vector2(932.5, 1400)
+texture = ExtResource("24_lewe4")
+
+[node name="Slot_rr" type="Sprite2D" parent="Page/Page4"]
+visible = false
+position = Vector2(1262.5, 1400)
+texture = ExtResource("25_rb2ra")
+
+[node name="PageHilightLeft" type="Sprite2D" parent="Page/Page4"]
+modulate = Color(1, 1, 1, 0.392157)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("26_p0uo5")
+centered = false
+
+[node name="Centerring" type="Sprite2D" parent="."]
+texture = ExtResource("37_pbjqs")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tkf7y")
+}
+
+[node name="FlipLeft" type="Sprite2D" parent="AnimationPlayer"]
+visible = false
+texture = ExtResource("38_6pdhl")
+centered = false
+
+[node name="FlipRight" type="Sprite2D" parent="AnimationPlayer"]
+visible = false
+texture = ExtResource("39_274l5")
+centered = false
+
+[node name="debug" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="test 2" type="Button" parent="debug"]
+layout_mode = 0
+offset_left = 599.0
+offset_top = 153.0
+offset_right = 697.0
+offset_bottom = 184.0
+text = "add all card"
+
+[node name="test 3" type="Button" parent="debug"]
+layout_mode = 0
+offset_left = 583.0
+offset_top = 200.0
+offset_right = 711.0
+offset_bottom = 231.0
+text = "remove all card"
+
+[node name="test 4" type="Button" parent="debug"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 110.0
+offset_right = 722.0
+offset_bottom = 141.0
+text = "update collection_arr"
+
+[node name="LeftPage" type="Button" parent="."]
+offset_left = 162.0
+offset_top = 115.0
+offset_right = 612.0
+offset_bottom = 666.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cloua")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_amkht")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5ddje")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_evym3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1dcpl")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_b01ir")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2x18o")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ycs2u")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_yun0q")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_fcl5l")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vb0mu")
+shortcut = SubResource("Shortcut_coimo")
+
+[node name="RightPage" type="Button" parent="."]
+offset_left = 688.0
+offset_top = 111.0
+offset_right = 1135.0
+offset_bottom = 664.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m5w30")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_lk608")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ahlh8")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_mq7am")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_sy6ny")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2fjc3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ey6kv")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_n3kgc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ngun8")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ubdpf")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eqd00")
+shortcut = SubResource("Shortcut_mrc07")
+
+[connection signal="pressed" from="debug/test 2" to="." method="_on_test_2_pressed"]
+[connection signal="pressed" from="debug/test 3" to="." method="_on_test_3_pressed"]
+[connection signal="pressed" from="debug/test 4" to="." method="_on_test_4_pressed"]
+[connection signal="pressed" from="LeftPage" to="." method="_on_left_page_pressed"]
+[connection signal="pressed" from="RightPage" to="." method="_on_right_page_pressed"]

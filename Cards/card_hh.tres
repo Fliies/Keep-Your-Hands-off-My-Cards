@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CardStats" load_steps=4 format=3 uid="uid://kh1iguad6yl3"]
+
+[ext_resource type="Texture2D" uid="uid://c4wyfgihneuc1" path="res://assets/Kenny/cardback.png" id="1_8d5wv"]
+[ext_resource type="Script" path="res://resource/card_stat.gd" id="1_we6jr"]
+[ext_resource type="Texture2D" uid="uid://kptou3romsre" path="res://assets/Kenny/common_h.png" id="2_rq1x3"]
+
+[resource]
+script = ExtResource("1_we6jr")
+card_sprite = ExtResource("2_rq1x3")
+card_back = ExtResource("1_8d5wv")
+card_name = "card_name"
+card_codename = "hh"
+card_rarity = "COMMON"
+card_rarity_enum = 0
+card_seen = false
+card_collected = false
+card_copy = 0
+card_price = 0.0

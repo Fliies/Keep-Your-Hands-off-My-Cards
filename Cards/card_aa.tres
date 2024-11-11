@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CardStats" load_steps=2 format=3 uid="uid://dk1qnoo58c3d8"]
+
+[ext_resource type="Script" path="res://resource/card_stat.gd" id="1_ghvh5"]
+
+[resource]
+script = ExtResource("1_ghvh5")
+card_name = "card_name"
+card_codename = "aa"
+card_rarity = "COMMON"
+card_rarity_enum = 0
+card_seen = false
+card_collected = false
+card_copy = 0
+card_price = 0.0

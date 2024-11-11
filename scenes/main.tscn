@@ -1,0 +1,1834 @@
+[gd_scene load_steps=100 format=3 uid="uid://tvuo7n21uk0v"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_fbqc6"]
+[ext_resource type="Texture2D" uid="uid://rka6t0pwsqf5" path="res://assets/temp/temp_BG.png" id="1_uofni"]
+[ext_resource type="Texture2D" uid="uid://c6ujxep7myob3" path="res://assets/temp/temp_mockup.png" id="2_i4wa2"]
+[ext_resource type="Texture2D" uid="uid://01mn6gmm53vw" path="res://assets/HandHolder.png" id="3_ij8wy"]
+[ext_resource type="Script" path="res://scripts/card_display.gd" id="4_w3d84"]
+[ext_resource type="Resource" uid="uid://pmsrqvokfj3s" path="res://resource/card_stat.tres" id="5_ijqaw"]
+[ext_resource type="Texture2D" uid="uid://p4wyv8tgo6v" path="res://assets/pack-spritesheet.png" id="6_5hg46"]
+[ext_resource type="Texture2D" uid="uid://dbakoqbl0wakw" path="res://assets/idlecard-spritesheet.png" id="6_i1vqm"]
+[ext_resource type="Texture2D" uid="uid://dh13b0hiy8yy" path="res://assets/AnimatopnOpenPack/openpack-spritesheet01.png" id="6_kwute"]
+[ext_resource type="Texture2D" uid="uid://ce67qce7ro4ec" path="res://Cards/CardSprite/cardback.png" id="6_xvwsk"]
+[ext_resource type="Texture2D" uid="uid://b126g00xpcysr" path="res://Cards/CardSprite/aa.png" id="8_b015w"]
+[ext_resource type="PackedScene" uid="uid://cpyorpde3h8g" path="res://scenes/binder.tscn" id="9_4ap63"]
+[ext_resource type="Script" path="res://scripts/debug_main.gd" id="9_picq5"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="11_186pn"]
+[ext_resource type="Texture2D" uid="uid://v85gt8sc5jmf" path="res://assets/KeepnSell/button_sell.png" id="12_md77j"]
+[ext_resource type="Texture2D" uid="uid://gd1k4waubiec" path="res://assets/KeepnSell/button_base_sell.png" id="12_mdy4k"]
+[ext_resource type="Script" path="res://scripts/action_btn.gd" id="12_nkjrv"]
+[ext_resource type="Texture2D" uid="uid://2udtc2s12yet" path="res://assets/KeepnSell/button_openpack.png" id="13_80368"]
+[ext_resource type="Texture2D" uid="uid://dy82lygd4tf1o" path="res://assets/KeepnSell/button_keep.png" id="13_dkfjq"]
+[ext_resource type="Texture2D" uid="uid://tj1roiibwddy" path="res://assets/KeepnSell/button_base_openpack.png" id="14_fhftl"]
+[ext_resource type="Texture2D" uid="uid://1uarjb5pbp46" path="res://assets/KeepnSell/button_base_keep.png" id="15_0fe7i"]
+[ext_resource type="Texture2D" uid="uid://rksasq1jsw31" path="res://assets/temp/temp_seen.png" id="19_1amtk"]
+[ext_resource type="Texture2D" uid="uid://drrt26lw11rlg" path="res://assets/temp/temp_collected.png" id="20_8nfjr"]
+
+[sub_resource type="Animation" id="Animation_1uqbn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PackSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OpenPack:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OpenPack:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("OpenPack:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../HandSprite/CardBackHand:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("%CardDisplay:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%CardDisplay/CardBackSprite:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_xvwsk")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%CardDisplay/CardBackSprite:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("%CardDisplay/CardBackSprite:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = false
+tracks/9/path = NodePath("%CardDisplay/CardSprite:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("%CardDisplay/CardSprite:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("%CardDisplay/CardSprite:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(680, 400)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("%CardDisplay/CardSprite:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("%PackSprite:frame")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = false
+tracks/14/path = NodePath("../idlecard:frame")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("%HandSprite:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../idlecard:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("%PackSprite:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_t4lc8"]
+resource_name = "flip_main"
+length = 0.2
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%CardDisplay/CardBackSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_xvwsk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%CardDisplay/CardBackSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(0.4, 1.2), Vector2(0.15, 1.4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%CardDisplay/CardBackSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%CardDisplay/CardSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%CardDisplay/CardSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.16, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(0.15, 1.4), Vector2(0.4, 1.2), Vector2(1, 1)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_animation_finished"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%CardDisplay/CardSprite:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(680, 400), Vector2(680, 400)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%CardDisplay/CardSprite:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_f150n"]
+resource_name = "idlecard_loop"
+length = 0.5
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../idlecard:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("%HandSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../idlecard:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xxtnd"]
+resource_name = "idlechoice_loop"
+length = 0.5
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../idlecard:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("%HandSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../idlecard:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ek7jk"]
+resource_name = "keep"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%CardDisplay/CardSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(680, 400), Vector2(1450, 600), Vector2(680, 400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%CardDisplay/CardSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.174533, 1.0472, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%CardDisplay/CardSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_animation_finished"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%CardDisplay/CardSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7mjky"]
+resource_name = "openpack"
+length = 0.5
+step = 0.07
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PackSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.285714),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OpenPack:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OpenPack:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0714286, 0.142857, 0.214286, 0.285714),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OpenPack:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.357143, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../HandSprite/CardBackHand:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.214286, 0.428571, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("%CardDisplay:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.428571, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_animation_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6bn5p"]
+resource_name = "pack_loop"
+length = 0.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%PackSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_animation_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_f7mw5"]
+resource_name = "sell"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%CardDisplay/CardSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(680, 400), Vector2(-100, 600), Vector2(680, 400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%CardDisplay/CardSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.261799, -1.0472, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%CardDisplay/CardSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_animation_finished"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%CardDisplay/CardSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nl2b2"]
+resource_name = "pack_loop_2"
+length = 1.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%PackSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_animation_finished"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%PackSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.0, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_23uw2"]
+_data = {
+"RESET": SubResource("Animation_1uqbn"),
+"flip_main": SubResource("Animation_t4lc8"),
+"idlecard_loop": SubResource("Animation_f150n"),
+"idlechoice_loop": SubResource("Animation_xxtnd"),
+"keep": SubResource("Animation_ek7jk"),
+"openpack": SubResource("Animation_7mjky"),
+"pack_loop": SubResource("Animation_6bn5p"),
+"pack_loop_2": SubResource("Animation_nl2b2"),
+"sell": SubResource("Animation_f7mw5")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_bf5d7"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkgln"]
+size = Vector2(257, 362)
+
+[sub_resource type="Animation" id="Animation_p8eoo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardBackSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_xvwsk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardBackSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardBackSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CardSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rwbo7"]
+resource_name = "flip"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardBackSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_xvwsk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardBackSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(0.409, 1.2), Vector2(0.146, 1.4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardBackSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CardSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(0.146, 1.4), Vector2(0.409, 1.2), Vector2(1, 1)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_mouse_exit"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%CardDisplay/..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_animation_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xa11u"]
+resource_name = "flip_new"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardBackSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(0.5, 1.2), Vector2(0.25, 1.25), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardBackSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardSprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(0.25, 1.25), Vector2(0.5, 1.2), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_mouse_exit"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%CardDisplay/..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_animation_finished"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i2t51"]
+_data = {
+"RESET": SubResource("Animation_p8eoo"),
+"flip": SubResource("Animation_rwbo7"),
+"flip_new": SubResource("Animation_xa11u")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_0qq46"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gadbt"]
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_octa7"]
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fdptd"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8p1mj"]
+font_size = 50
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e0e0p"]
+font_size = 25
+font_color = Color(0, 1, 0.380392, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3m6ye"]
+font_size = 50
+font_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_npokf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gpttw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_37dyh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v0iuw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f06ni"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2nmod"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ilaqi"]
+texture = ExtResource("13_80368")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqqxb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x7yuk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_13f8k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g3hig"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_otae4"]
+device = -1
+keycode = 4194322
+
+[sub_resource type="Shortcut" id="Shortcut_5lfax"]
+events = [SubResource("InputEventKey_otae4")]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dscdk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ys02s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tctpu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_milyn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gf85j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6m6oj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3vot"]
+resource_local_to_scene = true
+content_margin_left = 1.0
+content_margin_top = 1.0
+texture = ExtResource("12_md77j")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ac1i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pvg1h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wggnf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6nqlm"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_2y4vd"]
+device = -1
+keycode = 4194319
+
+[sub_resource type="Shortcut" id="Shortcut_hl45j"]
+events = [SubResource("InputEventKey_2y4vd")]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8kbu2"]
+font_size = 50
+font_color = Color(0, 0.580392, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_037bd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ygwlc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j76yf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t11ai"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m12g2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_un6lu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6lqds"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+texture = ExtResource("13_dkfjq")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7n3bg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tthsx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2hor"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tvk81"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_bygqa"]
+device = -1
+keycode = 4194321
+
+[sub_resource type="Shortcut" id="Shortcut_i2o4s"]
+events = [SubResource("InputEventKey_bygqa")]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_80bts"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bdq62"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ssnoo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wlfvp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjykf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eox1g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0j7jb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f42ml"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mdkih"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qo65x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8btkf"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_brdm1"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_amynh"]
+events = [SubResource("InputEventKey_brdm1")]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_fbqc6")
+
+[node name="Mockup" type="Node2D" parent="."]
+visible = false
+position = Vector2(646, 366)
+
+[node name="mockup" type="Sprite2D" parent="Mockup"]
+position = Vector2(1775, 249)
+texture = ExtResource("2_i4wa2")
+
+[node name="BGSprite" type="Sprite2D" parent="."]
+position = Vector2(634.5, 349)
+scale = Vector2(0.778504, 0.634761)
+texture = ExtResource("1_uofni")
+
+[node name="HandSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("3_ij8wy")
+centered = false
+
+[node name="CardBackHand" type="Sprite2D" parent="HandSprite"]
+unique_name_in_owner = true
+position = Vector2(680, 400)
+texture = ExtResource("6_xvwsk")
+
+[node name="idlecard" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("6_i1vqm")
+centered = false
+hframes = 4
+
+[node name="PackSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(640, 360)
+texture = ExtResource("6_5hg46")
+hframes = 3
+
+[node name="Animation" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_23uw2")
+}
+
+[node name="OpenPack" type="Sprite2D" parent="Animation"]
+texture = ExtResource("6_kwute")
+centered = false
+hframes = 5
+frame = 1
+
+[node name="CardDisplay" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("4_w3d84")
+card_stat = ExtResource("5_ijqaw")
+
+[node name="CardBackSprite2" type="Sprite2D" parent="CardDisplay"]
+position = Vector2(680, 400)
+texture = ExtResource("6_xvwsk")
+
+[node name="CardBackSprite" type="Sprite2D" parent="CardDisplay"]
+visible = false
+position = Vector2(680, 400)
+texture = ExtResource("6_xvwsk")
+
+[node name="CardSprite" type="Sprite2D" parent="CardDisplay"]
+visible = false
+position = Vector2(680, 400)
+texture = ExtResource("8_b015w")
+
+[node name="templbl" type="Label" parent="CardDisplay"]
+visible = false
+offset_left = 595.0
+offset_top = 359.0
+offset_right = 751.0
+offset_bottom = 501.0
+text = "AA"
+label_settings = SubResource("LabelSettings_bf5d7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CMarker" type="Marker2D" parent="CardDisplay"]
+position = Vector2(680, 400)
+
+[node name="LMarker" type="Marker2D" parent="CardDisplay"]
+position = Vector2(680, 500)
+
+[node name="RMarker" type="Marker2D" parent="CardDisplay"]
+position = Vector2(680, 400)
+
+[node name="CardArea" type="Area2D" parent="CardDisplay"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDisplay/CardArea"]
+position = Vector2(681.5, 399)
+shape = SubResource("RectangleShape2D_mkgln")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CardDisplay"]
+libraries = {
+"": SubResource("AnimationLibrary_i2t51")
+}
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("11_186pn")
+
+[node name="debug" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("9_picq5")
+
+[node name="Start" type="Button" parent="UI/debug"]
+layout_mode = 0
+offset_left = 1084.0
+offset_top = 12.0
+offset_right = 1255.0
+offset_bottom = 43.0
+focus_mode = 0
+text = "START : 10 packs, $50"
+
+[node name="test" type="Button" parent="UI/debug"]
+layout_mode = 1
+offset_left = 381.0
+offset_top = 3.0
+offset_right = 489.0
+offset_bottom = 39.0
+focus_mode = 0
+text = "test"
+
+[node name="addpacktoBOX" type="Button" parent="UI/debug"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+text = "+ 1 to BOX packcount"
+
+[node name="addpacktoSINGLE" type="Button" parent="UI/debug"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 38.0
+offset_right = 194.0
+offset_bottom = 69.0
+focus_mode = 0
+text = "+ 1 to SINGLE packcount"
+
+[node name="collectedcounter" type="VBoxContainer" parent="UI/debug"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_right = 781.0
+grow_vertical = 0
+
+[node name="HBoxContainerName" type="HBoxContainer" parent="UI/debug/collectedcounter"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "aa"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label2" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "bb"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label3" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "cc"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label4" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "dd"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label5" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "ee"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label6" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "ff"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label7" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "gg"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label8" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "hh"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label9" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "ii"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label10" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "jj"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label11" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "kk"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label12" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "ll"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label13" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "mm"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label14" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "nn"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label15" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "oo"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label16" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "pp"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label17" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "qq"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label18" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "rr"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label19" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "ss"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label20" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "tt"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label21" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "uu"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label22" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "vv"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label23" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "ww"
+label_settings = SubResource("LabelSettings_gadbt")
+
+[node name="Label24" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "xx"
+label_settings = SubResource("LabelSettings_gadbt")
+
+[node name="Label25" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "yy"
+label_settings = SubResource("LabelSettings_gadbt")
+
+[node name="Label26" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "zz"
+label_settings = SubResource("LabelSettings_gadbt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/debug/collectedcounter"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label2" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label3" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label4" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label5" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label6" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label7" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label8" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label9" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label10" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label11" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label12" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label13" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label14" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label15" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label16" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label17" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label18" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label19" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label20" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label21" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label22" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0qq46")
+
+[node name="Label23" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_octa7")
+
+[node name="Label24" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_octa7")
+
+[node name="Label25" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_octa7")
+
+[node name="Label26" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_octa7")
+
+[node name="packamount" type="Label" parent="UI/debug"]
+layout_mode = 0
+offset_left = 1071.0
+offset_top = 46.0
+offset_right = 1265.0
+offset_bottom = 91.0
+focus_mode = 2
+text = "0 Pack"
+label_settings = SubResource("LabelSettings_fdptd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 30
+
+[node name="Money" type="VBoxContainer" parent="UI/UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="MoneyCurrent" type="Label" parent="UI/UI/HBoxContainer/Money"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "$50"
+label_settings = SubResource("LabelSettings_8p1mj")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MoneyAdded" type="Label" parent="UI/UI/HBoxContainer/Money"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "( + $20)"
+label_settings = SubResource("LabelSettings_e0e0p")
+horizontal_alignment = 2
+
+[node name="PackHave" type="Label" parent="UI/UI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "10 PACKS"
+label_settings = SubResource("LabelSettings_3m6ye")
+
+[node name="Binder" parent="." instance=ExtResource("9_4ap63")]
+unique_name_in_owner = true
+visible = false
+
+[node name="ActionBtn" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_nkjrv")
+
+[node name="OpenPack" type="Button" parent="ActionBtn"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 568.0
+offset_top = 246.0
+offset_right = 786.0
+offset_bottom = 554.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_npokf")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_gpttw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_37dyh")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_v0iuw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_f06ni")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2nmod")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ilaqi")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_nqqxb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_x7yuk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_13f8k")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g3hig")
+shortcut = SubResource("Shortcut_5lfax")
+icon = ExtResource("14_fhftl")
+
+[node name="SellBtn" type="Button" parent="ActionBtn"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 153.0
+offset_top = 310.0
+offset_right = 461.0
+offset_bottom = 528.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dscdk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ys02s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tctpu")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_milyn")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_gf85j")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_6m6oj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_r3vot")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_0ac1i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pvg1h")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_wggnf")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6nqlm")
+shortcut = SubResource("Shortcut_hl45j")
+icon = ExtResource("12_mdy4k")
+
+[node name="SellPrice" type="Label" parent="ActionBtn/SellBtn"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 109.0
+offset_top = 112.0
+offset_right = 211.0
+offset_bottom = 181.0
+text = "500"
+label_settings = SubResource("LabelSettings_8kbu2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeepBtn" type="Button" parent="ActionBtn"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 887.0
+offset_top = 310.0
+offset_right = 1195.0
+offset_bottom = 528.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_037bd")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ygwlc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_j76yf")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_t11ai")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_m12g2")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_un6lu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6lqds")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_7n3bg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tthsx")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_t2hor")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tvk81")
+shortcut = SubResource("Shortcut_i2o4s")
+icon = ExtResource("15_0fe7i")
+
+[node name="FlipBtn" type="Button" parent="ActionBtn"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 547.0
+offset_top = 217.0
+offset_right = 814.0
+offset_bottom = 582.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_80bts")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_bdq62")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ssnoo")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wlfvp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_sjykf")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_eox1g")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0j7jb")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_f42ml")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mdkih")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_qo65x")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8btkf")
+shortcut = SubResource("Shortcut_amynh")
+
+[node name="Icon" type="Node2D" parent="."]
+
+[node name="SeenSprite" type="Sprite2D" parent="Icon"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(673, 156)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("19_1amtk")
+
+[node name="CollectedSprite" type="Sprite2D" parent="Icon"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(673, 159)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("20_8nfjr")
+
+[node name="StartMenu" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="StartMenuSprite" type="Sprite2D" parent="StartMenu"]
+
+[connection signal="mouse_entered" from="CardDisplay/CardArea" to="CardDisplay" method="_on_card_area_mouse_entered"]
+[connection signal="mouse_exited" from="CardDisplay/CardArea" to="CardDisplay" method="_on_card_area_mouse_exited"]
+[connection signal="pressed" from="UI/debug/Start" to="UI/debug" method="_on_start_pressed"]
+[connection signal="pressed" from="UI/debug/test" to="UI/debug" method="_on_test_pressed"]
+[connection signal="pressed" from="UI/debug/addpacktoBOX" to="UI/debug" method="_on_addpackto_box_pressed"]
+[connection signal="pressed" from="UI/debug/addpacktoSINGLE" to="UI/debug" method="_on_addpackto_single_pressed"]
+[connection signal="pressed" from="ActionBtn/OpenPack" to="ActionBtn" method="_on_open_pack_pressed"]
+[connection signal="pressed" from="ActionBtn/SellBtn" to="ActionBtn" method="_on_sell_btn_pressed"]
+[connection signal="pressed" from="ActionBtn/KeepBtn" to="ActionBtn" method="_on_keep_btn_pressed"]
+[connection signal="pressed" from="ActionBtn/FlipBtn" to="ActionBtn" method="_on_flip_btn_pressed"]
