@@ -5,6 +5,7 @@ extends Control
 @onready var sell_btn:= %SellBtn
 @onready var keep_btn:= %KeepBtn
 
+
 func _process(_delta: float) -> void:
 	if GlobalStateController.current_state == GlobalStateController.GameState.OPENING_FRONT:
 		sell_btn.visible = true
@@ -23,15 +24,17 @@ func _process(_delta: float) -> void:
 func _on_sell_btn_pressed() -> void:
 	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 	
-	GlobalData._action_sell()
 	
 	#collect animation
-	main.card_display._update_all()
 	main.animation_player.play("sell")
+	
+	#update card displaying
+	await main.animation_finished
+	GlobalData._action_sell()
+	main.card_display._update_all()
 	
 	#change to next state
 	if GlobalData.opening_arr.size() == 0:
-		await main.animation_finished
 		#state
 		GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
 		#flip btn
@@ -46,23 +49,23 @@ func _on_sell_btn_pressed() -> void:
 		main.btn_flip.visible = true
 		main.btn_flip.disabled = false
 		
-	#update card displaying
-	await main.animation_finished
-	main.card_display._update_all()
+		main.card_display.visible = true
+		
 
 ##KEEP BTN
 func _on_keep_btn_pressed() -> void:
 	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 	
-	GlobalData._action_collect()
-	
 	#collect animation
-	main.card_display._update_all()
 	main.animation_player.play("keep")
+	
+	#update card displaying
+	await main.animation_finished
+	GlobalData._action_collect()
+	main.card_display._update_all()
 	
 	#change to next state
 	if GlobalData.opening_arr.size() == 0:
-		await main.animation_finished
 		#state
 		GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
 		#flip btn
@@ -77,9 +80,7 @@ func _on_keep_btn_pressed() -> void:
 		main.btn_flip.visible = true
 		main.btn_flip.disabled = false
 		
-	#update card displaying
-	await main.animation_finished
-	main.card_display._update_all()
+		main.card_display.visible = true
 
 
 func _on_flip_btn_pressed() -> void:
@@ -115,7 +116,7 @@ func _on_open_pack_pressed() -> void:
 	#pack count +1
 	GlobalData.total_open_packcount += 1
 	
-	#hide shop btn
+## **hide shop btn**
 	
 	#set PACK arr
 	GlobalData._setup_openingpack_arr()

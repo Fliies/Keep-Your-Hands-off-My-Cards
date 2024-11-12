@@ -26,12 +26,14 @@ func _process(_delta: float) -> void:
 	if GlobalStateController.current_state == GlobalStateController.GameState.OPENING_BACK:
 		self.visible = true
 	
-	##cardback
-	if GlobalData.opening_arr.size() >= 2:
-		cardback_next.visible = true
-	else:
-		cardback_next.visible = false
+	
+	_last_card()
 
+func _last_card():
+	if GlobalData.opening_arr.size() <= 1:
+		cardback_next.visible = false
+	else:
+		cardback_next.visible = true
 
 ##UPDATE
 func _update_all():
@@ -56,13 +58,6 @@ func _assign_cardstat():
 		var card = GlobalData.opening_arr[0]
 		card_stat = load("res://Cards/card_%s.tres" % card)
 	
-	##card next stat
-	#if GlobalData.opening_arr.size() >= 2:
-		#var card = GlobalData.opening_arr[1]
-		#card_stat_next = load("res://Cards/card_%s.tres" % card)
-	#else:
-		#card_stat_next = null
-	
 	_assign_rarity()
 	_assign_sprite()
 
@@ -81,7 +76,6 @@ func _assign_sprite():
 func _update_sprite():
 	#reset all false
 	cardback.visible = false
-	cardback_next.visible = false
 	card_sprite.visible = false
 	
 	##topcard
@@ -92,13 +86,6 @@ func _update_sprite():
 	#hide card sprite
 	card_sprite.visible = false
 	card_sprite.texture = card_stat.card_sprite
-	
-	##nextcard
-	#show next cardback
-	if GlobalData.opening_arr.size() >= 2:
-		cardback_next.visible = true
-	else:
-		cardback_next.visible = false
 
 func _update_price():
 	if card_stat.card_rarity == "COMMON":

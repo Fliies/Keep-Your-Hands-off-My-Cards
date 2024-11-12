@@ -152,7 +152,6 @@ func _show_cardback():
 	show_cardback.emit()
 
 
-
 ##DEBUG
 func _debug_process():
 	$UI/debug._count_all() #card count 
@@ -163,4 +162,4 @@ func _debug_process():
 	+ " OPEN: " + str(GlobalData.total_open_packcount)
 	)
 	if Input.is_action_just_pressed("quick_add_pack"): #quick add pack
-		GlobalData.packcount_single += 1
+		GlobalData.packcount_box += 1

@@ -620,6 +620,50 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_nl2b2"]
+resource_name = "pack_loop_2"
+length = 1.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%PackSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_animation_finished"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%PackSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.0, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_f7mw5"]
 resource_name = "sell"
 length = 0.15
@@ -685,50 +729,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_nl2b2"]
-resource_name = "pack_loop_2"
-length = 1.5
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%PackSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_animation_finished"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%PackSprite:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0.0, 0.0, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_23uw2"]
@@ -1179,6 +1179,7 @@ visible = false
 texture = ExtResource("6_i1vqm")
 centered = false
 hframes = 4
+frame = 2
 
 [node name="PackSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -1271,7 +1272,7 @@ offset_top = 12.0
 offset_right = 1255.0
 offset_bottom = 43.0
 focus_mode = 0
-text = "START : 10 packs, $50"
+text = "START : 5 packs, $50"
 
 [node name="test" type="Button" parent="UI/debug"]
 layout_mode = 1
@@ -1467,6 +1468,12 @@ layout_mode = 2
 text = "zz"
 label_settings = SubResource("LabelSettings_gadbt")
 
+[node name="Label27" type="Label" parent="UI/debug/collectedcounter/HBoxContainerName"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "misprint"
+label_settings = SubResource("LabelSettings_gadbt")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/debug/collectedcounter"]
 layout_mode = 2
 theme_override_constants/separation = 0
@@ -1627,11 +1634,17 @@ layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_octa7")
 
+[node name="Label27" type="Label" parent="UI/debug/collectedcounter/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_octa7")
+
 [node name="packamount" type="Label" parent="UI/debug"]
 layout_mode = 0
-offset_left = 1071.0
+offset_left = 1017.0
 offset_top = 46.0
-offset_right = 1265.0
+offset_right = 1211.0
 offset_bottom = 91.0
 focus_mode = 2
 text = "0 Pack"
@@ -1812,8 +1825,7 @@ texture = ExtResource("19_1amtk")
 
 [node name="CollectedSprite" type="Sprite2D" parent="Icon"]
 unique_name_in_owner = true
-visible = false
-position = Vector2(673, 159)
+position = Vector2(1032, 259)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("20_8nfjr")
 

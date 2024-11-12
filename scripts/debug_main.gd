@@ -9,8 +9,6 @@ func _on_addpackto_single_pressed() -> void:
 func _on_test_pressed() -> void:
 	print(GlobalData.opening_arr)
 
-#func _seen_count():
-	#GlobalData.seen_arr.append(main.card_display.card_stat.card_codename)
 func _count_all():
 	#if GlobalData.seen_arr.size() != 0:
 	$collectedcounter/HBoxContainer/Label.text = str(GlobalData.seen_arr.count("aa"))
@@ -39,13 +37,14 @@ func _count_all():
 	$collectedcounter/HBoxContainer/Label24.text = str(GlobalData.seen_arr.count("xx"))
 	$collectedcounter/HBoxContainer/Label25.text = str(GlobalData.seen_arr.count("yy"))
 	$collectedcounter/HBoxContainer/Label26.text = str(GlobalData.seen_arr.count("zz"))
+	$collectedcounter/HBoxContainer/Label27.text = str(GlobalData.seen_arr.count("ex_misprint"))
 
 
 func _on_start_pressed() -> void:
 	#add starting pack
 	#print(main)
 	GlobalData.packcount_box = main.STARTING_PACK
-	GlobalData.packcount_box = 2
+	GlobalData.packcount_box = 5
 	#add starting money
 	GlobalData.money_current = main.STARTING_MONEY
 	#state = Standby

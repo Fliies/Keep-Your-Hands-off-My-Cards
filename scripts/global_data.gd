@@ -1,23 +1,34 @@
 extends Node
 
 												#ideal #garuntee 5 box, 50 packs, 250 card
-# 14 common		a b c d e f g h i j k l m n		70%		60%		149+mp
-# 8 uncommon	o p q r s t u v					20%		33.6%	84
-# 3 rare		w x y							9%		6%		15
-# 1 secret		z								1%		0.4% 	1
-# 1 misprint	mp												*1
-
-# 5 box = 250 cards
+# 14 common		a b c d e f g h i j k l m n		70%		60%		149+mp 		74.5
+# 8 uncommon	o p q r s t u v					20%		33.6%	84			168
+# 3 rare		w x y							9%		6%		15			300
+# 1 secret		z								1%		0.4% 	1			50
+# 1 misprint	mp												*1			15
+# 5 box = 250 cards avr. 12x per box
 
 ## 1st 5 pack -> 25
+# 22 cu 
+# 2 rare 
+# 1 misprint ; no.23rd
+
 
 @export_category("PRICE RANGE")
-@export var PRICE_COMMON:Array[float] = [1.0, 1.5, 2.0, 2.5, 3.0 ]
-@export var PRICE_UNCOMMON:Array[float] = [6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
-@export var PRICE_RARE:Array[float] = [45.0, 50.0, 60.0]
-@export var PRICE_SECRET:Array[float] = [500.0]
-@export var PRICE_EXRTA:Array[float] = [80.0, 100.0, 120.0]
+#@export var PRICE_COMMON:Array[float] = [1.0, 1.5, 2.0, 2.5, 3.0 ]
+#@export var PRICE_UNCOMMON:Array[float] = [6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
+#@export var PRICE_RARE:Array[float] = [45.0, 50.0, 60.0]
+@export var PRICE_COMMON:Array[float] = [0.25, 0.50, 0.75]
+@export var PRICE_UNCOMMON:Array[float] = [1.0, 1.5, 2.0, 2.5, 3.0]
+@export var PRICE_RARE:Array[float] = [15.0, 20.0, 25.0]
+@export var PRICE_SECRET:Array[float] = [50.0]
+@export var PRICE_EXRTA:Array[float] = [10.0, 15.0, 20.0]
 
+@onready var starting_arr: bool = true
+#@onready var starting_cu_arr_1:= []
+#@onready var starting_cu_arr_2:= []
+#@onready var starting_rs_arr_1:= []
+#@onready var starting_rs_arr_2:= []
 
 @onready var common_arr:= [
 	"aa","aa","aa","aa","aa","aa","aa","aa","aa","aa",
@@ -87,12 +98,6 @@ func _ready() -> void:
 	_update_price()
 
 func _process(_delta: float) -> void:
-	###loot list check
-	#if box_cu_arr.size() == 0 and box_rs_arr.size() == 0:
-		#_setup_droplist_arr(box_cu_arr, box_rs_arr)
-	#
-	#if single_cu_arr.size() == 0 and single_rs_arr.size() == 0:
-		#_setup_droplist_arr(single_cu_arr, single_rs_arr)
 	pass
 
 
@@ -139,6 +144,13 @@ func _setup_cardpack_arr(cu_arr:Array, rs_arr:Array ):
 ## card 4, 5
 	var rng:= randi_range(1,10)
 	# (cu, cu) 1, 2, 3 
+	if total_open_packcount == 3: #garuntee rare 
+		rng = 8
+	if total_open_packcount == 10: #garuntee rare 
+		rng = 10
+	if total_open_packcount == 5: #garuntee misprint
+		rng = 1
+	
 	if rng <= 7:
 		#normal case (cu, cu)
 		if cu_arr.size() >= 2:
@@ -189,24 +201,50 @@ func _setup_cardpack_arr(cu_arr:Array, rs_arr:Array ):
 			opening_arr.append("ss")
 
 func _setup_openingpack_arr():
-	##loot list check
+	##droplist check
+	#starting arr
+	if starting_arr == true: 
+		starting_arr = false
+		## 1st 5 pack -> 25 (box_cu_arr,box_rs_arr)
+		# 22 cu 
+		# 2 rare (10 safety)
+		# 1 misprint ; no.23rd
+		
+		# setup + shuffle temp_cu_arr
+		var temp_cu_arr:= []
+		temp_cu_arr.append_array(common_arr)
+		temp_cu_arr.append_array(uncommon_arr)
+		temp_cu_arr.shuffle()
+		# pick 22 cards -> add to box_cu_arr
+		while box_cu_arr.size() < 22:
+			box_cu_arr.append(temp_cu_arr.pop_front())
+		# add misprint in position 23rd
+		box_cu_arr.append_array(misprint_arr)
+		# add the rest of cu_arr
+		box_cu_arr.append_array(temp_cu_arr)
+		
+		# setup + shuffle temp_rs_arr
+		var temp_rs_arr:= []
+		temp_rs_arr.append_array(rare_arr)
+		temp_rs_arr.shuffle()
+		# pick 10 card -> add to box_rs_arr (10 safety)
+		while box_rs_arr.size() < 10 :
+			box_rs_arr.append(temp_rs_arr.pop_front())
+		# add "zz" to temp_rs_arr
+		temp_rs_arr.append_array(secret_arr)
+		# shuffle temp_rs_arr
+		temp_rs_arr.shuffle()
+		# add the rest of temp_rs_arr  to box_rs_arr
+		box_rs_arr.append_array(temp_rs_arr)
+	
+	#normal arr
 	if box_cu_arr.size() == 0 and box_rs_arr.size() == 0:
 		_setup_droplist_arr(box_cu_arr, box_rs_arr)
 	
 	if single_cu_arr.size() == 0 and single_rs_arr.size() == 0:
 		_setup_droplist_arr(single_cu_arr, single_rs_arr)
 	
-	#use Box_arr before SINGLE_arr
-	#if packcount_box > 0:
-		#packcount_box -= 1
-		#_setup_cardpack_arr(box_cu_arr, box_rs_arr)
-	#
-	#elif packcount_box == 0:
-		#packcount_single -= 1
-		#_setup_cardpack_arr(single_cu_arr, single_rs_arr)
-		#
-	
-	#use SINGLE_arr before Box_arr
+	##use SINGLE_arr before BOX_arr
 	if packcount_single > 0:
 		packcount_single -= 1
 		_setup_cardpack_arr(single_cu_arr, single_rs_arr)
@@ -259,4 +297,3 @@ func _update_price():
 	price_dict.zz = PRICE_SECRET.pick_random()
 	
 	price_dict.ex_misprint =  PRICE_EXRTA.pick_random()
-	
