@@ -11,7 +11,6 @@ extends Node2D
 @onready var card_area:= $CardArea
 @onready var mouse_enter: bool = false
 @onready var flipable: bool = true
-@onready var animation_player:= $AnimationPlayer
 
 func _ready() -> void:
 	cardback.texture = load("res://Cards/CardSprite/cardback.png")

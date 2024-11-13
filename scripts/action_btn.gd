@@ -26,7 +26,7 @@ func _on_sell_btn_pressed() -> void:
 	
 	
 	#collect animation
-	main.animation_player.play("sell")
+	main.animation_player_main.play("sell")
 	
 	#update card displaying
 	await main.animation_finished
@@ -57,7 +57,7 @@ func _on_keep_btn_pressed() -> void:
 	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 	
 	#collect animation
-	main.animation_player.play("keep")
+	main.animation_player_main.play("keep")
 	
 	#update card displaying
 	await main.animation_finished
@@ -92,7 +92,7 @@ func _on_flip_btn_pressed() -> void:
 	main.btn_flip.visible = false
 	main.btn_flip.disabled = true
 	
-	main.animation_player.play("flip_main")
+	main.animation_player_main.play("flip_main")
 	
 	##count seen
 	main._seen_count()
@@ -123,7 +123,7 @@ func _on_open_pack_pressed() -> void:
 	
 	#open PACK animation
 	main.card_display.visible = false
-	main.animation_player.play("openpack")
+	main.animation_player_main.play("openpack")
 	
 	await main.animation_finished
 	#change GameState to OPENING_BACK

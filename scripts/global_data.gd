@@ -24,12 +24,6 @@ extends Node
 @export var PRICE_SECRET:Array[float] = [50.0]
 @export var PRICE_EXRTA:Array[float] = [10.0, 15.0, 20.0]
 
-@onready var starting_arr: bool = true
-#@onready var starting_cu_arr_1:= []
-#@onready var starting_cu_arr_2:= []
-#@onready var starting_rs_arr_1:= []
-#@onready var starting_rs_arr_2:= []
-
 @onready var common_arr:= [
 	"aa","aa","aa","aa","aa","aa","aa","aa","aa","aa",
 	"bb","bb","bb","bb","bb","bb","bb","bb","bb","bb",
@@ -89,10 +83,18 @@ extends Node
 
 @onready var collection_arr:= []
 @onready var seen_arr:= []
-@onready var money_current: float = 50.0
+@onready var shop_arr:= []
+@onready var money_current: float = 0.0
 @onready var money_added: float = 0.0
 
 @onready var price_dict: Dictionary = {}
+
+@onready var starting_arr: bool = true
+@onready var STARTING_money: float = 50.0
+@onready var STARTING_packs: int = 10
+
+@onready var price_pack: float = 10.0
+@onready var price_box: float = 90.0
 
 func _ready() -> void:
 	_update_price()
@@ -208,7 +210,7 @@ func _setup_openingpack_arr():
 		## 1st 5 pack -> 25 (box_cu_arr,box_rs_arr)
 		# 22 cu 
 		# 2 rare (10 safety)
-		# 1 misprint ; no.23rd
+		# 1 misprint ; no.22rd
 		
 		# setup + shuffle temp_cu_arr
 		var temp_cu_arr:= []
@@ -216,7 +218,7 @@ func _setup_openingpack_arr():
 		temp_cu_arr.append_array(uncommon_arr)
 		temp_cu_arr.shuffle()
 		# pick 22 cards -> add to box_cu_arr
-		while box_cu_arr.size() < 22:
+		while box_cu_arr.size() < 21:
 			box_cu_arr.append(temp_cu_arr.pop_front())
 		# add misprint in position 23rd
 		box_cu_arr.append_array(misprint_arr)

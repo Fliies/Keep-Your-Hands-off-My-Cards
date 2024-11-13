@@ -3,8 +3,8 @@ extends Node2D
 signal animation_finished
 signal show_cardback
 
-@export var STARTING_MONEY: float = 50.0
-@export var STARTING_PACK: int = 10
+#@export var STARTING_MONEY: float = 50.0
+#@export var STARTING_PACK: int = 10
 
 
 @onready var action_btn:= %ActionBtn
@@ -19,7 +19,8 @@ signal show_cardback
 @onready var hand_sprite:= %HandSprite
 @onready var cardback_hand:= %CardBackHand
 
-@onready var animation_player:= $Animation/AnimationPlayer
+@onready var animation_player_main:= %MainPlayer
+@onready var animation_player_aux:= %AuxPlayer
 
 @onready var binder_open: bool = false
 @onready var binder:= %Binder
@@ -59,12 +60,6 @@ func _process(_delta: float) -> void:
 	##debug 
 	_debug_process()
 	
-	
-	#idlecard
-	#if GlobalStateController.current_state == GlobalStateController.GameState.OPENING_BACK:
-		#animation_player.play("idlecard_loop")
-		#hand_sprite.visible = false
-	
 	##binder btn
 	if Input.is_action_just_pressed("binder"):
 		
@@ -98,7 +93,7 @@ func _process(_delta: float) -> void:
 			pack_sprite.visible = true
 			
 			#idle animation
-			animation_player.play("pack_loop_2")
+			animation_player_main.play("pack_loop_2")
 		elif GlobalData.packcount_box == 0 and GlobalData.packcount_single == 0:
 			btn_open_pack.visible = false
 			btn_open_pack.disabled = true
@@ -108,9 +103,6 @@ func _process(_delta: float) -> void:
 			
 			#go to shop noti
 			
-		#if btn_open_pack.visible == true:
-			#if Input.is_action_just_pressed("quick_open_pack"):
-				#_open_pack()
 	else:
 		btn_open_pack.visible = false
 		btn_open_pack.disabled = true
@@ -119,13 +111,17 @@ func _process(_delta: float) -> void:
 	if GlobalStateController.current_state == GlobalStateController.GameState.OPENING_FRONT:
 		##seen icon
 		_seen_n_collected_icon()
-		
-		#idlecard
-		#animation_player.play("idlechoice_loop")
-		#hand_sprite.visible = false
 	else:
 		icon_collected.visible = false
 		#icon_seen.visible = false
+	
+	# idle animation
+	if GlobalStateController.current_state == GlobalStateController.GameState.OPENING_BACK:
+		animation_player_aux.play("idle_cardback")
+	elif GlobalStateController.current_state == GlobalStateController.GameState.OPENING_FRONT:
+		animation_player_aux.play("idle_cardfront")
+	else:
+		animation_player_aux.stop()
 
 func _animation_finished():
 	#_seen_count()

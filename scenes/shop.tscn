@@ -1,0 +1,984 @@
+[gd_scene load_steps=8 format=3 uid="uid://tm88aqtbycyg"]
+
+[ext_resource type="Script" path="res://scripts/shop.gd" id="1_il6vr"]
+[ext_resource type="Texture2D" uid="uid://csg36e3vqh3tg" path="res://assets/temp/shop_mockup.png" id="2_f8bn5"]
+[ext_resource type="Texture2D" uid="uid://b126g00xpcysr" path="res://Cards/CardSprite/aa.png" id="3_82hd5"]
+[ext_resource type="Script" path="res://scripts/buy_sell_manager.gd" id="3_pblca"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wbp2d"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0cl3v"]
+font_color = Color(1, 1, 0.556863, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o8vf3"]
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_il6vr")
+
+[node name="BGSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_f8bn5")
+offset = Vector2(640, 360)
+
+[node name="BuySellManager" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 635.0
+offset_top = 125.0
+offset_right = 675.0
+offset_bottom = 165.0
+script = ExtResource("3_pblca")
+
+[node name="ShopMenu" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 640.0
+offset_top = 125.0
+offset_right = 1140.0
+offset_bottom = 625.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextBox" type="Control" parent="ShopMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ShopMenu/VBoxContainer/TextBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "What do you need?"
+label_settings = SubResource("LabelSettings_wbp2d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Control" parent="ShopMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopMenu/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="PromoBtn" type="Button" parent="ShopMenu/VBoxContainer/Button/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "Special Offer"
+
+[node name="LowerBtn" type="HBoxContainer" parent="ShopMenu/VBoxContainer/Button/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 20
+
+[node name="ShopCardlistBtn" type="Button" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+focus_mode = 0
+text = "Buy Cards"
+
+[node name="LowerRightGroup" type="VBoxContainer" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Packs" type="HBoxContainer" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buy1Pack" type="Button" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "1 pack"
+
+[node name="Buy5Packs" type="Button" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "5 packs"
+
+[node name="BuyBox" type="Button" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "Buy 1 Box
+(10 +2 packs)"
+
+[node name="ShopCardlist" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 635.0
+offset_top = 125.0
+offset_right = 1155.0
+offset_bottom = 645.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ShopCardlist/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Row1" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Slot1" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1"]
+custom_minimum_size = Vector2(220, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="aaSprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardSprite"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("3_82hd5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="aaPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardSprite"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "$10.2"
+label_settings = SubResource("LabelSettings_0cl3v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="aaBuy" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+text = "BUY"
+
+[node name="aaSell" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+text = "SELL"
+
+[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="aaAmount" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardInfo/VBoxContainer/Copy"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You have x1"
+label_settings = SubResource("LabelSettings_o8vf3")
+
+[node name="Slot2" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1"]
+custom_minimum_size = Vector2(220, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="bbSprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer/CardSprite"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("3_82hd5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="bbPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer/CardSprite"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "$10.2"
+label_settings = SubResource("LabelSettings_0cl3v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer/CardInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bbBuy" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+text = "BUY"
+
+[node name="bbSell" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+text = "SELL"
+
+[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="bbAmount" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer/CardInfo/VBoxContainer/Copy"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You have x1"
+label_settings = SubResource("LabelSettings_o8vf3")
+
+[node name="Spacing" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1"]
+layout_mode = 2
+
+[node name="Row12" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Slot1" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12"]
+custom_minimum_size = Vector2(220, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="wwSprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer/CardSprite"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("3_82hd5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="wwPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer/CardSprite"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "$10.2"
+label_settings = SubResource("LabelSettings_0cl3v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer/CardInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="wwBuy" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+text = "BUY"
+
+[node name="wwSell" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+text = "SELL"
+
+[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="wwAmount" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer/CardInfo/VBoxContainer/Copy"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You have x1"
+label_settings = SubResource("LabelSettings_o8vf3")
+
+[node name="Slot2" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12"]
+custom_minimum_size = Vector2(220, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="xxSprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer/CardSprite"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("3_82hd5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="xxPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer/CardSprite"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "$10.2"
+label_settings = SubResource("LabelSettings_0cl3v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer/CardInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="xxBuy" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+text = "BUY"
+
+[node name="xxSell" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+text = "SELL"
+
+[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="xxAmount" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer/CardInfo/VBoxContainer/Copy"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You have x1"
+label_settings = SubResource("LabelSettings_o8vf3")
+
+[node name="Spacing" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12"]
+layout_mode = 2
+
+[node name="Row3" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Slot1" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3"]
+custom_minimum_size = Vector2(220, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="AASprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer/CardSprite"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("3_82hd5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AAPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer/CardSprite"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "$10.2"
+label_settings = SubResource("LabelSettings_0cl3v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer/CardInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "BUY"
+
+[node name="Button2" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "SELL"
+
+[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Label" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer/CardInfo/VBoxContainer/Copy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You have x1"
+label_settings = SubResource("LabelSettings_o8vf3")
+
+[node name="Slot2" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3"]
+custom_minimum_size = Vector2(220, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="BBSprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer/CardSprite"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("3_82hd5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="BBPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer/CardSprite"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "$10.2"
+label_settings = SubResource("LabelSettings_0cl3v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer/CardInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "BUY"
+
+[node name="Button2" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "SELL"
+
+[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Label" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer/CardInfo/VBoxContainer/Copy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You have x1"
+label_settings = SubResource("LabelSettings_o8vf3")
+
+[node name="Spacing" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3"]
+layout_mode = 2
+
+[node name="Row4" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Slot1" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4"]
+custom_minimum_size = Vector2(220, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="AASprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer/CardSprite"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("3_82hd5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AAPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer/CardSprite"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "$10.2"
+label_settings = SubResource("LabelSettings_0cl3v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer/CardInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "BUY"
+
+[node name="Button2" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "SELL"
+
+[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Label" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer/CardInfo/VBoxContainer/Copy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You have x1"
+label_settings = SubResource("LabelSettings_o8vf3")
+
+[node name="Slot2" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4"]
+custom_minimum_size = Vector2(220, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="BBSprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer/CardSprite"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("3_82hd5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="BBPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer/CardSprite"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "$10.2"
+label_settings = SubResource("LabelSettings_0cl3v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer/CardInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "BUY"
+
+[node name="Button2" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "SELL"
+
+[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Label" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer/CardInfo/VBoxContainer/Copy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You have x1"
+label_settings = SubResource("LabelSettings_o8vf3")
+
+[node name="Spacing" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4"]
+layout_mode = 2
+
+[node name="BackToMenu" type="Control" parent="ShopCardlist/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="BackBtn" type="Button" parent="ShopCardlist/VBoxContainer/BackToMenu"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 45.0
+grow_vertical = 2
+text = "       Back       "
+
+[connection signal="pressed" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/ShopCardlistBtn" to="." method="_on_shop_cardlist_btn_pressed"]
+[connection signal="pressed" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs/Buy1Pack" to="BuySellManager" method="_on_pack_pressed"]
+[connection signal="pressed" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs/Buy5Packs" to="BuySellManager" method="_on_packs_pressed"]
+[connection signal="pressed" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/BuyBox" to="BuySellManager" method="_on_box_pressed"]
+[connection signal="pressed" from="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardInfo/VBoxContainer/aaBuy" to="BuySellManager" method="_on_aa_buy_pressed"]
+[connection signal="pressed" from="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardInfo/VBoxContainer/aaSell" to="BuySellManager" method="_on_aa_sell_pressed"]
+[connection signal="pressed" from="ShopCardlist/VBoxContainer/BackToMenu/BackBtn" to="." method="_on_back_btn_pressed"]

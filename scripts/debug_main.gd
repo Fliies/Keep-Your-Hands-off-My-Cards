@@ -42,11 +42,10 @@ func _count_all():
 
 func _on_start_pressed() -> void:
 	#add starting pack
-	#print(main)
-	GlobalData.packcount_box = main.STARTING_PACK
-	GlobalData.packcount_box = 5
+	GlobalData.packcount_box = GlobalData.STARTING_packs
+	#GlobalData.packcount_box = 5
 	#add starting money
-	GlobalData.money_current = main.STARTING_MONEY
+	GlobalData.money_current = GlobalData.STARTING_money
 	#state = Standby
 	GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
 	
