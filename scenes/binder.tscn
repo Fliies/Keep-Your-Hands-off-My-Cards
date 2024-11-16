@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://cpyorpde3h8g"]
+[gd_scene load_steps=107 format=3 uid="uid://cpyorpde3h8g"]
 
 [ext_resource type="Script" path="res://scripts/binder.gd" id="1_1h60k"]
 [ext_resource type="Texture2D" uid="uid://dd6reruiixn83" path="res://Binder/Sprite/base.png" id="1_8gl4p"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b126g00xpcysr" path="res://Cards/CardSprite/aa.png" id="6_o0bvp"]
 [ext_resource type="Texture2D" uid="uid://dpngi2jxa1bdn" path="res://Cards/CardSprite/bb.png" id="7_lmuvy"]
 [ext_resource type="Texture2D" uid="uid://drf1ybxkpuwqh" path="res://Cards/CardSprite/cc.png" id="8_fu41s"]
+[ext_resource type="Texture2D" uid="uid://kbxlqmq77jo7" path="res://assets/binder_amount.png" id="9_d44k2"]
 [ext_resource type="Texture2D" uid="uid://de3l678uepiyv" path="res://Cards/CardSprite/dd.png" id="9_wt8mo"]
 [ext_resource type="Texture2D" uid="uid://bpcqjfpkxfie6" path="res://Cards/CardSprite/ee.png" id="10_ju15v"]
 [ext_resource type="Texture2D" uid="uid://c2bms07yb4mr0" path="res://Cards/CardSprite/ff.png" id="11_38cht"]
@@ -20,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bphqicukr2o4l" path="res://Binder/Sprite/page-L.png" id="16_mryev"]
 [ext_resource type="Texture2D" uid="uid://b5n7s3njm213d" path="res://Cards/CardSprite/jj.png" id="17_0ob7k"]
 [ext_resource type="Texture2D" uid="uid://c7rcv21fo5obo" path="res://Cards/CardSprite/kk.png" id="18_c06gf"]
+[ext_resource type="FontFile" uid="uid://bafa8t46i5ktu" path="res://assets/font/ChelseaMarket-Regular.ttf" id="19_llbnk"]
 [ext_resource type="Texture2D" uid="uid://cl3hiyxwiq4bt" path="res://Cards/CardSprite/ll.png" id="19_u84ip"]
 [ext_resource type="Texture2D" uid="uid://bpn82k1aju328" path="res://Cards/CardSprite/mm.png" id="20_jc7ou"]
 [ext_resource type="Texture2D" uid="uid://5t5yp05wcva0" path="res://Cards/CardSprite/nn.png" id="21_fct4l"]
@@ -41,6 +43,13 @@
 [ext_resource type="Texture2D" uid="uid://utkbwj8l4ped" path="res://Binder/Sprite/base-center-ring.png" id="37_pbjqs"]
 [ext_resource type="Texture2D" uid="uid://qwdc4a7yncu5" path="res://Binder/Sprite/page-flip-L.png" id="38_6pdhl"]
 [ext_resource type="Texture2D" uid="uid://vvprw7qntxrr" path="res://Binder/Sprite/page-flip-R.png" id="39_274l5"]
+[ext_resource type="Theme" uid="uid://cqsoi0txd0ot7" path="res://Cards/CardSprite/card_hilight.tres" id="44_5d8av"]
+[ext_resource type="Texture2D" uid="uid://degkemvdplh3o" path="res://Binder/btn/binder_arrow_left-hover.png" id="44_7mqrf"]
+[ext_resource type="Texture2D" uid="uid://dldnr0uwiijo3" path="res://Binder/btn/binder_arrow_left-press.png" id="45_mkjiy"]
+[ext_resource type="Texture2D" uid="uid://r4eep2ufhwj7" path="res://Binder/btn/binder_arrow_left.png" id="46_uh556"]
+[ext_resource type="Texture2D" uid="uid://be54ho63uagu7" path="res://Binder/btn/binder_arrow_right-hover.png" id="47_gw2ta"]
+[ext_resource type="Texture2D" uid="uid://dqy3hntu7w38p" path="res://Binder/btn/binder_arrow_right-press.png" id="48_cqjjd"]
+[ext_resource type="Texture2D" uid="uid://d06xb885sug21" path="res://Binder/btn/binder_arrow_right.png" id="49_xckw0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y7qhl"]
 font_size = 12
@@ -49,6 +58,11 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_guwlp"]
 font_size = 12
 font_color = Color(0.962847, 0.144296, 0.168559, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_murpf"]
+font = ExtResource("19_llbnk")
+font_size = 30
+font_color = Color(0.988072, 0.526116, 0.471551, 1)
 
 [sub_resource type="Animation" id="Animation_kwly3"]
 length = 0.001
@@ -498,27 +512,54 @@ _data = {
 "forward2": SubResource("Animation_634n4")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cloua"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_va27a"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amkht"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_usgvx"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ddje"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gvod"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_evym3"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vnyi1"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1dcpl"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1o2jq"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b01ir"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2timl"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2x18o"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ww3y7"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ycs2u"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8rrbd"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yun0q"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7wqru"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fcl5l"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_blftr"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vb0mu"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hti8w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_51xws"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ptlb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hf5xn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5up0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6nj8h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8m8tj"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("44_7mqrf")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tn8vj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a7nor"]
+texture = ExtResource("45_mkjiy")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xojbd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ek7w"]
+texture = ExtResource("46_uh556")
 
 [sub_resource type="InputEventKey" id="InputEventKey_8hio1"]
 device = -1
@@ -539,15 +580,18 @@ events = [SubResource("InputEventKey_8hio1")]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2fjc3"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ey6kv"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pbhni"]
+texture = ExtResource("47_gw2ta")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n3kgc"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ngun8"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_25cr4"]
+texture = ExtResource("48_cqjjd")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ubdpf"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eqd00"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wl2b8"]
+texture = ExtResource("49_xckw0")
 
 [sub_resource type="InputEventKey" id="InputEventKey_d8xu8"]
 device = -1
@@ -556,8 +600,35 @@ keycode = 4194321
 [sub_resource type="Shortcut" id="Shortcut_mrc07"]
 events = [SubResource("InputEventKey_d8xu8")]
 
-[node name="Binder" type="Node2D"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7obh3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bhv0y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iv8h6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ulpb2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1hiw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_whx3p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r8ygg"]
+bg_color = Color(0, 0, 0, 0.196078)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l5mnv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hr5hl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w6vm3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54lqu"]
+bg_color = Color(0, 0, 0, 0.196078)
+
+[node name="Binder" type="Node2D" node_paths=PackedStringArray("sprite_node", "amount_node", "amount_lbl")]
 script = ExtResource("1_1h60k")
+sprite_node = [NodePath("Page/Page1/Slot_aa"), NodePath("Page/Page1/Slot_bb"), NodePath("Page/Page1/Slot_cc"), NodePath("Page/Page1/Slot_dd"), NodePath("Page/Page1/Slot_ee"), NodePath("Page/Page1/Slot_ff"), NodePath("Page/Page1/Slot_gg"), NodePath("Page/Page1/Slot_hh"), NodePath("Page/Page1/Slot_ii"), NodePath("Page/Page2/Slot_jj"), NodePath("Page/Page2/Slot_kk"), NodePath("Page/Page2/Slot_ll"), NodePath("Page/Page2/Slot_mm"), NodePath("Page/Page2/Slot_nn"), NodePath("Page/Page2/Slot_oo"), NodePath("Page/Page2/Slot_pp"), NodePath("Page/Page2/Slot_qq"), NodePath("Page/Page2/Slot_rr"), NodePath("Page/Page3/Slot_ss"), NodePath("Page/Page3/Slot_tt"), NodePath("Page/Page3/Slot_uu"), NodePath("Page/Page3/Slot_vv"), NodePath("Page/Page3/Slot_ww"), NodePath("Page/Page3/Slot_xx"), NodePath("Page/Page3/Slot_yy"), NodePath("Page/Page3/Slot_zz"), NodePath("Page/Page3/Slot_ex_promo"), NodePath("Page/Page4/Slot_ex_misprint"), NodePath("Cover/Driver"), NodePath("Cover/Credit")]
+amount_node = [NodePath("Page/Page1/AmountRight/aa"), NodePath("Page/Page1/AmountRight/bb"), NodePath("Page/Page1/AmountRight/cc"), NodePath("Page/Page1/AmountRight/dd"), NodePath("Page/Page1/AmountRight/ee"), NodePath("Page/Page1/AmountRight/ff"), NodePath("Page/Page1/AmountRight/gg"), NodePath("Page/Page1/AmountRight/hh"), NodePath("Page/Page1/AmountRight/ii"), NodePath("Page/Page2/AmountLeft/jj"), NodePath("Page/Page2/AmountLeft/kk"), NodePath("Page/Page2/AmountLeft/ll"), NodePath("Page/Page2/AmountLeft/mm"), NodePath("Page/Page2/AmountLeft/nn"), NodePath("Page/Page2/AmountLeft/oo"), NodePath("Page/Page2/AmountLeft/pp"), NodePath("Page/Page2/AmountLeft/qq"), NodePath("Page/Page2/AmountLeft/rr"), NodePath("Page/Page3/AmountRight2/ss"), NodePath("Page/Page3/AmountRight2/tt"), NodePath("Page/Page3/AmountRight2/uu"), NodePath("Page/Page3/AmountRight2/vv"), NodePath("Page/Page3/AmountRight2/ww"), NodePath("Page/Page3/AmountRight2/xx"), NodePath("Page/Page3/AmountRight2/yy"), NodePath("Page/Page3/AmountRight2/zz"), NodePath("Page/Page3/AmountRight2/ex_promo"), NodePath("Page/Page4/AmountLeft2/ex_misprint")]
+amount_lbl = [NodePath("Page/Page1/AmountRight/aa/aa"), NodePath("Page/Page1/AmountRight/bb/bb"), NodePath("Page/Page1/AmountRight/cc/cc"), NodePath("Page/Page1/AmountRight/dd/dd"), NodePath("Page/Page1/AmountRight/ee/ee"), NodePath("Page/Page1/AmountRight/ff/ff"), NodePath("Page/Page1/AmountRight/gg/gg"), NodePath("Page/Page1/AmountRight/hh/hh"), NodePath("Page/Page1/AmountRight/ii/ii"), NodePath("Page/Page2/AmountLeft/jj/jj"), NodePath("Page/Page2/AmountLeft/kk/kk"), NodePath("Page/Page2/AmountLeft/ll/ll"), NodePath("Page/Page2/AmountLeft/mm/mm"), NodePath("Page/Page2/AmountLeft/nn/nn"), NodePath("Page/Page2/AmountLeft/oo/oo"), NodePath("Page/Page2/AmountLeft/pp/pp"), NodePath("Page/Page2/AmountLeft/qq/qq"), NodePath("Page/Page2/AmountLeft/rr/rr"), NodePath("Page/Page3/AmountRight2/ss/ss"), NodePath("Page/Page3/AmountRight2/tt/tt"), NodePath("Page/Page3/AmountRight2/uu/uu"), NodePath("Page/Page3/AmountRight2/vv/vv"), NodePath("Page/Page3/AmountRight2/ww/ww"), NodePath("Page/Page3/AmountRight2/xx/xx"), NodePath("Page/Page3/AmountRight2/yy/yy"), NodePath("Page/Page3/AmountRight2/zz/zz"), NodePath("Page/Page3/AmountRight2/ex_promo/ex_promo"), NodePath("Page/Page4/AmountLeft2/ex_misprint/ex_misprint")]
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("1_8gl4p")
@@ -1043,6 +1114,207 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("15_nhxst")
 centered = false
 
+[node name="AmountRight" type="Node2D" parent="Page/Page1"]
+position = Vector2(2082.5, 710)
+scale = Vector2(2.5, 2.5)
+
+[node name="aa" type="Sprite2D" parent="Page/Page1/AmountRight"]
+texture = ExtResource("9_d44k2")
+
+[node name="aa" type="Label" parent="Page/Page1/AmountRight/aa"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bb" type="Sprite2D" parent="Page/Page1/AmountRight"]
+position = Vector2(133, 0)
+texture = ExtResource("9_d44k2")
+
+[node name="bb" type="Label" parent="Page/Page1/AmountRight/bb"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cc" type="Sprite2D" parent="Page/Page1/AmountRight"]
+position = Vector2(266, 0)
+texture = ExtResource("9_d44k2")
+
+[node name="cc" type="Label" parent="Page/Page1/AmountRight/cc"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="dd" type="Sprite2D" parent="Page/Page1/AmountRight"]
+position = Vector2(0, 170.5)
+texture = ExtResource("9_d44k2")
+
+[node name="dd" type="Label" parent="Page/Page1/AmountRight/dd"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ee" type="Sprite2D" parent="Page/Page1/AmountRight"]
+position = Vector2(133, 170.5)
+texture = ExtResource("9_d44k2")
+
+[node name="ee" type="Label" parent="Page/Page1/AmountRight/ee"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ff" type="Sprite2D" parent="Page/Page1/AmountRight"]
+position = Vector2(266, 170.5)
+texture = ExtResource("9_d44k2")
+
+[node name="ff" type="Label" parent="Page/Page1/AmountRight/ff"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gg" type="Sprite2D" parent="Page/Page1/AmountRight"]
+position = Vector2(0, 339.5)
+texture = ExtResource("9_d44k2")
+
+[node name="gg" type="Label" parent="Page/Page1/AmountRight/gg"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hh" type="Sprite2D" parent="Page/Page1/AmountRight"]
+position = Vector2(133, 339.5)
+texture = ExtResource("9_d44k2")
+
+[node name="hh" type="Label" parent="Page/Page1/AmountRight/hh"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ii" type="Sprite2D" parent="Page/Page1/AmountRight"]
+position = Vector2(266, 339.5)
+texture = ExtResource("9_d44k2")
+
+[node name="ii" type="Label" parent="Page/Page1/AmountRight/ii"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Page2" type="Node2D" parent="Page"]
 visible = false
 scale = Vector2(0.4, 0.4)
@@ -1094,6 +1366,207 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("26_p0uo5")
 centered = false
 
+[node name="AmountLeft" type="Node2D" parent="Page/Page2"]
+position = Vector2(705, 710)
+scale = Vector2(2.5, 2.5)
+
+[node name="jj" type="Sprite2D" parent="Page/Page2/AmountLeft"]
+texture = ExtResource("9_d44k2")
+
+[node name="jj" type="Label" parent="Page/Page2/AmountLeft/jj"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="kk" type="Sprite2D" parent="Page/Page2/AmountLeft"]
+position = Vector2(133, 0)
+texture = ExtResource("9_d44k2")
+
+[node name="kk" type="Label" parent="Page/Page2/AmountLeft/kk"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ll" type="Sprite2D" parent="Page/Page2/AmountLeft"]
+position = Vector2(266, 0)
+texture = ExtResource("9_d44k2")
+
+[node name="ll" type="Label" parent="Page/Page2/AmountLeft/ll"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mm" type="Sprite2D" parent="Page/Page2/AmountLeft"]
+position = Vector2(0, 170.5)
+texture = ExtResource("9_d44k2")
+
+[node name="mm" type="Label" parent="Page/Page2/AmountLeft/mm"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="nn" type="Sprite2D" parent="Page/Page2/AmountLeft"]
+position = Vector2(133, 170.5)
+texture = ExtResource("9_d44k2")
+
+[node name="nn" type="Label" parent="Page/Page2/AmountLeft/nn"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="oo" type="Sprite2D" parent="Page/Page2/AmountLeft"]
+position = Vector2(266, 170.5)
+texture = ExtResource("9_d44k2")
+
+[node name="oo" type="Label" parent="Page/Page2/AmountLeft/oo"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pp" type="Sprite2D" parent="Page/Page2/AmountLeft"]
+position = Vector2(0, 339.5)
+texture = ExtResource("9_d44k2")
+
+[node name="pp" type="Label" parent="Page/Page2/AmountLeft/pp"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="qq" type="Sprite2D" parent="Page/Page2/AmountLeft"]
+position = Vector2(133, 339.5)
+texture = ExtResource("9_d44k2")
+
+[node name="qq" type="Label" parent="Page/Page2/AmountLeft/qq"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="rr" type="Sprite2D" parent="Page/Page2/AmountLeft"]
+position = Vector2(266, 339.5)
+texture = ExtResource("9_d44k2")
+
+[node name="rr" type="Label" parent="Page/Page2/AmountLeft/rr"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Page3" type="Node2D" parent="Page"]
 visible = false
 scale = Vector2(0.4, 0.4)
@@ -1144,6 +1617,207 @@ modulate = Color(1, 1, 1, 0.392157)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("15_nhxst")
 centered = false
+
+[node name="AmountRight2" type="Node2D" parent="Page/Page3"]
+position = Vector2(2082.5, 710)
+scale = Vector2(2.5, 2.5)
+
+[node name="ss" type="Sprite2D" parent="Page/Page3/AmountRight2"]
+texture = ExtResource("9_d44k2")
+
+[node name="ss" type="Label" parent="Page/Page3/AmountRight2/ss"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tt" type="Sprite2D" parent="Page/Page3/AmountRight2"]
+position = Vector2(133, 0)
+texture = ExtResource("9_d44k2")
+
+[node name="tt" type="Label" parent="Page/Page3/AmountRight2/tt"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="uu" type="Sprite2D" parent="Page/Page3/AmountRight2"]
+position = Vector2(266, 0)
+texture = ExtResource("9_d44k2")
+
+[node name="uu" type="Label" parent="Page/Page3/AmountRight2/uu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="vv" type="Sprite2D" parent="Page/Page3/AmountRight2"]
+position = Vector2(0, 170.5)
+texture = ExtResource("9_d44k2")
+
+[node name="vv" type="Label" parent="Page/Page3/AmountRight2/vv"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ww" type="Sprite2D" parent="Page/Page3/AmountRight2"]
+position = Vector2(133, 170.5)
+texture = ExtResource("9_d44k2")
+
+[node name="ww" type="Label" parent="Page/Page3/AmountRight2/ww"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="xx" type="Sprite2D" parent="Page/Page3/AmountRight2"]
+position = Vector2(266, 170.5)
+texture = ExtResource("9_d44k2")
+
+[node name="xx" type="Label" parent="Page/Page3/AmountRight2/xx"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="yy" type="Sprite2D" parent="Page/Page3/AmountRight2"]
+position = Vector2(0, 339.5)
+texture = ExtResource("9_d44k2")
+
+[node name="yy" type="Label" parent="Page/Page3/AmountRight2/yy"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="zz" type="Sprite2D" parent="Page/Page3/AmountRight2"]
+position = Vector2(133, 339.5)
+texture = ExtResource("9_d44k2")
+
+[node name="zz" type="Label" parent="Page/Page3/AmountRight2/zz"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ex_promo" type="Sprite2D" parent="Page/Page3/AmountRight2"]
+position = Vector2(266, 339.5)
+texture = ExtResource("9_d44k2")
+
+[node name="ex_promo" type="Label" parent="Page/Page3/AmountRight2/ex_promo"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Page4" type="Node2D" parent="Page"]
 visible = false
@@ -1204,6 +1878,215 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("26_p0uo5")
 centered = false
 
+[node name="AmountLeft2" type="Node2D" parent="Page/Page4"]
+position = Vector2(705, 710)
+scale = Vector2(2.5, 2.5)
+
+[node name="ex_misprint" type="Sprite2D" parent="Page/Page4/AmountLeft2"]
+texture = ExtResource("9_d44k2")
+
+[node name="ex_misprint" type="Label" parent="Page/Page4/AmountLeft2/ex_misprint"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2" type="Sprite2D" parent="Page/Page4/AmountLeft2"]
+visible = false
+position = Vector2(133, 0)
+texture = ExtResource("9_d44k2")
+
+[node name="aaAmount" type="Label" parent="Page/Page4/AmountLeft2/Sprite2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3" type="Sprite2D" parent="Page/Page4/AmountLeft2"]
+visible = false
+position = Vector2(266, 0)
+texture = ExtResource("9_d44k2")
+
+[node name="aaAmount" type="Label" parent="Page/Page4/AmountLeft2/Sprite3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite4" type="Sprite2D" parent="Page/Page4/AmountLeft2"]
+visible = false
+position = Vector2(0, 170.5)
+texture = ExtResource("9_d44k2")
+
+[node name="aaAmount" type="Label" parent="Page/Page4/AmountLeft2/Sprite4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite5" type="Sprite2D" parent="Page/Page4/AmountLeft2"]
+visible = false
+position = Vector2(133, 170.5)
+texture = ExtResource("9_d44k2")
+
+[node name="aaAmount" type="Label" parent="Page/Page4/AmountLeft2/Sprite5"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite6" type="Sprite2D" parent="Page/Page4/AmountLeft2"]
+visible = false
+position = Vector2(266, 170.5)
+texture = ExtResource("9_d44k2")
+
+[node name="aaAmount" type="Label" parent="Page/Page4/AmountLeft2/Sprite6"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite7" type="Sprite2D" parent="Page/Page4/AmountLeft2"]
+visible = false
+position = Vector2(0, 339.5)
+texture = ExtResource("9_d44k2")
+
+[node name="aaAmount" type="Label" parent="Page/Page4/AmountLeft2/Sprite7"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite8" type="Sprite2D" parent="Page/Page4/AmountLeft2"]
+visible = false
+position = Vector2(133, 339.5)
+texture = ExtResource("9_d44k2")
+
+[node name="aaAmount" type="Label" parent="Page/Page4/AmountLeft2/Sprite8"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite9" type="Sprite2D" parent="Page/Page4/AmountLeft2"]
+visible = false
+position = Vector2(266, 339.5)
+texture = ExtResource("9_d44k2")
+
+[node name="aaAmount" type="Label" parent="Page/Page4/AmountLeft2/Sprite9"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.9999
+offset_top = -37.5
+offset_right = 6.10352e-05
+offset_bottom = 4.50002
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "10"
+label_settings = SubResource("LabelSettings_murpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Centerring" type="Sprite2D" parent="."]
 texture = ExtResource("37_pbjqs")
 centered = false
@@ -1253,30 +2136,378 @@ offset_right = 722.0
 offset_bottom = 141.0
 text = "update collection_arr"
 
-[node name="LeftPage" type="Button" parent="."]
-offset_left = 162.0
-offset_top = 115.0
-offset_right = 612.0
-offset_bottom = 666.0
+[node name="InspectBtn" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Left1" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 150.0
+offset_right = 293.0
+offset_bottom = 297.0
 focus_mode = 0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_cloua")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_amkht")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_5ddje")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_evym3")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1dcpl")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_b01ir")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_2x18o")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ycs2u")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_yun0q")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_fcl5l")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_vb0mu")
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Left2" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 150.0
+offset_right = 427.0
+offset_bottom = 297.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Left3" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 150.0
+offset_right = 560.0
+offset_bottom = 297.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Left4" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 319.0
+offset_right = 293.0
+offset_bottom = 466.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Left5" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 319.0
+offset_right = 427.0
+offset_bottom = 466.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Left6" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 319.0
+offset_right = 560.0
+offset_bottom = 466.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Left7" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 485.0
+offset_right = 293.0
+offset_bottom = 632.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Left8" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 485.0
+offset_right = 427.0
+offset_bottom = 632.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Left9" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 485.0
+offset_right = 560.0
+offset_bottom = 632.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Right1" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 737.0
+offset_top = 150.0
+offset_right = 845.0
+offset_bottom = 297.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Right2" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 870.0
+offset_top = 150.0
+offset_right = 978.0
+offset_bottom = 297.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Right3" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 1005.0
+offset_top = 150.0
+offset_right = 1113.0
+offset_bottom = 297.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Right4" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 737.0
+offset_top = 320.0
+offset_right = 845.0
+offset_bottom = 467.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Right5" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 870.0
+offset_top = 320.0
+offset_right = 978.0
+offset_bottom = 467.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Right6" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 1005.0
+offset_top = 320.0
+offset_right = 1113.0
+offset_bottom = 467.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Right7" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 737.0
+offset_top = 488.0
+offset_right = 845.0
+offset_bottom = 635.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Right8" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 870.0
+offset_top = 488.0
+offset_right = 978.0
+offset_bottom = 635.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="Right9" type="Button" parent="InspectBtn"]
+layout_mode = 0
+offset_left = 1005.0
+offset_top = 488.0
+offset_right = 1113.0
+offset_bottom = 635.0
+focus_mode = 0
+theme = ExtResource("44_5d8av")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_va27a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_usgvx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4gvod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vnyi1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1o2jq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2timl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ww3y7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8rrbd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7wqru")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_blftr")
+
+[node name="LeftPage" type="Button" parent="."]
+offset_left = 6.0
+offset_top = 349.0
+offset_right = 136.0
+offset_bottom = 479.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hti8w")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_51xws")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8ptlb")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_hf5xn")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_o5up0")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_6nj8h")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8m8tj")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_tn8vj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_a7nor")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_xojbd")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8ek7w")
 shortcut = SubResource("Shortcut_coimo")
 
 [node name="RightPage" type="Button" parent="."]
-offset_left = 688.0
-offset_top = 111.0
-offset_right = 1135.0
-offset_bottom = 664.0
+offset_left = 1152.0
+offset_top = 357.0
+offset_right = 1282.0
+offset_bottom = 487.0
 focus_mode = 0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_m5w30")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_lk608")
@@ -1284,15 +2515,56 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_ahlh8")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_mq7am")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_sy6ny")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2fjc3")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ey6kv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pbhni")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_n3kgc")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_ngun8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_25cr4")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ubdpf")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_eqd00")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wl2b8")
 shortcut = SubResource("Shortcut_mrc07")
+
+[node name="InspectBG" type="Button" parent="."]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7obh3")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_bhv0y")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_iv8h6")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ulpb2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_h1hiw")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_whx3p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r8ygg")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_l5mnv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hr5hl")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_w6vm3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_54lqu")
+
+[node name="InspectSprite" type="Sprite2D" parent="InspectBG"]
+position = Vector2(680, 360)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("6_o0bvp")
 
 [connection signal="pressed" from="debug/test 2" to="." method="_on_test_2_pressed"]
 [connection signal="pressed" from="debug/test 3" to="." method="_on_test_3_pressed"]
 [connection signal="pressed" from="debug/test 4" to="." method="_on_test_4_pressed"]
+[connection signal="pressed" from="InspectBtn/Left1" to="." method="_on_left_1_pressed"]
+[connection signal="pressed" from="InspectBtn/Left2" to="." method="_on_left_2_pressed"]
+[connection signal="pressed" from="InspectBtn/Left3" to="." method="_on_left_3_pressed"]
+[connection signal="pressed" from="InspectBtn/Left4" to="." method="_on_left_4_pressed"]
+[connection signal="pressed" from="InspectBtn/Left5" to="." method="_on_left_5_pressed"]
+[connection signal="pressed" from="InspectBtn/Left6" to="." method="_on_left_6_pressed"]
+[connection signal="pressed" from="InspectBtn/Left7" to="." method="_on_left_7_pressed"]
+[connection signal="pressed" from="InspectBtn/Left8" to="." method="_on_left_8_pressed"]
+[connection signal="pressed" from="InspectBtn/Left9" to="." method="_on_left_9_pressed"]
+[connection signal="pressed" from="InspectBtn/Right1" to="." method="_on_right_1_pressed"]
+[connection signal="pressed" from="InspectBtn/Right2" to="." method="_on_right_2_pressed"]
+[connection signal="pressed" from="InspectBtn/Right3" to="." method="_on_right_3_pressed"]
+[connection signal="pressed" from="InspectBtn/Right4" to="." method="_on_right_4_pressed"]
+[connection signal="pressed" from="InspectBtn/Right5" to="." method="_on_right_5_pressed"]
+[connection signal="pressed" from="InspectBtn/Right6" to="." method="_on_right_6_pressed"]
+[connection signal="pressed" from="InspectBtn/Right7" to="." method="_on_right_7_pressed"]
+[connection signal="pressed" from="InspectBtn/Right8" to="." method="_on_right_8_pressed"]
+[connection signal="pressed" from="InspectBtn/Right9" to="." method="_on_right_9_pressed"]
 [connection signal="pressed" from="LeftPage" to="." method="_on_left_page_pressed"]
 [connection signal="pressed" from="RightPage" to="." method="_on_right_page_pressed"]
+[connection signal="pressed" from="InspectBG" to="." method="_on_inspect_bg_pressed"]

@@ -1,42 +1,156 @@
-[gd_scene load_steps=8 format=3 uid="uid://tm88aqtbycyg"]
+[gd_scene load_steps=49 format=3 uid="uid://tm88aqtbycyg"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_il6vr"]
+[ext_resource type="Texture2D" uid="uid://bbtwwgi2r38dy" path="res://assets/op-menu-bg.png" id="2_e0o0c"]
 [ext_resource type="Texture2D" uid="uid://csg36e3vqh3tg" path="res://assets/temp/shop_mockup.png" id="2_f8bn5"]
 [ext_resource type="Texture2D" uid="uid://b126g00xpcysr" path="res://Cards/CardSprite/aa.png" id="3_82hd5"]
-[ext_resource type="Script" path="res://scripts/buy_sell_manager.gd" id="3_pblca"]
+[ext_resource type="Script" path="res://scripts/shop_menu.gd" id="4_en0nm"]
+[ext_resource type="Shader" path="res://scripts/shop.gdshader" id="4_r185k"]
+[ext_resource type="Texture2D" uid="uid://dpngi2jxa1bdn" path="res://Cards/CardSprite/bb.png" id="5_rpfhd"]
+[ext_resource type="Script" path="res://scripts/shop_cardlist.gd" id="6_ojbny"]
+[ext_resource type="Texture2D" uid="uid://b4xv4dsgybwga" path="res://Cards/CardSprite/ex_promo.png" id="7_mknd5"]
+[ext_resource type="PackedScene" uid="uid://cl4i386njlntm" path="res://scenes/cardlist_slot.tscn" id="7_radqw"]
+[ext_resource type="Texture2D" uid="uid://dqybg13sywe57" path="res://assets/price_tag.png" id="8_0ojym"]
+[ext_resource type="Texture2D" uid="uid://bd7l1eved4sjp" path="res://Cards/CardSprite/card-censor.png" id="8_bsciq"]
+[ext_resource type="Texture2D" uid="uid://c4u0didj1o528" path="res://assets/binder_shop_icon.png" id="10_ys1f8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1uemr"]
+shader = ExtResource("4_r185k")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 2.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_wbp2d"]
+font_size = 45
+font_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0.796243, 0.796243, 0.796243, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bgk30"]
+shader = ExtResource("4_r185k")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 5.0
+shader_parameter/speed = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_3kdme"]
+font_size = 45
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ie8i8"]
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m3i3k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oxs43"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a443h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hincw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lw52"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mysj1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ha2nr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tsorm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_goq4g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fdipq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8w2sq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p8sjj"]
+shader = ExtResource("4_r185k")
+shader_parameter/height = 2.0
+shader_parameter/frequency = 5.0
+shader_parameter/speed = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_hr1cu"]
+outline_size = 2
+outline_color = Color(0.956405, 0, 0.184912, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sowh8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u5gu4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glvpo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y2hpy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t68gx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lw0lh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axfsw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8y73c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u67a4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82pyi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1qot5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6dn2p"]
+shader = ExtResource("4_r185k")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 5.0
+shader_parameter/speed = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ijovu"]
+font_size = 30
+font_color = Color(0.678431, 0.996078, 0.188235, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yvgyi"]
 font_size = 30
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_0cl3v"]
-font_color = Color(1, 1, 0.556863, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_o8vf3"]
-font_size = 12
+[sub_resource type="LabelSettings" id="LabelSettings_nap51"]
 font_color = Color(0, 0, 0, 1)
 
-[node name="Shop" type="Node2D"]
-script = ExtResource("1_il6vr")
+[sub_resource type="LabelSettings" id="LabelSettings_3hdkc"]
+font_size = 18
+font_color = Color(0.147417, 0.549511, 0.144516, 1)
 
-[node name="BGSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_f8bn5")
-offset = Vector2(640, 360)
+[sub_resource type="LabelSettings" id="LabelSettings_o8vf3"]
+font_color = Color(0, 0, 0, 1)
 
-[node name="BuySellManager" type="Control" parent="."]
-visible = false
+[node name="Shop" type="Control" node_paths=PackedStringArray("shop", "shop_menu", "shop_cardlist", "shop_offer", "text_dyn", "shop_cardlist_lbl_hover", "shop_cardlist_lbl_idle", "shop_offer_lbl", "text_idle", "text_dyn_up", "text_dyn_low", "shop_offer_btn", "shop_trade_btn", "btn_buy_1_pack", "btn_buy_5_packs", "btn_buy_box")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 635.0
-offset_top = 125.0
-offset_right = 675.0
-offset_bottom = 165.0
-script = ExtResource("3_pblca")
+script = ExtResource("1_il6vr")
+shop = NodePath(".")
+shop_menu = NodePath("ShopMenu")
+shop_cardlist = NodePath("ShopCardlist")
+shop_offer = NodePath("ShopOffer")
+text_dyn = NodePath("ShopMenu/VBoxContainer/TextBox/TextDynamic")
+shop_cardlist_lbl_hover = NodePath("ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/ShopCardlistBtn/CardListLabelHover")
+shop_cardlist_lbl_idle = NodePath("ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/ShopCardlistBtn/CardListLabelIdle")
+shop_offer_lbl = NodePath("ShopMenu/VBoxContainer/Button/VBoxContainer/OfferBtn/OfferLabel")
+text_idle = NodePath("ShopMenu/VBoxContainer/TextBox/TextIdle")
+text_dyn_up = NodePath("ShopMenu/VBoxContainer/TextBox/TextDynamic/TextDynamicUpper")
+text_dyn_low = NodePath("ShopMenu/VBoxContainer/TextBox/TextDynamic/TextDynamicLower")
+shop_offer_btn = NodePath("ShopMenu/VBoxContainer/Button/VBoxContainer/OfferBtn")
+shop_trade_btn = NodePath("ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/ShopCardlistBtn")
+btn_buy_1_pack = NodePath("ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs/Buy1Pack")
+btn_buy_5_packs = NodePath("ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs/Buy5Packs")
+btn_buy_box = NodePath("ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/BuyBox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_e0o0c")
+centered = false
+
+[node name="BGSprite" type="TextureRect" parent="."]
+layout_mode = 0
+texture = ExtResource("2_f8bn5")
 
 [node name="ShopMenu" type="Control" parent="."]
 unique_name_in_owner = true
 visible = false
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -48,6 +162,7 @@ offset_right = 1140.0
 offset_bottom = 625.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_en0nm")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ShopMenu"]
 layout_mode = 1
@@ -61,7 +176,8 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="ShopMenu/VBoxContainer/TextBox"]
+[node name="TextIdle" type="Label" parent="ShopMenu/VBoxContainer/TextBox"]
+material = SubResource("ShaderMaterial_1uemr")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,6 +190,31 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="TextDynamic" type="VBoxContainer" parent="ShopMenu/VBoxContainer/TextBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextDynamicUpper" type="Label" parent="ShopMenu/VBoxContainer/TextBox/TextDynamic"]
+material = SubResource("ShaderMaterial_bgk30")
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+text = "TEST UPPER TEXT"
+label_settings = SubResource("LabelSettings_3kdme")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextDynamicLower" type="Label" parent="ShopMenu/VBoxContainer/TextBox/TextDynamic"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "TEST LOWER TEXT"
+label_settings = SubResource("LabelSettings_ie8i8")
+horizontal_alignment = 1
+
 [node name="Button" type="Control" parent="ShopMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -85,36 +226,96 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 0
 
-[node name="PromoBtn" type="Button" parent="ShopMenu/VBoxContainer/Button/VBoxContainer"]
+[node name="OfferBtn" type="Button" parent="ShopMenu/VBoxContainer/Button/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
-text = "Special Offer"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m3i3k")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_oxs43")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_a443h")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_hincw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lw52")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_mysj1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ha2nr")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_tsorm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_goq4g")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_fdipq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8w2sq")
+
+[node name="OfferLabel" type="Label" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/OfferBtn"]
+material = SubResource("ShaderMaterial_p8sjj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SPECIAL OFFER"
+label_settings = SubResource("LabelSettings_hr1cu")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LowerBtn" type="HBoxContainer" parent="ShopMenu/VBoxContainer/Button/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-theme_override_constants/separation = 20
+theme_override_constants/separation = 0
 
 [node name="ShopCardlistBtn" type="Button" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 focus_mode = 0
-text = "Buy Cards"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sowh8")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_u5gu4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_glvpo")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_y2hpy")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_t68gx")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_lw0lh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_axfsw")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_8y73c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_u67a4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_82pyi")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1qot5")
+
+[node name="CardListLabelHover" type="Label" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/ShopCardlistBtn"]
+visible = false
+material = SubResource("ShaderMaterial_6dn2p")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TRADING"
+label_settings = SubResource("LabelSettings_ijovu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardListLabelIdle" type="Label" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/ShopCardlistBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TRADING"
+label_settings = SubResource("LabelSettings_yvgyi")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LowerRightGroup" type="VBoxContainer" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 10
+theme_override_constants/separation = 0
 
 [node name="Packs" type="HBoxContainer" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 
 [node name="Buy1Pack" type="Button" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs"]
 unique_name_in_owner = true
@@ -140,7 +341,7 @@ text = "Buy 1 Box
 
 [node name="ShopCardlist" type="Control" parent="."]
 unique_name_in_owner = true
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -152,8 +353,9 @@ offset_right = 1155.0
 offset_bottom = 645.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("6_ojbny")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist"]
+[node name="Container" type="VBoxContainer" parent="ShopCardlist"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -163,811 +365,102 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ShopCardlist/VBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
+[node name="ScrollContainer" type="ScrollContainer" parent="ShopCardlist/Container"]
+custom_minimum_size = Vector2(500, 460)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 20
-
-[node name="Row1" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 15
-
-[node name="Slot1" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1"]
-custom_minimum_size = Vector2(220, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-size_flags_stretch_ratio = 0.5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-
-[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="aaSprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardSprite"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -100.0
-offset_right = 75.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-texture = ExtResource("3_82hd5")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="aaPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardSprite"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "$10.2"
-label_settings = SubResource("LabelSettings_0cl3v")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardInfo"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="aaBuy" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
+[node name="CardlistGrid" type="GridContainer" parent="ShopCardlist/Container/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 6
-focus_mode = 0
-text = "BUY"
-
-[node name="aaSell" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 6
-focus_mode = 0
-text = "SELL"
-
-[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="aaAmount" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardInfo/VBoxContainer/Copy"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "You have x1"
-label_settings = SubResource("LabelSettings_o8vf3")
-
-[node name="Slot2" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1"]
-custom_minimum_size = Vector2(220, 200)
-layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 0
-size_flags_stretch_ratio = 0.5
+columns = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-
-[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="bbSprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer/CardSprite"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -100.0
-offset_right = 75.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-texture = ExtResource("3_82hd5")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="bbPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer/CardSprite"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "$10.2"
-label_settings = SubResource("LabelSettings_0cl3v")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer/CardInfo"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="bbBuy" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 6
-focus_mode = 0
-text = "BUY"
-
-[node name="bbSell" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 6
-focus_mode = 0
-text = "SELL"
-
-[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="bbAmount" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot2/HBoxContainer/CardInfo/VBoxContainer/Copy"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "You have x1"
-label_settings = SubResource("LabelSettings_o8vf3")
-
-[node name="Spacing" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1"]
+[node name="CardlistSlot" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
 layout_mode = 2
 
-[node name="Row12" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 15
-
-[node name="Slot1" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12"]
-custom_minimum_size = Vector2(220, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-size_flags_stretch_ratio = 0.5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-
-[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="wwSprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer/CardSprite"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -100.0
-offset_right = 75.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-texture = ExtResource("3_82hd5")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="wwPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer/CardSprite"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "$10.2"
-label_settings = SubResource("LabelSettings_0cl3v")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer/CardInfo"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="wwBuy" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 6
-focus_mode = 0
-text = "BUY"
-
-[node name="wwSell" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 6
-focus_mode = 0
-text = "SELL"
-
-[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="wwAmount" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot1/HBoxContainer/CardInfo/VBoxContainer/Copy"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "You have x1"
-label_settings = SubResource("LabelSettings_o8vf3")
-
-[node name="Slot2" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12"]
-custom_minimum_size = Vector2(220, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-size_flags_stretch_ratio = 0.5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-
-[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="xxSprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer/CardSprite"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -100.0
-offset_right = 75.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-texture = ExtResource("3_82hd5")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="xxPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer/CardSprite"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "$10.2"
-label_settings = SubResource("LabelSettings_0cl3v")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer/CardInfo"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="xxBuy" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 6
-focus_mode = 0
-text = "BUY"
-
-[node name="xxSell" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 6
-focus_mode = 0
-text = "SELL"
-
-[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="xxAmount" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12/Slot2/HBoxContainer/CardInfo/VBoxContainer/Copy"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "You have x1"
-label_settings = SubResource("LabelSettings_o8vf3")
-
-[node name="Spacing" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row12"]
+[node name="CardlistSlot2" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
 layout_mode = 2
 
-[node name="Row3" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 15
-
-[node name="Slot1" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3"]
-custom_minimum_size = Vector2(220, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-size_flags_stretch_ratio = 0.5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-
-[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="AASprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer/CardSprite"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -100.0
-offset_right = 75.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-texture = ExtResource("3_82hd5")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="AAPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer/CardSprite"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "$10.2"
-label_settings = SubResource("LabelSettings_0cl3v")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer/CardInfo"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-text = "BUY"
-
-[node name="Button2" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-text = "SELL"
-
-[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="Label" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot1/HBoxContainer/CardInfo/VBoxContainer/Copy"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "You have x1"
-label_settings = SubResource("LabelSettings_o8vf3")
-
-[node name="Slot2" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3"]
-custom_minimum_size = Vector2(220, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-size_flags_stretch_ratio = 0.5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-
-[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="BBSprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer/CardSprite"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -100.0
-offset_right = 75.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-texture = ExtResource("3_82hd5")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="BBPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer/CardSprite"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "$10.2"
-label_settings = SubResource("LabelSettings_0cl3v")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer/CardInfo"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-text = "BUY"
-
-[node name="Button2" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-text = "SELL"
-
-[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="Label" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3/Slot2/HBoxContainer/CardInfo/VBoxContainer/Copy"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "You have x1"
-label_settings = SubResource("LabelSettings_o8vf3")
-
-[node name="Spacing" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row3"]
+[node name="CardlistSlot3" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
 layout_mode = 2
 
-[node name="Row4" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 15
-
-[node name="Slot1" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4"]
-custom_minimum_size = Vector2(220, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-size_flags_stretch_ratio = 0.5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-
-[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="AASprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer/CardSprite"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -100.0
-offset_right = 75.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-texture = ExtResource("3_82hd5")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="AAPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer/CardSprite"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "$10.2"
-label_settings = SubResource("LabelSettings_0cl3v")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer/CardInfo"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-text = "BUY"
-
-[node name="Button2" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-text = "SELL"
-
-[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="Label" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot1/HBoxContainer/CardInfo/VBoxContainer/Copy"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "You have x1"
-label_settings = SubResource("LabelSettings_o8vf3")
-
-[node name="Slot2" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4"]
-custom_minimum_size = Vector2(220, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-size_flags_stretch_ratio = 0.5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-
-[node name="CardSprite" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="BBSprite" type="TextureRect" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer/CardSprite"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -100.0
-offset_right = 75.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-texture = ExtResource("3_82hd5")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="BBPrice" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer/CardSprite"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "$10.2"
-label_settings = SubResource("LabelSettings_0cl3v")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CardInfo" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer/CardInfo"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-text = "BUY"
-
-[node name="Button2" type="Button" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-text = "SELL"
-
-[node name="Copy" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer/CardInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="Label" type="Label" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4/Slot2/HBoxContainer/CardInfo/VBoxContainer/Copy"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "You have x1"
-label_settings = SubResource("LabelSettings_o8vf3")
-
-[node name="Spacing" type="Control" parent="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row4"]
+[node name="CardlistSlot4" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
 layout_mode = 2
 
-[node name="BackToMenu" type="Control" parent="ShopCardlist/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="CardlistSlot5" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot6" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot7" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot8" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot9" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot10" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot11" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot12" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot13" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot14" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot15" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot16" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot17" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot18" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot19" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot20" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot21" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot22" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot23" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot24" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot25" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="CardlistSlot26" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
+layout_mode = 2
+
+[node name="BackToMenu" type="Control" parent="ShopCardlist/Container"]
+custom_minimum_size = Vector2(520, 50)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="BackBtn" type="Button" parent="ShopCardlist/VBoxContainer/BackToMenu"]
+[node name="CardListBackBtn" type="Button" parent="ShopCardlist/Container/BackToMenu"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -975,10 +468,230 @@ offset_right = 45.0
 grow_vertical = 2
 text = "       Back       "
 
+[node name="ShopOffer" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 635.0
+offset_top = 125.0
+offset_right = 1155.0
+offset_bottom = 645.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="VBoxContainer" parent="ShopOffer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Contents" type="Control" parent="ShopOffer/Container"]
+custom_minimum_size = Vector2(500, 460)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopOffer/Container/Contents"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="PromoSprite" type="Control" parent="ShopOffer/Container/Contents/VBoxContainer"]
+custom_minimum_size = Vector2(520, 350)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="TextureRect" type="TextureRect" parent="ShopOffer/Container/Contents/VBoxContainer/PromoSprite"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -190.0
+offset_right = 140.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_mknd5")
+stretch_mode = 2
+
+[node name="Control" type="Control" parent="ShopOffer/Container/Contents/VBoxContainer"]
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ShopOffer/Container/Contents/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TEST"
+label_settings = SubResource("LabelSettings_nap51")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackToMenu" type="Control" parent="ShopOffer/Container"]
+custom_minimum_size = Vector2(520, 50)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="OfferBackBtn" type="Button" parent="ShopOffer/Container/BackToMenu"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 45.0
+grow_vertical = 2
+text = "       Back       "
+
+[node name="CardlistSlot2" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(220, 200)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 635.0
+offset_top = 125.0
+offset_right = 855.0
+offset_bottom = 325.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardlistSlot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="CardSprite" type="Control" parent="CardlistSlot2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Spritebase" type="TextureRect" parent="CardlistSlot2/HBoxContainer/CardSprite"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("3_82hd5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Sprite" type="Sprite2D" parent="CardlistSlot2/HBoxContainer/CardSprite"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_rpfhd")
+centered = false
+offset = Vector2(5, 5)
+
+[node name="Censor" type="Sprite2D" parent="CardlistSlot2/HBoxContainer/CardSprite"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_bsciq")
+centered = false
+
+[node name="Pricetag" type="Sprite2D" parent="CardlistSlot2/HBoxContainer/CardSprite"]
+position = Vector2(90, 40)
+texture = ExtResource("8_0ojym")
+
+[node name="PriceLbl" type="Label" parent="CardlistSlot2/HBoxContainer/CardSprite/Pricetag"]
+offset_left = -24.0
+offset_top = -12.0
+offset_right = 28.0
+offset_bottom = 16.0
+text = "$2.50"
+label_settings = SubResource("LabelSettings_3hdkc")
+
+[node name="Spacer" type="Control" parent="CardlistSlot2/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="CardInfo" type="Control" parent="CardlistSlot2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardlistSlot2/HBoxContainer/CardInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BuyBtn" type="Button" parent="CardlistSlot2/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+text = "BUY"
+
+[node name="SellBtn" type="Button" parent="CardlistSlot2/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+text = "SELL"
+
+[node name="Copy" type="HBoxContainer" parent="CardlistSlot2/HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AmountSprite" type="TextureRect" parent="CardlistSlot2/HBoxContainer/CardInfo/VBoxContainer/Copy"]
+layout_mode = 2
+texture = ExtResource("10_ys1f8")
+stretch_mode = 2
+
+[node name="AmountLbl" type="Label" parent="CardlistSlot2/HBoxContainer/CardInfo/VBoxContainer/Copy"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "1"
+label_settings = SubResource("LabelSettings_o8vf3")
+vertical_alignment = 1
+
+[node name="Spacer2" type="Control" parent="CardlistSlot2/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[connection signal="mouse_entered" from="ShopMenu/VBoxContainer/Button/VBoxContainer/OfferBtn" to="." method="_on_offer_btn_mouse_entered"]
+[connection signal="mouse_exited" from="ShopMenu/VBoxContainer/Button/VBoxContainer/OfferBtn" to="." method="_on_offer_btn_mouse_exited"]
+[connection signal="pressed" from="ShopMenu/VBoxContainer/Button/VBoxContainer/OfferBtn" to="." method="_on_offer_btn_pressed"]
+[connection signal="mouse_entered" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/ShopCardlistBtn" to="." method="_on_shop_cardlist_btn_mouse_entered"]
+[connection signal="mouse_exited" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/ShopCardlistBtn" to="." method="_on_shop_cardlist_btn_mouse_exited"]
 [connection signal="pressed" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/ShopCardlistBtn" to="." method="_on_shop_cardlist_btn_pressed"]
-[connection signal="pressed" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs/Buy1Pack" to="BuySellManager" method="_on_pack_pressed"]
-[connection signal="pressed" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs/Buy5Packs" to="BuySellManager" method="_on_packs_pressed"]
-[connection signal="pressed" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/BuyBox" to="BuySellManager" method="_on_box_pressed"]
-[connection signal="pressed" from="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardInfo/VBoxContainer/aaBuy" to="BuySellManager" method="_on_aa_buy_pressed"]
-[connection signal="pressed" from="ShopCardlist/VBoxContainer/ScrollContainer/VBoxContainer/Row1/Slot1/HBoxContainer/CardInfo/VBoxContainer/aaSell" to="BuySellManager" method="_on_aa_sell_pressed"]
-[connection signal="pressed" from="ShopCardlist/VBoxContainer/BackToMenu/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/ShopCardlistBtn" to="ShopCardlist" method="_on_shop_cardlist_btn_pressed"]
+[connection signal="mouse_entered" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs/Buy1Pack" to="." method="_on_buy_1_pack_mouse_entered"]
+[connection signal="mouse_exited" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs/Buy1Pack" to="." method="_on_buy_1_pack_mouse_exited"]
+[connection signal="pressed" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs/Buy1Pack" to="ShopMenu" method="_on_buy_1_pack_pressed"]
+[connection signal="mouse_entered" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs/Buy5Packs" to="." method="_on_buy_5_packs_mouse_entered"]
+[connection signal="mouse_exited" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs/Buy5Packs" to="." method="_on_buy_5_packs_mouse_exited"]
+[connection signal="pressed" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs/Buy5Packs" to="ShopMenu" method="_on_buy_5_packs_pressed"]
+[connection signal="mouse_entered" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/BuyBox" to="." method="_on_buy_box_mouse_entered"]
+[connection signal="mouse_exited" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/BuyBox" to="." method="_on_buy_box_mouse_exited"]
+[connection signal="pressed" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/BuyBox" to="ShopMenu" method="_on_buy_box_pressed"]
+[connection signal="pressed" from="ShopCardlist/Container/BackToMenu/CardListBackBtn" to="." method="_on_card_list_back_btn_pressed"]
+[connection signal="pressed" from="ShopOffer/Container/BackToMenu/OfferBackBtn" to="." method="_on_offer_back_btn_pressed"]

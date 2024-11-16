@@ -6,6 +6,10 @@ signal show_cardback
 #@export var STARTING_MONEY: float = 50.0
 #@export var STARTING_PACK: int = 10
 
+@onready var shop:= $Shop
+@onready var shop_btn:= %ShopBtn
+@onready var home_btn:= %HomeBtn
+@onready var binder_btn:= %BinderBtn
 
 @onready var action_btn:= %ActionBtn
 @onready var btn_open_pack:= %OpenPack
@@ -34,6 +38,8 @@ func _ready() -> void:
 	btn_keep.visible = false
 	btn_sell.visible = false
 	btn_flip.visible = false
+	shop_btn.visible = true #temp
+	home_btn.visible = false #temp
 	
 	btn_open_pack.disabled = true
 	btn_keep.disabled = true
@@ -54,6 +60,8 @@ func _ready() -> void:
 	##animation
 	$Animation/OpenPack.visible = false
 	
+	##SHOP
+	shop.visible = false
 
 func _process(_delta: float) -> void:
 	
@@ -61,27 +69,8 @@ func _process(_delta: float) -> void:
 	_debug_process()
 	
 	##binder btn
-	if Input.is_action_just_pressed("binder"):
-		
-		#close -> open
-		if binder_open == false:
-			#halt state
-			GlobalStateController.prev_state = GlobalStateController.current_state
-			GlobalStateController.current_state = GameStateController.GameState.BINDER
-			
-			#update binder
-			binder._update_collection()
-			
-			binder.visible = true
-			binder_open = true
-			
-		#open -> close
-		else:
-			binder.visible = false
-			binder_open = false
-			
-			GlobalStateController.current_state = GlobalStateController.prev_state
-		
+	#if Input.is_action_just_pressed("binder"):
+		#_binder_handle()
 	
 	##open pack btn
 	if GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
@@ -146,6 +135,33 @@ func _seen_n_collected_icon():
 
 func _show_cardback():
 	show_cardback.emit()
+
+
+func _on_binder_btn_pressed() -> void:
+	_binder_handle()
+
+func _binder_handle():
+	if binder_open == false:
+		#btn pressed
+		#binder_btn.button_pressed = true
+		
+		#halt state
+		GlobalStateController.prev_state = GlobalStateController.current_state
+		GlobalStateController.current_state = GameStateController.GameState.BINDER
+		
+		#update binder
+		binder._update_all_slot()
+		
+		binder.visible = true
+		binder_open = true
+		
+	#open -> close
+	else:
+		binder.visible = false
+		binder_open = false
+		
+		GlobalStateController.current_state = GlobalStateController.prev_state
+
 
 
 ##DEBUG

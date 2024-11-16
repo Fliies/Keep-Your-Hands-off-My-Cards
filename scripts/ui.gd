@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 func _update_money():
 	##current money
 	#amount
-	money_current.text = "$" + str(GlobalData.money_current)
+	money_current.text = "$%.2f" % GlobalData.money_current
 	#color
 	if GlobalData.money_current >= 0 :
 		money_current.label_settings.font_color = Color("GREEN")
@@ -20,7 +20,7 @@ func _update_money():
 		money_current.label_settings.font_color = Color("RED")
 	
 	##added money
-	money_added.text = "( + $" + str(GlobalData.money_added) +")"
+	money_added.text = "( + $%.2f )" % GlobalData.money_added
 	
 	if GlobalData.money_added > 0:
 		money_added.visible = true
@@ -31,3 +31,8 @@ func _update_money():
 
 func _update_pack_have():
 	pack_have.text = str(GlobalData.packcount_box + GlobalData.packcount_single) + " Packs"
+
+
+
+func _on_binder_btn_pressed() -> void:
+	pass # Replace with function body.

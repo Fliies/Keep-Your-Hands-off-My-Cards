@@ -1,0 +1,132 @@
+[gd_scene load_steps=9 format=3 uid="uid://cl4i386njlntm"]
+
+[ext_resource type="Script" path="res://scripts/cardlist_slot.gd" id="1_e7j0a"]
+[ext_resource type="Texture2D" uid="uid://b126g00xpcysr" path="res://Cards/CardSprite/aa.png" id="2_i4bgk"]
+[ext_resource type="Texture2D" uid="uid://dpngi2jxa1bdn" path="res://Cards/CardSprite/bb.png" id="3_l75ha"]
+[ext_resource type="Texture2D" uid="uid://bd7l1eved4sjp" path="res://Cards/CardSprite/card-censor.png" id="4_342a8"]
+[ext_resource type="Texture2D" uid="uid://dqybg13sywe57" path="res://assets/price_tag.png" id="5_mk7gk"]
+[ext_resource type="Texture2D" uid="uid://c4u0didj1o528" path="res://assets/binder_shop_icon.png" id="6_doimd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3hdkc"]
+font_size = 18
+font_color = Color(0.147417, 0.549511, 0.144516, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o8vf3"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="CardlistSlot" type="Control"]
+custom_minimum_size = Vector2(220, 200)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.5
+script = ExtResource("1_e7j0a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="CardSprite" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Spritebase" type="TextureRect" parent="HBoxContainer/CardSprite"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("2_i4bgk")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Sprite" type="Sprite2D" parent="HBoxContainer/CardSprite"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_l75ha")
+centered = false
+offset = Vector2(5, 5)
+
+[node name="Censor" type="Sprite2D" parent="HBoxContainer/CardSprite"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_342a8")
+centered = false
+
+[node name="Pricetag" type="Sprite2D" parent="HBoxContainer/CardSprite"]
+position = Vector2(90, 40)
+texture = ExtResource("5_mk7gk")
+
+[node name="PriceLbl" type="Label" parent="HBoxContainer/CardSprite/Pricetag"]
+offset_left = -24.0
+offset_top = -12.0
+offset_right = 28.0
+offset_bottom = 16.0
+text = "$2.50"
+label_settings = SubResource("LabelSettings_3hdkc")
+
+[node name="Spacer" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="CardInfo" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/CardInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BuyBtn" type="Button" parent="HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+text = "BUY"
+
+[node name="SellBtn" type="Button" parent="HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+focus_mode = 0
+text = "SELL"
+
+[node name="Copy" type="HBoxContainer" parent="HBoxContainer/CardInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AmountSprite" type="TextureRect" parent="HBoxContainer/CardInfo/VBoxContainer/Copy"]
+layout_mode = 2
+texture = ExtResource("6_doimd")
+stretch_mode = 2
+
+[node name="AmountLbl" type="Label" parent="HBoxContainer/CardInfo/VBoxContainer/Copy"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "1"
+label_settings = SubResource("LabelSettings_o8vf3")
+vertical_alignment = 1
+
+[node name="Spacer2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="HBoxContainer/CardInfo/VBoxContainer/BuyBtn" to="." method="_on_buy_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/CardInfo/VBoxContainer/SellBtn" to="." method="_on_sell_btn_pressed"]

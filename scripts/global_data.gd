@@ -69,6 +69,7 @@ extends Node
 	"nn", "oo", "pp", "qq", "rr", "ss", "tt", "uu", "vv", "ww", "xx", "yy", "zz",
 	"ex_promo", "ex_misprint", "ex_driver", "ex_credit"
 	]
+@onready var codename_arr:= ["aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", "ii" ,"jj", "kk", "ll", "mm", "nn", "oo", "pp", "qq", "rr", "ss", "tt", "uu", "vv", "ww", "xx", "yy", "zz",]
 
 @onready var box_cu_arr:= []
 @onready var box_rs_arr:= []

@@ -7,7 +7,7 @@ func _on_addpackto_box_pressed() -> void:
 func _on_addpackto_single_pressed() -> void:
 	GlobalData.packcount_single += 1
 func _on_test_pressed() -> void:
-	print(GlobalData.opening_arr)
+	print(GlobalData.shop_arr)
 
 func _count_all():
 	#if GlobalData.seen_arr.size() != 0:
@@ -49,3 +49,23 @@ func _on_start_pressed() -> void:
 	#state = Standby
 	GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
 	
+
+
+func _on_shop_pressed() -> void:
+	GlobalStateController.current_state = GlobalStateController.GameState.SHOP_MENU
+	main.shop.visible = true
+	
+	main.shop_btn.visible = false
+	main.home_btn.visible = true
+
+
+func _on_home_pressed() -> void:
+	GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
+	main.shop.visible = false
+	
+	main.shop_btn.visible = true
+	main.home_btn.visible = false
+
+
+func _on_add_money_pressed() -> void:
+	GlobalData.money_current += 20

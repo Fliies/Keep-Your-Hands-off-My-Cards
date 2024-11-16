@@ -1,8 +1,9 @@
 extends Control
 
-@onready var main:= get_parent()
+@onready var main:= get_parent().get_parent()
 
 @onready var sell_btn:= %SellBtn
+@onready var sell_price:= %SellPrice
 @onready var keep_btn:= %KeepBtn
 
 
@@ -99,8 +100,9 @@ func _on_flip_btn_pressed() -> void:
 	##icon
 	main._seen_n_collected_icon()
 	
-	##update price
-	%SellPrice.text = str(GlobalData.price_dict.get(main.card_display.card_stat.card_codename))
+##update price
+	#sell_price.text = str(GlobalData.price_dict.get(main.card_display.card_stat.card_codename))
+	sell_price.text =  "%.2f" % GlobalData.price_dict.get(main.card_display.card_stat.card_codename)
 	
 	await main.animation_finished
 
