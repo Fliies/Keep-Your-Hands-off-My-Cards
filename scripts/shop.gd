@@ -140,6 +140,9 @@ func _on_buy_box_mouse_exited() -> void:
 
 func _on_shop_btn_pressed() -> void:
 	##ENTER the SHOP
+# add sell money
+	GlobalData.money_current += GlobalData.money_added
+	GlobalData.money_added = 0
 # update PRICE_DICT
 	GlobalData._update_price()
 # SETUP STOCK CARDLIST

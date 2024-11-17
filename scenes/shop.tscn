@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://tm88aqtbycyg"]
+[gd_scene load_steps=50 format=3 uid="uid://tm88aqtbycyg"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_il6vr"]
 [ext_resource type="Texture2D" uid="uid://bbtwwgi2r38dy" path="res://assets/op-menu-bg.png" id="2_e0o0c"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" path="res://scripts/shop.gdshader" id="4_r185k"]
 [ext_resource type="Texture2D" uid="uid://dpngi2jxa1bdn" path="res://Cards/CardSprite/bb.png" id="5_rpfhd"]
 [ext_resource type="Script" path="res://scripts/shop_cardlist.gd" id="6_ojbny"]
+[ext_resource type="FontFile" uid="uid://bafa8t46i5ktu" path="res://assets/font/ChelseaMarket-Regular.ttf" id="6_vu4sp"]
 [ext_resource type="Texture2D" uid="uid://b4xv4dsgybwga" path="res://Cards/CardSprite/ex_promo.png" id="7_mknd5"]
 [ext_resource type="PackedScene" uid="uid://cl4i386njlntm" path="res://scenes/cardlist_slot.tscn" id="7_radqw"]
 [ext_resource type="Texture2D" uid="uid://dqybg13sywe57" path="res://assets/price_tag.png" id="8_0ojym"]
@@ -21,6 +22,7 @@ shader_parameter/frequency = 10.0
 shader_parameter/speed = 2.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_wbp2d"]
+font = ExtResource("6_vu4sp")
 font_size = 45
 font_color = Color(0, 0, 0, 1)
 shadow_size = 4
@@ -33,10 +35,12 @@ shader_parameter/frequency = 5.0
 shader_parameter/speed = 5.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_3kdme"]
+font = ExtResource("6_vu4sp")
 font_size = 45
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ie8i8"]
+font = ExtResource("6_vu4sp")
 font_size = 20
 font_color = Color(0, 0, 0, 1)
 
@@ -693,5 +697,57 @@ layout_mode = 2
 [connection signal="mouse_entered" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/BuyBox" to="." method="_on_buy_box_mouse_entered"]
 [connection signal="mouse_exited" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/BuyBox" to="." method="_on_buy_box_mouse_exited"]
 [connection signal="pressed" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/BuyBox" to="ShopMenu" method="_on_buy_box_pressed"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot2" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot2" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot3" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot3" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot4" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot4" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot5" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot5" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot6" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot6" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot7" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot7" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot8" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot8" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot9" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot9" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot10" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot10" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot11" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot11" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot12" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot12" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot13" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot13" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot14" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot14" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot15" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot15" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot16" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot16" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot17" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot17" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot18" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot18" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot19" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot19" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot20" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot20" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot21" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot21" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot22" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot22" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot23" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot23" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot24" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot24" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot25" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot25" to="ShopCardlist" method="_on_cardlist_slot_sell"]
+[connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot26" to="ShopCardlist" method="_on_cardlist_slot_buy"]
+[connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot26" to="ShopCardlist" method="_on_cardlist_slot_sell"]
 [connection signal="pressed" from="ShopCardlist/Container/BackToMenu/CardListBackBtn" to="." method="_on_card_list_back_btn_pressed"]
 [connection signal="pressed" from="ShopOffer/Container/BackToMenu/OfferBackBtn" to="." method="_on_offer_back_btn_pressed"]

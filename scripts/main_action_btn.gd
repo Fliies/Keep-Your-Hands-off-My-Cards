@@ -5,9 +5,11 @@ extends Control
 @onready var sell_btn:= %SellBtn
 @onready var sell_price:= %SellPrice
 @onready var keep_btn:= %KeepBtn
+@onready var flip_btn:= %FlipBtn
 
 
 func _process(_delta: float) -> void:
+	##SELL n KEEP btn
 	if GlobalStateController.current_state == GlobalStateController.GameState.OPENING_FRONT:
 		sell_btn.visible = true
 		sell_btn.disabled = false
@@ -20,6 +22,14 @@ func _process(_delta: float) -> void:
 		
 		keep_btn.visible = false
 		keep_btn.disabled = true
+	
+	##FLIP btn
+	if GlobalStateController.current_state == GlobalStateController.GameState.OPENING_BACK:
+		flip_btn.visible = true
+		flip_btn.disabled = false
+	else:
+		flip_btn.visible = false
+		flip_btn.disabled = true
 
 ##SELL BTN
 func _on_sell_btn_pressed() -> void:
@@ -31,7 +41,16 @@ func _on_sell_btn_pressed() -> void:
 	
 	#update card displaying
 	await main.animation_finished
-	GlobalData._action_sell()
+	
+	##sell action
+	#GlobalData._action_sell()
+	var card = GlobalData.opening_arr.pop_at(0)
+	#add to sell_arr
+	GlobalData.card_sell_arr.append(card)
+	#handle money
+	GlobalData.money_added += GlobalData.price_dict.get(card)
+	
+	
 	main.card_display._update_all()
 	
 	#change to next state
@@ -62,7 +81,12 @@ func _on_keep_btn_pressed() -> void:
 	
 	#update card displaying
 	await main.animation_finished
-	GlobalData._action_collect()
+	
+	#collect
+	#GlobalData._action_collect()
+	var card = GlobalData.opening_arr.pop_at(0)
+	GlobalData.collection_arr.append(card)
+	
 	main.card_display._update_all()
 	
 	#change to next state
@@ -83,7 +107,7 @@ func _on_keep_btn_pressed() -> void:
 		
 		main.card_display.visible = true
 
-
+##flip
 func _on_flip_btn_pressed() -> void:
 	GlobalStateController.current_state = GlobalStateController.GameState.OPENING_FRONT
 	#last card
@@ -100,9 +124,11 @@ func _on_flip_btn_pressed() -> void:
 	##icon
 	main._seen_n_collected_icon()
 	
-##update price
-	#sell_price.text = str(GlobalData.price_dict.get(main.card_display.card_stat.card_codename))
-	sell_price.text =  "%.2f" % GlobalData.price_dict.get(main.card_display.card_stat.card_codename)
+##update price on sell btn
+	sell_price.text =  "$%.2f" % GlobalData.price_dict.get(main.card_display.card_stat.card_codename)
+	
+###update Hint
+	#main.ui._hint_lbl_handle()
 	
 	await main.animation_finished
 

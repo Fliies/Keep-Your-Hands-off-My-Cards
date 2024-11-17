@@ -18,11 +18,11 @@ extends Node
 #@export var PRICE_COMMON:Array[float] = [1.0, 1.5, 2.0, 2.5, 3.0 ]
 #@export var PRICE_UNCOMMON:Array[float] = [6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
 #@export var PRICE_RARE:Array[float] = [45.0, 50.0, 60.0]
-@export var PRICE_COMMON:Array[float] = [0.25, 0.50, 0.75]
-@export var PRICE_UNCOMMON:Array[float] = [1.0, 1.5, 2.0, 2.5, 3.0]
-@export var PRICE_RARE:Array[float] = [15.0, 20.0, 25.0]
-@export var PRICE_SECRET:Array[float] = [50.0]
-@export var PRICE_EXRTA:Array[float] = [10.0, 15.0, 20.0]
+@export var PRICE_COMMON:Array[float] = [0.25, 0.75]
+@export var PRICE_UNCOMMON:Array[float] = [1.0, 3.0]
+@export var PRICE_RARE:Array[float] = [15.0, 25.0]
+@export var PRICE_SECRET:Array[float] = [100.0]
+@export var PRICE_EXRTA:Array[float] = [10.0, 20.0]
 
 @onready var common_arr:= [
 	"aa","aa","aa","aa","aa","aa","aa","aa","aa","aa",
@@ -69,7 +69,10 @@ extends Node
 	"nn", "oo", "pp", "qq", "rr", "ss", "tt", "uu", "vv", "ww", "xx", "yy", "zz",
 	"ex_promo", "ex_misprint", "ex_driver", "ex_credit"
 	]
-@onready var codename_arr:= ["aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", "ii" ,"jj", "kk", "ll", "mm", "nn", "oo", "pp", "qq", "rr", "ss", "tt", "uu", "vv", "ww", "xx", "yy", "zz",]
+@onready var codename_arr:= [
+	"aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", "ii", "jj", "kk", "ll", "mm",
+	"nn", "oo", "pp", "qq", "rr", "ss", "tt", "uu", "vv", "ww", "xx", "yy", "zz",
+	]
 
 @onready var box_cu_arr:= []
 @onready var box_rs_arr:= []
@@ -87,11 +90,12 @@ extends Node
 @onready var shop_arr:= []
 @onready var money_current: float = 0.0
 @onready var money_added: float = 0.0
+@onready var card_sell_arr:= []
 
 @onready var price_dict: Dictionary = {}
 
 @onready var starting_arr: bool = true
-@onready var STARTING_money: float = 50.0
+@onready var STARTING_money: float = 20.0
 @onready var STARTING_packs: int = 10
 
 @onready var price_pack: float = 10.0
@@ -269,34 +273,36 @@ func _action_collect():
 func _update_price():
 	price_dict.clear()
 	
-	price_dict.aa = PRICE_COMMON.pick_random()
-	price_dict.bb = PRICE_COMMON.pick_random()
-	price_dict.cc = PRICE_COMMON.pick_random()
-	price_dict.dd = PRICE_COMMON.pick_random()
-	price_dict.ee = PRICE_COMMON.pick_random()
-	price_dict.ff = PRICE_COMMON.pick_random()
-	price_dict.gg = PRICE_COMMON.pick_random()
-	price_dict.hh = PRICE_COMMON.pick_random()
-	price_dict.ii = PRICE_COMMON.pick_random()
-	price_dict.jj = PRICE_COMMON.pick_random()
-	price_dict.kk = PRICE_COMMON.pick_random()
-	price_dict.ll = PRICE_COMMON.pick_random()
-	price_dict.mm = PRICE_COMMON.pick_random()
-	price_dict.nn = PRICE_COMMON.pick_random()
+	price_dict.aa = float( "%.2f" % randf_range(PRICE_COMMON[0],PRICE_COMMON[1]))
 	
-	price_dict.oo = PRICE_UNCOMMON.pick_random()
-	price_dict.pp = PRICE_UNCOMMON.pick_random()
-	price_dict.qq = PRICE_UNCOMMON.pick_random()
-	price_dict.rr = PRICE_UNCOMMON.pick_random()
-	price_dict.ss = PRICE_UNCOMMON.pick_random()
-	price_dict.tt = PRICE_UNCOMMON.pick_random()
-	price_dict.uu = PRICE_UNCOMMON.pick_random()
-	price_dict.vv = PRICE_UNCOMMON.pick_random()
+	#price_dict.aa = PRICE_COMMON.pick_random()
+	price_dict.bb = float( "%.2f" % randf_range(PRICE_COMMON[0],PRICE_COMMON[1]))
+	price_dict.cc = float( "%.2f" % randf_range(PRICE_COMMON[0],PRICE_COMMON[1]))
+	price_dict.dd = float( "%.2f" % randf_range(PRICE_COMMON[0],PRICE_COMMON[1]))
+	price_dict.ee = float( "%.2f" % randf_range(PRICE_COMMON[0],PRICE_COMMON[1]))
+	price_dict.ff = float( "%.2f" % randf_range(PRICE_COMMON[0],PRICE_COMMON[1]))
+	price_dict.gg = float( "%.2f" % randf_range(PRICE_COMMON[0],PRICE_COMMON[1]))
+	price_dict.hh = float( "%.2f" % randf_range(PRICE_COMMON[0],PRICE_COMMON[1]))
+	price_dict.ii = float( "%.2f" % randf_range(PRICE_COMMON[0],PRICE_COMMON[1]))
+	price_dict.jj = float( "%.2f" % randf_range(PRICE_COMMON[0],PRICE_COMMON[1]))
+	price_dict.kk = float( "%.2f" % randf_range(PRICE_COMMON[0],PRICE_COMMON[1]))
+	price_dict.ll = float( "%.2f" % randf_range(PRICE_COMMON[0],PRICE_COMMON[1]))
+	price_dict.mm = float( "%.2f" % randf_range(PRICE_COMMON[0],PRICE_COMMON[1]))
+	price_dict.nn = float( "%.2f" % randf_range(PRICE_COMMON[0],PRICE_COMMON[1]))
 	
-	price_dict.ww = PRICE_RARE.pick_random()
-	price_dict.xx = PRICE_RARE.pick_random()
-	price_dict.yy = PRICE_RARE.pick_random()
+	price_dict.oo = float( "%.2f" % randf_range(PRICE_UNCOMMON[0],PRICE_UNCOMMON[1]))
+	price_dict.pp = float( "%.2f" % randf_range(PRICE_UNCOMMON[0],PRICE_UNCOMMON[1]))
+	price_dict.qq = float( "%.2f" % randf_range(PRICE_UNCOMMON[0],PRICE_UNCOMMON[1]))
+	price_dict.rr = float( "%.2f" % randf_range(PRICE_UNCOMMON[0],PRICE_UNCOMMON[1]))
+	price_dict.ss = float( "%.2f" % randf_range(PRICE_UNCOMMON[0],PRICE_UNCOMMON[1]))
+	price_dict.tt = float( "%.2f" % randf_range(PRICE_UNCOMMON[0],PRICE_UNCOMMON[1]))
+	price_dict.uu = float( "%.2f" % randf_range(PRICE_UNCOMMON[0],PRICE_UNCOMMON[1]))
+	price_dict.vv = float( "%.2f" % randf_range(PRICE_UNCOMMON[0],PRICE_UNCOMMON[1]))
+	
+	price_dict.ww = float( "%.2f" % randf_range(PRICE_RARE[0],PRICE_RARE[1]))
+	price_dict.xx = float( "%.2f" % randf_range(PRICE_RARE[0],PRICE_RARE[1]))
+	price_dict.yy = float( "%.2f" % randf_range(PRICE_RARE[0],PRICE_RARE[1]))
 	
 	price_dict.zz = PRICE_SECRET.pick_random()
 	
-	price_dict.ex_misprint =  PRICE_EXRTA.pick_random()
+	price_dict.ex_misprint =  float( "%.2f" % randf_range(PRICE_EXRTA[0],PRICE_EXRTA[1]))

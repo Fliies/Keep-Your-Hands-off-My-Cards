@@ -6,12 +6,12 @@ signal show_cardback
 #@export var STARTING_MONEY: float = 50.0
 #@export var STARTING_PACK: int = 10
 
-@onready var shop:= $Shop
+@onready var shop:= %Shop
 @onready var shop_btn:= %ShopBtn
 @onready var home_btn:= %HomeBtn
 @onready var binder_btn:= %BinderBtn
 
-@onready var action_btn:= %ActionBtn
+#@onready var action_btn:= %MainActionBtn
 @onready var btn_open_pack:= %OpenPack
 @onready var btn_sell:= %SellBtn
 @onready var btn_keep:= %KeepBtn
@@ -28,6 +28,8 @@ signal show_cardback
 
 @onready var binder_open: bool = false
 @onready var binder:= %Binder
+
+@onready var ui:= %UI
 
 #@onready var icon_seen:= %SeenSprite
 @onready var icon_collected:= %CollectedSprite
@@ -140,6 +142,7 @@ func _show_cardback():
 func _on_binder_btn_pressed() -> void:
 	_binder_handle()
 
+
 func _binder_handle():
 	if binder_open == false:
 		#btn pressed
@@ -149,8 +152,12 @@ func _binder_handle():
 		GlobalStateController.prev_state = GlobalStateController.current_state
 		GlobalStateController.current_state = GameStateController.GameState.BINDER
 		
-		#update binder
-		binder._update_all_slot()
+		##update binder
+		#binder._update_all_slot()
+		#slot visual
+		binder._update_all_slot_visual()
+		#inspect btn
+		binder._update_inspect_btn_whole_page(binder.current_page)
 		
 		binder.visible = true
 		binder_open = true

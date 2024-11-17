@@ -21,12 +21,19 @@ signal  flip_finished
 @onready var inspect_btn_arr: Array[Button]
 
 func _ready() -> void:
+	current_page = 1
+	
 	inspect.visible = false
 	inspect.disabled = true
 	
 	inspect_btn_arr.append_array(inspect_btn.get_children())
-	_disable_left_inspect_btn()
-	_disable_right_inspect_btn()
+	#_disable_left_inspect_btn()
+	#_disable_right_inspect_btn()
+	
+	#slot visual
+	_update_all_slot_visual()
+	#inspect btn
+	_update_inspect_btn_whole_page(current_page)
 
 func _process(_delta: float) -> void:
 	if current_page == 1:
@@ -50,13 +57,16 @@ func _process(_delta: float) -> void:
 	#update price
 	_update_price_sheet()
 
-func _update_slot(codename:String,index:int):
+##signal
+func _flip_finished():
+	flip_finished.emit()
+
+##slot Visual
+func _update_slot_visual(codename:String,index:int):
 	#visibility
 	if GlobalData.collection_arr.has(codename):
 		sprite_node[index].visible = true
-		#$Page/Page1/Slot_aa.visible = true
 	else:
-		#$Page/Page1/Slot_aa.visible = false
 		sprite_node[index].visible = false
 	
 	#amount
@@ -69,15 +79,35 @@ func _update_slot(codename:String,index:int):
 		#hide amount
 		amount_node[index].visible = false
 
-func _update_all_slot():
-	var index = 0
-	for codename in GlobalData.codename_arr:
-		_update_slot(codename, index)
-		
-		index += 1
-	
-	_update_slot("ex_promo",26)
-	_update_slot("ex_misprint",27)
+func _update_all_slot_visual():
+	_update_slot_visual("aa",0)
+	_update_slot_visual("bb",1)
+	_update_slot_visual("cc",2)
+	_update_slot_visual("dd",3)
+	_update_slot_visual("ee",4)
+	_update_slot_visual("ff",5)
+	_update_slot_visual("gg",6)
+	_update_slot_visual("hh",7)
+	_update_slot_visual("ii",8)
+	_update_slot_visual("jj",9)
+	_update_slot_visual("kk",10)
+	_update_slot_visual("ll",11)
+	_update_slot_visual("mm",12)
+	_update_slot_visual("nn",13)
+	_update_slot_visual("oo",14)
+	_update_slot_visual("pp",15)
+	_update_slot_visual("qq",16)
+	_update_slot_visual("rr",17)
+	_update_slot_visual("ss",18)
+	_update_slot_visual("tt",19)
+	_update_slot_visual("uu",20)
+	_update_slot_visual("vv",21)
+	_update_slot_visual("ww",22)
+	_update_slot_visual("xx",23)
+	_update_slot_visual("yy",24)
+	_update_slot_visual("zz",25)
+	_update_slot_visual("ex_promo",26)
+	_update_slot_visual("ex_misprint",27)
 	
 	if GlobalData.collection_arr.has("ex_driver"):
 		sprite_node[28].rotation = randi_range(-5, 5) 
@@ -92,11 +122,10 @@ func _update_all_slot():
 		sprite_node[29].visible = false
 	
 	##update inspect
-	_update_inspect_btn()
+	#_update_inspect_btn()
+	#_checking_inspect_btn_whole_page(current_page)
 
-func _flip_finished():
-	flip_finished.emit()
-
+##Change page btn
 func _on_left_page_pressed() -> void:
 	if current_page == 23:
 		left_btn.disabled = true
@@ -115,7 +144,8 @@ func _on_left_page_pressed() -> void:
 		current_page = 23
 	
 	##update inspect
-	_update_inspect_btn()
+	_update_inspect_btn_whole_page(current_page)
+	#_update_inspect_btn()
 
 func _on_right_page_pressed() -> void:
 	if current_page == 1:
@@ -134,9 +164,11 @@ func _on_right_page_pressed() -> void:
 		
 		current_page = 4
 	
-	##update inspect
-	_update_inspect_btn()
+	###update inspect
+	_update_inspect_btn_whole_page(current_page)
+	#_update_inspect_btn()
 
+##back Cover
 func _update_price_sheet():
 	$Cover/PriceSheet/Control/HBoxContainer/Price1/Label.text = "$%.2f" % GlobalData.price_dict["aa"]
 	$Cover/PriceSheet/Control/HBoxContainer/Price1/Label2.text = "$%.2f" % GlobalData.price_dict["bb"]
@@ -167,28 +199,35 @@ func _update_price_sheet():
 	$Cover/PriceSheet/Control/HBoxContainer/Price2/Label13.text = "$%.2f" % GlobalData.price_dict["zz"]
 	$Cover/PriceSheet/Control/HBoxContainer/Price2/Label14.text = "$%.2f" % GlobalData.price_dict["ex_misprint"]
 
-##inspect
-func _update_inspect_btn():
-	pass
-	##page 1
-	if current_page == 1:
-		#disable left
-		_disable_left_inspect_btn()
-		#check right
-		_checking_inspect_right()
-	##page 23
-	elif current_page == 23:
-		#check left
-		_checking_inspect_left()
-		#check right
-		_checking_inspect_right()
-	##page 4
-	elif current_page == 4:
-		#disable right
-		_disable_right_inspect_btn()
-		#check left
-		_checking_inspect_left()
+###OPEN / CLOSE binder
+#func _on_binder_btn_pressed() -> void:
+	#_update_all_slot()
 
+##inspect
+#func _update_inspect_btn():
+	###page 1
+	#if current_page == 1:
+		#_checking_inspect_btn_whole_page(1)
+		###disable left
+		##_disable_left_inspect_btn()
+		###check right
+		##_checking_inspect_right()
+	###page 23
+	#elif current_page == 23:
+		#_checking_inspect_btn_whole_page(23)
+		###check left
+		##_checking_inspect_left()
+		###check right
+		##_checking_inspect_right()
+	###page 4
+	#elif current_page == 4:
+		#_checking_inspect_btn_whole_page(4)
+		###disable right
+		##_disable_right_inspect_btn()
+		###check left
+		##_checking_inspect_left()
+
+##inspect CARD
 func _disable_btn(btn:Button):
 	btn.visible = false
 	btn.disabled = true
@@ -196,43 +235,110 @@ func _enable_btn(btn:Button):
 	btn.visible = true
 	btn.disabled = false
 
-func _disable_left_inspect_btn():
-	var index = 0
-	while index < 9:
-		_disable_btn(inspect_btn_arr[index])
-		
-		index += 1
-func _disable_right_inspect_btn():
-	var index = 9
-	while index < 18:
-		_disable_btn(inspect_btn_arr[index])
-		
-		index += 1
+#func _disable_left_inspect_btn():
+	#var index = 0
+	#while index < 9:
+		#_disable_btn(inspect_btn_arr[index])
+		#
+		#index += 1
+#func _disable_right_inspect_btn():
+	#var index = 9
+	#while index < 18:
+		#_disable_btn(inspect_btn_arr[index])
+		#
+		#index += 1
+#func _checking_inspect_left():
+	#var index = 0
+	#while index < 9:
+		#if GlobalData.collection_arr.has(GlobalData.codename_arr[index]):
+			#_enable_btn(inspect_btn_arr[index])
+		#else:
+			#_disable_btn(inspect_btn_arr[index])
+		#
+		#index += 1
+#func _checking_inspect_right():
+	#var index = 9
+	#while index < 18:
+		#if GlobalData.collection_arr.has(GlobalData.codename_arr[index]):
+			#_enable_btn(inspect_btn_arr[index])
+		#else:
+			#_disable_btn(inspect_btn_arr[index])
+		#
+		#index += 1
 
-func _checking_inspect_left():
-	var index = 0
-	while index < 9:
-		if GlobalData.collection_arr.has(GlobalData.codename_arr[index]):
-			_enable_btn(inspect_btn_arr[index])
-		else:
-			_disable_btn(inspect_btn_arr[index])
-		
-		index += 1
-func _checking_inspect_right():
-	var index = 9
-	while index < 18:
-		if GlobalData.collection_arr.has(GlobalData.codename_arr[index]):
-			_enable_btn(inspect_btn_arr[index])
-		else:
-			_disable_btn(inspect_btn_arr[index])
-		
-		index += 1
+func _checking_inspect_btn_from_collection(codename:String, btn_index:int):
+	if GlobalData.collection_arr.has(codename):
+		_enable_btn(inspect_btn_arr[btn_index])
+	else:
+		_disable_btn(inspect_btn_arr[btn_index])
 
-##reset inspector
+func _update_inspect_btn_whole_page(page:int):
+	match page:
+		1:
+			_disable_btn(inspect_btn_arr[0])
+			_disable_btn(inspect_btn_arr[1])
+			_disable_btn(inspect_btn_arr[2])
+			_disable_btn(inspect_btn_arr[3])
+			_disable_btn(inspect_btn_arr[4])
+			_disable_btn(inspect_btn_arr[5])
+			_disable_btn(inspect_btn_arr[6])
+			_disable_btn(inspect_btn_arr[7])
+			_disable_btn(inspect_btn_arr[8])
+			
+			_checking_inspect_btn_from_collection("aa",9)
+			_checking_inspect_btn_from_collection("bb",10)
+			_checking_inspect_btn_from_collection("cc",11)
+			_checking_inspect_btn_from_collection("dd",12)
+			_checking_inspect_btn_from_collection("ee",13)
+			_checking_inspect_btn_from_collection("ff",14)
+			_checking_inspect_btn_from_collection("gg",15)
+			_checking_inspect_btn_from_collection("hh",16)
+			_checking_inspect_btn_from_collection("ii",17)
+		23:
+			_checking_inspect_btn_from_collection("jj",0)
+			_checking_inspect_btn_from_collection("kk",1)
+			_checking_inspect_btn_from_collection("ll",2)
+			_checking_inspect_btn_from_collection("mm",3)
+			_checking_inspect_btn_from_collection("nn",4)
+			_checking_inspect_btn_from_collection("oo",5)
+			_checking_inspect_btn_from_collection("pp",6)
+			_checking_inspect_btn_from_collection("qq",7)
+			_checking_inspect_btn_from_collection("rr",8)
+			_checking_inspect_btn_from_collection("ss",9)
+			_checking_inspect_btn_from_collection("tt",10)
+			_checking_inspect_btn_from_collection("uu",11)
+			_checking_inspect_btn_from_collection("vv",12)
+			_checking_inspect_btn_from_collection("ww",13)
+			_checking_inspect_btn_from_collection("xx",14)
+			_checking_inspect_btn_from_collection("yy",15)
+			_checking_inspect_btn_from_collection("zz",16)
+			_checking_inspect_btn_from_collection("ex_promo",17)
+		4:
+			_checking_inspect_btn_from_collection("ex_misprint",0)
+			_disable_btn(inspect_btn_arr[1])
+			_disable_btn(inspect_btn_arr[2])
+			_disable_btn(inspect_btn_arr[3])
+			_disable_btn(inspect_btn_arr[4])
+			_disable_btn(inspect_btn_arr[5])
+			_disable_btn(inspect_btn_arr[6])
+			_disable_btn(inspect_btn_arr[7])
+			_disable_btn(inspect_btn_arr[8])
+			
+			_disable_btn(inspect_btn_arr[9])
+			_disable_btn(inspect_btn_arr[10])
+			_disable_btn(inspect_btn_arr[11])
+			_disable_btn(inspect_btn_arr[12])
+			_disable_btn(inspect_btn_arr[13])
+			_disable_btn(inspect_btn_arr[14])
+			_disable_btn(inspect_btn_arr[15])
+			_disable_btn(inspect_btn_arr[16])
+			_disable_btn(inspect_btn_arr[17])
+
+#close inspector
 func _on_inspect_bg_pressed() -> void:
 	inspect.visible = false
 	inspect.disabled = true
-
+#open inspector
 func _show_inspect_card(codename:String):
 	inspect_sprite.texture = load("res://Cards/CardSprite/%s.png" % codename)
 	
@@ -326,4 +432,5 @@ func _on_test_3_pressed() -> void:
 	GlobalData.collection_arr.clear()
 
 func _on_test_4_pressed() -> void:
-	_update_all_slot()
+	_update_all_slot_visual()
+	_update_inspect_btn_whole_page(current_page)

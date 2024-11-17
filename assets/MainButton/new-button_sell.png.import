@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh13b0hiy8yy"
-path="res://.godot/imported/openpack-spritesheet01.png-458d7be011b92dcc6e96765a702048b6.ctex"
+uid="uid://dx1n5qmv2fgbq"
+path="res://.godot/imported/new-button_sell.png-23ab681c817217406c336acb6f0b9b59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/AnimatopnOpenPack/openpack-spritesheet01.png"
-dest_files=["res://.godot/imported/openpack-spritesheet01.png-458d7be011b92dcc6e96765a702048b6.ctex"]
+source_file="res://assets/MainButton/new-button_sell.png"
+dest_files=["res://.godot/imported/new-button_sell.png-23ab681c817217406c336acb6f0b9b59.ctex"]
 
 [params]
 
