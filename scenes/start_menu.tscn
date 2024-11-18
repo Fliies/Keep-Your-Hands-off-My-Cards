@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://t37wtu303voa"]
 
-[ext_resource type="Texture2D" uid="uid://bbtwwgi2r38dy" path="res://assets/op-menu-bg.png" id="1_6ht5a"]
+[ext_resource type="Texture2D" uid="uid://bbtwwgi2r38dy" path="res://assets/BaseBG.png" id="1_6ht5a"]
 [ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_6sujd"]
-[ext_resource type="Texture2D" uid="uid://cbd745ybp76ia" path="res://assets/op-menu-sheet.png" id="2_5ygwa"]
-[ext_resource type="Texture2D" uid="uid://c86awidbij8kf" path="res://assets/op-menu-scream.png" id="3_7ivjh"]
+[ext_resource type="Texture2D" uid="uid://cbd745ybp76ia" path="res://assets/StartMenu/op-menu-sheet.png" id="2_5ygwa"]
+[ext_resource type="Texture2D" uid="uid://c86awidbij8kf" path="res://assets/StartMenu/op-menu-scream.png" id="3_7ivjh"]
 
 [sub_resource type="Animation" id="Animation_br1e7"]
 length = 0.001

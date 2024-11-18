@@ -101,6 +101,8 @@ extends Node
 @onready var price_pack: float = 10.0
 @onready var price_box: float = 90.0
 
+@onready var shop_promo: bool = true
+
 func _ready() -> void:
 	_update_price()
 

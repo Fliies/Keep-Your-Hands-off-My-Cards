@@ -1,24 +1,10 @@
 extends Control
 
+class_name ShopTrading
+
 @onready var card_censor:= load("res://Cards/CardSprite/card-censor-4.png")
 @onready var card_soldout:= load("res://Cards/CardSprite/card-soudout-2.png")
 
-#func _ready() -> void:
-###ENTER the SHOP
-## update PRICE_DICT
-	#GlobalData._update_price()
-## SETUP STOCK CARDLIST
-	#_initial_stock_cardlist() #temp
-## price + tag
-	#_update_all_pricetag()
-	##SETUP visual card 
-		## sprite
-		## avialable
-		## soldout
-		## censor
-	##update buy n sell btn
-	##update amount
-	#_update_all_slot_visual_n_btn()
 
 ##ENTER TRADING / BUY or SELL btn
 # _update_slot_visual_n_btn
@@ -32,8 +18,6 @@ extends Control
 
 @onready var card_grid:= %CardlistGrid
 @onready var cardlist_slot = card_grid.get_children()
-#@onready var codename_arr:= ["aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", "ii" ,"jj", "kk", "ll", "mm", "nn", "oo", "pp", "qq", "rr", "ss", "tt", "uu", "vv", "ww", "xx", "yy", "zz",]
-
 
 func _on_shop_cardlist_btn_pressed() -> void:
 	_update_all_slot_visual_n_btn()

@@ -52,7 +52,6 @@ func _ready() -> void:
 	pack_sprite.visible = false
 	hand_sprite.visible = false
 	cardback_hand.visible = false
-	$idlecard.visible = false
 	
 	##card_display
 	$CardDisplay/CardBackSprite2.visible = false

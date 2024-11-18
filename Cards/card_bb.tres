@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CardStats" load_steps=4 format=3 uid="uid://dpng6ygmnj7i1"]
 
 [ext_resource type="Script" path="res://resource/card_stat.gd" id="1_7gqfr"]
-[ext_resource type="Texture2D" uid="uid://c4wyfgihneuc1" path="res://assets/Kenny/cardback.png" id="1_rs3iq"]
-[ext_resource type="Texture2D" uid="uid://c2qul5co8wcey" path="res://assets/Kenny/common_b.png" id="2_ttsh8"]
+[ext_resource type="Texture2D" uid="uid://c4wyfgihneuc1" path="res://assets/temp/Kenny/cardback.png" id="1_rs3iq"]
+[ext_resource type="Texture2D" uid="uid://c2qul5co8wcey" path="res://assets/temp/Kenny/common_b.png" id="2_ttsh8"]
 
 [resource]
 script = ExtResource("1_7gqfr")

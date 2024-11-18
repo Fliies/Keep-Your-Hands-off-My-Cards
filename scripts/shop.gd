@@ -2,7 +2,17 @@ extends Control
 
 class_name Shop
 
-@export var promo: bool = true
+@export_category("BG")
+#@export var base_bg: Texture2D
+@export var node_shop_bg: TextureRect
+@export var node_shop_hilight: TextureRect
+
+@export var shop_base_offer: Texture2D
+@export var shop_base_sold: Texture2D
+@export var shop_offer_hilight: Texture2D
+@export var shop_pack_hilight: Texture2D
+@export var shop_box_hilight: Texture2D
+@export var shop_trading_hilight: Texture2D
 
 @export_category("SCENE")
 @export var shop: Control
@@ -41,113 +51,24 @@ func _ready() -> void:
 	
 	text_idle.visible = true
 	text_dyn.visible = false
-
-
-##SHOP MENU
-#offer
-func _on_offer_btn_pressed() -> void:
-	shop_menu.visible = false
-	shop_offer.visible = true
-#cardList
-func _on_shop_cardlist_btn_pressed() -> void:
-	#visiblility
-	shop_menu.visible = false
-	shop_cardlist.visible = true
-
-
-##back BTN to Shop Menu
-#offer
-func _on_offer_back_btn_pressed() -> void: 
-	#visiblility
-	shop_menu.visible = true
-	shop_offer.visible = false
-#cardlist
-func _on_card_list_back_btn_pressed() -> void: 
-	#visiblility
-	shop_menu.visible = true
-	shop_cardlist.visible = false
-
-
-##text when mouse in BTN
-#offer
-func _on_offer_btn_mouse_entered() -> void:
-	text_idle.visible = false
-	text_dyn.visible = true
 	
-	text_dyn_up.text = "SPECIAL DEAL!"
-	text_dyn_low.text = "ONE TIME OFFER!"
+	##BG n Hilight
+	#base shop bg -> offer
+	node_shop_bg.texture = shop_base_offer
+	#hilight bg -> null
+	node_shop_hilight.texture = null
 
-#buy cardlist
-func _on_shop_cardlist_btn_mouse_entered() -> void:
-	text_idle.visible = false
-	text_dyn.visible = true
-	
-	var yap = [
-		"let's see what's in stock!",
-		"looking for a card?",
-		"wanna trade?",
-		"need some money?",
-		"'SECRET' is very hard to find, isn't it ;)",
-		"sell some 'Rare' will ya",
-		"let see what you got!",
-		"I <3 MOO DENG"
-	]
-	
-	text_dyn_up.text = "BUY / SELL CARDS"
-	text_dyn_low.text = yap.pick_random()
-	
-	shop_cardlist_lbl_hover.visible = true
-	shop_cardlist_lbl_idle.visible = false
-
-#pack
-func _on_buy_1_pack_mouse_entered() -> void:
-	text_idle.visible = false
-	text_dyn.visible = true
-	
-	text_dyn_up.text = "BUY 1 PACK"
-	text_dyn_low.text = "for $10"
-func _on_buy_5_packs_mouse_entered() -> void:
-	text_idle.visible = false
-	text_dyn.visible = true
-	
-	text_dyn_up.text = "BUY 5 PACKS"
-	text_dyn_low.text = "for $50"
-
-#box
-func _on_buy_box_mouse_entered() -> void:
-	text_idle.visible = false
-	text_dyn.visible = true
-	
-	text_dyn_up.text = "BUY 1 BOX"
-	text_dyn_low.text = "10 + 2 packs for only $90!"
-
-##text when mouse OUT BTN
-func _mouse_out():
-	text_idle.visible = true
-	text_dyn.visible = false
-func _on_offer_btn_mouse_exited() -> void:
-	_mouse_out()
-func _on_shop_cardlist_btn_mouse_exited() -> void:
-	shop_cardlist_lbl_hover.visible = false
-	shop_cardlist_lbl_idle.visible = true
-	_mouse_out()
-func _on_buy_1_pack_mouse_exited() -> void:
-	_mouse_out()
-func _on_buy_5_packs_mouse_exited() -> void:
-	_mouse_out()
-func _on_buy_box_mouse_exited() -> void:
-	_mouse_out()
-
+## ENTER THE SHOP
 func _on_shop_btn_pressed() -> void:
 	##ENTER the SHOP
-# add sell money
+	# add sell money
 	GlobalData.money_current += GlobalData.money_added
 	GlobalData.money_added = 0
-# update PRICE_DICT
+	# update PRICE_DICT
 	GlobalData._update_price()
-# SETUP STOCK CARDLIST
+	# SETUP STOCK CARDLIST
 	shop_cardlist._initial_stock_cardlist() #temp
-# price + tag
+	# price + tag
 	shop_cardlist._update_all_pricetag()
 	#SETUP visual card 
 		# sprite
@@ -156,43 +77,188 @@ func _on_shop_btn_pressed() -> void:
 		# censor
 	#update buy n sell btn
 	#update amount
-	
 	shop_cardlist._update_all_slot_visual_n_btn()
 
 
+##OFFER STUFFS
+#offerBTN in menu
+func _on_offer_btn_pressed() -> void:
+	GlobalStateController.current_state = GlobalStateController.GameState.SHOP_OFFER
+	shop_menu.visible = false
+	shop_offer.visible = true
+	
+	#hilight
+	node_shop_hilight.texture = shop_offer_hilight
 
-###needed fix
-#func _slot_cardlist(codename:String, node_sprite:Sprite2D, node_price:Label, node_amount:Label):
-	###texture
-	#node_sprite.texture = load("res://Cards/CardSprite/%s.png" % codename)
-	#
-	####price
-	#node_price.text = "$"+str(GlobalData.price_dict[codename])
-	#
-	###amount copy
-	#node_amount.text = "x" + str(GlobalData.collection_arr.count(codename))
-	#
-	###available?
-	## cu 90%
-	#if GlobalData.common_arr.has(codename) or GlobalData.uncommon_arr.has(codename):
-		#var rng = randi_range(1,10)
-		#if rng == 1:
-			##out of stock
-			#pass
-		#else:
-			##add to shop_arr
-			#GlobalData.shop_arr.append(codename)
-	## rare 75%
-	#elif GlobalData.rare_arr.has(codename):
-		#var rng = randi_range(1,4)
-		#if rng == 1:
-			##out of stock
-			#pass
-		#else:
-			#GlobalData.shop_arr.append(codename)
-	#
-	##temp visible
-	#if GlobalData.shop_arr.has(codename):
-		#pass
-	#else:
-		#node_sprite.visible = false
+#BUY OFFER
+func _on_buy_offer_btn_pressed() -> void:
+	#disable offer_btn in menu
+	shop_offer_btn.disabled = true
+	#update visual
+	shop_offer_lbl.visible = false
+	shop_offer_lbl.text = "out of stock"
+	
+	#change base shop BG
+	node_shop_bg.texture = shop_base_sold
+
+
+
+#offer mouse in
+func _on_offer_btn_mouse_entered() -> void:
+	if GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU:
+		##text
+		text_idle.visible = false
+		text_dyn.visible = true
+		
+		text_dyn_up.text = "SPECIAL DEAL!"
+		text_dyn_low.label_settings.font_color = Color.ORANGE
+		#soldout
+		if GlobalData.shop_promo == false:
+			text_dyn_low.text = "out of stock!"
+		else:
+			text_dyn_low.text = "ONE TIME OFFER!"
+		##hilight
+		#check promo
+		if GlobalData.shop_promo == true:
+			#assign sprite
+			node_shop_hilight.texture = shop_offer_hilight
+
+#offer mouse out
+func _on_offer_btn_mouse_exited() -> void:
+	##text
+	_mouse_out()
+	##unhilight
+	node_shop_hilight.texture = null
+
+#offer backBtn
+func _on_offer_back_btn_pressed() -> void: 
+	#visiblility
+	shop_menu.visible = true
+	shop_offer.visible = false
+	#GameState
+	GlobalStateController.current_state = GlobalStateController.GameState.SHOP_MENU
+	#unhilight
+	node_shop_hilight.texture = null
+
+
+##TRADING cardList STUFFS
+#TRADING BTN in Menu
+func _on_shop_cardlist_btn_pressed() -> void:
+	GlobalStateController.current_state = GlobalStateController.GameState.SHOP_CARDLIST
+	#visiblility
+	shop_menu.visible = false
+	shop_cardlist.visible = true
+	
+	#hilight
+	node_shop_hilight.texture = shop_trading_hilight
+
+#trading mouse in
+func _on_shop_cardlist_btn_mouse_entered() -> void:
+	if GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU:
+		##text
+		text_idle.visible = false
+		text_dyn.visible = true
+		
+		var yap = [
+			"let's see what's in stock!",
+			"looking for a card?",
+			"wanna trade?",
+			"need some money?",
+			"'SECRET' is very hard to find, isn't it ;)",
+			"sell some 'Rare' will ya",
+			"let see what you got!",
+			"I <3 MOO DENG"
+		]
+		
+		text_dyn_up.text = "BUY / SELL CARDS"
+		text_dyn_low.label_settings.font_color = Color.LIGHT_CORAL
+		text_dyn_low.text = yap.pick_random()
+		
+		shop_cardlist_lbl_hover.visible = true
+		shop_cardlist_lbl_idle.visible = false
+		
+		##hilight
+		node_shop_hilight.texture = shop_trading_hilight
+
+#trading mouse out
+func _on_shop_cardlist_btn_mouse_exited() -> void:
+	##text
+	shop_cardlist_lbl_hover.visible = false
+	shop_cardlist_lbl_idle.visible = true
+	_mouse_out()
+	##unhilight
+	node_shop_hilight.texture = null
+
+#trading backBTN
+func _on_cardlist_back_btn_pressed() -> void: 
+	#visiblility
+	shop_menu.visible = true
+	shop_cardlist.visible = false
+	#GameState
+	GlobalStateController.current_state = GlobalStateController.GameState.SHOP_MENU
+	#unhilight
+	node_shop_hilight.texture = null
+
+
+##mouse in
+#pack
+func _on_buy_1_pack_mouse_entered() -> void:
+	if GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU:
+		##text
+		text_idle.visible = false
+		text_dyn.visible = true
+		
+		text_dyn_up.text = "BUY 1 PACK"
+		text_dyn_low.label_settings.font_color = Color.FOREST_GREEN
+		text_dyn_low.text = "for $10"
+		
+		##hilight
+		node_shop_hilight.texture = shop_pack_hilight
+func _on_buy_5_packs_mouse_entered() -> void:
+	if GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU:
+		##text
+		text_idle.visible = false
+		text_dyn.visible = true
+		
+		text_dyn_up.text = "BUY 5 PACKS"
+		text_dyn_low.label_settings.font_color = Color.FOREST_GREEN
+		text_dyn_low.text = "for $50"
+		
+		##hilight
+		node_shop_hilight.texture = shop_pack_hilight
+#box
+func _on_buy_box_mouse_entered() -> void:
+	if GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU:
+		##text
+		text_idle.visible = false
+		text_dyn.visible = true
+		
+		text_dyn_up.text = "BUY 1 BOX"
+		text_dyn_low.label_settings.font_color = Color.FIREBRICK
+		text_dyn_low.text = "10+2 packs for only $90!"
+		
+		##hilight
+		node_shop_hilight.texture = shop_box_hilight
+
+##mouse out
+func _mouse_out():
+	text_idle.visible = true
+	text_dyn.visible = false
+	text_dyn_low.label_settings.font_color = Color.BLACK
+#pack
+func _on_buy_1_pack_mouse_exited() -> void:
+	##text
+	_mouse_out()
+	##unhilight
+	node_shop_hilight.texture = null
+func _on_buy_5_packs_mouse_exited() -> void:
+	##text
+	_mouse_out()
+	##unhilight
+	node_shop_hilight.texture = null
+#box
+func _on_buy_box_mouse_exited() -> void:
+	##text
+	_mouse_out()
+	##unhilight
+	node_shop_hilight.texture = null

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CardStats" load_steps=4 format=3 uid="uid://g1q067hpg8pf"]
 
-[ext_resource type="Texture2D" uid="uid://c4wyfgihneuc1" path="res://assets/Kenny/cardback.png" id="1_jp8eb"]
-[ext_resource type="Texture2D" uid="uid://dww3i5v7jk5m0" path="res://assets/Kenny/ex_misprint.png" id="2_vomml"]
+[ext_resource type="Texture2D" uid="uid://c4wyfgihneuc1" path="res://assets/temp/Kenny/cardback.png" id="1_jp8eb"]
+[ext_resource type="Texture2D" uid="uid://dww3i5v7jk5m0" path="res://assets/temp/Kenny/ex_misprint.png" id="2_vomml"]
 [ext_resource type="Script" path="res://resource/card_stat.gd" id="3_o5iy6"]
 
 [resource]

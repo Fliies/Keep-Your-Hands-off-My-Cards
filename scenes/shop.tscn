@@ -1,19 +1,65 @@
-[gd_scene load_steps=50 format=3 uid="uid://tm88aqtbycyg"]
+[gd_scene load_steps=64 format=3 uid="uid://tm88aqtbycyg"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_il6vr"]
-[ext_resource type="Texture2D" uid="uid://bbtwwgi2r38dy" path="res://assets/op-menu-bg.png" id="2_e0o0c"]
-[ext_resource type="Texture2D" uid="uid://csg36e3vqh3tg" path="res://assets/temp/shop_mockup.png" id="2_f8bn5"]
+[ext_resource type="Texture2D" uid="uid://ciqkhmop6p86a" path="res://assets/Shop/shop_BG-offer.png" id="2_8pea3"]
 [ext_resource type="Texture2D" uid="uid://b126g00xpcysr" path="res://Cards/CardSprite/aa.png" id="3_82hd5"]
+[ext_resource type="Texture2D" uid="uid://b2xynk16vql2a" path="res://assets/Shop/shop_BG-sold.png" id="3_gqjjb"]
 [ext_resource type="Script" path="res://scripts/shop_menu.gd" id="4_en0nm"]
+[ext_resource type="Texture2D" uid="uid://b85uffp386q62" path="res://assets/Shop/shop_BG-offer-hilight.png" id="4_gq7i5"]
 [ext_resource type="Shader" path="res://scripts/shop.gdshader" id="4_r185k"]
+[ext_resource type="Texture2D" uid="uid://bedcxgx5jdfjt" path="res://assets/Shop/shop_pack-hilight.png" id="5_h0ose"]
 [ext_resource type="Texture2D" uid="uid://dpngi2jxa1bdn" path="res://Cards/CardSprite/bb.png" id="5_rpfhd"]
+[ext_resource type="Texture2D" uid="uid://dhnly3l7mdm1s" path="res://assets/Shop/shop_box-hilight.png" id="6_d6ga0"]
 [ext_resource type="Script" path="res://scripts/shop_cardlist.gd" id="6_ojbny"]
 [ext_resource type="FontFile" uid="uid://bafa8t46i5ktu" path="res://assets/font/ChelseaMarket-Regular.ttf" id="6_vu4sp"]
+[ext_resource type="Texture2D" uid="uid://c4o2qxlmkma2b" path="res://assets/Shop/shop_cardlist-hilight.png" id="7_lny25"]
 [ext_resource type="Texture2D" uid="uid://b4xv4dsgybwga" path="res://Cards/CardSprite/ex_promo.png" id="7_mknd5"]
 [ext_resource type="PackedScene" uid="uid://cl4i386njlntm" path="res://scenes/cardlist_slot.tscn" id="7_radqw"]
-[ext_resource type="Texture2D" uid="uid://dqybg13sywe57" path="res://assets/price_tag.png" id="8_0ojym"]
+[ext_resource type="Texture2D" uid="uid://dqybg13sywe57" path="res://assets/Shop/price_tag.png" id="8_0ojym"]
 [ext_resource type="Texture2D" uid="uid://bd7l1eved4sjp" path="res://Cards/CardSprite/card-censor.png" id="8_bsciq"]
-[ext_resource type="Texture2D" uid="uid://c4u0didj1o528" path="res://assets/binder_shop_icon.png" id="10_ys1f8"]
+[ext_resource type="Texture2D" uid="uid://co0upbp56tpo4" path="res://assets/Shop/shop_BG.png" id="8_mvnq2"]
+[ext_resource type="Texture2D" uid="uid://cqd58smf7iweh" path="res://assets/Shop/Owner-animation/owner-spritesheet.png" id="9_33meb"]
+[ext_resource type="Texture2D" uid="uid://c4u0didj1o528" path="res://assets/Shop/ShopTemp/binder_shop_icon.png" id="10_ys1f8"]
+[ext_resource type="Script" path="res://scripts/shop_offer.gd" id="14_6il8k"]
+
+[sub_resource type="Animation" id="Animation_oflb0"]
+resource_name = "owner_idle"
+length = 1.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OwnerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 0]
+}
+
+[sub_resource type="Animation" id="Animation_at66b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OwnerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5tbwg"]
+_data = {
+"RESET": SubResource("Animation_at66b"),
+"owner_idle": SubResource("Animation_oflb0")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1uemr"]
 shader = ExtResource("4_r185k")
@@ -96,8 +142,6 @@ outline_color = Color(0.956405, 0, 0.184912, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82pyi"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1qot5"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6dn2p"]
 shader = ExtResource("4_r185k")
 shader_parameter/height = 3.0
@@ -112,8 +156,40 @@ font_color = Color(0.678431, 0.996078, 0.188235, 1)
 font_size = 30
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_nap51"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_33th8"]
+shader = ExtResource("4_r185k")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 5.0
+shader_parameter/speed = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_qn81k"]
+font = ExtResource("6_vu4sp")
+font_size = 20
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0cs5s"]
+shader = ExtResource("4_r185k")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 5.0
+shader_parameter/speed = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4dek"]
+font = ExtResource("6_vu4sp")
+font_size = 18
+font_color = Color(0.0718441, 0.758964, 0.221314, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i40yr"]
+shader = ExtResource("4_r185k")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 5.0
+shader_parameter/speed = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_nap51"]
+font = ExtResource("6_vu4sp")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+outline_size = 4
+outline_color = Color(0.996921, 0.55323, 0.46897, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3hdkc"]
 font_size = 18
@@ -122,10 +198,18 @@ font_color = Color(0.147417, 0.549511, 0.144516, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_o8vf3"]
 font_color = Color(0, 0, 0, 1)
 
-[node name="Shop" type="Control" node_paths=PackedStringArray("shop", "shop_menu", "shop_cardlist", "shop_offer", "text_dyn", "shop_cardlist_lbl_hover", "shop_cardlist_lbl_idle", "shop_offer_lbl", "text_idle", "text_dyn_up", "text_dyn_low", "shop_offer_btn", "shop_trade_btn", "btn_buy_1_pack", "btn_buy_5_packs", "btn_buy_box")]
+[node name="Shop" type="Control" node_paths=PackedStringArray("node_shop_bg", "node_shop_hilight", "shop", "shop_menu", "shop_cardlist", "shop_offer", "text_dyn", "shop_cardlist_lbl_hover", "shop_cardlist_lbl_idle", "shop_offer_lbl", "text_idle", "text_dyn_up", "text_dyn_low", "shop_offer_btn", "shop_trade_btn", "btn_buy_1_pack", "btn_buy_5_packs", "btn_buy_box")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_il6vr")
+node_shop_bg = NodePath("BaseShopSprite")
+node_shop_hilight = NodePath("ShopHilightSprite")
+shop_base_offer = ExtResource("2_8pea3")
+shop_base_sold = ExtResource("3_gqjjb")
+shop_offer_hilight = ExtResource("4_gq7i5")
+shop_pack_hilight = ExtResource("5_h0ose")
+shop_box_hilight = ExtResource("6_d6ga0")
+shop_trading_hilight = ExtResource("7_lny25")
 shop = NodePath(".")
 shop_menu = NodePath("ShopMenu")
 shop_cardlist = NodePath("ShopCardlist")
@@ -143,13 +227,37 @@ btn_buy_1_pack = NodePath("ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/
 btn_buy_5_packs = NodePath("ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs/Buy5Packs")
 btn_buy_box = NodePath("ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/BuyBox")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_e0o0c")
-centered = false
+[node name="BaseBG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mvnq2")
 
-[node name="BGSprite" type="TextureRect" parent="."]
+[node name="OwnerSprite" type="Sprite2D" parent="."]
+texture = ExtResource("9_33meb")
+centered = false
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OwnerSprite"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_5tbwg")
+}
+autoplay = "owner_idle"
+
+[node name="BaseShopSprite" type="TextureRect" parent="."]
 layout_mode = 0
-texture = ExtResource("2_f8bn5")
+texture = ExtResource("2_8pea3")
+
+[node name="ShopHilightSprite" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="ShopMenu" type="Control" parent="."]
 unique_name_in_owner = true
@@ -283,7 +391,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_axfsw")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_8y73c")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_u67a4")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_82pyi")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_1qot5")
 
 [node name="CardListLabelHover" type="Label" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/ShopCardlistBtn"]
 visible = false
@@ -345,6 +452,7 @@ text = "Buy 1 Box
 
 [node name="ShopCardlist" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -459,22 +567,29 @@ layout_mode = 2
 [node name="CardlistSlot26" parent="ShopCardlist/Container/ScrollContainer/CardlistGrid" instance=ExtResource("7_radqw")]
 layout_mode = 2
 
-[node name="BackToMenu" type="Control" parent="ShopCardlist/Container"]
+[node name="BackToMenu" type="HBoxContainer" parent="ShopCardlist/Container"]
 custom_minimum_size = Vector2(520, 50)
 layout_mode = 2
 size_flags_vertical = 4
 
 [node name="CardListBackBtn" type="Button" parent="ShopCardlist/Container/BackToMenu"]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 45.0
-grow_vertical = 2
+layout_mode = 2
+size_flags_horizontal = 3
 text = "       Back       "
 
-[node name="ShopOffer" type="Control" parent="."]
+[node name="BtmLbl" type="Label" parent="ShopCardlist/Container/BackToMenu"]
+material = SubResource("ShaderMaterial_33th8")
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+size_flags_stretch_ratio = 4.0
+text = "C l i c k   a   c a r d   t o   b u y"
+label_settings = SubResource("LabelSettings_qn81k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShopOffer" type="Control" parent="." node_paths=PackedStringArray("node_promo_sprite", "promo_lbl", "buy_offer_btn", "buy_offer_lbl", "btm_lbl")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -485,6 +600,12 @@ offset_right = 1155.0
 offset_bottom = 645.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("14_6il8k")
+node_promo_sprite = NodePath("Container/Contents/VBoxContainer/Promo/TextureRect")
+promo_lbl = NodePath("Container/Contents/VBoxContainer/PromoLbL/PromoLbl")
+buy_offer_btn = NodePath("Container/Contents/VBoxContainer/Promo/VBoxContainer/BuyOfferBtn")
+buy_offer_lbl = NodePath("Container/Contents/VBoxContainer/Promo/VBoxContainer/BuyOfferLbl")
+btm_lbl = NodePath("Container/BackToMenu/BtmLbl")
 
 [node name="Container" type="VBoxContainer" parent="ShopOffer"]
 layout_mode = 1
@@ -510,58 +631,72 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="PromoSprite" type="Control" parent="ShopOffer/Container/Contents/VBoxContainer"]
+[node name="Promo" type="HBoxContainer" parent="ShopOffer/Container/Contents/VBoxContainer"]
 custom_minimum_size = Vector2(520, 350)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="TextureRect" type="TextureRect" parent="ShopOffer/Container/Contents/VBoxContainer/PromoSprite"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -140.0
-offset_top = -190.0
-offset_right = 140.0
-offset_bottom = 190.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureRect" type="TextureRect" parent="ShopOffer/Container/Contents/VBoxContainer/Promo"]
+layout_mode = 2
 texture = ExtResource("7_mknd5")
 stretch_mode = 2
 
-[node name="Control" type="Control" parent="ShopOffer/Container/Contents/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopOffer/Container/Contents/VBoxContainer/Promo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer" type="Control" parent="ShopOffer/Container/Contents/VBoxContainer/Promo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BuyOfferBtn" type="Button" parent="ShopOffer/Container/Contents/VBoxContainer/Promo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="BuyOfferLbl" type="Label" parent="ShopOffer/Container/Contents/VBoxContainer/Promo/VBoxContainer"]
+material = SubResource("ShaderMaterial_0cs5s")
+layout_mode = 2
+size_flags_vertical = 3
+text = "LAST COPY IN STOCK!!"
+label_settings = SubResource("LabelSettings_n4dek")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PromoLbL" type="Control" parent="ShopOffer/Container/Contents/VBoxContainer"]
 custom_minimum_size = Vector2(520, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="ShopOffer/Container/Contents/VBoxContainer/Control"]
+[node name="PromoLbl" type="Label" parent="ShopOffer/Container/Contents/VBoxContainer/PromoLbL"]
+material = SubResource("ShaderMaterial_i40yr")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "TEST"
+text = "Get FREE Special Promo Card 
+when purchase whole Box"
 label_settings = SubResource("LabelSettings_nap51")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BackToMenu" type="Control" parent="ShopOffer/Container"]
+[node name="BackToMenu" type="HBoxContainer" parent="ShopOffer/Container"]
 custom_minimum_size = Vector2(520, 50)
 layout_mode = 2
 size_flags_vertical = 4
 
 [node name="OfferBackBtn" type="Button" parent="ShopOffer/Container/BackToMenu"]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 45.0
-grow_vertical = 2
+layout_mode = 2
 text = "       Back       "
+
+[node name="BtmLbl" type="Label" parent="ShopOffer/Container/BackToMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 4.0
 
 [node name="CardlistSlot2" type="Control" parent="."]
 visible = false
@@ -749,5 +884,7 @@ layout_mode = 2
 [connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot25" to="ShopCardlist" method="_on_cardlist_slot_sell"]
 [connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot26" to="ShopCardlist" method="_on_cardlist_slot_buy"]
 [connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot26" to="ShopCardlist" method="_on_cardlist_slot_sell"]
-[connection signal="pressed" from="ShopCardlist/Container/BackToMenu/CardListBackBtn" to="." method="_on_card_list_back_btn_pressed"]
+[connection signal="pressed" from="ShopCardlist/Container/BackToMenu/CardListBackBtn" to="." method="_on_cardlist_back_btn_pressed"]
+[connection signal="pressed" from="ShopOffer/Container/Contents/VBoxContainer/Promo/VBoxContainer/BuyOfferBtn" to="." method="_on_buy_offer_btn_pressed"]
+[connection signal="pressed" from="ShopOffer/Container/Contents/VBoxContainer/Promo/VBoxContainer/BuyOfferBtn" to="ShopOffer" method="_on_buy_offer_btn_pressed"]
 [connection signal="pressed" from="ShopOffer/Container/BackToMenu/OfferBackBtn" to="." method="_on_offer_back_btn_pressed"]

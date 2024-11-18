@@ -1,36 +1,46 @@
 extends Control
 
-@onready var promo: bool = true
+class_name ShopMenuButton
+
+@onready var offer_btn:= %OfferBtn
+@onready var buy_1_pack_btn:= %Buy1Pack
+@onready var buy_5_pack_btn:= %Buy5Packs
+@onready var buy_box_btn:= %BuyBox
 
 func _process(_delta: float) -> void:
 	##shop MENU btn
-	_update_shop_btn()
+	if GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU:
+		_update_shop_btn()
 
 
 ##SHOP MENU
 func _update_shop_btn():
 	##promo btn
-	if promo == true:
-		%OfferBtn.disabled = false
+	if GlobalData.shop_promo == true:
+		offer_btn.disabled = false
 	else:
-		%OfferBtn.disabled = true
+		offer_btn.disabled = true
 	
 	##packs btn
 	#1pack btn
 	if GlobalData.money_current >= GlobalData.price_pack:
-		%Buy1Pack.disabled = false
+		buy_1_pack_btn.disabled = false
 	else:
-		%Buy1Pack.disabled = true
+		buy_1_pack_btn.disabled = true
 	#5 packs btn
 	if GlobalData.money_current >= (GlobalData.price_pack * 5):
-		%Buy5Packs.disabled = false
+		buy_5_pack_btn.disabled = false
 	else:
-		%Buy5Packs.disabled = true
+		buy_5_pack_btn.disabled = true
+	
 	#box
-	if GlobalData.money_current >= GlobalData.price_box:
-		%BuyBox.disabled = false
+	if GlobalData.shop_promo == true:
+		buy_box_btn.disabled = true
 	else:
-		%BuyBox.disabled = true
+		if GlobalData.money_current >= GlobalData.price_box:
+			buy_box_btn.disabled = false
+		else:
+			buy_box_btn.disabled = true
 
 #Buy and Sell BTN
 func _on_buy_1_pack_pressed() -> void:
