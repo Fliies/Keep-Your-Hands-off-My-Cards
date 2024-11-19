@@ -86,7 +86,7 @@ func _update_pricetag(codename:String, pricetag:Sprite2D, price_lbl:Label):
 	#sprite
 	pricetag.rotation_degrees = 0
 	pricetag.rotation_degrees = randi_range(-10,10)
-	pricetag.position.x = randi_range(50,90)
+	pricetag.position.x = randi_range(190,200)
 func _update_all_pricetag():
 	var index = 0
 	for codename in GlobalData.codename_arr:

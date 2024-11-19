@@ -46,8 +46,8 @@ func _ready() -> void:
 	shop_cardlist.visible = false
 	shop_offer.visible = false
 	
-	shop_cardlist_lbl_hover.visible = false
-	shop_cardlist_lbl_idle.visible = true
+	#shop_cardlist_lbl_hover.visible = false
+	#shop_cardlist_lbl_idle.visible = true
 	
 	text_idle.visible = true
 	text_dyn.visible = false
@@ -61,6 +61,11 @@ func _ready() -> void:
 ## ENTER THE SHOP
 func _on_shop_btn_pressed() -> void:
 	##ENTER the SHOP
+	GlobalStateController.current_state = GlobalStateController.GameState.SHOP_MENU
+	# menu visible
+	shop_cardlist.visible = false
+	shop_offer.visible = false
+	shop_menu.visible = true
 	# add sell money
 	GlobalData.money_current += GlobalData.money_added
 	GlobalData.money_added = 0
@@ -95,8 +100,11 @@ func _on_buy_offer_btn_pressed() -> void:
 	#disable offer_btn in menu
 	shop_offer_btn.disabled = true
 	#update visual
-	shop_offer_lbl.visible = false
-	shop_offer_lbl.text = "out of stock"
+	#shop_offer_lbl.visible = false
+	#shop_offer_lbl.text = "restock date: TBD"
+	shop_offer_lbl.label_settings.font_color = Color.WHITE_SMOKE
+	shop_offer_lbl.label_settings.outline_size = 0
+	
 	
 	#change base shop BG
 	node_shop_bg.texture = shop_base_sold
@@ -114,14 +122,14 @@ func _on_offer_btn_mouse_entered() -> void:
 		text_dyn_low.label_settings.font_color = Color.ORANGE
 		#soldout
 		if GlobalData.shop_promo == false:
-			text_dyn_low.text = "out of stock!"
+			text_dyn_low.text = "restock date: TBD"
 		else:
-			text_dyn_low.text = "ONE TIME OFFER!"
+			text_dyn_low.text = "LIMITED AMOUNT!"
 		##hilight
 		#check promo
-		if GlobalData.shop_promo == true:
+		#if GlobalData.shop_promo == true:
 			#assign sprite
-			node_shop_hilight.texture = shop_offer_hilight
+		node_shop_hilight.texture = shop_offer_hilight
 
 #offer mouse out
 func _on_offer_btn_mouse_exited() -> void:
@@ -167,15 +175,18 @@ func _on_shop_cardlist_btn_mouse_entered() -> void:
 			"'SECRET' is very hard to find, isn't it ;)",
 			"sell some 'Rare' will ya",
 			"let see what you got!",
-			"I <3 MOO DENG"
+			"I <3 MOO DENG",
+			"we have 'SECRET' in store!",
+			"luck be on your side!",
+			"next pack will have 'SECRET', THRUST ME!"
 		]
 		
 		text_dyn_up.text = "BUY / SELL CARDS"
 		text_dyn_low.label_settings.font_color = Color.LIGHT_CORAL
 		text_dyn_low.text = yap.pick_random()
 		
-		shop_cardlist_lbl_hover.visible = true
-		shop_cardlist_lbl_idle.visible = false
+		#shop_cardlist_lbl_hover.visible = true
+		#shop_cardlist_lbl_idle.visible = false
 		
 		##hilight
 		node_shop_hilight.texture = shop_trading_hilight
@@ -183,8 +194,8 @@ func _on_shop_cardlist_btn_mouse_entered() -> void:
 #trading mouse out
 func _on_shop_cardlist_btn_mouse_exited() -> void:
 	##text
-	shop_cardlist_lbl_hover.visible = false
-	shop_cardlist_lbl_idle.visible = true
+	#shop_cardlist_lbl_hover.visible = false
+	#shop_cardlist_lbl_idle.visible = true
 	_mouse_out()
 	##unhilight
 	node_shop_hilight.texture = null

@@ -15,9 +15,9 @@
 [ext_resource type="Script" path="res://scripts/debug_main.gd" id="9_picq5"]
 [ext_resource type="Script" path="res://scripts/main_ui.gd" id="11_186pn"]
 [ext_resource type="Script" path="res://scripts/main_action_btn.gd" id="12_nkjrv"]
+[ext_resource type="Texture2D" uid="uid://beggerq7w7bmw" path="res://assets/Shop/icon_collected.png" id="13_tinv2"]
 [ext_resource type="Texture2D" uid="uid://dkpyw0d3dws0s" path="res://assets/MainButton/new-button_sell-hover-02.png" id="17_s46u8"]
 [ext_resource type="Texture2D" uid="uid://rksasq1jsw31" path="res://assets/temp/temp_seen.png" id="19_1amtk"]
-[ext_resource type="Texture2D" uid="uid://drrt26lw11rlg" path="res://assets/temp/temp_collected.png" id="20_8nfjr"]
 [ext_resource type="Texture2D" uid="uid://dx1n5qmv2fgbq" path="res://assets/MainButton/new-button_sell.png" id="20_067yv"]
 [ext_resource type="Shader" path="res://scripts/shop.gdshader" id="20_b1c5h"]
 [ext_resource type="Texture2D" uid="uid://djhcluiicykrw" path="res://assets/MainButton/new-button_keep-hover-02.png" id="20_pn7mt"]
@@ -1044,9 +1044,9 @@ texture = ExtResource("19_1amtk")
 
 [node name="CollectedSprite" type="Sprite2D" parent="Icon"]
 unique_name_in_owner = true
-position = Vector2(1032, 259)
+position = Vector2(1038, 248)
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("20_8nfjr")
+texture = ExtResource("13_tinv2")
 
 [node name="StartMenu" type="Node2D" parent="."]
 unique_name_in_owner = true

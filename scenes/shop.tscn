@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://tm88aqtbycyg"]
+[gd_scene load_steps=160 format=3 uid="uid://tm88aqtbycyg"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_il6vr"]
 [ext_resource type="Texture2D" uid="uid://ciqkhmop6p86a" path="res://assets/Shop/shop_BG-offer.png" id="2_8pea3"]
@@ -20,7 +20,47 @@
 [ext_resource type="Texture2D" uid="uid://co0upbp56tpo4" path="res://assets/Shop/shop_BG.png" id="8_mvnq2"]
 [ext_resource type="Texture2D" uid="uid://cqd58smf7iweh" path="res://assets/Shop/Owner-animation/owner-spritesheet.png" id="9_33meb"]
 [ext_resource type="Texture2D" uid="uid://c4u0didj1o528" path="res://assets/Shop/ShopTemp/binder_shop_icon.png" id="10_ys1f8"]
+[ext_resource type="Texture2D" uid="uid://31va57xd5hi6" path="res://assets/Shop/ShopMenuBtn/offer-disabled.png" id="13_de8th"]
 [ext_resource type="Script" path="res://scripts/shop_offer.gd" id="14_6il8k"]
+[ext_resource type="Texture2D" uid="uid://ib0wlcc7pdb" path="res://assets/Shop/ShopMenuBtn/offer-hover.png" id="14_cmrx2"]
+[ext_resource type="Texture2D" uid="uid://b3l5p3c284d0o" path="res://assets/Shop/ShopMenuBtn/offer-pressed1.png" id="15_2rlql"]
+[ext_resource type="Texture2D" uid="uid://b2c5jlnb6crem" path="res://assets/Shop/ShopMenuBtn/offer-normal.png" id="16_yayte"]
+[ext_resource type="Texture2D" uid="uid://0y7n1s23el28" path="res://assets/Shop/ShopMenuBtn/trading-hover.png" id="17_8ehdq"]
+[ext_resource type="Texture2D" uid="uid://b31x78p4646rd" path="res://assets/Shop/ShopMenuBtn/trading-pressed.png" id="18_t58bo"]
+[ext_resource type="Texture2D" uid="uid://blikne7n0hj54" path="res://assets/Shop/ShopMenuBtn/trading-normal.png" id="19_stchd"]
+[ext_resource type="Texture2D" uid="uid://c6asayvx6sqd5" path="res://assets/Shop/ShopMenuBtn/1pack-disabled.png" id="20_6dm7t"]
+[ext_resource type="Texture2D" uid="uid://c8tf3krtcbvmm" path="res://assets/Shop/ShopMenuBtn/box-disabled.png" id="20_p2lft"]
+[ext_resource type="Texture2D" uid="uid://c48axedjmp24g" path="res://assets/Shop/ShopMenuBtn/1pack-hover.png" id="21_7sdah"]
+[ext_resource type="Texture2D" uid="uid://cgthssis78wkb" path="res://assets/Shop/ShopMenuBtn/box-hover.png" id="21_kugp6"]
+[ext_resource type="Texture2D" uid="uid://b6uiks741p6ba" path="res://assets/Shop/ShopMenuBtn/1pack-pressed.png" id="22_n0ehe"]
+[ext_resource type="Texture2D" uid="uid://cffsqbaygpvtm" path="res://assets/Shop/ShopMenuBtn/box-pressed.png" id="22_rsf36"]
+[ext_resource type="Texture2D" uid="uid://b86maba5sipmu" path="res://assets/Shop/ShopMenuBtn/box-normal.png" id="23_3nssq"]
+[ext_resource type="Texture2D" uid="uid://dwp04e76650of" path="res://assets/Shop/ShopMenuBtn/1pack-normal.png" id="23_bhicf"]
+[ext_resource type="Texture2D" uid="uid://3sriivag5ww0" path="res://assets/Shop/ShopMenuBtn/5packs-disabled.png" id="24_hsqtw"]
+[ext_resource type="Texture2D" uid="uid://dj8w8n2bfrpib" path="res://assets/Shop/ShopMenuBtn/5packs-hover.png" id="25_68aas"]
+[ext_resource type="Texture2D" uid="uid://c40s21643xdey" path="res://assets/Shop/ShopMenuBtn/5packs-pressed.png" id="26_2u2a0"]
+[ext_resource type="Texture2D" uid="uid://c0eqxd2btoexj" path="res://assets/Shop/ShopMenuBtn/5packs-normal.png" id="27_ld0oe"]
+[ext_resource type="Texture2D" uid="uid://b1xos2v04taqj" path="res://assets/Shop/ShopButton/back-hover.png" id="36_8pqyx"]
+[ext_resource type="Texture2D" uid="uid://c1p617dagmtji" path="res://assets/Shop/ShopButton/back-pressed.png" id="37_3ia81"]
+[ext_resource type="Texture2D" uid="uid://dw23eexf1x3ty" path="res://assets/Shop/ShopButton/back-normal.png" id="38_ervgd"]
+[ext_resource type="Texture2D" uid="uid://dvyuvmbwjp7l8" path="res://assets/Shop/ShopButton/buy-offer-disabled.png" id="39_83502"]
+[ext_resource type="Texture2D" uid="uid://c0uj4nc0ab2d" path="res://assets/Shop/ShopButton/buy-offer-hover.png" id="40_okq1s"]
+[ext_resource type="Texture2D" uid="uid://dfkmul01pl2ul" path="res://assets/Shop/ShopButton/buy-offer-normal.png" id="41_vutdx"]
+
+[sub_resource type="Animation" id="Animation_at66b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OwnerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_oflb0"]
 resource_name = "owner_idle"
@@ -40,21 +80,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 0]
 }
 
-[sub_resource type="Animation" id="Animation_at66b"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("OwnerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5tbwg"]
 _data = {
 "RESET": SubResource("Animation_at66b"),
@@ -70,31 +95,34 @@ shader_parameter/speed = 2.0
 [sub_resource type="LabelSettings" id="LabelSettings_wbp2d"]
 font = ExtResource("6_vu4sp")
 font_size = 45
-font_color = Color(0, 0, 0, 1)
+font_color = Color(0.207843, 0.12549, 0.0705882, 1)
 shadow_size = 4
 shadow_color = Color(0.796243, 0.796243, 0.796243, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bgk30"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_au1s7"]
 shader = ExtResource("4_r185k")
 shader_parameter/height = 3.0
-shader_parameter/frequency = 5.0
-shader_parameter/speed = 5.0
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 2.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_3kdme"]
 font = ExtResource("6_vu4sp")
 font_size = 45
-font_color = Color(0, 0, 0, 1)
+font_color = Color(0.206713, 0.12678, 0.071831, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j7cw1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ie8i8"]
 font = ExtResource("6_vu4sp")
 font_size = 20
-font_color = Color(0, 0, 0, 1)
+font_color = Color(0.325441, 0.325441, 0.325441, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m3i3k"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oxs43"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a443h"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ii3u3"]
+texture = ExtResource("13_de8th")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hincw"]
 
@@ -102,15 +130,18 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mysj1"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ha2nr"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6f3hr"]
+texture = ExtResource("14_cmrx2")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tsorm"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_goq4g"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cnuhx"]
+texture = ExtResource("15_2rlql")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fdipq"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8w2sq"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ks77"]
+texture = ExtResource("16_yayte")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p8sjj"]
 shader = ExtResource("4_r185k")
@@ -119,8 +150,8 @@ shader_parameter/frequency = 5.0
 shader_parameter/speed = 5.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_hr1cu"]
+font_color = Color(0.956863, 0, 0.184314, 1)
 outline_size = 2
-outline_color = Color(0.956405, 0, 0.184912, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sowh8"]
 
@@ -134,13 +165,18 @@ outline_color = Color(0.956405, 0, 0.184912, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lw0lh"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axfsw"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_isw2o"]
+texture = ExtResource("17_8ehdq")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8y73c"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u67a4"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_urgde"]
+texture = ExtResource("18_t58bo")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82pyi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s53lf"]
+texture = ExtResource("19_stchd")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6dn2p"]
 shader = ExtResource("4_r185k")
@@ -156,6 +192,112 @@ font_color = Color(0.678431, 0.996078, 0.188235, 1)
 font_size = 30
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_imkie"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x44d2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j02j4"]
+texture = ExtResource("20_6dm7t")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_10mjt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fo756"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ofj5j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n8io3"]
+texture = ExtResource("21_7sdah")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y34sx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bmc2d"]
+texture = ExtResource("22_n0ehe")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oi6nx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cwrhy"]
+texture = ExtResource("23_bhicf")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8tteq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pn22k"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s36po"]
+texture = ExtResource("24_hsqtw")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ps6c4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wxooe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jjeo0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vr6y"]
+texture = ExtResource("25_68aas")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_11hhf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hu44c"]
+texture = ExtResource("26_2u2a0")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a273s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dmcx3"]
+texture = ExtResource("27_ld0oe")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c8urw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ls377"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ldhc"]
+texture = ExtResource("20_p2lft")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1tx53"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s5vm0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_da0gg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rsqwt"]
+texture = ExtResource("21_kugp6")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ag2ns"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p4xtk"]
+texture = ExtResource("22_rsf36")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1xcgl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xstaw"]
+texture = ExtResource("23_3nssq")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lkl3w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tcoe0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wbe0s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4mcin"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ir1w5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g7fbt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhsb5"]
+texture = ExtResource("36_8pqyx")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8gu2q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6o3xo"]
+texture = ExtResource("37_3ia81")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_slpnf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dvyj1"]
+texture = ExtResource("38_ervgd")
+
+[sub_resource type="LabelSettings" id="LabelSettings_x0rqu"]
+font = ExtResource("6_vu4sp")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_33th8"]
 shader = ExtResource("4_r185k")
 shader_parameter/height = 3.0
@@ -167,11 +309,43 @@ font = ExtResource("6_vu4sp")
 font_size = 20
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1juow"]
+shader = ExtResource("4_r185k")
+shader_parameter/height = 1.0
+shader_parameter/frequency = 1.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y0si8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6bl8v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nvso3"]
+texture = ExtResource("39_83502")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j2bpy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1l8ff"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gp8oo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d232x"]
+texture = ExtResource("40_okq1s")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d53y5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xn6bo"]
+texture = ExtResource("41_vutdx")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xk8sj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j262r"]
+texture = ExtResource("41_vutdx")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0cs5s"]
 shader = ExtResource("4_r185k")
-shader_parameter/height = 3.0
-shader_parameter/frequency = 5.0
-shader_parameter/speed = 1.0
+shader_parameter/height = 1.0
+shader_parameter/frequency = 3.0
+shader_parameter/speed = 10.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_n4dek"]
 font = ExtResource("6_vu4sp")
@@ -179,17 +353,41 @@ font_size = 18
 font_color = Color(0.0718441, 0.758964, 0.221314, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i40yr"]
-shader = ExtResource("4_r185k")
-shader_parameter/height = 3.0
-shader_parameter/frequency = 5.0
-shader_parameter/speed = 5.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_nap51"]
 font = ExtResource("6_vu4sp")
-font_size = 30
-font_color = Color(0, 0, 0, 1)
+font_size = 25
+font_color = Color(0.207843, 0.12549, 0.0705882, 1)
 outline_size = 4
 outline_color = Color(0.996921, 0.55323, 0.46897, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lv60i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7ux0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pr48t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i14em"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nynon"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_62hj4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jxepk"]
+texture = ExtResource("36_8pqyx")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jmj1s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7jf5i"]
+texture = ExtResource("37_3ia81")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8gu1h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hk275"]
+texture = ExtResource("38_ervgd")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kwlhv"]
+font = ExtResource("6_vu4sp")
 
 [sub_resource type="LabelSettings" id="LabelSettings_3hdkc"]
 font_size = 18
@@ -217,7 +415,7 @@ shop_offer = NodePath("ShopOffer")
 text_dyn = NodePath("ShopMenu/VBoxContainer/TextBox/TextDynamic")
 shop_cardlist_lbl_hover = NodePath("ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/ShopCardlistBtn/CardListLabelHover")
 shop_cardlist_lbl_idle = NodePath("ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/ShopCardlistBtn/CardListLabelIdle")
-shop_offer_lbl = NodePath("ShopMenu/VBoxContainer/Button/VBoxContainer/OfferBtn/OfferLabel")
+shop_offer_lbl = NodePath("ShopMenu/VBoxContainer/Button/VBoxContainer/OfferBtn/MarginContainer/OfferLabel")
 text_idle = NodePath("ShopMenu/VBoxContainer/TextBox/TextIdle")
 text_dyn_up = NodePath("ShopMenu/VBoxContainer/TextBox/TextDynamic/TextDynamicUpper")
 text_dyn_low = NodePath("ShopMenu/VBoxContainer/TextBox/TextDynamic/TextDynamicLower")
@@ -311,7 +509,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextDynamicUpper" type="Label" parent="ShopMenu/VBoxContainer/TextBox/TextDynamic"]
-material = SubResource("ShaderMaterial_bgk30")
+material = SubResource("ShaderMaterial_au1s7")
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
@@ -321,6 +519,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="TextDynamicLower" type="Label" parent="ShopMenu/VBoxContainer/TextBox/TextDynamic"]
+material = SubResource("ShaderMaterial_j7cw1")
 layout_mode = 2
 size_flags_vertical = 3
 text = "TEST LOWER TEXT"
@@ -347,24 +546,29 @@ size_flags_vertical = 3
 focus_mode = 0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_m3i3k")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_oxs43")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_a443h")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ii3u3")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_hincw")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lw52")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_mysj1")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ha2nr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6f3hr")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_tsorm")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_goq4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cnuhx")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_fdipq")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_8w2sq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_7ks77")
 
-[node name="OfferLabel" type="Label" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/OfferBtn"]
-material = SubResource("ShaderMaterial_p8sjj")
+[node name="MarginContainer" type="MarginContainer" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/OfferBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="OfferLabel" type="Label" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/OfferBtn/MarginContainer"]
+material = SubResource("ShaderMaterial_p8sjj")
+layout_mode = 2
+size_flags_vertical = 1
 text = "SPECIAL OFFER"
 label_settings = SubResource("LabelSettings_hr1cu")
 horizontal_alignment = 1
@@ -387,10 +591,11 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_glvpo")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_y2hpy")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_t68gx")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_lw0lh")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_axfsw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_isw2o")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_8y73c")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_u67a4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_urgde")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_82pyi")
+theme_override_styles/normal = SubResource("StyleBoxTexture_s53lf")
 
 [node name="CardListLabelHover" type="Label" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/ShopCardlistBtn"]
 visible = false
@@ -407,6 +612,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CardListLabelIdle" type="Label" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/ShopCardlistBtn"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -430,16 +636,39 @@ theme_override_constants/separation = 0
 
 [node name="Buy1Pack" type="Button" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(67, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
-text = "1 pack"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_imkie")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_x44d2")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_j02j4")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_10mjt")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_fo756")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_ofj5j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_n8io3")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_y34sx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bmc2d")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_oi6nx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_cwrhy")
 
 [node name="Buy5Packs" type="Button" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/Packs"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8tteq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pn22k")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_s36po")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ps6c4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_wxooe")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_jjeo0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7vr6y")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_11hhf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_hu44c")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_a273s")
+theme_override_styles/normal = SubResource("StyleBoxTexture_dmcx3")
 text = "5 packs"
 
 [node name="BuyBox" type="Button" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup"]
@@ -447,8 +676,17 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
-text = "Buy 1 Box
-(10 +2 packs)"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_c8urw")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ls377")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_3ldhc")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_1tx53")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_s5vm0")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_da0gg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_rsqwt")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ag2ns")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_p4xtk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_1xcgl")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xstaw")
 
 [node name="ShopCardlist" type="Control" parent="."]
 unique_name_in_owner = true
@@ -573,9 +811,32 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="CardListBackBtn" type="Button" parent="ShopCardlist/Container/BackToMenu"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "       Back       "
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lkl3w")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_tcoe0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wbe0s")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_4mcin")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ir1w5")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_g7fbt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nhsb5")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_8gu2q")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6o3xo")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_slpnf")
+theme_override_styles/normal = SubResource("StyleBoxTexture_dvyj1")
+
+[node name="Label" type="Label" parent="ShopCardlist/Container/BackToMenu/CardListBackBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BACK"
+label_settings = SubResource("LabelSettings_x0rqu")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BtmLbl" type="Label" parent="ShopCardlist/Container/BackToMenu"]
 material = SubResource("ShaderMaterial_33th8")
@@ -601,7 +862,7 @@ offset_bottom = 645.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("14_6il8k")
-node_promo_sprite = NodePath("Container/Contents/VBoxContainer/Promo/TextureRect")
+node_promo_sprite = NodePath("Container/Contents/VBoxContainer/Promo/Control/TextureRect")
 promo_lbl = NodePath("Container/Contents/VBoxContainer/PromoLbL/PromoLbl")
 buy_offer_btn = NodePath("Container/Contents/VBoxContainer/Promo/VBoxContainer/BuyOfferBtn")
 buy_offer_lbl = NodePath("Container/Contents/VBoxContainer/Promo/VBoxContainer/BuyOfferLbl")
@@ -637,8 +898,25 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="TextureRect" type="TextureRect" parent="ShopOffer/Container/Contents/VBoxContainer/Promo"]
+[node name="Control" type="Control" parent="ShopOffer/Container/Contents/VBoxContainer/Promo"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ShopOffer/Container/Contents/VBoxContainer/Promo/Control"]
+material = SubResource("ShaderMaterial_1juow")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -145.0
+offset_right = 170.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("7_mknd5")
 stretch_mode = 2
 
@@ -646,19 +924,27 @@ stretch_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Spacer" type="Control" parent="ShopOffer/Container/Contents/VBoxContainer/Promo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
 [node name="BuyOfferBtn" type="Button" parent="ShopOffer/Container/Contents/VBoxContainer/Promo/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y0si8")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_6bl8v")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_nvso3")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j2bpy")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1l8ff")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_gp8oo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_d232x")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_d53y5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xn6bo")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_xk8sj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_j262r")
 
 [node name="BuyOfferLbl" type="Label" parent="ShopOffer/Container/Contents/VBoxContainer/Promo/VBoxContainer"]
 material = SubResource("ShaderMaterial_0cs5s")
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 1
 text = "LAST COPY IN STOCK!!"
 label_settings = SubResource("LabelSettings_n4dek")
 horizontal_alignment = 1
@@ -677,7 +963,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Get FREE Special Promo Card 
+text = "Get FREE \"SECRET\" Promo Card 
 when purchase whole Box"
 label_settings = SubResource("LabelSettings_nap51")
 horizontal_alignment = 1
@@ -689,8 +975,32 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="OfferBackBtn" type="Button" parent="ShopOffer/Container/BackToMenu"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "       Back       "
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lv60i")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_y7ux0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_pr48t")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_i14em")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_nynon")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_62hj4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jxepk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_jmj1s")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7jf5i")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_8gu1h")
+theme_override_styles/normal = SubResource("StyleBoxTexture_hk275")
+
+[node name="Label" type="Label" parent="ShopOffer/Container/BackToMenu/OfferBackBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BACK"
+label_settings = SubResource("LabelSettings_kwlhv")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BtmLbl" type="Label" parent="ShopOffer/Container/BackToMenu"]
 layout_mode = 2

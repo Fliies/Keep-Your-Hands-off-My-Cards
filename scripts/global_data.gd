@@ -21,7 +21,7 @@ extends Node
 @export var PRICE_COMMON:Array[float] = [0.25, 0.75]
 @export var PRICE_UNCOMMON:Array[float] = [1.0, 3.0]
 @export var PRICE_RARE:Array[float] = [15.0, 25.0]
-@export var PRICE_SECRET:Array[float] = [100.0]
+@export var PRICE_SECRET:Array[float] = [100.0, 110.0]
 @export var PRICE_EXRTA:Array[float] = [10.0, 20.0]
 
 @onready var common_arr:= [
@@ -305,6 +305,6 @@ func _update_price():
 	price_dict.xx = float( "%.2f" % randf_range(PRICE_RARE[0],PRICE_RARE[1]))
 	price_dict.yy = float( "%.2f" % randf_range(PRICE_RARE[0],PRICE_RARE[1]))
 	
-	price_dict.zz = PRICE_SECRET.pick_random()
+	price_dict.zz =float( "%.2f" % randf_range(PRICE_SECRET[0],PRICE_SECRET[1]))
 	
 	price_dict.ex_misprint =  float( "%.2f" % randf_range(PRICE_EXRTA[0],PRICE_EXRTA[1]))

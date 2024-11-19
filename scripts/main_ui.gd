@@ -43,7 +43,12 @@ func _hint_lbl_handle():
 	elif GlobalStateController.current_state == GlobalStateController.GameState.OPENING_FRONT:
 		hint_lbl.label_settings.font_color = Color("WHITE")
 		hint_lbl.label_settings.outline_color = Color("DIM_GRAY")
-		hint_lbl.text = "'A' to SELL / 'D' to KEEP "
+		hint_lbl.text = "'A' to SELL                               'D' to KEEP "
+		hint_lbl.visible = true
+	elif GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
+		hint_lbl.label_settings.font_color = Color("WHITE")
+		hint_lbl.label_settings.outline_color = Color("DIM_GRAY")
+		hint_lbl.text = "CLICK a PACK to OPEN"
 		hint_lbl.visible = true
 	else:
 		hint_lbl.visible = false
