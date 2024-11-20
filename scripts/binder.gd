@@ -2,6 +2,13 @@ extends Node2D
 
 signal  flip_finished
 
+@export_category("COMPLETED")
+@export var completed_node:Sprite2D
+@export var completed_14: Texture2D
+@export var completed_24: Texture2D
+@export var completed_34: Texture2D
+@export var completed_44: Texture2D
+
 @onready var current_page: int = 1
 @onready var page1:= $Page/Page1
 @onready var page2:= $Page/Page2
@@ -11,6 +18,10 @@ signal  flip_finished
 @onready var left_btn:= $LeftPage
 @onready var right_btn:= $RightPage
 
+@onready var animation_player:= $AnimationPlayer
+@onready var timer:= $Timer
+
+@export_category("NODE")
 @export var sprite_node: Array[Sprite2D] 
 @export var amount_node: Array[Sprite2D]
 @export var amount_lbl: Array[Label]
@@ -21,14 +32,15 @@ signal  flip_finished
 @onready var inspect_btn_arr: Array[Button]
 
 func _ready() -> void:
+	#completed
+	completed_node.visible = false
+	
 	current_page = 1
 	
 	inspect.visible = false
 	inspect.disabled = true
 	
 	inspect_btn_arr.append_array(inspect_btn.get_children())
-	#_disable_left_inspect_btn()
-	#_disable_right_inspect_btn()
 	
 	#slot visual
 	_update_all_slot_visual()
@@ -36,26 +48,93 @@ func _ready() -> void:
 	_update_inspect_btn_whole_page(current_page)
 
 func _process(_delta: float) -> void:
-	if current_page == 1:
-		left_btn.visible = false
-		left_btn.disabled = true
-		
-		right_btn.visible = true
-		right_btn.disabled = false
-	elif current_page == 23:
-		left_btn.visible = true
-		left_btn.disabled = false
-		
-		right_btn.visible = true
-		right_btn.disabled = false
-	elif current_page == 4:
-		left_btn.visible = true
-		left_btn.disabled = false
-		
-		right_btn.visible = false
-		right_btn.disabled = true
-	#update price
-	_update_price_sheet()
+	if GlobalStateController.current_state == GameStateController.GameState.BINDER:
+		if current_page == 1:
+			left_btn.visible = false
+			left_btn.disabled = true
+			
+			right_btn.visible = true
+			right_btn.disabled = false
+		elif current_page == 23:
+			left_btn.visible = true
+			left_btn.disabled = false
+			
+			right_btn.visible = true
+			right_btn.disabled = false
+		elif current_page == 4:
+			left_btn.visible = true
+			left_btn.disabled = false
+			
+			right_btn.visible = false
+			right_btn.disabled = true
+		#update price
+		#_update_price_sheet()
+
+##completed
+func _first_completed(amount:int):
+	##slot visual
+	_update_all_slot_visual()
+	_update_inspect_btn_whole_page(5)
+	##to page 4
+	current_page = 4
+	page1.visible = false
+	page2.visible = false
+	page3.visible = false
+	page4.visible = true
+	
+	GlobalData.completed = true
+	if amount == 27:
+		completed_node.texture = completed_14
+	elif amount == 28:
+		completed_node.texture = completed_24
+	elif amount == 29:
+		completed_node.texture = completed_34
+	elif amount == 30:
+		completed_node.texture = completed_44
+	
+	timer.start(1)
+	await timer.timeout
+	
+	##animation
+	animation_player.play("backward2")
+	await flip_finished
+	
+	current_page = 23
+	
+	timer.start(1)
+	await timer.timeout
+	
+	animation_player.play("backward1")
+	await flip_finished
+	
+	current_page = 1
+	
+	##inspect btn
+	
+	timer.start(1)
+	await timer.timeout
+	
+	
+	animation_player.play("completed")
+	await flip_finished
+	
+	##lower z index
+	completed_node.z_index = 0
+	
+	GlobalStateController.current_state = GameStateController.GameState.BINDER
+	_update_inspect_btn_whole_page(current_page)
+
+func _update_completed(amount):
+	match amount:
+		27:
+			completed_node.texture = completed_14
+		28:
+			completed_node.texture = completed_24
+		29:
+			completed_node.texture = completed_34
+		30:
+			completed_node.texture = completed_44
+
 
 ##signal
 func _flip_finished():
@@ -129,7 +208,7 @@ func _update_all_slot_visual():
 func _on_left_page_pressed() -> void:
 	if current_page == 23:
 		left_btn.disabled = true
-		$AnimationPlayer.play("backward1")
+		animation_player.play("backward1")
 		await flip_finished
 		left_btn.disabled = false
 		
@@ -137,7 +216,7 @@ func _on_left_page_pressed() -> void:
 	
 	elif current_page == 4:
 		left_btn.disabled = true
-		$AnimationPlayer.play("backward2")
+		animation_player.play("backward2")
 		await flip_finished
 		left_btn.disabled = false
 		
@@ -145,12 +224,11 @@ func _on_left_page_pressed() -> void:
 	
 	##update inspect
 	_update_inspect_btn_whole_page(current_page)
-	#_update_inspect_btn()
 
 func _on_right_page_pressed() -> void:
 	if current_page == 1:
 		right_btn.disabled = true
-		$AnimationPlayer.play("forward1")
+		animation_player.play("forward1")
 		await flip_finished
 		right_btn.disabled = false
 		
@@ -158,7 +236,7 @@ func _on_right_page_pressed() -> void:
 	
 	elif current_page == 23:
 		right_btn.disabled = true
-		$AnimationPlayer.play("forward2")
+		animation_player.play("forward2")
 		await flip_finished
 		right_btn.disabled = false
 		
@@ -166,7 +244,6 @@ func _on_right_page_pressed() -> void:
 	
 	###update inspect
 	_update_inspect_btn_whole_page(current_page)
-	#_update_inspect_btn()
 
 ##back Cover
 func _update_price_sheet():
@@ -315,6 +392,26 @@ func _update_inspect_btn_whole_page(page:int):
 			_checking_inspect_btn_from_collection("ex_promo",17)
 		4:
 			_checking_inspect_btn_from_collection("ex_misprint",0)
+			_disable_btn(inspect_btn_arr[1])
+			_disable_btn(inspect_btn_arr[2])
+			_disable_btn(inspect_btn_arr[3])
+			_disable_btn(inspect_btn_arr[4])
+			_disable_btn(inspect_btn_arr[5])
+			_disable_btn(inspect_btn_arr[6])
+			_disable_btn(inspect_btn_arr[7])
+			_disable_btn(inspect_btn_arr[8])
+			
+			_disable_btn(inspect_btn_arr[9])
+			_disable_btn(inspect_btn_arr[10])
+			_disable_btn(inspect_btn_arr[11])
+			_disable_btn(inspect_btn_arr[12])
+			_disable_btn(inspect_btn_arr[13])
+			_disable_btn(inspect_btn_arr[14])
+			_disable_btn(inspect_btn_arr[15])
+			_disable_btn(inspect_btn_arr[16])
+			_disable_btn(inspect_btn_arr[17])
+		5:
+			_disable_btn(inspect_btn_arr[0])
 			_disable_btn(inspect_btn_arr[1])
 			_disable_btn(inspect_btn_arr[2])
 			_disable_btn(inspect_btn_arr[3])

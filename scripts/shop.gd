@@ -59,30 +59,31 @@ func _ready() -> void:
 	node_shop_hilight.texture = null
 
 ## ENTER THE SHOP
-func _on_shop_btn_pressed() -> void:
+
+func _enter_shop() -> void:
 	##ENTER the SHOP
-	GlobalStateController.current_state = GlobalStateController.GameState.SHOP_MENU
-	# menu visible
-	shop_cardlist.visible = false
-	shop_offer.visible = false
-	shop_menu.visible = true
-	# add sell money
-	GlobalData.money_current += GlobalData.money_added
-	GlobalData.money_added = 0
-	# update PRICE_DICT
-	GlobalData._update_price()
-	# SETUP STOCK CARDLIST
-	shop_cardlist._initial_stock_cardlist() #temp
-	# price + tag
-	shop_cardlist._update_all_pricetag()
-	#SETUP visual card 
-		# sprite
-		# avialable
-		# soldout
-		# censor
-	#update buy n sell btn
-	#update amount
-	shop_cardlist._update_all_slot_visual_n_btn()
+	if GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
+		# menu visible
+		shop_cardlist.visible = false
+		shop_offer.visible = false
+		shop_menu.visible = true
+		# add sell money
+		GlobalData.money_current += GlobalData.money_added
+		GlobalData.money_added = 0
+		# update PRICE_DICT
+		GlobalData._update_price()
+		# SETUP STOCK CARDLIST
+		shop_cardlist._initial_stock_cardlist() #temp
+		# price + tag
+		shop_cardlist._update_all_pricetag()
+		#SETUP visual card 
+			# sprite
+			# avialable
+			# soldout
+			# censor
+		#update buy n sell btn
+		#update amount
+		shop_cardlist._update_all_slot_visual_n_btn()
 
 
 ##OFFER STUFFS

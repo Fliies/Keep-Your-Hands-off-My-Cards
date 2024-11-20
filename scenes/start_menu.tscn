@@ -1,9 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://t37wtu303voa"]
+[gd_scene load_steps=81 format=3 uid="uid://t37wtu303voa"]
 
-[ext_resource type="Texture2D" uid="uid://bbtwwgi2r38dy" path="res://assets/BaseBG.png" id="1_6ht5a"]
 [ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_6sujd"]
-[ext_resource type="Texture2D" uid="uid://cbd745ybp76ia" path="res://assets/StartMenu/op-menu-sheet.png" id="2_5ygwa"]
-[ext_resource type="Texture2D" uid="uid://c86awidbij8kf" path="res://assets/StartMenu/op-menu-scream.png" id="3_7ivjh"]
+[ext_resource type="Texture2D" uid="uid://cbd745ybp76ia" path="res://assets/StartMenu/animation/op-menu-sheet.png" id="2_5ygwa"]
+[ext_resource type="Texture2D" uid="uid://buy1km0uhv2s" path="res://assets/StartMenu/start_menu_title.png" id="2_erob5"]
+[ext_resource type="Texture2D" uid="uid://c86awidbij8kf" path="res://assets/StartMenu/animation/op-menu-scream.png" id="3_7ivjh"]
+[ext_resource type="Texture2D" uid="uid://bbtwwgi2r38dy" path="res://assets/BaseBG.png" id="5_3fsho"]
+[ext_resource type="Texture2D" uid="uid://klkcfm1rbuol" path="res://assets/StartMenu/animation/extras-spritesheet.png" id="5_qxicn"]
+[ext_resource type="Texture2D" uid="uid://bop2uge4fmo6s" path="res://assets/StartMenu/Button/newgame-hover.png" id="6_1rmoy"]
+[ext_resource type="Texture2D" uid="uid://clbnufe430hot" path="res://assets/StartMenu/Button/newgame-normal.png" id="7_lcpis"]
+[ext_resource type="Texture2D" uid="uid://d33y4uv6rel2c" path="res://assets/StartMenu/Button/continue-disabled.png" id="8_7xwdk"]
+[ext_resource type="Texture2D" uid="uid://bmch0yvpqkrsd" path="res://assets/StartMenu/Button/continue-hover.png" id="9_j7gbf"]
+[ext_resource type="Texture2D" uid="uid://bipo0t4hsyfm8" path="res://assets/StartMenu/Button/continue-normal.png" id="10_yp0aa"]
+[ext_resource type="Texture2D" uid="uid://g4xaeqoess4s" path="res://assets/StartMenu/Button/extra-hover.png" id="11_bfuv7"]
+[ext_resource type="Texture2D" uid="uid://c6tdl33t3i5r" path="res://assets/StartMenu/Button/extra-normal.png" id="12_pgmgv"]
+[ext_resource type="Texture2D" uid="uid://cxvfqqt3ckmpx" path="res://assets/StartMenu/Button/options-hover.png" id="13_422jr"]
+[ext_resource type="Texture2D" uid="uid://d1su4x70jbwmh" path="res://assets/StartMenu/Button/options-normal.png" id="14_1g3b4"]
+[ext_resource type="Texture2D" uid="uid://degkemvdplh3o" path="res://assets/Binder/btn/binder_arrow_left-hover.png" id="15_8tpc0"]
+[ext_resource type="Texture2D" uid="uid://dldnr0uwiijo3" path="res://assets/Binder/btn/binder_arrow_left-press.png" id="16_3b7ej"]
+[ext_resource type="Texture2D" uid="uid://r4eep2ufhwj7" path="res://assets/Binder/btn/binder_arrow_left.png" id="17_i32lp"]
 
 [sub_resource type="Animation" id="Animation_br1e7"]
 length = 0.001
@@ -67,6 +81,200 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/SpriteExtras:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer/SpriteExtras:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer/SpriteExtraBg:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AnimationPlayer/SpriteExtras:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimationPlayer/SpriteExtras:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hrinr"]
+resource_name = "extra_exit"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/SpriteExtraBg:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/SpriteExtras:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/SpriteExtras:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1280, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_animation_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gxm67"]
+resource_name = "extras"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/SpriteExtras:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/SpriteExtras:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_animation_finished"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/SpriteExtraBg:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer/SpriteExtras:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/SpriteExtras:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1754, -484), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_sseox"]
 resource_name = "idle"
@@ -108,10 +316,10 @@ tracks/1/path = NodePath("AnimationPlayer/SpriteScream:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, -0.0872665]
+"values": [0.0, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, -0.0872665]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -120,7 +328,7 @@ tracks/2/path = NodePath("AnimationPlayer/SpriteScream:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
+"times": PackedFloat32Array(0, 0.7, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(25, 25)]
@@ -136,6 +344,20 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_animation_finished"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_r274v"]
@@ -181,16 +403,145 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0g5du"]
 _data = {
 "RESET": SubResource("Animation_br1e7"),
+"extra_exit": SubResource("Animation_hrinr"),
+"extras": SubResource("Animation_gxm67"),
 "idle": SubResource("Animation_sseox"),
 "start": SubResource("Animation_5d0bd"),
 "start_2": SubResource("Animation_r274v")
 }
 
-[node name="StartMenu" type="Node2D"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y54dl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_58id6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ede1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mhike"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fy1hh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_em70h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tmyyb"]
+texture = ExtResource("6_1rmoy")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_63db8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kjvnf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlo7h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gohse"]
+texture = ExtResource("7_lcpis")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_stt3e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5db5c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fwwnl"]
+texture = ExtResource("8_7xwdk")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hfeox"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qgl6h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n6ti1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j6cv1"]
+texture = ExtResource("9_j7gbf")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dgdga"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wdni"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5sssd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e5bc5"]
+texture = ExtResource("10_yp0aa")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5rpaq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5um4c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bo7xe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7e7wj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2fqjg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cooak"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ogyt8"]
+texture = ExtResource("11_bfuv7")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fartb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_soa2h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_650np"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1qbdf"]
+texture = ExtResource("12_pgmgv")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_swp87"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qwhbf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kqd84"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cwb5r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjw4h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ly2e5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5fslg"]
+texture = ExtResource("13_422jr")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2dqv7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcu8l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_srvak"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0s352"]
+texture = ExtResource("14_1g3b4")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_478f3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nuqgy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gcce8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aw2qy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eaqvt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kc3mq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bw1jv"]
+texture = ExtResource("15_8tpc0")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jbi0k"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gd285"]
+texture = ExtResource("16_3b7ej")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h6s1f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwuoq"]
+texture = ExtResource("17_i32lp")
+
+[node name="StartMenu" type="Node2D" node_paths=PackedStringArray("newgame_btn", "continue_btn", "extras_btn", "option_btn", "back_btn")]
 script = ExtResource("1_6sujd")
+newgame_btn = NodePath("CanvasLayer/MarginContainer/VBoxContainer/NewgameBtn")
+continue_btn = NodePath("CanvasLayer/MarginContainer/VBoxContainer/ContinueBtn")
+extras_btn = NodePath("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/ExtrasBtn")
+option_btn = NodePath("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBtn")
+back_btn = NodePath("CanvasLayer/BackBtn")
 
 [node name="BG" type="Sprite2D" parent="."]
-texture = ExtResource("1_6ht5a")
+texture = ExtResource("2_erob5")
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -211,6 +562,17 @@ offset = Vector2(80, 0)
 region_enabled = true
 region_rect = Rect2(115.136, 346.407, 570.121, 252.85)
 
+[node name="SpriteExtraBg" type="Sprite2D" parent="AnimationPlayer"]
+visible = false
+texture = ExtResource("5_3fsho")
+centered = false
+
+[node name="SpriteExtras" type="Sprite2D" parent="AnimationPlayer"]
+visible = false
+texture = ExtResource("5_qxicn")
+centered = false
+vframes = 4
+
 [node name="SpriteScreenWipe" type="Sprite2D" parent="AnimationPlayer"]
 visible = false
 position = Vector2(637, 355.5)
@@ -219,11 +581,125 @@ texture = ExtResource("3_7ivjh")
 region_enabled = true
 region_rect = Rect2(315.356, 465.122, 22.3356, 14.4065)
 
-[node name="Button" type="Button" parent="."]
-offset_left = 933.0
-offset_top = 288.0
-offset_right = 1090.0
-offset_bottom = 367.0
-text = "start"
+[node name="debug" type="Node2D" parent="."]
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="newgameToggle" type="Button" parent="debug"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "newgame switch"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(600, 300)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -150.0
+offset_bottom = 150.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="NewgameBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y54dl")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_58id6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_1ede1")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_mhike")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_fy1hh")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_em70h")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tmyyb")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_63db8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kjvnf")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_nlo7h")
+theme_override_styles/normal = SubResource("StyleBoxTexture_gohse")
+
+[node name="ContinueBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_stt3e")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_5db5c")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_fwwnl")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_hfeox")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_qgl6h")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_n6ti1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_j6cv1")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dgdga")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1wdni")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_5sssd")
+theme_override_styles/normal = SubResource("StyleBoxTexture_e5bc5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ExtrasBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5rpaq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_5um4c")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bo7xe")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_7e7wj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_2fqjg")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_cooak")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ogyt8")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_fartb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_soa2h")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_650np")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1qbdf")
+
+[node name="OptionsBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_swp87")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_qwhbf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kqd84")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_cwb5r")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rjw4h")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_ly2e5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5fslg")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_2dqv7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lcu8l")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_srvak")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0s352")
+
+[node name="BackBtn" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(130, 130)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -130.0
+offset_right = 130.0
+grow_vertical = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_478f3")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_nuqgy")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gcce8")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_aw2qy")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_eaqvt")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_kc3mq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bw1jv")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_jbi0k")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd285")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_h6s1f")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xwuoq")
+text = "BACK"
+
+[connection signal="pressed" from="debug/newgameToggle" to="." method="_on_newgame_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/NewgameBtn" to="." method="_on_newgame_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/ExtrasBtn" to="." method="_on_extras_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackBtn" to="." method="_on_back_btn_pressed"]

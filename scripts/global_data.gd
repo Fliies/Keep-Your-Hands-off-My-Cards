@@ -102,6 +102,9 @@ extends Node
 @onready var price_box: float = 90.0
 
 @onready var shop_promo: bool = true
+@onready var newgame:bool = true
+@onready var driver:bool = false
+@onready var completed: bool = false
 
 func _ready() -> void:
 	_update_price()

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalData="*res://scripts/global_data.gd"
 GlobalStateController="*res://scripts/global_state_controller.gd"
+ScreenTransition="*res://scenes/screen_transition.tscn"
 
 [display]
 

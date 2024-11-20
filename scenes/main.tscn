@@ -1,9 +1,10 @@
-[gd_scene load_steps=119 format=3 uid="uid://tvuo7n21uk0v"]
+[gd_scene load_steps=122 format=3 uid="uid://tvuo7n21uk0v"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_fbqc6"]
 [ext_resource type="Texture2D" uid="uid://rka6t0pwsqf5" path="res://assets/temp/temp_BG.png" id="1_uofni"]
 [ext_resource type="Texture2D" uid="uid://c6ujxep7myob3" path="res://assets/temp/temp_mockup.png" id="2_i4wa2"]
 [ext_resource type="Texture2D" uid="uid://01mn6gmm53vw" path="res://assets/HandHolder.png" id="3_ij8wy"]
+[ext_resource type="Theme" uid="uid://bqt8ghphpr5og" path="res://scripts/to_house_btn.tres" id="3_pb008"]
 [ext_resource type="Texture2D" uid="uid://bbtwwgi2r38dy" path="res://assets/BaseBG.png" id="4_i4cx4"]
 [ext_resource type="Script" path="res://scripts/card_display.gd" id="4_w3d84"]
 [ext_resource type="Resource" uid="uid://pmsrqvokfj3s" path="res://resource/card_stat.tres" id="5_ijqaw"]
@@ -23,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://djhcluiicykrw" path="res://assets/MainButton/new-button_keep-hover-02.png" id="20_pn7mt"]
 [ext_resource type="Texture2D" uid="uid://b052aubsngmki" path="res://assets/MainButton/new-button_keep.png" id="23_gf2lb"]
 [ext_resource type="PackedScene" uid="uid://tm88aqtbycyg" path="res://scenes/shop.tscn" id="24_87d07"]
+[ext_resource type="Theme" uid="uid://dgrra5g3re35i" path="res://scripts/to_shop_btn.tres" id="26_sw436"]
 [ext_resource type="Texture2D" uid="uid://d076tisn4hasx" path="res://assets/Binder/btn/binder_btn-hover.png" id="27_63k6a"]
 [ext_resource type="FontFile" uid="uid://bafa8t46i5ktu" path="res://assets/font/ChelseaMarket-Regular.ttf" id="27_lx64h"]
 [ext_resource type="Texture2D" uid="uid://c66t5rxruwyrr" path="res://assets/Binder/btn/binder_btn-normal.png" id="28_3vi3b"]
@@ -920,6 +922,11 @@ unicode = 49
 [sub_resource type="Shortcut" id="Shortcut_g2gkn"]
 events = [SubResource("InputEventKey_jhgxf")]
 
+[sub_resource type="LabelSettings" id="LabelSettings_aepkp"]
+font = ExtResource("27_lx64h")
+font_size = 27
+font_color = Color(1, 0.0862745, 0.235294, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_0qq46"]
 font_color = Color(0, 0, 0, 1)
 
@@ -932,8 +939,11 @@ font_color = Color(1, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_fdptd"]
 font_color = Color(0, 0, 0, 1)
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("gassfee_lbl")]
 script = ExtResource("1_fbqc6")
+to_shop_theme = ExtResource("26_sw436")
+to_house_theme = ExtResource("3_pb008")
+gassfee_lbl = NodePath("UI/UI/GasfeeLbl")
 
 [node name="Mockup" type="Node2D" parent="."]
 visible = false
@@ -1277,6 +1287,26 @@ toggle_mode = true
 shortcut = SubResource("Shortcut_g2gkn")
 shortcut_in_tooltip = false
 
+[node name="ShopNHouseBtn" type="Button" parent="UI/UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 1
+offset_right = 200.0
+offset_bottom = 50.0
+focus_mode = 0
+theme = ExtResource("26_sw436")
+
+[node name="GasfeeLbl" type="Label" parent="UI/UI"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 100.0
+offset_right = 230.0
+offset_bottom = 136.0
+text = "( gas fee -$3 )"
+label_settings = SubResource("LabelSettings_aepkp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="debug" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 15
@@ -1297,7 +1327,6 @@ focus_mode = 0
 text = "START : 10  packs, $20"
 
 [node name="test" type="Button" parent="UI/debug"]
-visible = false
 layout_mode = 1
 offset_left = 381.0
 offset_top = 3.0
@@ -1679,16 +1708,9 @@ label_settings = SubResource("LabelSettings_fdptd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ShopBtn" type="Button" parent="UI/debug"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-focus_mode = 0
-text = "to SHOP"
-
 [node name="HomeBtn" type="Button" parent="UI/debug"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 1.0
 offset_top = 42.0
@@ -1712,11 +1734,10 @@ text = "+ money"
 [connection signal="pressed" from="UI/MainActionBtn/KeepBtn" to="UI/MainActionBtn" method="_on_keep_btn_pressed"]
 [connection signal="pressed" from="UI/MainActionBtn/FlipBtn" to="UI/MainActionBtn" method="_on_flip_btn_pressed"]
 [connection signal="pressed" from="UI/UI/BinderBtn" to="." method="_on_binder_btn_pressed"]
+[connection signal="pressed" from="UI/UI/ShopNHouseBtn" to="." method="_on_shop_n_house_btn_pressed"]
 [connection signal="pressed" from="UI/debug/Start" to="UI/debug" method="_on_start_pressed"]
 [connection signal="pressed" from="UI/debug/test" to="UI/debug" method="_on_test_pressed"]
 [connection signal="pressed" from="UI/debug/addpacktoBOX" to="UI/debug" method="_on_addpackto_box_pressed"]
 [connection signal="pressed" from="UI/debug/addpacktoSINGLE" to="UI/debug" method="_on_addpackto_single_pressed"]
-[connection signal="pressed" from="UI/debug/ShopBtn" to="UI/Shop" method="_on_shop_btn_pressed"]
-[connection signal="pressed" from="UI/debug/ShopBtn" to="UI/debug" method="_on_shop_pressed"]
 [connection signal="pressed" from="UI/debug/HomeBtn" to="UI/debug" method="_on_home_pressed"]
 [connection signal="pressed" from="UI/debug/AddMoney" to="UI/debug" method="_on_add_money_pressed"]

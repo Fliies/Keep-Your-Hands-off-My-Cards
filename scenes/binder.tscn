@@ -1,14 +1,18 @@
-[gd_scene load_steps=107 format=3 uid="uid://cpyorpde3h8g"]
+[gd_scene load_steps=112 format=3 uid="uid://cpyorpde3h8g"]
 
 [ext_resource type="Script" path="res://scripts/binder.gd" id="1_1h60k"]
 [ext_resource type="Texture2D" uid="uid://dd6reruiixn83" path="res://assets/Binder/Sprite/base.png" id="1_8gl4p"]
 [ext_resource type="Texture2D" uid="uid://b5f7mxmv58of6" path="res://Cards/CardSprite/ex_credit.png" id="2_lmq52"]
+[ext_resource type="Texture2D" uid="uid://ccjkkbvhexqvi" path="res://assets/Binder/completed-24.png" id="3_gqf6m"]
 [ext_resource type="Texture2D" uid="uid://egyxicnxktrq" path="res://Cards/CardSprite/ex_driver.png" id="3_ve05a"]
 [ext_resource type="Texture2D" uid="uid://bav72lsunyaqw" path="res://assets/Binder/Sprite/base-front-holder.png" id="4_887xs"]
+[ext_resource type="Texture2D" uid="uid://k4ub6f2m6as2" path="res://assets/Binder/completed-34.png" id="4_q0t0i"]
+[ext_resource type="Texture2D" uid="uid://deaw6honhr0a3" path="res://assets/Binder/completed-44.png" id="5_iax7d"]
 [ext_resource type="Texture2D" uid="uid://bslresgjlrqo7" path="res://assets/Binder/Sprite/page-R.png" id="5_qqk88"]
 [ext_resource type="Texture2D" uid="uid://c71tisjslci7" path="res://assets/Binder/Sprite/price_sheet.png" id="6_5eqjx"]
 [ext_resource type="Texture2D" uid="uid://b126g00xpcysr" path="res://Cards/CardSprite/aa.png" id="6_o0bvp"]
 [ext_resource type="Texture2D" uid="uid://dpngi2jxa1bdn" path="res://Cards/CardSprite/bb.png" id="7_lmuvy"]
+[ext_resource type="Texture2D" uid="uid://dfj037ql15hwq" path="res://assets/Binder/completed-14.png" id="7_x6f7h"]
 [ext_resource type="Texture2D" uid="uid://drf1ybxkpuwqh" path="res://Cards/CardSprite/cc.png" id="8_fu41s"]
 [ext_resource type="Texture2D" uid="uid://kbxlqmq77jo7" path="res://assets/Shop/ShopTemp/Shop_binder_amount.png" id="9_d44k2"]
 [ext_resource type="Texture2D" uid="uid://de3l678uepiyv" path="res://Cards/CardSprite/dd.png" id="9_wt8mo"]
@@ -137,6 +141,54 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cover/Completed:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Cover/Completed:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Cover/Completed:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Cover/Completed:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 360)]
 }
 
 [sub_resource type="Animation" id="Animation_u61jj"]
@@ -314,6 +366,73 @@ tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_flip_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bq8ip"]
+resource_name = "completed"
+length = 2.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cover/Completed:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cover/Completed:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cover/Completed:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1), Vector2(1, 1), Vector2(0.75, 0.75)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cover/Completed:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(640, 360), Vector2(640, 360), Vector2(387, 295)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -508,6 +627,7 @@ _data = {
 "RESET": SubResource("Animation_kwly3"),
 "backward1": SubResource("Animation_u61jj"),
 "backward2": SubResource("Animation_du1ik"),
+"completed": SubResource("Animation_bq8ip"),
 "forward1": SubResource("Animation_emya1"),
 "forward2": SubResource("Animation_634n4")
 }
@@ -624,8 +744,13 @@ bg_color = Color(0, 0, 0, 0.196078)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54lqu"]
 bg_color = Color(0, 0, 0, 0.196078)
 
-[node name="Binder" type="Node2D" node_paths=PackedStringArray("sprite_node", "amount_node", "amount_lbl")]
+[node name="Binder" type="Node2D" node_paths=PackedStringArray("completed_node", "sprite_node", "amount_node", "amount_lbl")]
 script = ExtResource("1_1h60k")
+completed_node = NodePath("Cover/Completed")
+completed_14 = ExtResource("7_x6f7h")
+completed_24 = ExtResource("3_gqf6m")
+completed_34 = ExtResource("4_q0t0i")
+completed_44 = ExtResource("5_iax7d")
 sprite_node = [NodePath("Page/Page1/Slot_aa"), NodePath("Page/Page1/Slot_bb"), NodePath("Page/Page1/Slot_cc"), NodePath("Page/Page1/Slot_dd"), NodePath("Page/Page1/Slot_ee"), NodePath("Page/Page1/Slot_ff"), NodePath("Page/Page1/Slot_gg"), NodePath("Page/Page1/Slot_hh"), NodePath("Page/Page1/Slot_ii"), NodePath("Page/Page2/Slot_jj"), NodePath("Page/Page2/Slot_kk"), NodePath("Page/Page2/Slot_ll"), NodePath("Page/Page2/Slot_mm"), NodePath("Page/Page2/Slot_nn"), NodePath("Page/Page2/Slot_oo"), NodePath("Page/Page2/Slot_pp"), NodePath("Page/Page2/Slot_qq"), NodePath("Page/Page2/Slot_rr"), NodePath("Page/Page3/Slot_ss"), NodePath("Page/Page3/Slot_tt"), NodePath("Page/Page3/Slot_uu"), NodePath("Page/Page3/Slot_vv"), NodePath("Page/Page3/Slot_ww"), NodePath("Page/Page3/Slot_xx"), NodePath("Page/Page3/Slot_yy"), NodePath("Page/Page3/Slot_zz"), NodePath("Page/Page3/Slot_ex_promo"), NodePath("Page/Page4/Slot_ex_misprint"), NodePath("Cover/Driver"), NodePath("Cover/Credit")]
 amount_node = [NodePath("Page/Page1/AmountRight/aa"), NodePath("Page/Page1/AmountRight/bb"), NodePath("Page/Page1/AmountRight/cc"), NodePath("Page/Page1/AmountRight/dd"), NodePath("Page/Page1/AmountRight/ee"), NodePath("Page/Page1/AmountRight/ff"), NodePath("Page/Page1/AmountRight/gg"), NodePath("Page/Page1/AmountRight/hh"), NodePath("Page/Page1/AmountRight/ii"), NodePath("Page/Page2/AmountLeft/jj"), NodePath("Page/Page2/AmountLeft/kk"), NodePath("Page/Page2/AmountLeft/ll"), NodePath("Page/Page2/AmountLeft/mm"), NodePath("Page/Page2/AmountLeft/nn"), NodePath("Page/Page2/AmountLeft/oo"), NodePath("Page/Page2/AmountLeft/pp"), NodePath("Page/Page2/AmountLeft/qq"), NodePath("Page/Page2/AmountLeft/rr"), NodePath("Page/Page3/AmountRight2/ss"), NodePath("Page/Page3/AmountRight2/tt"), NodePath("Page/Page3/AmountRight2/uu"), NodePath("Page/Page3/AmountRight2/vv"), NodePath("Page/Page3/AmountRight2/ww"), NodePath("Page/Page3/AmountRight2/xx"), NodePath("Page/Page3/AmountRight2/yy"), NodePath("Page/Page3/AmountRight2/zz"), NodePath("Page/Page3/AmountRight2/ex_promo"), NodePath("Page/Page4/AmountLeft2/ex_misprint")]
 amount_lbl = [NodePath("Page/Page1/AmountRight/aa/aa"), NodePath("Page/Page1/AmountRight/bb/bb"), NodePath("Page/Page1/AmountRight/cc/cc"), NodePath("Page/Page1/AmountRight/dd/dd"), NodePath("Page/Page1/AmountRight/ee/ee"), NodePath("Page/Page1/AmountRight/ff/ff"), NodePath("Page/Page1/AmountRight/gg/gg"), NodePath("Page/Page1/AmountRight/hh/hh"), NodePath("Page/Page1/AmountRight/ii/ii"), NodePath("Page/Page2/AmountLeft/jj/jj"), NodePath("Page/Page2/AmountLeft/kk/kk"), NodePath("Page/Page2/AmountLeft/ll/ll"), NodePath("Page/Page2/AmountLeft/mm/mm"), NodePath("Page/Page2/AmountLeft/nn/nn"), NodePath("Page/Page2/AmountLeft/oo/oo"), NodePath("Page/Page2/AmountLeft/pp/pp"), NodePath("Page/Page2/AmountLeft/qq/qq"), NodePath("Page/Page2/AmountLeft/rr/rr"), NodePath("Page/Page3/AmountRight2/ss/ss"), NodePath("Page/Page3/AmountRight2/tt/tt"), NodePath("Page/Page3/AmountRight2/uu/uu"), NodePath("Page/Page3/AmountRight2/vv/vv"), NodePath("Page/Page3/AmountRight2/ww/ww"), NodePath("Page/Page3/AmountRight2/xx/xx"), NodePath("Page/Page3/AmountRight2/yy/yy"), NodePath("Page/Page3/AmountRight2/zz/zz"), NodePath("Page/Page3/AmountRight2/ex_promo/ex_promo"), NodePath("Page/Page4/AmountLeft2/ex_misprint/ex_misprint")]
@@ -678,91 +803,91 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "01"
+text = "001"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "02"
+text = "002"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "03"
+text = "003"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "04"
+text = "004"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "05"
+text = "005"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "06"
+text = "006"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label7" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "07"
+text = "007"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label8" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "08"
+text = "008"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label9" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "09"
+text = "009"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label10" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "10"
+text = "010"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label11" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "11"
+text = "011"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label12" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "12"
+text = "012"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label13" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename1"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "13"
+text = "013"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
@@ -866,91 +991,91 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "14"
+text = "014"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "15"
+text = "015"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "16"
+text = "016"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "17"
+text = "017"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "18"
+text = "018"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "19"
+text = "019"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label7" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "20"
+text = "020"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label8" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "21"
+text = "021"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label9" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "22"
+text = "022"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label10" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "23"
+text = "023"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label11" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "24"
+text = "024"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label12" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "25"
+text = "025"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
 [node name="Label13" type="Label" parent="Cover/PriceSheet/Control/HBoxContainer/Codename2"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "26"
+text = "026"
 label_settings = SubResource("LabelSettings_y7qhl")
 vertical_alignment = 1
 
@@ -1061,6 +1186,12 @@ layout_mode = 2
 text = "$500.0"
 label_settings = SubResource("LabelSettings_guwlp")
 vertical_alignment = 1
+
+[node name="Completed" type="Sprite2D" parent="Cover"]
+visible = false
+z_index = 1
+position = Vector2(640, 360)
+texture = ExtResource("7_x6f7h")
 
 [node name="Page" type="Node2D" parent="."]
 
@@ -2543,6 +2674,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_54lqu")
 position = Vector2(680, 360)
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("6_o0bvp")
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="pressed" from="debug/test 2" to="." method="_on_test_2_pressed"]
 [connection signal="pressed" from="debug/test 3" to="." method="_on_test_3_pressed"]

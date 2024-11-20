@@ -12,6 +12,10 @@ extends Control
 
 signal buy(Control)
 signal sell(Control)
+signal cannot_buy(Control)
+signal mouse_in_sell
+signal mouse_out_buy_btn
+signal mouse_out_sell_btn
 signal animation_finished
 
 func _animation_finished():
@@ -30,11 +34,6 @@ func _on_sell_btn_pressed() -> void:
 	
 	await animation_finished
 	sell.emit(self)
-	
-	#if sell_btn.disabled == false:
-		#animation_palyer.play("price_wiggle")
-	#else:
-		#animation_palyer.stop()
 
 ##wiggle animation
 func _price_wiggle_up():
@@ -47,13 +46,18 @@ func _price_wiggle_down():
 func _on_buy_btn_mouse_entered() -> void:
 	if buy_btn.disabled == false:
 		animation_palyer.play("price_wiggle")
+	else:
+		cannot_buy.emit(self)
 func _on_buy_btn_mouse_exited() -> void:
+	mouse_out_buy_btn.emit()
 	if buy_btn.disabled == false:
 		animation_palyer.stop()
 
 func _on_sell_btn_mouse_entered() -> void:
+	mouse_in_sell.emit(self)
 	if sell_btn.disabled == false:
 		animation_palyer.play("price_wiggle")
 func _on_sell_btn_mouse_exited() -> void:
+	mouse_out_sell_btn.emit()
 	if sell_btn.disabled == false:
 		animation_palyer.stop()

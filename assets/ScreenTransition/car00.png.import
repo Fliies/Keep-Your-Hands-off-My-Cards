@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbd745ybp76ia"
-path="res://.godot/imported/op-menu-sheet.png-3484496d9861cb77ec7656cbd12f4dc6.ctex"
+uid="uid://cx0lxymk1sahq"
+path="res://.godot/imported/car00.png-f9e268b3c5ca5eb96353c44318dc191c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/StartMenu/op-menu-sheet.png"
-dest_files=["res://.godot/imported/op-menu-sheet.png-3484496d9861cb77ec7656cbd12f4dc6.ctex"]
+source_file="res://assets/ScreenTransition/car00.png"
+dest_files=["res://.godot/imported/car00.png-f9e268b3c5ca5eb96353c44318dc191c.ctex"]
 
 [params]
 

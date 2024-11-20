@@ -1,29 +1,24 @@
 extends Control
 
-class_name ShopTrading
+class_name ShopCardlist
 
-@onready var card_censor:= load("res://Cards/CardSprite/card-censor-4.png")
-@onready var card_soldout:= load("res://Cards/CardSprite/card-soudout-2.png")
+@export var card_censor: Texture2D
+@export var card_soldout: Texture2D
 
-
-##ENTER TRADING / BUY or SELL btn
-# _update_slot_visual_n_btn
-	#SETUP visual card 
-		# sprite
-		# avialable
-		# soldout
-		# censor
-	#update buy n sell btn
-	#update amount
+@export var btm_lbl: Label
 
 @onready var card_grid:= %CardlistGrid
 @onready var cardlist_slot = card_grid.get_children()
 
-func _on_shop_cardlist_btn_pressed() -> void:
-	_update_all_slot_visual_n_btn()
+func _ready() -> void:
+	for node in cardlist_slot:
+		node.connect("cannot_buy", _on_cannot_buy)
+		node.connect("mouse_out_buy_btn", _on_mouse_out_btn)
+		node.connect("mouse_in_sell", _on_can_sell)
+		node.connect("mouse_out_sell_btn", _on_mouse_out_btn)
 
 ##SETUP 
-func _update_slot_visual_n_btn(codename:String, sprite_node:Sprite2D, censor_node:Sprite2D, buy_btn:Button, Sell_btn:Button, amount_lbl:Label, _shop_amount_lbl:Label):
+func _update_slot_visual(codename:String, sprite_node:Sprite2D, censor_node:Sprite2D, _buy_btn:Button, _Sell_btn:Button, _amount_lbl:Label, _shop_amount_lbl:Label):
 	##SETUP visual card 
 	# sprite
 	sprite_node.rotation_degrees = 0
@@ -42,7 +37,8 @@ func _update_slot_visual_n_btn(codename:String, sprite_node:Sprite2D, censor_nod
 		
 		censor_node.texture = card_soldout
 		censor_node.visible = true
-	
+
+func _update_slot_btn(codename:String, _sprite_node:Sprite2D, _censor_node:Sprite2D, buy_btn:Button, Sell_btn:Button, amount_lbl:Label, _shop_amount_lbl:Label):
 	##update BUY n SELL btn
 	#BUY_btn from money and shop_arr
 	if GlobalData.shop_arr.has(codename):
@@ -66,19 +62,21 @@ func _update_slot_visual_n_btn(codename:String, sprite_node:Sprite2D, censor_nod
 	
 	##update having amount
 	amount_lbl.text = str(GlobalData.collection_arr.count(codename))
-	
-	###update shop amount
-	#if GlobalData.shop_arr.count(codename) == 0:
-		#shop_amount_lbl.get_parent().visible = false
-	#else:
-		#shop_amount_lbl.get_parent().visible = true
-		#shop_amount_lbl.text = str(GlobalData.shop_arr.count(codename))
-	
+
 func _update_all_slot_visual_n_btn():
-	var index = 0
+	_update_all_slot_visual()
+	_update_all_slot_btn()
+
+func _update_all_slot_visual():
 	for codename in GlobalData.codename_arr:
-		_update_slot_visual_n_btn(codename, cardlist_slot[index].sprite, cardlist_slot[index].censor, cardlist_slot[index].buy_btn, cardlist_slot[index].sell_btn, cardlist_slot[index].amount_lbl, cardlist_slot[index].shop_amount_lbl)
-		index += 1
+		var index = GlobalData.codename_arr.find(codename)
+		_update_slot_visual(codename, cardlist_slot[index].sprite, cardlist_slot[index].censor, cardlist_slot[index].buy_btn, cardlist_slot[index].sell_btn, cardlist_slot[index].amount_lbl, cardlist_slot[index].shop_amount_lbl)
+
+func _update_all_slot_btn():
+	for codename in GlobalData.codename_arr:
+		var index = GlobalData.codename_arr.find(codename)
+		_update_slot_btn(codename, cardlist_slot[index].sprite, cardlist_slot[index].censor, cardlist_slot[index].buy_btn, cardlist_slot[index].sell_btn, cardlist_slot[index].amount_lbl, cardlist_slot[index].shop_amount_lbl)
+
 
 func _update_pricetag(codename:String, pricetag:Sprite2D, price_lbl:Label):
 	#price lbl
@@ -136,11 +134,18 @@ func _buy_card(codename:String):
 	GlobalData.shop_arr.erase(codename)
 	GlobalData.collection_arr.append(codename)
 	
-	#handle buy n sell btn
-	_update_all_slot_visual_n_btn()
-	
 	#handle money
 	GlobalData.money_current -= GlobalData.price_dict[codename]
+	
+	#handle buy n sell btn
+	_update_all_slot_btn()
+	#var index = GlobalData.codename_arr.find(codename)
+	#_update_slot_btn(codename, cardlist_slot[index].sprite, cardlist_slot[index].censor, cardlist_slot[index].buy_btn, cardlist_slot[index].sell_btn, cardlist_slot[index].amount_lbl, cardlist_slot[index].shop_amount_lbl)
+	
+	#update visual
+	var index = GlobalData.codename_arr.find(codename)
+	_update_slot_visual(codename, cardlist_slot[index].sprite, cardlist_slot[index].censor, cardlist_slot[index].buy_btn, cardlist_slot[index].sell_btn, cardlist_slot[index].amount_lbl, cardlist_slot[index].shop_amount_lbl)
+	
 	
 	#update seen_arr
 	GlobalData.seen_arr.append(codename)
@@ -150,11 +155,18 @@ func _sell_card(codename:String):
 	GlobalData.collection_arr.erase(codename)
 	GlobalData.shop_arr.append(codename)
 	
-	#handle buy n sell btn
-	_update_all_slot_visual_n_btn()
-	
 	#handle money
 	GlobalData.money_current += GlobalData.price_dict[codename]
+	
+	#handle buy n sell btn
+	_update_all_slot_btn()
+	#var index = GlobalData.codename_arr.find(codename)
+	#_update_slot_btn(codename, cardlist_slot[index].sprite, cardlist_slot[index].censor, cardlist_slot[index].buy_btn, cardlist_slot[index].sell_btn, cardlist_slot[index].amount_lbl, cardlist_slot[index].shop_amount_lbl)
+	
+	#update visual
+	var index = GlobalData.codename_arr.find(codename)
+	_update_slot_visual(codename, cardlist_slot[index].sprite, cardlist_slot[index].censor, cardlist_slot[index].buy_btn, cardlist_slot[index].sell_btn, cardlist_slot[index].amount_lbl, cardlist_slot[index].shop_amount_lbl)
+	
 
 #BTN in slot
 func _on_cardlist_slot_buy(node: Variant) -> void:
@@ -163,3 +175,32 @@ func _on_cardlist_slot_buy(node: Variant) -> void:
 func _on_cardlist_slot_sell(node: Variant) -> void:
 	var index = cardlist_slot.find(node)
 	_sell_card(GlobalData.codename_arr[index])
+
+#mouse in buy_btn
+func _on_cannot_buy(node: Variant) -> void:
+	var index = cardlist_slot.find(node)
+	if GlobalData.shop_arr.has(GlobalData.codename_arr[index]):
+		btm_lbl.label_settings.font_color = Color.ORANGE_RED
+		btm_lbl.text = "not enough money"
+	else:
+		btm_lbl.label_settings.font_color = Color.ORANGE
+		btm_lbl.text = "out of stock"
+
+#mouse in sell
+func _on_can_sell(node: Variant):
+	var index = cardlist_slot.find(node)
+	if GlobalData.collection_arr.has(GlobalData.codename_arr[index]):
+		btm_lbl.label_settings.font_color = Color.SEA_GREEN
+		btm_lbl.text = "sell a card for $%.2f" % GlobalData.price_dict[GlobalData.codename_arr[index]]
+	else:
+		btm_lbl.label_settings.font_color = Color.BLACK
+		btm_lbl.text = "C l i c k   a   c a r d   t o   b u y"
+
+#idle 
+func _on_mouse_out_btn() -> void:
+	btm_lbl.label_settings.font_color = Color.BLACK
+	btm_lbl.text = "C l i c k   a   c a r d   t o   b u y"
+
+##update all visual and btn
+func _on_shop_cardlist_btn_pressed() -> void:
+	_update_all_slot_visual_n_btn()

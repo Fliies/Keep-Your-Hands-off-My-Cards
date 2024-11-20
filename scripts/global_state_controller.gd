@@ -3,7 +3,7 @@ extends Node
 class_name GameStateController
 
 @onready var current_state: GameState = GameState.STARTING_MENU
-@onready var prev_state: GameState = GameState.STANDBY
+@onready var prev_state: GameState 
 
 enum GameState {
 	STARTING_MENU,
