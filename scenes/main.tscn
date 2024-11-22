@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://tvuo7n21uk0v"]
+[gd_scene load_steps=140 format=3 uid="uid://tvuo7n21uk0v"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_fbqc6"]
 [ext_resource type="Texture2D" uid="uid://rka6t0pwsqf5" path="res://assets/temp/temp_BG.png" id="1_uofni"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://bqt8ghphpr5og" path="res://scripts/to_house_btn.tres" id="3_pb008"]
 [ext_resource type="Texture2D" uid="uid://bbtwwgi2r38dy" path="res://assets/BaseBG.png" id="4_i4cx4"]
 [ext_resource type="Script" path="res://scripts/card_display.gd" id="4_w3d84"]
+[ext_resource type="Texture2D" uid="uid://xm8iln0qu2oo" path="res://assets/UI/ui_credit.png" id="5_gon1x"]
 [ext_resource type="Resource" uid="uid://pmsrqvokfj3s" path="res://resource/card_stat.tres" id="5_ijqaw"]
 [ext_resource type="Texture2D" uid="uid://ce67qce7ro4ec" path="res://Cards/CardSprite/cardback.png" id="6_xvwsk"]
 [ext_resource type="Texture2D" uid="uid://b126g00xpcysr" path="res://Cards/CardSprite/aa.png" id="8_b015w"]
@@ -18,16 +19,21 @@
 [ext_resource type="Script" path="res://scripts/main_action_btn.gd" id="12_nkjrv"]
 [ext_resource type="Texture2D" uid="uid://beggerq7w7bmw" path="res://assets/Shop/icon_collected.png" id="13_tinv2"]
 [ext_resource type="Texture2D" uid="uid://dkpyw0d3dws0s" path="res://assets/MainButton/new-button_sell-hover-02.png" id="17_s46u8"]
+[ext_resource type="Texture2D" uid="uid://tj1roiibwddy" path="res://assets/MainButton/TempKeepnSell/button_base_openpack.png" id="18_biufw"]
 [ext_resource type="Texture2D" uid="uid://rksasq1jsw31" path="res://assets/temp/temp_seen.png" id="19_1amtk"]
 [ext_resource type="Texture2D" uid="uid://dx1n5qmv2fgbq" path="res://assets/MainButton/new-button_sell.png" id="20_067yv"]
 [ext_resource type="Shader" path="res://scripts/shop.gdshader" id="20_b1c5h"]
 [ext_resource type="Texture2D" uid="uid://djhcluiicykrw" path="res://assets/MainButton/new-button_keep-hover-02.png" id="20_pn7mt"]
 [ext_resource type="Texture2D" uid="uid://b052aubsngmki" path="res://assets/MainButton/new-button_keep.png" id="23_gf2lb"]
 [ext_resource type="PackedScene" uid="uid://tm88aqtbycyg" path="res://scenes/shop.tscn" id="24_87d07"]
+[ext_resource type="Texture2D" uid="uid://cutyyh7f8ytdl" path="res://assets/UI/ui_packs.png" id="26_her6m"]
 [ext_resource type="Theme" uid="uid://dgrra5g3re35i" path="res://scripts/to_shop_btn.tres" id="26_sw436"]
+[ext_resource type="Texture2D" uid="uid://edwmkntgy6vi" path="res://assets/UI/ui_money.png" id="27_4f56w"]
+[ext_resource type="Texture2D" uid="uid://bcw6senb3h3y3" path="res://assets/callmom-hover.png" id="27_5cqst"]
 [ext_resource type="Texture2D" uid="uid://d076tisn4hasx" path="res://assets/Binder/btn/binder_btn-hover.png" id="27_63k6a"]
 [ext_resource type="FontFile" uid="uid://bafa8t46i5ktu" path="res://assets/font/ChelseaMarket-Regular.ttf" id="27_lx64h"]
 [ext_resource type="Texture2D" uid="uid://c66t5rxruwyrr" path="res://assets/Binder/btn/binder_btn-normal.png" id="28_3vi3b"]
+[ext_resource type="Texture2D" uid="uid://dg71favynsx00" path="res://assets/callmom-normal.png" id="28_vqx1a"]
 
 [sub_resource type="Animation" id="Animation_1uqbn"]
 length = 0.001
@@ -873,26 +879,59 @@ font_size = 40
 outline_size = 10
 outline_color = Color(1, 0.521569, 0.760784, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_030v0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w453v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c3fqj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ggajf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a34o7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m5h6i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ln2o"]
+texture = ExtResource("27_5cqst")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xpxx7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6mwbi"]
+texture = ExtResource("28_vqx1a")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r2hq2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h7go8"]
+texture = ExtResource("28_vqx1a")
+
 [sub_resource type="LabelSettings" id="LabelSettings_8p1mj"]
 font = ExtResource("27_lx64h")
-font_size = 50
+font_size = 45
 font_color = Color(0, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_e0e0p"]
 font = ExtResource("27_lx64h")
-font_size = 25
+font_size = 20
 font_color = Color(0, 1, 0.380392, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3m6ye"]
 font = ExtResource("27_lx64h")
-font_size = 50
-font_color = Color(0, 0, 1, 1)
+font_size = 60
+font_color = Color(0, 0.866667, 1, 1)
+outline_size = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_pj2g6"]
+font = ExtResource("27_lx64h")
+font_size = 60
+font_color = Color(0, 0.866667, 1, 1)
+outline_size = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gy4jd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dfqjw"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_01lv4"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dogdn"]
+texture = ExtResource("28_3vi3b")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4t6pi"]
 
@@ -939,11 +978,15 @@ font_color = Color(1, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_fdptd"]
 font_color = Color(0, 0, 0, 1)
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("gassfee_lbl")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("gassfee_lbl", "call_mom_btn", "ui_money_rect")]
 script = ExtResource("1_fbqc6")
 to_shop_theme = ExtResource("26_sw436")
 to_house_theme = ExtResource("3_pb008")
 gassfee_lbl = NodePath("UI/UI/GasfeeLbl")
+call_mom_btn = NodePath("UI/UI/UpperUiMargin/UpperUIVbox/HBoxLeft/CallMomBtn")
+ui_money_rect = NodePath("UI/UI/UpperUiMargin/UpperUIVbox/HBoxLeft/MoneyIcon/MoneySprite")
+ui_money = ExtResource("27_4f56w")
+ui_credit = ExtResource("5_gon1x")
 
 [node name="Mockup" type="Node2D" parent="."]
 visible = false
@@ -1100,6 +1143,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_g3hig")
 shortcut = SubResource("Shortcut_5lfax")
 shortcut_feedback = false
 shortcut_in_tooltip = false
+icon = ExtResource("18_biufw")
 
 [node name="SellBtn" type="Button" parent="UI/MainActionBtn"]
 unique_name_in_owner = true
@@ -1208,7 +1252,6 @@ visible = false
 
 [node name="Binder" parent="UI" instance=ExtResource("9_4ap63")]
 unique_name_in_owner = true
-visible = false
 
 [node name="UI" type="Control" parent="UI"]
 layout_mode = 3
@@ -1232,37 +1275,108 @@ theme_override_constants/margin_top = 10
 [node name="UpperUIVbox" type="HBoxContainer" parent="UI/UI/UpperUiMargin"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 40
 
-[node name="Money" type="VBoxContainer" parent="UI/UI/UpperUiMargin/UpperUIVbox"]
+[node name="HBoxLeft" type="HBoxContainer" parent="UI/UI/UpperUiMargin/UpperUIVbox"]
+custom_minimum_size = Vector2(620, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="CallMomBtn" type="Button" parent="UI/UI/UpperUiMargin/UpperUIVbox/HBoxLeft"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_030v0")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_w453v")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_c3fqj")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ggajf")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_a34o7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_m5h6i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6ln2o")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_xpxx7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6mwbi")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_r2hq2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_h7go8")
+
+[node name="MoneyIcon" type="Control" parent="UI/UI/UpperUiMargin/UpperUIVbox/HBoxLeft"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="MoneySprite" type="TextureRect" parent="UI/UI/UpperUiMargin/UpperUIVbox/HBoxLeft/MoneyIcon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -100.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 3.0
+texture = ExtResource("27_4f56w")
+stretch_mode = 2
+
+[node name="MoneyLbl" type="VBoxContainer" parent="UI/UI/UpperUiMargin/UpperUIVbox/HBoxLeft"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
 mouse_filter = 2
 
-[node name="MoneyCurrent" type="Label" parent="UI/UI/UpperUiMargin/UpperUIVbox/Money"]
+[node name="MoneyCurrent" type="Label" parent="UI/UI/UpperUiMargin/UpperUIVbox/HBoxLeft/MoneyLbl"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-text = "$50"
+text = "$-550"
 label_settings = SubResource("LabelSettings_8p1mj")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="MoneyAdded" type="Label" parent="UI/UI/UpperUiMargin/UpperUIVbox/Money"]
+[node name="MoneyAdded" type="Label" parent="UI/UI/UpperUiMargin/UpperUIVbox/HBoxLeft/MoneyLbl"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "( + $20)"
+text = "( + $1.45 )"
 label_settings = SubResource("LabelSettings_e0e0p")
 horizontal_alignment = 2
 
-[node name="PackHave" type="Label" parent="UI/UI/UpperUiMargin/UpperUIVbox"]
-unique_name_in_owner = true
+[node name="HBoxRight" type="HBoxContainer" parent="UI/UI/UpperUiMargin/UpperUIVbox"]
+custom_minimum_size = Vector2(620, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-text = "10 PACKS"
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="PacksUI" type="TextureRect" parent="UI/UI/UpperUiMargin/UpperUIVbox/HBoxRight"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("26_her6m")
+stretch_mode = 2
+
+[node name="PackHave" type="Label" parent="UI/UI/UpperUiMargin/UpperUIVbox/HBoxRight"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 0
+text = "x 10"
 label_settings = SubResource("LabelSettings_3m6ye")
+
+[node name="PackLeft" type="Label" parent="UI/UI/UpperUiMargin/UpperUIVbox/HBoxRight"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 0
+text = "PACK(s) left"
+label_settings = SubResource("LabelSettings_pj2g6")
 
 [node name="BinderBtn" type="Button" parent="UI/UI"]
 unique_name_in_owner = true
@@ -1274,7 +1388,7 @@ offset_bottom = 719.0
 focus_mode = 0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gy4jd")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_dfqjw")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_01lv4")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_dogdn")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_4t6pi")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ekf53")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_n80nu")
@@ -1302,7 +1416,7 @@ offset_left = 25.0
 offset_top = 100.0
 offset_right = 230.0
 offset_bottom = 136.0
-text = "( gas fee -$3 )"
+text = "( -$3 for gas )"
 label_settings = SubResource("LabelSettings_aepkp")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1318,6 +1432,7 @@ mouse_filter = 2
 script = ExtResource("9_picq5")
 
 [node name="Start" type="Button" parent="UI/debug"]
+visible = false
 layout_mode = 0
 offset_left = 1084.0
 offset_top = 12.0
@@ -1327,6 +1442,7 @@ focus_mode = 0
 text = "START : 10  packs, $20"
 
 [node name="test" type="Button" parent="UI/debug"]
+visible = false
 layout_mode = 1
 offset_left = 381.0
 offset_top = 3.0
@@ -1720,6 +1836,7 @@ focus_mode = 0
 text = "Go back Home"
 
 [node name="AddMoney" type="Button" parent="UI/debug"]
+visible = false
 layout_mode = 0
 offset_left = 275.0
 offset_top = 5.0
@@ -1734,6 +1851,7 @@ text = "+ money"
 [connection signal="pressed" from="UI/MainActionBtn/KeepBtn" to="UI/MainActionBtn" method="_on_keep_btn_pressed"]
 [connection signal="pressed" from="UI/MainActionBtn/FlipBtn" to="UI/MainActionBtn" method="_on_flip_btn_pressed"]
 [connection signal="buy_card" from="UI/Shop" to="." method="_on_shop_buy_card"]
+[connection signal="pressed" from="UI/UI/UpperUiMargin/UpperUIVbox/HBoxLeft/CallMomBtn" to="." method="_on_call_mom_btn_pressed"]
 [connection signal="pressed" from="UI/UI/BinderBtn" to="." method="_on_binder_btn_pressed"]
 [connection signal="pressed" from="UI/UI/ShopNHouseBtn" to="." method="_on_shop_n_house_btn_pressed"]
 [connection signal="pressed" from="UI/debug/Start" to="UI/debug" method="_on_start_pressed"]

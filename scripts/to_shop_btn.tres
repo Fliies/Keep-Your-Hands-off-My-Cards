@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=18 format=4 uid="uid://dgrra5g3re35i"]
+[gd_resource type="Theme" load_steps=19 format=4 uid="uid://dgrra5g3re35i"]
 
 [ext_resource type="Texture2D" uid="uid://hsure1tk70bt" path="res://assets/to_shop_hover.png" id="1_mqxvy"]
+[ext_resource type="Texture2D" uid="uid://2wue0go7ueju" path="res://assets/to_shop_disabled.png" id="1_msjd0"]
 [ext_resource type="Texture2D" uid="uid://cp0h33sa2pukk" path="res://assets/to_shop_nornal.png" id="2_om4rd"]
 [ext_resource type="Texture2D" uid="uid://df0lykeolosry" path="res://assets/to_shop_pressed.png" id="3_7jcf0"]
 
@@ -2010,7 +2011,8 @@ cache/0/50/5/glyphs/19/size = Vector2(30, 42)
 cache/0/50/5/glyphs/19/uv_rect = Rect2(63, 1, 30, 42)
 cache/0/50/5/glyphs/19/texture_idx = 0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7i1w6"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iw1oa"]
+texture = ExtResource("1_msjd0")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hrire"]
 
@@ -2044,7 +2046,7 @@ Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
 Button/fonts/font = SubResource("FontFile_yiosc")
 Button/icons/icon = null
-Button/styles/disabled = SubResource("StyleBoxEmpty_7i1w6")
+Button/styles/disabled = SubResource("StyleBoxTexture_iw1oa")
 Button/styles/focus = SubResource("StyleBoxEmpty_hrire")
 Button/styles/hover = SubResource("StyleBoxTexture_aef51")
 Button/styles/normal = SubResource("StyleBoxTexture_by5us")

@@ -6,6 +6,10 @@ signal show_cardback
 @export var to_shop_theme: Theme
 @export var to_house_theme: Theme
 @export var gassfee_lbl: Label
+@export var call_mom_btn: Button
+@export var ui_money_rect:TextureRect
+@export var ui_money:Texture2D
+@export var ui_credit: Texture2D
 
 @onready var shop:= %Shop
 @onready var shop_n_house_btn:= %ShopNHouseBtn
@@ -32,25 +36,18 @@ signal show_cardback
 
 @onready var ui:= %UI
 
+#@onready var credit_cutscene:= $CreditCutscene
+
 #@onready var icon_seen:= %SeenSprite
 @onready var icon_collected:= %CollectedSprite
 
-func _setup_check():
-	if GlobalData.newgame == true:
-		##new game
-		GlobalData.newgame = false
-		#clear collection
-		GlobalData.collection_arr.clear()
-		#add starting pack
-		GlobalData.packcount_box = GlobalData.STARTING_packs
-		#add starting money
-		GlobalData.money_current = GlobalData.STARTING_money
-	else:
-		#continue
-		pass
 
 func _ready() -> void:
-	_setup_check()
+	_main_setup()
+
+func _main_setup():
+	##credit
+	#credit_cutscene.visible = false
 	
 	##BTN
 	btn_open_pack.visible = false
@@ -64,8 +61,12 @@ func _ready() -> void:
 	btn_flip.disabled = true
 	
 	shop_n_house_btn.theme = to_shop_theme
-	shop_n_house_btn.visible = true #temp
+	shop_n_house_btn.visible = false #temp
 	gassfee_lbl.visible = false
+	
+	call_mom_btn.disabled = true
+	
+	%HintLbl.visible = false
 	
 	##hand and pack
 	pack_sprite.visible = false
@@ -82,44 +83,110 @@ func _ready() -> void:
 	
 	##SHOP
 	shop.visible = false
+	
+	##CHECKing
+	if GlobalData.newgame == true:
+		##new game
+		GlobalData.newgame = false
+		#no debt
+		GlobalData.debt = false
+		#no completed
+		GlobalData.completed = false
+		#no driver
+		GlobalData.driver = false
+		#Yes shop promo
+		GlobalData.shop_promo = true
+		
+		#clear collection
+		GlobalData.collection_arr.clear()
+		#add starting pack
+		GlobalData.packcount_box = GlobalData.STARTING_packs
+		#add starting money
+		GlobalData.money_current = GlobalData.STARTING_money
+	else:
+		#continue
+		pass
 
 func _process(_delta: float) -> void:
 	##debug 
 	_debug_process()
 	
+	##DEBT btn and money
+	if GlobalData.debt == false:
+		ui_money_rect.texture = ui_money
+		if GlobalData.money_current <= 3:
+			if GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
+				call_mom_btn.disabled = false
+			elif GlobalStateController.current_state == GlobalStateController.GameState.BINDER:
+				call_mom_btn.disabled = false
+			elif GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU:
+				call_mom_btn.disabled = false
+			elif GlobalStateController.current_state == GlobalStateController.GameState.SHOP_OFFER:
+				call_mom_btn.disabled = false
+			elif GlobalStateController.current_state == GlobalStateController.GameState.SHOP_CARDLIST:
+				call_mom_btn.disabled = false
+			elif GlobalStateController.current_state == GlobalStateController.GameState.ANIMATION:
+				call_mom_btn.disabled = true
+		else:
+			call_mom_btn.disabled = true
+	else:
+		ui_money_rect.texture = ui_credit
+		if GlobalData.money_current <= 100:
+			GlobalData.money_current = GlobalData.money_mom
+	
 	##BINDER BTN
 	if GlobalStateController.current_state == GlobalStateController.GameState.ANIMATION:
-		binder_btn.visible = false
+		#binder_btn.visible = false
 		binder_btn.disabled = true
 	else:
 		binder_btn.visible = true
 		binder_btn.disabled = false
 	
-	#to SHOP n HOUSE btn
+	##to SHOP n HOUSE btn
 	if GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
-		gassfee_lbl.visible = true
-	else:
-		gassfee_lbl.visible = false
-	if GlobalStateController.current_state == GlobalStateController.GameState.BINDER:
+		if GlobalData.debt == false:
+			if (GlobalData.money_current + GlobalData.money_added) <= 3:
+				shop_n_house_btn.disabled = true
+				shop_n_house_btn.visible = true
+				gassfee_lbl.visible = false
+			else:
+				shop_n_house_btn.disabled = false
+				shop_n_house_btn.visible = true
+				gassfee_lbl.visible = true
+		else:
+			shop_n_house_btn.disabled = false
+			shop_n_house_btn.visible = true
+			gassfee_lbl.visible = true
+	elif GlobalStateController.current_state == GlobalStateController.GameState.BINDER:
 		shop_n_house_btn.disabled = true
 		shop_n_house_btn.visible = false
-		#gassfee_lbl.visible = false
+		gassfee_lbl.visible = false
 	elif GlobalStateController.current_state == GlobalStateController.GameState.ANIMATION:
 		shop_n_house_btn.disabled = true
 		shop_n_house_btn.visible = false
-		#gassfee_lbl.visible = false
+		gassfee_lbl.visible = false
 	elif GlobalStateController.current_state == GlobalStateController.GameState.OPENING_BACK:
 		shop_n_house_btn.disabled = true
 		shop_n_house_btn.visible = false
-		#gassfee_lbl.visible = false
+		gassfee_lbl.visible = false
 	elif GlobalStateController.current_state == GlobalStateController.GameState.OPENING_FRONT:
 		shop_n_house_btn.disabled = true
 		shop_n_house_btn.visible = false
-		#gassfee_lbl.visible = false
-	else:
+		gassfee_lbl.visible = false
+	elif GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU:
 		shop_n_house_btn.disabled = false
 		shop_n_house_btn.visible = true
-		#gassfee_lbl.visible = true
+		gassfee_lbl.visible = false
+	elif GlobalStateController.current_state == GlobalStateController.GameState.SHOP_OFFER:
+		shop_n_house_btn.disabled = false
+		shop_n_house_btn.visible = true
+		gassfee_lbl.visible = false
+	elif GlobalStateController.current_state == GlobalStateController.GameState.SHOP_CARDLIST:
+		shop_n_house_btn.disabled = false
+		shop_n_house_btn.visible = true
+		gassfee_lbl.visible = false
+	
+	
 	
 	##open pack btn
 	if GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
@@ -225,13 +292,20 @@ func _binder_handle():
 func _on_shop_n_house_btn_pressed() -> void:
 	##driver 1st time 
 	if GlobalData.driver == false:
+		GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 		GlobalData.driver = true
-		pass
-	
+		##play animation
+		binder._first_driver()
+		
+		##await animation end
+		await binder.first_driver
+		GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
 	
 	##to SHOP
 	if GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
 		shop_n_house_btn.disabled = true
+		#gas fee
+		GlobalData.money_current -= 3
 		#setup shop
 		shop._enter_shop()
 		GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
@@ -244,8 +318,6 @@ func _on_shop_n_house_btn_pressed() -> void:
 		await ScreenTransition.animation_finished
 		GlobalStateController.current_state = GlobalStateController.GameState.SHOP_MENU
 		shop_n_house_btn.theme = to_house_theme
-		gassfee_lbl.visible = false
-		shop_n_house_btn.disabled = false
 	
 	##to house
 	elif GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU or GlobalStateController.GameState.SHOP_OFFER or GlobalStateController.GameState.SHOP_CARDLIST:
@@ -255,13 +327,9 @@ func _on_shop_n_house_btn_pressed() -> void:
 		shop.visible = false
 		ScreenTransition.animation_player.play("BackFromShop_transition")
 		
-		#await ScreenTransition.new_scene
-		
 		await ScreenTransition.animation_finished
 		GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
 		shop_n_house_btn.theme = to_shop_theme
-		gassfee_lbl.visible = true
-		shop_n_house_btn.disabled = false
 	else:
 		print("err")
 
@@ -306,15 +374,32 @@ func _on_shop_buy_card() -> void:
 	print("BUY")
 	_completed_check()
 
-##compulsary open BINDER
+##FORCE open BINDER when completed
 func _binder_completed():
 	GlobalStateController.prev_state = GlobalStateController.current_state
 	GlobalStateController.current_state = GameStateController.GameState.ANIMATION
 	
 	binder._update_price_sheet()
 	
-	binder.visible = true
+	#binder.visible = true
 	binder_open = true
+
+
+##call Mom
+func _on_call_mom_btn_pressed() -> void:
+	GlobalStateController.prev_state = GlobalStateController.current_state
+	GlobalStateController.current_state = GameStateController.GameState.ANIMATION
+	##open binder to 1st page
+	
+	##animation
+	binder._first_callmom()
+	await binder.callmom_finished
+	##set DEBT
+	GlobalData.debt = true
+	call_mom_btn.disabled = true
+	
+	GlobalStateController.current_state = GlobalStateController.prev_state 
+
 
 
 ##DEBUG

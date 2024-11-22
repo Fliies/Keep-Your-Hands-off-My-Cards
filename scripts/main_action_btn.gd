@@ -35,7 +35,6 @@ func _process(_delta: float) -> void:
 func _on_sell_btn_pressed() -> void:
 	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 	
-	
 	#collect animation
 	main.animation_player_main.play("sell")
 	
@@ -122,6 +121,8 @@ func _on_flip_btn_pressed() -> void:
 	
 	main.btn_flip.visible = false
 	main.btn_flip.disabled = true
+	
+	main.card_display._last_card()
 	
 	main.animation_player_main.play("flip_main")
 	

@@ -1,6 +1,9 @@
 extends Node2D
 
-signal  flip_finished
+signal flip_finished
+signal first_driver
+signal animation_finished
+signal callmom_finished
 
 @export_category("COMPLETED")
 @export var completed_node:Sprite2D
@@ -32,11 +35,20 @@ signal  flip_finished
 @onready var inspect_btn:= $InspectBtn
 @onready var inspect_btn_arr: Array[Button]
 
+@onready var credit_cutscene:= $CreditCutscene
+
 func _ready() -> void:
+	#credit
+	credit_cutscene.visible = false
+	
 	#completed
 	completed_node.visible = false
 	
 	current_page = 1
+	page1.visible = true
+	page2.visible = false
+	page3.visible = false
+	page4.visible = false
 	
 	inspect.visible = false
 	inspect.disabled = true
@@ -77,11 +89,16 @@ func _first_completed(amount:int):
 	_update_all_slot_visual()
 	_update_inspect_btn_whole_page(5)
 	##to page 4
-	current_page = 4
+	current_page = 0
 	page1.visible = false
 	page2.visible = false
 	page3.visible = false
 	page4.visible = true
+	
+	left_btn.visible = false
+	left_btn.disabled = true
+	right_btn.visible = false
+	right_btn.disabled = true
 	
 	GlobalData.completed = true
 	if amount == 26:
@@ -95,16 +112,17 @@ func _first_completed(amount:int):
 	elif amount == 30:
 		completed_node.texture = completed_44
 	
+	##animation
+	animation_player.play("completed_before")
 	timer.start(1)
 	await timer.timeout
 	
-	##animation
 	animation_player.play("backward2")
 	await flip_finished
 	
-	current_page = 23
+	#current_page = 23
 	
-	timer.start(1)
+	timer.start(1.5)
 	await timer.timeout
 	
 	animation_player.play("backward1")
@@ -114,7 +132,7 @@ func _first_completed(amount:int):
 	
 	##inspect btn
 	
-	timer.start(1)
+	timer.start(1.5)
 	await timer.timeout
 	
 	
@@ -140,10 +158,99 @@ func _update_completed(amount):
 		30:
 			completed_node.texture = completed_44
 
+func _first_driver():
+	##add driver
+	GlobalData.collection_arr.append("ex_driver")
+	
+	##slot visual
+	#self.visible = false
+	_update_all_slot_visual()
+	
+	##to page 1
+	current_page = 1
+	page1.visible = true
+	page2.visible = false
+	page3.visible = false
+	page4.visible = false
+	
+	left_btn.visible = false
+	left_btn.disabled = true
+	right_btn.visible = false
+	right_btn.disabled = true
+	
+	#hide driver
+	$Cover/Driver.visible = false
+	
+	##animation
+	#self.visible = true
+	animation_player.play("completed_before")
+	await flip_finished
+	animation_player.play("driver_got")
+	await animation_finished
+	timer.start(1.0)
+	await timer.timeout
+	
+	self.visible = false
+	first_driver.emit()
+
+func _first_callmom():
+	##add credit
+	GlobalData.collection_arr.append("ex_credit")
+	
+	##slot visual
+	#self.visible = false
+	_update_all_slot_visual()
+	
+	##to page 1
+	current_page = 1
+	page1.visible = true
+	page2.visible = false
+	page3.visible = false
+	page4.visible = false
+	
+	left_btn.visible = false
+	left_btn.disabled = true
+	right_btn.visible = false
+	right_btn.disabled = true
+	
+	
+	
+	#hide driver
+	$Cover/Credit.visible = false
+	
+	##animation
+	self.visible = true
+	
+	credit_cutscene.visible = true
+	credit_cutscene.animation_player.play("callmom_1")
+	await credit_cutscene.animation_finished
+	credit_cutscene.animation_player.play("callmom_2")
+	await credit_cutscene.animation_finished
+	credit_cutscene.animation_player.play("callmom_3")
+	await credit_cutscene.animation_finished
+	credit_cutscene.animation_player.play("callmom_4")
+	
+	await credit_cutscene.show_credit
+	animation_player.play("credit_showing")
+	await animation_finished
+	timer.start(1)
+	await  timer.timeout
+	credit_cutscene.visible = false
+	animation_player.play("credit_to_slot")
+	
+	await animation_finished
+	timer.start(1)
+	await timer.timeout
+	
+	self.visible = false
+	callmom_finished.emit()
+
 
 ##signal
 func _flip_finished():
 	flip_finished.emit()
+func _animation_finished():
+	animation_finished.emit()
 
 ##slot Visual
 func _update_slot_visual(codename:String,index:int):
@@ -528,7 +635,7 @@ func _on_right_9_pressed() -> void:
 
 ##DEBUG
 func _on_test_2_pressed() -> void:
-	GlobalData.collection_arr.append_array(GlobalData.completed_arr)
+	GlobalData.collection_arr.append_array(GlobalData.codename_arr)
 
 func _on_test_3_pressed() -> void:
 	GlobalData.collection_arr.clear()

@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 		self.visible = true
 	
 	
-	_last_card()
+	#_last_card()
 
 func _last_card():
 	if GlobalData.opening_arr.size() <= 1:
@@ -44,10 +44,6 @@ func _update_all():
 		_update_price()
 		#update visual
 		_update_sprite()
-	#else:
-		#await main.animation_finished
-		#
-		#self.visible = false
 
 #assign card stat
 func _assign_cardstat():

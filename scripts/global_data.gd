@@ -93,8 +93,12 @@ extends Node
 @onready var collection_arr:= []
 @onready var seen_arr:= []
 @onready var shop_arr:= []
+
 @onready var money_current: float = 0.0
 @onready var money_added: float = 0.0
+@onready var money_mom: float = 1000000.0
+@onready var money_debt: float = 0.0
+
 @onready var card_sell_arr:= []
 
 @onready var price_dict: Dictionary = {}
@@ -111,6 +115,7 @@ extends Node
 @onready var driver:bool = false
 @onready var completed: bool = false
 @onready var hellmode:bool = false
+@onready var debt:bool = false
 
 
 func _ready() -> void:
@@ -289,6 +294,13 @@ func _setup_openingpack_arr():
 		_setup_cardpack_arr(box_cu_arr, box_rs_arr)
 
 func _setup_hellmode_openingpack_arr():
+	hellmode_arr.clear()
+	hellmode_arr.append_array(common_arr)
+	hellmode_arr.append_array(uncommon_arr)
+	hellmode_arr.append_array(rare_arr)
+	hellmode_arr.append_array(secret_arr)
+	hellmode_arr.append_array(misprint_arr)
+	
 	##use SINGLE_arr before BOX_arr
 	if packcount_single > 0:
 		packcount_single -= 1
