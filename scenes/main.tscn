@@ -1733,6 +1733,7 @@ text = "+ money"
 [connection signal="pressed" from="UI/MainActionBtn/SellBtn" to="UI/MainActionBtn" method="_on_sell_btn_pressed"]
 [connection signal="pressed" from="UI/MainActionBtn/KeepBtn" to="UI/MainActionBtn" method="_on_keep_btn_pressed"]
 [connection signal="pressed" from="UI/MainActionBtn/FlipBtn" to="UI/MainActionBtn" method="_on_flip_btn_pressed"]
+[connection signal="buy_card" from="UI/Shop" to="." method="_on_shop_buy_card"]
 [connection signal="pressed" from="UI/UI/BinderBtn" to="." method="_on_binder_btn_pressed"]
 [connection signal="pressed" from="UI/UI/ShopNHouseBtn" to="." method="_on_shop_n_house_btn_pressed"]
 [connection signal="pressed" from="UI/debug/Start" to="UI/debug" method="_on_start_pressed"]

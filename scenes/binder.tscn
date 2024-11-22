@@ -1,7 +1,8 @@
-[gd_scene load_steps=112 format=3 uid="uid://cpyorpde3h8g"]
+[gd_scene load_steps=113 format=3 uid="uid://cpyorpde3h8g"]
 
 [ext_resource type="Script" path="res://scripts/binder.gd" id="1_1h60k"]
 [ext_resource type="Texture2D" uid="uid://dd6reruiixn83" path="res://assets/Binder/Sprite/base.png" id="1_8gl4p"]
+[ext_resource type="Texture2D" uid="uid://bkgday7eh3sca" path="res://assets/Binder/completed-04.png" id="2_cw84w"]
 [ext_resource type="Texture2D" uid="uid://b5f7mxmv58of6" path="res://Cards/CardSprite/ex_credit.png" id="2_lmq52"]
 [ext_resource type="Texture2D" uid="uid://ccjkkbvhexqvi" path="res://assets/Binder/completed-24.png" id="3_gqf6m"]
 [ext_resource type="Texture2D" uid="uid://egyxicnxktrq" path="res://Cards/CardSprite/ex_driver.png" id="3_ve05a"]
@@ -747,6 +748,7 @@ bg_color = Color(0, 0, 0, 0.196078)
 [node name="Binder" type="Node2D" node_paths=PackedStringArray("completed_node", "sprite_node", "amount_node", "amount_lbl")]
 script = ExtResource("1_1h60k")
 completed_node = NodePath("Cover/Completed")
+completed_04 = ExtResource("2_cw84w")
 completed_14 = ExtResource("7_x6f7h")
 completed_24 = ExtResource("3_gqf6m")
 completed_34 = ExtResource("4_q0t0i")

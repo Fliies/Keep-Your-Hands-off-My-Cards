@@ -73,6 +73,11 @@ extends Node
 	"aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", "ii", "jj", "kk", "ll", "mm",
 	"nn", "oo", "pp", "qq", "rr", "ss", "tt", "uu", "vv", "ww", "xx", "yy", "zz",
 	]
+@onready var hellmode_arr:= [
+	"aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", "ii", "jj", "kk", "ll", "mm",
+	"nn", "oo", "pp", "qq", "rr", "ss", "tt", "uu", "vv", "ww", "xx", "yy", "zz",
+	"ex_misprint"
+]
 
 @onready var box_cu_arr:= []
 @onready var box_rs_arr:= []
@@ -105,6 +110,8 @@ extends Node
 @onready var newgame:bool = true
 @onready var driver:bool = false
 @onready var completed: bool = false
+@onready var hellmode:bool = false
+
 
 func _ready() -> void:
 	_update_price()
@@ -156,12 +163,27 @@ func _setup_cardpack_arr(cu_arr:Array, rs_arr:Array ):
 ## card 4, 5
 	var rng:= randi_range(1,10)
 	# (cu, cu) 1, 2, 3 
-	if total_open_packcount == 3: #garuntee rare 
-		rng = 8
+	##HELPER
 	if total_open_packcount == 10: #garuntee rare 
 		rng = 10
-	if total_open_packcount == 5: #garuntee misprint
+	
+	##STARTER
+	if total_open_packcount == 1: 
 		rng = 1
+	if total_open_packcount == 2: 
+		rng = 1
+	if total_open_packcount == 3: 
+		rng = 1
+	#garuntee rare 
+	if total_open_packcount == 3: 
+		rng = 8
+	if total_open_packcount == 4: 
+		rng = 8
+	#garuntee misprint
+	if total_open_packcount == 5: 
+		rng = 1
+	
+	
 	
 	if rng <= 7:
 		#normal case (cu, cu)
@@ -249,7 +271,8 @@ func _setup_openingpack_arr():
 		# add the rest of temp_rs_arr  to box_rs_arr
 		box_rs_arr.append_array(temp_rs_arr)
 	
-	#normal arr
+	##Make sure drop_list not empty
+		#normal arr
 	if box_cu_arr.size() == 0 and box_rs_arr.size() == 0:
 		_setup_droplist_arr(box_cu_arr, box_rs_arr)
 	
@@ -264,6 +287,26 @@ func _setup_openingpack_arr():
 	elif packcount_single == 0 and packcount_box > 0:
 		packcount_box -= 1
 		_setup_cardpack_arr(box_cu_arr, box_rs_arr)
+
+func _setup_hellmode_openingpack_arr():
+	##use SINGLE_arr before BOX_arr
+	if packcount_single > 0:
+		packcount_single -= 1
+		
+		opening_arr.append(hellmode_arr.pick_random())
+		opening_arr.append(hellmode_arr.pick_random())
+		opening_arr.append(hellmode_arr.pick_random())
+		opening_arr.append(hellmode_arr.pick_random())
+		opening_arr.append(hellmode_arr.pick_random())
+	
+	elif packcount_single == 0 and packcount_box > 0:
+		packcount_box -= 1
+		
+		opening_arr.append(hellmode_arr.pick_random())
+		opening_arr.append(hellmode_arr.pick_random())
+		opening_arr.append(hellmode_arr.pick_random())
+		opening_arr.append(hellmode_arr.pick_random())
+		opening_arr.append(hellmode_arr.pick_random())
 
 
 func _action_sell():

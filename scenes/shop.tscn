@@ -1147,6 +1147,7 @@ layout_mode = 2
 [connection signal="mouse_entered" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/BuyBox" to="." method="_on_buy_box_mouse_entered"]
 [connection signal="mouse_exited" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/BuyBox" to="." method="_on_buy_box_mouse_exited"]
 [connection signal="pressed" from="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup/BuyBox" to="ShopMenu" method="_on_buy_box_pressed"]
+[connection signal="buy_card" from="ShopCardlist" to="." method="_on_shop_cardlist_buy_card"]
 [connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot" to="ShopCardlist" method="_on_cardlist_slot_buy"]
 [connection signal="sell" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot" to="ShopCardlist" method="_on_cardlist_slot_sell"]
 [connection signal="buy" from="ShopCardlist/Container/ScrollContainer/CardlistGrid/CardlistSlot2" to="ShopCardlist" method="_on_cardlist_slot_buy"]

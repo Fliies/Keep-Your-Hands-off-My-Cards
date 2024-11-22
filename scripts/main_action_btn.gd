@@ -76,18 +76,21 @@ func _on_sell_btn_pressed() -> void:
 func _on_keep_btn_pressed() -> void:
 	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 	
-	#collect animation
-	main.animation_player_main.play("keep")
-	
-	#update card displaying
-	await main.animation_finished
 	
 	#collect
 	#GlobalData._action_collect()
 	var card = GlobalData.opening_arr.pop_at(0)
 	GlobalData.collection_arr.append(card)
 	
+	
+	#collect animation
+	main.animation_player_main.play("keep")
+	
+	#update card displaying
+	await main.animation_finished
+	
 	main.card_display._update_all()
+	
 	
 	#change to next state
 	if GlobalData.opening_arr.size() == 0:
@@ -106,6 +109,9 @@ func _on_keep_btn_pressed() -> void:
 		main.btn_flip.disabled = false
 		
 		main.card_display.visible = true
+	
+	##checking fo rcompleted
+	main._completed_check()
 
 ##flip
 func _on_flip_btn_pressed() -> void:
@@ -147,7 +153,12 @@ func _on_open_pack_pressed() -> void:
 ## **hide shop btn**
 	
 	#set PACK arr
-	GlobalData._setup_openingpack_arr()
+	if GlobalData.hellmode == false:
+		#hellmode off
+		GlobalData._setup_openingpack_arr()
+	else:
+		#hellmode on
+		GlobalData._setup_hellmode_openingpack_arr()
 	
 	#open PACK animation
 	main.card_display.visible = false

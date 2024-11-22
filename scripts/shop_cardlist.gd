@@ -2,6 +2,8 @@ extends Control
 
 class_name ShopCardlist
 
+signal buy_card
+
 @export var card_censor: Texture2D
 @export var card_soldout: Texture2D
 
@@ -137,10 +139,9 @@ func _buy_card(codename:String):
 	#handle money
 	GlobalData.money_current -= GlobalData.price_dict[codename]
 	
+	
 	#handle buy n sell btn
 	_update_all_slot_btn()
-	#var index = GlobalData.codename_arr.find(codename)
-	#_update_slot_btn(codename, cardlist_slot[index].sprite, cardlist_slot[index].censor, cardlist_slot[index].buy_btn, cardlist_slot[index].sell_btn, cardlist_slot[index].amount_lbl, cardlist_slot[index].shop_amount_lbl)
 	
 	#update visual
 	var index = GlobalData.codename_arr.find(codename)
@@ -150,6 +151,9 @@ func _buy_card(codename:String):
 	#update seen_arr
 	GlobalData.seen_arr.append(codename)
 	
+	buy_card.emit()
+
+
 func _sell_card(codename:String):
 	#handle card
 	GlobalData.collection_arr.erase(codename)
@@ -160,8 +164,6 @@ func _sell_card(codename:String):
 	
 	#handle buy n sell btn
 	_update_all_slot_btn()
-	#var index = GlobalData.codename_arr.find(codename)
-	#_update_slot_btn(codename, cardlist_slot[index].sprite, cardlist_slot[index].censor, cardlist_slot[index].buy_btn, cardlist_slot[index].sell_btn, cardlist_slot[index].amount_lbl, cardlist_slot[index].shop_amount_lbl)
 	
 	#update visual
 	var index = GlobalData.codename_arr.find(codename)
@@ -172,6 +174,7 @@ func _sell_card(codename:String):
 func _on_cardlist_slot_buy(node: Variant) -> void:
 	var index = cardlist_slot.find(node)
 	_buy_card(GlobalData.codename_arr[index])
+
 func _on_cardlist_slot_sell(node: Variant) -> void:
 	var index = cardlist_slot.find(node)
 	_sell_card(GlobalData.codename_arr[index])

@@ -2,6 +2,8 @@ extends Control
 
 class_name Shop
 
+signal buy_card
+
 @export_category("BG")
 #@export var base_bg: Texture2D
 @export var node_shop_bg: TextureRect
@@ -39,15 +41,11 @@ class_name Shop
 @export var btn_buy_box: Button
 
 func _ready() -> void:
-	#self.visible = false 
 	
 	shop_menu.visible = true
 	
 	shop_cardlist.visible = false
 	shop_offer.visible = false
-	
-	#shop_cardlist_lbl_hover.visible = false
-	#shop_cardlist_lbl_idle.visible = true
 	
 	text_idle.visible = true
 	text_dyn.visible = false
@@ -58,8 +56,9 @@ func _ready() -> void:
 	#hilight bg -> null
 	node_shop_hilight.texture = null
 
-## ENTER THE SHOP
 
+
+## ENTER THE SHOP
 func _enter_shop() -> void:
 	##ENTER the SHOP
 	if GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
@@ -186,17 +185,12 @@ func _on_shop_cardlist_btn_mouse_entered() -> void:
 		text_dyn_low.label_settings.font_color = Color.LIGHT_CORAL
 		text_dyn_low.text = yap.pick_random()
 		
-		#shop_cardlist_lbl_hover.visible = true
-		#shop_cardlist_lbl_idle.visible = false
-		
 		##hilight
 		node_shop_hilight.texture = shop_trading_hilight
 
 #trading mouse out
 func _on_shop_cardlist_btn_mouse_exited() -> void:
 	##text
-	#shop_cardlist_lbl_hover.visible = false
-	#shop_cardlist_lbl_idle.visible = true
 	_mouse_out()
 	##unhilight
 	node_shop_hilight.texture = null
@@ -274,3 +268,7 @@ func _on_buy_box_mouse_exited() -> void:
 	_mouse_out()
 	##unhilight
 	node_shop_hilight.texture = null
+
+
+func _on_shop_cardlist_buy_card() -> void:
+	buy_card.emit()

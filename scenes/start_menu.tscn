@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://t37wtu303voa"]
+[gd_scene load_steps=96 format=3 uid="uid://t37wtu303voa"]
 
 [ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_6sujd"]
 [ext_resource type="Texture2D" uid="uid://cbd745ybp76ia" path="res://assets/StartMenu/animation/op-menu-sheet.png" id="2_5ygwa"]
@@ -9,9 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://bop2uge4fmo6s" path="res://assets/StartMenu/Button/newgame-hover.png" id="6_1rmoy"]
 [ext_resource type="Texture2D" uid="uid://clbnufe430hot" path="res://assets/StartMenu/Button/newgame-normal.png" id="7_lcpis"]
 [ext_resource type="Texture2D" uid="uid://d33y4uv6rel2c" path="res://assets/StartMenu/Button/continue-disabled.png" id="8_7xwdk"]
+[ext_resource type="Texture2D" uid="uid://bvgb10m5e1oah" path="res://assets/StartMenu/Button/hellmode-toggle.png" id="9_24vyc"]
 [ext_resource type="Texture2D" uid="uid://bmch0yvpqkrsd" path="res://assets/StartMenu/Button/continue-hover.png" id="9_j7gbf"]
+[ext_resource type="Texture2D" uid="uid://bqyhhmcnhyhqu" path="res://assets/StartMenu/Button/hellmode-normal.png" id="10_ae8gf"]
 [ext_resource type="Texture2D" uid="uid://bipo0t4hsyfm8" path="res://assets/StartMenu/Button/continue-normal.png" id="10_yp0aa"]
 [ext_resource type="Texture2D" uid="uid://g4xaeqoess4s" path="res://assets/StartMenu/Button/extra-hover.png" id="11_bfuv7"]
+[ext_resource type="FontFile" uid="uid://bafa8t46i5ktu" path="res://assets/font/ChelseaMarket-Regular.ttf" id="11_v6wbj"]
 [ext_resource type="Texture2D" uid="uid://c6tdl33t3i5r" path="res://assets/StartMenu/Button/extra-normal.png" id="12_pgmgv"]
 [ext_resource type="Texture2D" uid="uid://cxvfqqt3ckmpx" path="res://assets/StartMenu/Button/options-hover.png" id="13_422jr"]
 [ext_resource type="Texture2D" uid="uid://d1su4x70jbwmh" path="res://assets/StartMenu/Button/options-normal.png" id="14_1g3b4"]
@@ -434,6 +437,37 @@ texture = ExtResource("6_1rmoy")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gohse"]
 texture = ExtResource("7_lcpis")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4mrt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ia46"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6qjvj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vdy2r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k5m04"]
+texture = ExtResource("9_24vyc")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tk31j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mj7jx"]
+texture = ExtResource("10_ae8gf")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vnft8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7q4bo"]
+texture = ExtResource("9_24vyc")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kwue4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o7mdd"]
+texture = ExtResource("10_ae8gf")
+
+[sub_resource type="LabelSettings" id="LabelSettings_w5uby"]
+font = ExtResource("11_v6wbj")
+font_size = 13
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_stt3e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5db5c"]
@@ -532,13 +566,15 @@ texture = ExtResource("16_3b7ej")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwuoq"]
 texture = ExtResource("17_i32lp")
 
-[node name="StartMenu" type="Node2D" node_paths=PackedStringArray("newgame_btn", "continue_btn", "extras_btn", "option_btn", "back_btn")]
+[node name="StartMenu" type="Node2D" node_paths=PackedStringArray("newgame_btn", "continue_btn", "extras_btn", "option_btn", "back_btn", "hell_mode", "hell_mode_lbl")]
 script = ExtResource("1_6sujd")
-newgame_btn = NodePath("CanvasLayer/MarginContainer/VBoxContainer/NewgameBtn")
-continue_btn = NodePath("CanvasLayer/MarginContainer/VBoxContainer/ContinueBtn")
-extras_btn = NodePath("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/ExtrasBtn")
-option_btn = NodePath("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/OptionsBtn")
+newgame_btn = NodePath("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/NewgameBtn")
+continue_btn = NodePath("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer2/ContinueBtn")
+extras_btn = NodePath("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer3/ExtrasBtn")
+option_btn = NodePath("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer3/OptionsBtn")
 back_btn = NodePath("CanvasLayer/BackBtn")
+hell_mode = NodePath("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/HellModeBtn")
+hell_mode_lbl = NodePath("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/Label")
 
 [node name="BG" type="Sprite2D" parent="."]
 texture = ExtResource("2_erob5")
@@ -586,7 +622,7 @@ region_rect = Rect2(315.356, 465.122, 22.3356, 14.4065)
 [node name="newgameToggle" type="Button" parent="debug"]
 offset_right = 8.0
 offset_bottom = 8.0
-text = "newgame switch"
+text = "test"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -609,7 +645,14 @@ theme_override_constants/margin_right = 5
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="NewgameBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer1" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="NewgameBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -625,7 +668,43 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_kjvnf")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_nlo7h")
 theme_override_styles/normal = SubResource("StyleBoxTexture_gohse")
 
-[node name="ContinueBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="HellModeBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4mrt")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_1ia46")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6qjvj")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vdy2r")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_k5m04")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_tk31j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_mj7jx")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_vnft8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7q4bo")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_kwue4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_o7mdd")
+toggle_mode = true
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(80, 100)
+layout_mode = 2
+text = "no guaruntee
+card in pack"
+label_settings = SubResource("LabelSettings_w5uby")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="ContinueBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -641,11 +720,11 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_1wdni")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_5sssd")
 theme_override_styles/normal = SubResource("StyleBoxTexture_e5bc5")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="ExtrasBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ExtrasBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -661,7 +740,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_soa2h")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_650np")
 theme_override_styles/normal = SubResource("StyleBoxTexture_1qbdf")
 
-[node name="OptionsBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="OptionsBtn" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -700,6 +779,9 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_xwuoq")
 text = "BACK"
 
 [connection signal="pressed" from="debug/newgameToggle" to="." method="_on_newgame_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/NewgameBtn" to="." method="_on_newgame_btn_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/ExtrasBtn" to="." method="_on_extras_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/NewgameBtn" to="." method="_on_newgame_btn_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/HellModeBtn" to="." method="_on_hell_mode_btn_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/HellModeBtn" to="." method="_on_hell_mode_btn_mouse_exited"]
+[connection signal="toggled" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/HellModeBtn" to="." method="_on_hell_mode_btn_toggled"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer3/ExtrasBtn" to="." method="_on_extras_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackBtn" to="." method="_on_back_btn_pressed"]

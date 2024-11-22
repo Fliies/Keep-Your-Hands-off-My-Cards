@@ -12,7 +12,7 @@ signal show_cardback
 @onready var home_btn:= %HomeBtn
 @onready var binder_btn:= %BinderBtn
 
-#@onready var action_btn:= %MainActionBtn
+@onready var main_action_btn:= %MainActionBtn
 @onready var btn_open_pack:= %OpenPack
 @onready var btn_sell:= %SellBtn
 @onready var btn_keep:= %KeepBtn
@@ -197,6 +197,13 @@ func _binder_handle():
 		GlobalStateController.current_state = GameStateController.GameState.BINDER
 		
 		##update binder
+		if GlobalData.completed == true:
+			var count = 0
+			for codename in GlobalData.completed_arr:
+				if GlobalData.collection_arr.has(codename):
+					count += 1
+			binder._update_completed(count)
+			
 		#slot visual
 		binder._update_all_slot_visual()
 		#inspect btn
@@ -262,12 +269,25 @@ func _on_shop_n_house_btn_pressed() -> void:
 ##completed
 func _completed_check():
 	var count = 0
-	for codename in GlobalData.completed_arr:
+	for codename in GlobalData.codename_arr:
 		if GlobalData.collection_arr.has(codename):
 			count += 1
 	
+	if count == 26:
+		if GlobalData.collection_arr.has("ex_misprint"):
+			count += 1
+		if GlobalData.collection_arr.has("ex_promo"):
+			count += 1
+		if GlobalData.collection_arr.has("ex_driver"):
+			count += 1
+		if GlobalData.collection_arr.has("ex_credit"):
+			count += 1
+	
 	if GlobalData.completed == false:
-		if count == 27:
+		if count == 26:
+			_binder_completed()
+			binder._first_completed(26)
+		elif count == 27:
 			_binder_completed()
 			binder._first_completed(27)
 		elif count == 28:
@@ -282,6 +302,10 @@ func _completed_check():
 	else:
 		binder._update_completed(count)
 
+func _on_shop_buy_card() -> void:
+	print("BUY")
+	_completed_check()
+
 ##compulsary open BINDER
 func _binder_completed():
 	GlobalStateController.prev_state = GlobalStateController.current_state
@@ -291,14 +315,6 @@ func _binder_completed():
 	
 	binder.visible = true
 	binder_open = true
-	
-	###update binder
-	#binder.current_page = 4
-	##slot visual
-	#binder._update_all_slot_visual()
-	##inspect btn
-	#binder._update_inspect_btn_whole_page(binder.current_page)
-	
 
 
 ##DEBUG

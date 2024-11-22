@@ -4,6 +4,7 @@ signal  flip_finished
 
 @export_category("COMPLETED")
 @export var completed_node:Sprite2D
+@export var completed_04: Texture2D
 @export var completed_14: Texture2D
 @export var completed_24: Texture2D
 @export var completed_34: Texture2D
@@ -83,7 +84,9 @@ func _first_completed(amount:int):
 	page4.visible = true
 	
 	GlobalData.completed = true
-	if amount == 27:
+	if amount == 26:
+		completed_node.texture = completed_04
+	elif amount == 27:
 		completed_node.texture = completed_14
 	elif amount == 28:
 		completed_node.texture = completed_24
@@ -126,6 +129,8 @@ func _first_completed(amount:int):
 
 func _update_completed(amount):
 	match amount:
+		26:
+			completed_node.texture = completed_04
 		27:
 			completed_node.texture = completed_14
 		28:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://cl4i386njlntm"]
+[gd_scene load_steps=44 format=3 uid="uid://cl4i386njlntm"]
 
-[ext_resource type="Script" path="res://scripts/cardlist_slot.gd" id="1_e7j0a"]
+[ext_resource type="Script" path="res://scripts/shop_cardlist_slot.gd" id="1_e7j0a"]
 [ext_resource type="Texture2D" uid="uid://b126g00xpcysr" path="res://Cards/CardSprite/aa.png" id="2_i4bgk"]
+[ext_resource type="Shader" path="res://scripts/shop.gdshader" id="3_fg3y0"]
 [ext_resource type="Texture2D" uid="uid://dpngi2jxa1bdn" path="res://Cards/CardSprite/bb.png" id="3_l75ha"]
 [ext_resource type="Texture2D" uid="uid://dhh45vey4p6si" path="res://Cards/CardSprite/card-censor-3.png" id="4_8m0j0"]
 [ext_resource type="Texture2D" uid="uid://dqybg13sywe57" path="res://assets/Shop/price_tag.png" id="5_mk7gk"]
@@ -33,6 +34,12 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m2koi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vl41s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uywea"]
+shader = ExtResource("3_fg3y0")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 5.0
+shader_parameter/speed = 5.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_3hdkc"]
 font = ExtResource("6_e62ky")
@@ -354,6 +361,7 @@ stretch_mode = 4
 
 [node name="Sprite" type="Sprite2D" parent="HBoxContainer/CardSprite"]
 visible = false
+material = SubResource("ShaderMaterial_uywea")
 position = Vector2(70, 95)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_l75ha")
