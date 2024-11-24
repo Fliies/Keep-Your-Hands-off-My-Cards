@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://tvuo7n21uk0v"]
+[gd_scene load_steps=137 format=3 uid="uid://tvuo7n21uk0v"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_fbqc6"]
 [ext_resource type="Texture2D" uid="uid://01mn6gmm53vw" path="res://assets/HandHolder.png" id="3_ij8wy"]
@@ -757,7 +757,8 @@ events = [SubResource("InputEventKey_otae4")]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_milyn"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gf85j"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_84c3m"]
+texture = ExtResource("17_s46u8")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6m6oj"]
 
@@ -805,7 +806,8 @@ outline_size = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t11ai"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m12g2"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ssljr"]
+texture = ExtResource("20_pn7mt")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_un6lu"]
 
@@ -913,12 +915,6 @@ font_size = 20
 font_color = Color(0, 1, 0.380392, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3m6ye"]
-font = ExtResource("27_lx64h")
-font_size = 60
-font_color = Color(0, 0.866667, 1, 1)
-outline_size = 5
-
-[sub_resource type="LabelSettings" id="LabelSettings_pj2g6"]
 font = ExtResource("27_lx64h")
 font_size = 60
 font_color = Color(0, 0.866667, 1, 1)
@@ -1141,7 +1137,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_dscdk")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ys02s")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_tctpu")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_milyn")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_gf85j")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_84c3m")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_6m6oj")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ypmrx")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_0ac1i")
@@ -1177,7 +1173,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_037bd")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ygwlc")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_j76yf")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_t11ai")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_m12g2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ssljr")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_un6lu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_6lqds")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_7n3bg")
@@ -1290,7 +1286,6 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_h7go8")
 custom_minimum_size = Vector2(100, 60)
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 4
 
 [node name="MoneySprite" type="TextureRect" parent="UI/UI/UpperUiMargin/UpperUIVbox/HBoxLeft/MoneyIcon"]
 layout_mode = 1
@@ -1341,7 +1336,6 @@ theme_override_constants/separation = 10
 
 [node name="PacksUI" type="TextureRect" parent="UI/UI/UpperUiMargin/UpperUIVbox/HBoxRight"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("26_her6m")
 stretch_mode = 2
@@ -1350,16 +1344,10 @@ stretch_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "x 10"
 label_settings = SubResource("LabelSettings_3m6ye")
-
-[node name="PackLeft" type="Label" parent="UI/UI/UpperUiMargin/UpperUIVbox/HBoxRight"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_vertical = 0
-text = "PACK(s) left"
-label_settings = SubResource("LabelSettings_pj2g6")
 
 [node name="BinderBtn" type="Button" parent="UI/UI"]
 unique_name_in_owner = true

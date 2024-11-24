@@ -1,0 +1,235 @@
+[gd_scene load_steps=23 format=3 uid="uid://boxovuoea2l3c"]
+
+[ext_resource type="Texture2D" uid="uid://n6svxyfwfaav" path="res://assets/AnimationSheet/open_cutscene-spritesheet.png" id="1_3xqbf"]
+[ext_resource type="Script" path="res://scripts/open_cutscene.gd" id="1_qng6x"]
+[ext_resource type="Texture2D" uid="uid://be54ho63uagu7" path="res://assets/Binder/btn/binder_arrow_right-hover.png" id="3_mcrvo"]
+[ext_resource type="Texture2D" uid="uid://dqy3hntu7w38p" path="res://assets/Binder/btn/binder_arrow_right-press.png" id="4_vtpr6"]
+[ext_resource type="Texture2D" uid="uid://d06xb885sug21" path="res://assets/Binder/btn/binder_arrow_right.png" id="5_78lbq"]
+
+[sub_resource type="Animation" id="Animation_yoar7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OPcutsceneSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wvnck"]
+resource_name = "op_00"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OPcutsceneSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.3, 3.3, 3.4, 3.5, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_disable_next_btn"
+}, {
+"args": [],
+"method": &"_eneble_next_btn"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_1m6ck"]
+resource_name = "op_01"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OPcutsceneSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 7]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_disable_next_btn"
+}, {
+"args": [],
+"method": &"_eneble_next_btn"
+}, {
+"args": [],
+"method": &"_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4tlcq"]
+resource_name = "op_02"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OPcutsceneSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.9, -0.8, 0, 0.3, 3.3, 3.4, 3.5, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_disable_next_btn"
+}, {
+"args": [],
+"method": &"_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vvdph"]
+resource_name = "op_03"
+length = 1.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OPcutsceneSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-1, -0.6, 0, 0.0999999, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 1, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.7, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"_disable_next_btn"
+}, {
+"args": [],
+"method": &"_eneble_next_btn"
+}, {
+"args": [],
+"method": &"_finished"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l314r"]
+_data = {
+"RESET": SubResource("Animation_yoar7"),
+"op_00": SubResource("Animation_wvnck"),
+"op_01": SubResource("Animation_1m6ck"),
+"op_02": SubResource("Animation_4tlcq"),
+"op_03": SubResource("Animation_vvdph")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r42wu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fiird"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j6gyv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42o03"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t5vum"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y2s5a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6s3y8"]
+texture = ExtResource("3_mcrvo")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v1jjh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aqqpb"]
+texture = ExtResource("4_vtpr6")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rgxfw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n84t8"]
+texture = ExtResource("5_78lbq")
+
+[node name="OpenCutscene" type="Node2D"]
+script = ExtResource("1_qng6x")
+
+[node name="OPcutsceneSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_3xqbf")
+centered = false
+vframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l314r")
+}
+
+[node name="NextBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(130, 130)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1126.0
+offset_top = 575.0
+offset_right = 1256.0
+offset_bottom = 705.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r42wu")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_fiird")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_j6gyv")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_42o03")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_t5vum")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_y2s5a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6s3y8")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_v1jjh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_aqqpb")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_rgxfw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_n84t8")
+
+[connection signal="pressed" from="NextBtn" to="." method="_on_next_btn_pressed"]

@@ -19,6 +19,8 @@ func _ready() -> void:
 		node.connect("mouse_out_buy_btn", _on_mouse_out_btn)
 		node.connect("mouse_in_sell", _on_can_sell)
 		node.connect("mouse_out_sell_btn", _on_mouse_out_btn)
+		node.connect("buy_cardlist_slot", _on_buy_cardlist_slot)
+		node.connect("sell_cardlist_slot", _on_sell_cardlist_slot)
 
 ##SETUP 
 func _update_slot_visual(codename:String, sprite_node:Sprite2D, censor_node:Sprite2D, _buy_btn:Button, _Sell_btn:Button, _amount_lbl:Label, _shop_amount_lbl:Label):
@@ -66,6 +68,10 @@ func _update_slot_btn(codename:String, _sprite_node:Sprite2D, _censor_node:Sprit
 	##update having amount
 	amount_lbl.text = str(GlobalData.collection_arr.count(codename))
 
+func _update_stock(codename:String, stock_node:Label):
+	stock_node.text = "stock: %s" % GlobalData.shop_arr.count(codename)
+
+
 func _update_all_slot_visual_n_btn():
 	_update_all_slot_visual()
 	_update_all_slot_btn()
@@ -80,6 +86,10 @@ func _update_all_slot_btn():
 		var index = GlobalData.codename_arr.find(codename)
 		_update_slot_btn(codename, cardlist_slot[index].sprite, cardlist_slot[index].censor, cardlist_slot[index].buy_btn, cardlist_slot[index].sell_btn, cardlist_slot[index].amount_lbl, cardlist_slot[index].shop_amount_lbl)
 
+func _update_all_stock():
+	for codename in GlobalData.codename_arr:
+		var index = GlobalData.codename_arr.find(codename)
+		_update_stock(codename, cardlist_slot[index].stock_lbl)
 
 func _update_pricetag(codename:String, pricetag:Sprite2D, price_lbl:Label):
 	#price lbl
@@ -93,6 +103,7 @@ func _update_all_pricetag():
 	for codename in GlobalData.codename_arr:
 		_update_pricetag(codename, cardlist_slot[index].pricetag, cardlist_slot[index].price_lbl)
 		index += 1
+
 
 
 ##available?
@@ -131,6 +142,25 @@ func _initial_stock_cardlist():
 
 
 ##BUY n SELL BTN ACTION
+#PRESSED BTN in slot
+func _on_buy_cardlist_slot(node: Variant) -> void:
+	#var index = cardlist_slot.find(node)
+	_buy_card(GlobalData.codename_arr[cardlist_slot.find(node)])
+	
+	await next
+	#update stock
+	_update_all_stock()
+	
+	#FOR COMPLETED CHECK
+	buy_card.emit()
+
+func _on_sell_cardlist_slot(node: Variant) -> void:
+	#var index = cardlist_slot.find(node)
+	_sell_card(GlobalData.codename_arr[cardlist_slot.find(node)])
+	
+	#update stock
+	_update_all_stock()
+
 #function
 func _buy_card(codename:String):
 	#handle card
@@ -172,20 +202,6 @@ func _sell_card(codename:String):
 	var index = GlobalData.codename_arr.find(codename)
 	_update_slot_visual(codename, cardlist_slot[index].sprite, cardlist_slot[index].censor, cardlist_slot[index].buy_btn, cardlist_slot[index].sell_btn, cardlist_slot[index].amount_lbl, cardlist_slot[index].shop_amount_lbl)
 
-#BTN in slot
-func _on_cardlist_slot_buy(node: Variant) -> void:
-	#var index = cardlist_slot.find(node)
-	_buy_card(GlobalData.codename_arr[cardlist_slot.find(node)])
-	
-	await next
-	
-	#FOR COMPLETED CHECK
-	buy_card.emit()
-
-func _on_cardlist_slot_sell(node: Variant) -> void:
-	#var index = cardlist_slot.find(node)
-	_sell_card(GlobalData.codename_arr[cardlist_slot.find(node)])
-
 #mouse in buy_btn
 func _on_cannot_buy(node: Variant) -> void:
 	var index = cardlist_slot.find(node)
@@ -214,3 +230,4 @@ func _on_mouse_out_btn() -> void:
 ##update all visual and btn
 func _on_shop_cardlist_btn_pressed() -> void:
 	_update_all_slot_visual_n_btn()
+	_update_all_stock()

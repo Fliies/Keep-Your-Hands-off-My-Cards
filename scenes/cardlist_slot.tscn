@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cl4i386njlntm"]
+[gd_scene load_steps=45 format=3 uid="uid://cl4i386njlntm"]
 
 [ext_resource type="Script" path="res://scripts/shop_cardlist_slot.gd" id="1_e7j0a"]
 [ext_resource type="Texture2D" uid="uid://b126g00xpcysr" path="res://Cards/CardSprite/aa.png" id="2_i4bgk"]
@@ -50,6 +50,9 @@ font_color = Color(0.147417, 0.549511, 0.144516, 1)
 font = ExtResource("6_e62ky")
 font_size = 20
 font_color = Color(0.631373, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5101l"]
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ud58"]
 
@@ -286,6 +289,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HBoxContainer/CardSprite/Censor:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vrl80"]
 _data = {
@@ -421,9 +436,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Spacer" type="Control" parent="HBoxContainer/CardInfo/VBoxContainer"]
+[node name="Stock" type="Control" parent="HBoxContainer/CardInfo/VBoxContainer"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
+
+[node name="StockLbl" type="Label" parent="HBoxContainer/CardInfo/VBoxContainer/Stock"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "stock: 0"
+label_settings = SubResource("LabelSettings_5101l")
 
 [node name="SellBtn" type="Button" parent="HBoxContainer/CardInfo/VBoxContainer"]
 custom_minimum_size = Vector2(100, 100)

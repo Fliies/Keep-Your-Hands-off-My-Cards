@@ -77,7 +77,11 @@ func _on_newgame_btn_pressed() -> void:
 	animation_player.play("start")
 	
 	await animation_finished
-	ScreenTransition._transition("main")
+	
+	#temp
+	ScreenTransition._transition("op_cutscene")
+	
+	#transition to cutscene
 
 
 func _on_extras_btn_pressed() -> void:
@@ -112,6 +116,8 @@ func _on_back_btn_pressed() -> void:
 	$AnimationPlayer/SpriteExtraBg.visible = false
 	$AnimationPlayer/SpriteExtras.visible = false
 	back_btn.visible = false
+	
+	animation_player.play("idle")
 
 
 func _on_hell_mode_btn_toggled(toggled_on: bool) -> void:

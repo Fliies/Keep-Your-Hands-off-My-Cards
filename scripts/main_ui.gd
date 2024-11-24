@@ -44,7 +44,7 @@ func _update_money():
 
 func _update_pack_have():
 	#pack_have.text = str(GlobalData.packcount_box + GlobalData.packcount_single) + " Packs"
-	pack_have.text = "x %s " % (GlobalData.packcount_box + GlobalData.packcount_single)
+	pack_have.text = "x %s" % (GlobalData.packcount_box + GlobalData.packcount_single)
 	
 	if (GlobalData.packcount_box + GlobalData.packcount_single) <= 1:
 		pack_have.label_settings.font_color = Color("RED")

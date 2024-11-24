@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7alwgqva2fj5"]
+[gd_scene load_steps=19 format=3 uid="uid://c7alwgqva2fj5"]
 
 [ext_resource type="Script" path="res://scripts/screen_transition.gd" id="1_xrqmt"]
 [ext_resource type="Texture2D" uid="uid://blim2lgkxy1vy" path="res://assets/ScreenTransition/pink_circle.png" id="2_8cxgf"]
@@ -6,8 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://tm88aqtbycyg" path="res://scenes/shop.tscn" id="3_7gfqm"]
 [ext_resource type="Texture2D" uid="uid://cl3eq202eojc4" path="res://assets/ScreenTransition/full.png" id="3_oc5sq"]
 [ext_resource type="PackedScene" uid="uid://t37wtu303voa" path="res://scenes/start_menu.tscn" id="4_5djyk"]
+[ext_resource type="PackedScene" uid="uid://boxovuoea2l3c" path="res://scenes/open_cutscene.tscn" id="5_ndjxb"]
 [ext_resource type="Texture2D" uid="uid://8xx0qx8g34td" path="res://assets/ScreenTransition/shop_base.png" id="6_gavi5"]
 [ext_resource type="Texture2D" uid="uid://bbtwwgi2r38dy" path="res://assets/BaseBG.png" id="6_vc7gj"]
+[ext_resource type="Texture2D" uid="uid://0l3wyfnjg1ux" path="res://assets/ScreenTransition/open_cutscene-ref.png" id="8_o6ega"]
+[ext_resource type="Texture2D" uid="uid://h4cf7yewn84i" path="res://assets/ScreenTransition/transition_green-small.png" id="9_3psh5"]
 
 [sub_resource type="Animation" id="Animation_xv30b"]
 resource_name = "BackFromShop_transition"
@@ -107,7 +110,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("StartWipe:visible")
+tracks/2/path = NodePath("PinkCircle:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -119,7 +122,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("StartWipe:scale")
+tracks/3/path = NodePath("PinkCircle:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -152,14 +155,202 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GreenMoney:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GreenMoney:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(567, 566)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("GreenMoney:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
 
-[sub_resource type="Animation" id="Animation_nmx1f"]
-resource_name = "START_transition"
+[sub_resource type="Animation" id="Animation_vja23"]
+resource_name = "green_expanding"
+length = 0.8
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("StartWipe:visible")
+tracks/0/path = NodePath("PinkCircle:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_new_scene"
+}, {
+"args": [],
+"method": &"_animation_finished"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GreenMoney:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GreenMoney:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(567, 565), Vector2(640, 360)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GreenMoney:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(36, 36)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TempSprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_l16vm"]
+resource_name = "green_shrinking"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PinkCircle:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_new_scene"
+}, {
+"args": [],
+"method": &"_animation_finished"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GreenMoney:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GreenMoney:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(640, 360), Vector2(567, 391)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GreenMoney:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(35, 35), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_nmx1f"]
+resource_name = "pink_shrinking"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PinkCircle:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -171,7 +362,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("StartWipe:scale")
+tracks/1/path = NodePath("PinkCircle:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -274,7 +465,9 @@ tracks/4/keys = {
 _data = {
 "BackFromShop_transition": SubResource("Animation_xv30b"),
 "RESET": SubResource("Animation_32glr"),
-"START_transition": SubResource("Animation_nmx1f"),
+"green_expanding": SubResource("Animation_vja23"),
+"green_shrinking": SubResource("Animation_l16vm"),
+"pink_shrinking": SubResource("Animation_nmx1f"),
 "toShop_transition": SubResource("Animation_2nsa4")
 }
 
@@ -283,27 +476,43 @@ script = ExtResource("1_xrqmt")
 main_scene = ExtResource("2_hfdix")
 shop_scene = ExtResource("3_7gfqm")
 startmenu_scene = ExtResource("4_5djyk")
+op_cutscene = ExtResource("5_ndjxb")
 temp_sprite = NodePath("TempSprite")
 temp_shop_sprite = ExtResource("6_gavi5")
 temp_main_sprite = ExtResource("6_vc7gj")
+temp_opencutscene_sprite = ExtResource("8_o6ega")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_h8bi0")
 }
 
-[node name="StartWipe" type="Sprite2D" parent="."]
+[node name="OpeningCutscene" type="Sprite2D" parent="."]
 visible = false
-z_index = 5
-position = Vector2(640, 360)
-scale = Vector2(3.2, 3.2)
-texture = ExtResource("2_8cxgf")
+texture = ExtResource("8_o6ega")
+centered = false
 
 [node name="TempSprite" type="Sprite2D" parent="."]
 visible = false
 z_index = 5
 texture = ExtResource("6_gavi5")
 centered = false
+
+[node name="PinkCircle" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+position = Vector2(640, 360)
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("2_8cxgf")
+
+[node name="GreenMoney" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+position = Vector2(567, 566)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("9_3psh5")
+centered = false
+offset = Vector2(-56, -23)
 
 [node name="CarWipe" type="Sprite2D" parent="."]
 z_index = 5
@@ -333,6 +542,8 @@ offset_top = 316.0
 offset_right = 548.0
 offset_bottom = 347.0
 text = "test3"
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
