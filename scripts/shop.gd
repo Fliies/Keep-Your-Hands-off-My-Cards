@@ -271,4 +271,5 @@ func _on_buy_box_mouse_exited() -> void:
 
 
 func _on_shop_cardlist_buy_card() -> void:
+	#for COMPLETE CHECK
 	buy_card.emit()

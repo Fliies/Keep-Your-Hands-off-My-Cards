@@ -31,6 +31,70 @@ func _process(_delta: float) -> void:
 		flip_btn.visible = false
 		flip_btn.disabled = true
 
+
+##OPEN PACK
+func _on_open_pack_pressed() -> void:
+	#change GameState
+	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
+	#hide btn
+	main.btn_open_pack.disabled = true
+	main.btn_open_pack.visible = false
+	
+	#pack count +1
+	GlobalData.total_open_packcount += 1
+	
+	#set PACK arr
+	if GlobalData.hellmode == false:
+		#hellmode off
+		GlobalData._setup_openingpack_arr()
+	else:
+		#hellmode on
+		GlobalData._setup_hellmode_openingpack_arr()
+	
+	#open PACK animation
+	main.card_display.visible = false
+	main.animation_player_main.play("openpack")
+	
+	await main.animation_finished
+	#change GameState to OPENING_BACK
+	GlobalStateController.current_state = GlobalStateController.GameState.OPENING_BACK
+	#show flip btn
+	main.btn_flip.visible = true
+	main.btn_flip.disabled = false
+	#show cardback of 1st card
+	main.card_display._update_all()
+	
+	##auto flip
+	if Options.auto_flip == true:
+		_flip_card()
+
+##flip
+func _on_flip_btn_pressed() -> void:
+	_flip_card()
+func _flip_card():
+	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
+	#last card
+	if main.card_display.cardback_next != null:
+		main.card_display.cardback_next.visible = true
+	
+	main.btn_flip.visible = false
+	main.btn_flip.disabled = true
+	
+	main.card_display._last_card()
+	
+	main.animation_player_main.play("flip_main")
+	
+	##count seen
+	main._seen_count()
+	##icon
+	main._seen_n_collected_icon()
+	
+	##update price on sell btn
+	sell_price.text =  "$%.2f" % GlobalData.price_dict.get(main.card_display.card_stat.card_codename)
+	
+	await main.animation_finished
+	GlobalStateController.current_state = GlobalStateController.GameState.OPENING_FRONT
+
 ##SELL BTN
 func _on_sell_btn_pressed() -> void:
 	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
@@ -70,17 +134,17 @@ func _on_sell_btn_pressed() -> void:
 		
 		main.card_display.visible = true
 		
+		##auto flip
+		if Options.auto_flip == true:
+			_flip_card()
 
 ##KEEP BTN
 func _on_keep_btn_pressed() -> void:
 	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 	
-	
 	#collect
-	#GlobalData._action_collect()
 	var card = GlobalData.opening_arr.pop_at(0)
 	GlobalData.collection_arr.append(card)
-	
 	
 	#collect animation
 	main.animation_player_main.play("keep")
@@ -89,7 +153,6 @@ func _on_keep_btn_pressed() -> void:
 	await main.animation_finished
 	
 	main.card_display._update_all()
-	
 	
 	#change to next state
 	if GlobalData.opening_arr.size() == 0:
@@ -108,68 +171,10 @@ func _on_keep_btn_pressed() -> void:
 		main.btn_flip.disabled = false
 		
 		main.card_display.visible = true
+		
+		##auto flip
+		if Options.auto_flip == true:
+			_flip_card()
 	
 	##checking fo rcompleted
 	main._completed_check()
-
-##flip
-func _on_flip_btn_pressed() -> void:
-	GlobalStateController.current_state = GlobalStateController.GameState.OPENING_FRONT
-	#last card
-	if main.card_display.cardback_next != null:
-		main.card_display.cardback_next.visible = true
-	
-	main.btn_flip.visible = false
-	main.btn_flip.disabled = true
-	
-	main.card_display._last_card()
-	
-	main.animation_player_main.play("flip_main")
-	
-	##count seen
-	main._seen_count()
-	##icon
-	main._seen_n_collected_icon()
-	
-##update price on sell btn
-	sell_price.text =  "$%.2f" % GlobalData.price_dict.get(main.card_display.card_stat.card_codename)
-	
-###update Hint
-	#main.ui._hint_lbl_handle()
-	
-	await main.animation_finished
-
-
-
-func _on_open_pack_pressed() -> void:
-	#change GameState to OPENING_BACK
-	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
-		#hide btn
-	main.btn_open_pack.disabled = true
-	main.btn_open_pack.visible = false
-	
-	#pack count +1
-	GlobalData.total_open_packcount += 1
-	
-## **hide shop btn**
-	
-	#set PACK arr
-	if GlobalData.hellmode == false:
-		#hellmode off
-		GlobalData._setup_openingpack_arr()
-	else:
-		#hellmode on
-		GlobalData._setup_hellmode_openingpack_arr()
-	
-	#open PACK animation
-	main.card_display.visible = false
-	main.animation_player_main.play("openpack")
-	
-	await main.animation_finished
-	#change GameState to OPENING_BACK
-	GlobalStateController.current_state = GlobalStateController.GameState.OPENING_BACK
-	#show flip btn
-	main.btn_flip.visible = true
-	main.btn_flip.disabled = false
-	#show cardback of 1st card
-	main.card_display._update_all()

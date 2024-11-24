@@ -1,10 +1,10 @@
 extends Node
 
 												#ideal #garuntee 5 box, 50 packs, 250 card
-# 14 common		a b c d e f g h i j k l m n		70%		60%		149+mp 		74.5
-# 8 uncommon	o p q r s t u v					20%		33.6%	84			168
-# 3 rare		w x y							9%		6%		15			300
-# 1 secret		z								1%		0.4% 	1			50
+# 14 common		a b c d e f g h i j k l m n		70%		60%		149+mp 		74.5	298+3mp
+# 8 uncommon	o p q r s t u v					20%		33.6%	84			168		168
+# 3 rare		w x y							9%		6%		15			300		30
+# 1 secret		z								1%		0.4% 	1			50		1
 # 1 misprint	mp												*1			15
 # 5 box = 250 cards avr. 12x per box
 
@@ -39,6 +39,21 @@ extends Node
 	"ll","ll","ll","ll","ll","ll","ll","ll","ll","ll","ll",
 	"mm","mm","mm","mm","mm","mm","mm","mm","mm","mm","mm",
 	"nn","nn","nn","nn","nn","nn","nn","nn","nn","nn","nn",
+	
+	"aa","aa","aa","aa","aa","aa","aa","aa","aa","aa",
+	"bb","bb","bb","bb","bb","bb","bb","bb","bb","bb",
+	"cc","cc","cc","cc","cc","cc","cc","cc","cc","cc",
+	"dd","dd","dd","dd","dd","dd","dd","dd","dd","dd",
+	"ee","ee","ee","ee","ee","ee","ee","ee","ee","ee",
+	"ff","ff","ff","ff","ff","ff","ff","ff","ff","ff","ff",
+	"gg","gg","gg","gg","gg","gg","gg","gg","gg","gg","gg",
+	"hh","hh","hh","hh","hh","hh","hh","hh","hh","hh","hh",
+	"ii","ii","ii","ii","ii","ii","ii","ii","ii","ii","ii",
+	"jj","jj","jj","jj","jj","jj","jj","jj","jj","jj","jj",
+	"kk","kk","kk","kk","kk","kk","kk","kk","kk","kk","kk",
+	"ll","ll","ll","ll","ll","ll","ll","ll","ll","ll","ll",
+	"mm","mm","mm","mm","mm","mm","mm","mm","mm","mm","mm",
+	"nn","nn","nn","nn","nn","nn","nn","nn","nn","nn","nn",
 ]
 
 @onready var uncommon_arr:= [
@@ -50,9 +65,22 @@ extends Node
 	"tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt",
 	"uu","uu","uu","uu","uu","uu","uu","uu","uu","uu","uu",
 	"vv","vv","vv","vv","vv","vv","vv","vv","vv","vv","vv",
+	
+	"oo","oo","oo","oo","oo","oo","oo","oo","oo","oo",
+	"pp","pp","pp","pp","pp","pp","pp","pp","pp","pp",
+	"qq","qq","qq","qq","qq","qq","qq","qq","qq","qq",
+	"rr","rr","rr","rr","rr","rr","rr","rr","rr","rr",
+	"ss","ss","ss","ss","ss","ss","ss","ss","ss","ss","ss",
+	"tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt",
+	"uu","uu","uu","uu","uu","uu","uu","uu","uu","uu","uu",
+	"vv","vv","vv","vv","vv","vv","vv","vv","vv","vv","vv",
 ]
 
 @onready var rare_arr:= [
+	"ww","ww","ww","ww","ww",
+	"xx","xx","xx","xx","xx",
+	"yy","yy","yy","yy","yy",
+	
 	"ww","ww","ww","ww","ww",
 	"xx","xx","xx","xx","xx",
 	"yy","yy","yy","yy","yy",
@@ -73,11 +101,8 @@ extends Node
 	"aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", "ii", "jj", "kk", "ll", "mm",
 	"nn", "oo", "pp", "qq", "rr", "ss", "tt", "uu", "vv", "ww", "xx", "yy", "zz",
 	]
-@onready var hellmode_arr:= [
-	"aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", "ii", "jj", "kk", "ll", "mm",
-	"nn", "oo", "pp", "qq", "rr", "ss", "tt", "uu", "vv", "ww", "xx", "yy", "zz",
-	"ex_misprint"
-]
+
+@onready var hellmode_arr:= []
 
 @onready var box_cu_arr:= []
 @onready var box_rs_arr:= []
@@ -111,11 +136,11 @@ extends Node
 @onready var price_box: float = 90.0
 
 @onready var shop_promo: bool = true
-@onready var newgame:bool = true
-@onready var driver:bool = false
+@onready var newgame: bool = true
+@onready var driver: bool = false
 @onready var completed: bool = false
-@onready var hellmode:bool = false
-@onready var debt:bool = false
+@onready var hellmode: bool = false
+@onready var debt: bool = false
 
 
 func _ready() -> void:
@@ -127,6 +152,8 @@ func _process(_delta: float) -> void:
 
 func _setup_droplist_arr(a_arr:Array, b_arr:Array):
 	a_arr.append_array(misprint_arr)
+	a_arr.append_array(misprint_arr)
+	a_arr.append_array(misprint_arr)
 	a_arr.append_array(common_arr)
 	a_arr.append_array(uncommon_arr)
 	a_arr.shuffle()
@@ -136,7 +163,7 @@ func _setup_droplist_arr(a_arr:Array, b_arr:Array):
 	b_arr.shuffle()
 
 
-func _setup_cardpack_arr(cu_arr:Array, rs_arr:Array ):
+func _setup_opening_arr(cu_arr:Array, rs_arr:Array ):
 ## card 1, 2, 3
 	#normal case (cu, cu, cu)
 	if cu_arr.size() >= 3:
@@ -249,6 +276,12 @@ func _setup_openingpack_arr():
 		# 2 rare (10 safety)
 		# 1 misprint ; no.22rd
 		
+		#clear arr
+		box_cu_arr.clear()
+		box_rs_arr.clear()
+		single_cu_arr.clear()
+		single_rs_arr.clear()
+		
 		# setup + shuffle temp_cu_arr
 		var temp_cu_arr:= []
 		temp_cu_arr.append_array(common_arr)
@@ -259,6 +292,10 @@ func _setup_openingpack_arr():
 			box_cu_arr.append(temp_cu_arr.pop_front())
 		# add misprint in position 23rd
 		box_cu_arr.append_array(misprint_arr)
+		# add another 2 misprint and shuffle
+		temp_cu_arr.append_array(misprint_arr)
+		temp_cu_arr.append_array(misprint_arr)
+		temp_cu_arr.shuffle()
 		# add the rest of cu_arr
 		box_cu_arr.append_array(temp_cu_arr)
 		
@@ -287,11 +324,11 @@ func _setup_openingpack_arr():
 	##use SINGLE_arr before BOX_arr
 	if packcount_single > 0:
 		packcount_single -= 1
-		_setup_cardpack_arr(single_cu_arr, single_rs_arr)
+		_setup_opening_arr(single_cu_arr, single_rs_arr)
 	
 	elif packcount_single == 0 and packcount_box > 0:
 		packcount_box -= 1
-		_setup_cardpack_arr(box_cu_arr, box_rs_arr)
+		_setup_opening_arr(box_cu_arr, box_rs_arr)
 
 func _setup_hellmode_openingpack_arr():
 	hellmode_arr.clear()
@@ -299,6 +336,8 @@ func _setup_hellmode_openingpack_arr():
 	hellmode_arr.append_array(uncommon_arr)
 	hellmode_arr.append_array(rare_arr)
 	hellmode_arr.append_array(secret_arr)
+	hellmode_arr.append_array(misprint_arr)
+	hellmode_arr.append_array(misprint_arr)
 	hellmode_arr.append_array(misprint_arr)
 	
 	##use SINGLE_arr before BOX_arr

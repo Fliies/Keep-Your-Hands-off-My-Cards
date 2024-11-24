@@ -2,6 +2,7 @@ extends Node2D
 
 signal animation_finished
 signal show_cardback
+signal complete_check_finished
 
 @export var to_shop_theme: Theme
 @export var to_house_theme: Theme
@@ -96,9 +97,16 @@ func _main_setup():
 		GlobalData.driver = false
 		#Yes shop promo
 		GlobalData.shop_promo = true
-		
+		#pack open
+		GlobalData.total_open_packcount = 0
+		#start arr
+		GlobalData.starting_arr = true
 		#clear collection
 		GlobalData.collection_arr.clear()
+		#clear open_arr
+		GlobalData.opening_arr.clear()
+		#clear seen_arr
+		GlobalData.seen_arr.clear()
 		#add starting pack
 		GlobalData.packcount_box = GlobalData.STARTING_packs
 		#add starting money
@@ -297,6 +305,9 @@ func _on_shop_n_house_btn_pressed() -> void:
 		##play animation
 		binder._first_driver()
 		
+		##update cover
+		await binder.animation_finished
+		_completed_check()
 		##await animation end
 		await binder.first_driver
 		GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
@@ -341,7 +352,7 @@ func _completed_check():
 		if GlobalData.collection_arr.has(codename):
 			count += 1
 	
-	if count == 26:
+	if count >= 26:
 		if GlobalData.collection_arr.has("ex_misprint"):
 			count += 1
 		if GlobalData.collection_arr.has("ex_promo"):
@@ -350,39 +361,44 @@ func _completed_check():
 			count += 1
 		if GlobalData.collection_arr.has("ex_credit"):
 			count += 1
+	else:
+		complete_check_finished.emit()
 	
 	if GlobalData.completed == false:
 		if count == 26:
-			_binder_completed()
+			#_binder_completed()
+			binder_open = true
 			binder._first_completed(26)
 		elif count == 27:
-			_binder_completed()
+			#_binder_completed()
+			binder_open = true
 			binder._first_completed(27)
 		elif count == 28:
-			_binder_completed()
+			#_binder_completed()
+			binder_open = true
 			binder._first_completed(28)
 		elif count == 29:
-			_binder_completed()
+			#_binder_completed()
+			binder_open = true
 			binder._first_completed(29)
 		elif count == 30:
-			_binder_completed()
+			#_binder_completed()
+			binder_open = true
 			binder._first_completed(30)
 	else:
 		binder._update_completed(count)
 
 func _on_shop_buy_card() -> void:
-	print("BUY")
 	_completed_check()
 
 ##FORCE open BINDER when completed
-func _binder_completed():
-	GlobalStateController.prev_state = GlobalStateController.current_state
-	GlobalStateController.current_state = GameStateController.GameState.ANIMATION
-	
-	binder._update_price_sheet()
-	
-	#binder.visible = true
-	binder_open = true
+#func _binder_completed():
+	#GlobalStateController.prev_state = GlobalStateController.current_state
+	#GlobalStateController.current_state = GameStateController.GameState.ANIMATION
+	#
+	##binder._update_price_sheet()
+	#
+	#binder_open = true
 
 
 ##call Mom
@@ -393,9 +409,16 @@ func _on_call_mom_btn_pressed() -> void:
 	
 	##animation
 	binder._first_callmom()
-	await binder.callmom_finished
+	await binder.credit_to_slot_finished
+	_completed_check()
 	##set DEBT
 	GlobalData.debt = true
+	ui_money_rect.z_index = 5
+	ui_money_rect.size = Vector2(200,200)
+	await binder.callmom_finished
+	ui_money_rect.z_index = 0
+	ui_money_rect.size = Vector2(100,100)
+	
 	call_mom_btn.disabled = true
 	
 	GlobalStateController.current_state = GlobalStateController.prev_state 

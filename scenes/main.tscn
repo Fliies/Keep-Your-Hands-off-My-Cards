@@ -1,8 +1,6 @@
-[gd_scene load_steps=140 format=3 uid="uid://tvuo7n21uk0v"]
+[gd_scene load_steps=138 format=3 uid="uid://tvuo7n21uk0v"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_fbqc6"]
-[ext_resource type="Texture2D" uid="uid://rka6t0pwsqf5" path="res://assets/temp/temp_BG.png" id="1_uofni"]
-[ext_resource type="Texture2D" uid="uid://c6ujxep7myob3" path="res://assets/temp/temp_mockup.png" id="2_i4wa2"]
 [ext_resource type="Texture2D" uid="uid://01mn6gmm53vw" path="res://assets/HandHolder.png" id="3_ij8wy"]
 [ext_resource type="Theme" uid="uid://bqt8ghphpr5og" path="res://scripts/to_house_btn.tres" id="3_pb008"]
 [ext_resource type="Texture2D" uid="uid://bbtwwgi2r38dy" path="res://assets/BaseBG.png" id="4_i4cx4"]
@@ -988,20 +986,6 @@ ui_money_rect = NodePath("UI/UI/UpperUiMargin/UpperUIVbox/HBoxLeft/MoneyIcon/Mon
 ui_money = ExtResource("27_4f56w")
 ui_credit = ExtResource("5_gon1x")
 
-[node name="Mockup" type="Node2D" parent="."]
-visible = false
-position = Vector2(646, 366)
-
-[node name="mockup" type="Sprite2D" parent="Mockup"]
-position = Vector2(1775, 249)
-texture = ExtResource("2_i4wa2")
-
-[node name="BGTemp" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(634.5, 349)
-scale = Vector2(0.778504, 0.634761)
-texture = ExtResource("1_uofni")
-
 [node name="BG" type="Sprite2D" parent="."]
 texture = ExtResource("4_i4cx4")
 centered = false
@@ -1323,7 +1307,6 @@ grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_stretch_ratio = 3.0
 texture = ExtResource("27_4f56w")
-stretch_mode = 2
 
 [node name="MoneyLbl" type="VBoxContainer" parent="UI/UI/UpperUiMargin/UpperUIVbox/HBoxLeft"]
 custom_minimum_size = Vector2(150, 0)
@@ -1836,7 +1819,6 @@ focus_mode = 0
 text = "Go back Home"
 
 [node name="AddMoney" type="Button" parent="UI/debug"]
-visible = false
 layout_mode = 0
 offset_left = 275.0
 offset_top = 5.0

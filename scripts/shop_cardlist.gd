@@ -3,6 +3,7 @@ extends Control
 class_name ShopCardlist
 
 signal buy_card
+signal next
 
 @export var card_censor: Texture2D
 @export var card_soldout: Texture2D
@@ -133,8 +134,12 @@ func _initial_stock_cardlist():
 #function
 func _buy_card(codename:String):
 	#handle card
-	GlobalData.shop_arr.erase(codename)
-	GlobalData.collection_arr.append(codename)
+	#GlobalData.shop_arr.erase(codename)
+	#GlobalData.collection_arr.append(codename)
+	
+	var shop_index = GlobalData.shop_arr.find(codename)
+	var card = GlobalData.shop_arr.pop_at(shop_index)
+	GlobalData.collection_arr.append(card)
 	
 	#handle money
 	GlobalData.money_current -= GlobalData.price_dict[codename]
@@ -143,16 +148,14 @@ func _buy_card(codename:String):
 	#handle buy n sell btn
 	_update_all_slot_btn()
 	
+	#update seen_arr
+	GlobalData.seen_arr.append(codename)
+	
 	#update visual
 	var index = GlobalData.codename_arr.find(codename)
 	_update_slot_visual(codename, cardlist_slot[index].sprite, cardlist_slot[index].censor, cardlist_slot[index].buy_btn, cardlist_slot[index].sell_btn, cardlist_slot[index].amount_lbl, cardlist_slot[index].shop_amount_lbl)
 	
-	
-	#update seen_arr
-	GlobalData.seen_arr.append(codename)
-	
-	buy_card.emit()
-
+	next.emit()
 
 func _sell_card(codename:String):
 	#handle card
@@ -168,16 +171,20 @@ func _sell_card(codename:String):
 	#update visual
 	var index = GlobalData.codename_arr.find(codename)
 	_update_slot_visual(codename, cardlist_slot[index].sprite, cardlist_slot[index].censor, cardlist_slot[index].buy_btn, cardlist_slot[index].sell_btn, cardlist_slot[index].amount_lbl, cardlist_slot[index].shop_amount_lbl)
-	
 
 #BTN in slot
 func _on_cardlist_slot_buy(node: Variant) -> void:
-	var index = cardlist_slot.find(node)
-	_buy_card(GlobalData.codename_arr[index])
+	#var index = cardlist_slot.find(node)
+	_buy_card(GlobalData.codename_arr[cardlist_slot.find(node)])
+	
+	await next
+	
+	#FOR COMPLETED CHECK
+	buy_card.emit()
 
 func _on_cardlist_slot_sell(node: Variant) -> void:
-	var index = cardlist_slot.find(node)
-	_sell_card(GlobalData.codename_arr[index])
+	#var index = cardlist_slot.find(node)
+	_sell_card(GlobalData.codename_arr[cardlist_slot.find(node)])
 
 #mouse in buy_btn
 func _on_cannot_buy(node: Variant) -> void:

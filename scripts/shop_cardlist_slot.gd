@@ -30,9 +30,9 @@ func _on_buy_btn_pressed() -> void:
 
 func _on_sell_btn_pressed() -> void:
 	sell_btn.disabled = true
-	animation_palyer.play("buy")
+	#animation_palyer.play("buy")
 	
-	await animation_finished
+	#await animation_finished
 	sell.emit(self)
 
 ##wiggle animation
@@ -43,6 +43,7 @@ func _price_wiggle_down():
 	pricetag.rotation_degrees -= 5
 	pricetag.rotation_degrees = min(-10,10)
 
+##mouse ENTER n EXIT
 func _on_buy_btn_mouse_entered() -> void:
 	if buy_btn.disabled == false:
 		animation_palyer.play("price_wiggle")
@@ -52,6 +53,7 @@ func _on_buy_btn_mouse_exited() -> void:
 	mouse_out_buy_btn.emit()
 	if buy_btn.disabled == false:
 		animation_palyer.stop()
+
 
 func _on_sell_btn_mouse_entered() -> void:
 	mouse_in_sell.emit(self)

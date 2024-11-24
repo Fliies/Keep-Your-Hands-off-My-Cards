@@ -4,6 +4,8 @@ signal flip_finished
 signal first_driver
 signal animation_finished
 signal callmom_finished
+signal first_complete_finished
+signal credit_to_slot_finished
 
 @export_category("COMPLETED")
 @export var completed_node:Sprite2D
@@ -85,6 +87,8 @@ func _process(_delta: float) -> void:
 
 ##completed
 func _first_completed(amount:int):
+	GlobalStateController.prev_state = GlobalStateController.current_state
+	GlobalStateController.current_state = GameStateController.GameState.ANIMATION
 	##slot visual
 	_update_all_slot_visual()
 	_update_inspect_btn_whole_page(5)
@@ -144,6 +148,8 @@ func _first_completed(amount:int):
 	
 	GlobalStateController.current_state = GameStateController.GameState.BINDER
 	_update_inspect_btn_whole_page(current_page)
+	
+	first_complete_finished.emit()
 
 func _update_completed(amount):
 	match amount:
@@ -187,12 +193,15 @@ func _first_driver():
 	await flip_finished
 	animation_player.play("driver_got")
 	await animation_finished
+	
 	timer.start(1.0)
 	await timer.timeout
 	
 	self.visible = false
 	first_driver.emit()
 
+
+##first callmom
 func _first_callmom():
 	##add credit
 	GlobalData.collection_arr.append("ex_credit")
@@ -212,8 +221,6 @@ func _first_callmom():
 	left_btn.disabled = true
 	right_btn.visible = false
 	right_btn.disabled = true
-	
-	
 	
 	#hide driver
 	$Cover/Credit.visible = false
@@ -238,7 +245,7 @@ func _first_callmom():
 	credit_cutscene.visible = false
 	animation_player.play("credit_to_slot")
 	
-	await animation_finished
+	await credit_to_slot_finished
 	timer.start(1)
 	await timer.timeout
 	
@@ -251,6 +258,8 @@ func _flip_finished():
 	flip_finished.emit()
 func _animation_finished():
 	animation_finished.emit()
+func _credit_to_slot_finished():
+	credit_to_slot_finished.emit()
 
 ##slot Visual
 func _update_slot_visual(codename:String,index:int):
