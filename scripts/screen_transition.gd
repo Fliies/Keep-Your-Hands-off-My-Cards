@@ -36,24 +36,24 @@ func _transition(scene:String):
 				temp_sprite.visible = true
 				_op_cutscene()
 				
-				timer.start(1)
-				await timer.timeout
+				#timer.start(0.5)
+				#await timer.timeout
 				
-				animation_player.play("green_expanding")
+				animation_player.play("pack_expanding")
 				
 				#await  new_scene
 				await animation_finished
 				
 				get_tree().change_scene_to_packed(main_scene)
 				
-				animation_player.play("green_shrinking")
+				animation_player.play("pack_shrinking")
 				
 				await animation_finished
 				
 				GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
 				
 			else:
-				animation_player.play("green_shrinking")
+				animation_player.play("pink_shrinking")
 				#animation_player.play("pink_shrinking")
 				
 				await  new_scene
@@ -64,9 +64,14 @@ func _transition(scene:String):
 				
 				GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
 		"startmenu":
+			GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
+			
+			animation_player.play("pink_shrinking")
+			
+			await new_scene
+			
 			get_tree().change_scene_to_packed(startmenu_scene)
 			
-
 
 
 ##signal

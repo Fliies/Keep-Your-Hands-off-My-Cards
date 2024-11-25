@@ -1,35 +1,287 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5ndkarl0yahg"]
+[gd_scene load_steps=45 format=3 uid="uid://baeelhpj44jwr"]
 
 [ext_resource type="Script" path="res://scripts/options.gd" id="1_am7yq"]
-[ext_resource type="Texture2D" uid="uid://lr0i45hiwdcq" path="res://assets/Options/options_bg.png" id="1_pjejw"]
+[ext_resource type="FontFile" uid="uid://bafa8t46i5ktu" path="res://assets/font/ChelseaMarket-Regular.ttf" id="2_c8uy2"]
+[ext_resource type="Texture2D" uid="uid://8xx0qx8g34td" path="res://assets/ScreenTransition/shop_base.png" id="2_qh23p"]
+[ext_resource type="Texture2D" uid="uid://dj6sky2iofa70" path="res://assets/Options/options_base.png" id="3_2xx88"]
+[ext_resource type="Texture2D" uid="uid://co1hkalv4gqqh" path="res://assets/Options/check_box-fill.png" id="3_332tv"]
+[ext_resource type="Texture2D" uid="uid://c6klwrg2lmak7" path="res://assets/Options/check_box-empty.png" id="4_csjm2"]
+[ext_resource type="Texture2D" uid="uid://ca2aue1td56qw" path="res://assets/Options/back-hover.png" id="5_4qaid"]
+[ext_resource type="Texture2D" uid="uid://dtjne2sge6ojv" path="res://assets/Options/back-normal.png" id="6_vovfc"]
+[ext_resource type="Texture2D" uid="uid://clp5m5i2vhahk" path="res://assets/Options/quit-hover.png" id="7_ynens"]
+[ext_resource type="Texture2D" uid="uid://psdrkpyj2ihf" path="res://assets/Options/quit-normal.png" id="8_sssp3"]
 
-[node name="Options" type="CanvasLayer"]
-visible = false
-script = ExtResource("1_am7yq")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_icvml"]
 
-[node name="Options" type="Control" parent="."]
-z_index = 3
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aylab"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1t05j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6p7pv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_veg11"]
+texture = ExtResource("3_332tv")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ev8w"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_efhj4"]
+texture = ExtResource("4_csjm2")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_py0nr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_240re"]
+texture = ExtResource("3_332tv")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h8oud"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_apiiy"]
+texture = ExtResource("4_csjm2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_oabnp"]
+font = ExtResource("2_c8uy2")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+outline_size = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ajfk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g7g87"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_53wga"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vjt7q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r6tc3"]
+texture = ExtResource("5_4qaid")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0b5bb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ad2a"]
+texture = ExtResource("5_4qaid")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x051t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aji24"]
+texture = ExtResource("6_vovfc")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wabcx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ev502"]
+texture = ExtResource("6_vovfc")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mj3fh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wa7h4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3cn3e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ghp4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ihv6"]
+texture = ExtResource("7_ynens")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_on558"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ou0h5"]
+texture = ExtResource("7_ynens")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_24x1k"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i72rt"]
+texture = ExtResource("8_sssp3")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mfg8l"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hmkco"]
+texture = ExtResource("8_sssp3")
+
+[node name="Options" type="Control" node_paths=PackedStringArray("back_btn", "back_to_start_btn", "exit_btn", "auto_flip_btn")]
+z_index = 7
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_am7yq")
+back_btn = NodePath("MarginContainer/VBoxContainer/ContainerDown/Back/BackBtn")
+back_to_start_btn = NodePath("MarginContainer/VBoxContainer/ContainerDown/ToStartMenu/ToStartMenuBtn")
+exit_btn = NodePath("MarginContainer/VBoxContainer/ContainerDown/Exit/ExitBtn")
+checkbox_empty = ExtResource("4_csjm2")
+checkbox_fill = ExtResource("3_332tv")
+auto_flip_btn = NodePath("MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox/LeftBox/AutoFlip/AutoflipBtn")
 
-[node name="OptionBG" type="TextureRect" parent="Options"]
+[node name="ShopBG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_qh23p")
+
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_pjejw")
+color = Color(0, 0, 0, 0.843137)
 
-[node name="MarginContainer" type="MarginContainer" parent="Options"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 100
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ContainerUp" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="OptionsBaseSprite" type="TextureRect" parent="MarginContainer/VBoxContainer/ContainerUp"]
+layout_mode = 2
+texture = ExtResource("3_2xx88")
+
+[node name="Options" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ContainerUp"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="UpperSpacer" type="Control" parent="MarginContainer/VBoxContainer/ContainerUp/Options"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="OptionsContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer/ContainerUp/Options"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftBox" type="MarginContainer" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_bottom = 20
+
+[node name="LeftBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="AutoFlip" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox/LeftBox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox/LeftBox/AutoFlip"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="AutoflipBtn" type="Button" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox/LeftBox/AutoFlip"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_icvml")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_aylab")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_1t05j")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_6p7pv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_veg11")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2ev8w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_efhj4")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_py0nr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_240re")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_h8oud")
+theme_override_styles/normal = SubResource("StyleBoxTexture_apiiy")
+toggle_mode = true
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox/LeftBox/AutoFlip"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "auto flip card"
+label_settings = SubResource("LabelSettings_oabnp")
+vertical_alignment = 1
+
+[node name="RightSpacer" type="Control" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="ContainerDown" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+
+[node name="Back" type="Control" parent="MarginContainer/VBoxContainer/ContainerDown"]
+custom_minimum_size = Vector2(200, 85)
+layout_mode = 2
+
+[node name="BackBtn" type="Button" parent="MarginContainer/VBoxContainer/ContainerDown/Back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0ajfk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_g7g87")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_53wga")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vjt7q")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_r6tc3")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_0b5bb")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2ad2a")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_x051t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_aji24")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_wabcx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ev502")
+
+[node name="ToStartMenu" type="Control" parent="MarginContainer/VBoxContainer/ContainerDown"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ToStartMenuBtn" type="Button" parent="MarginContainer/VBoxContainer/ContainerDown/ToStartMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "to start menu"
+
+[node name="Exit" type="Control" parent="MarginContainer/VBoxContainer/ContainerDown"]
+custom_minimum_size = Vector2(200, 85)
+layout_mode = 2
+
+[node name="ExitBtn" type="Button" parent="MarginContainer/VBoxContainer/ContainerDown/Exit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mj3fh")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_wa7h4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3cn3e")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_4ghp4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_1ihv6")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_on558")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ou0h5")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_24x1k")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_i72rt")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_mfg8l")
+theme_override_styles/normal = SubResource("StyleBoxTexture_hmkco")
+
+[connection signal="toggled" from="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox/LeftBox/AutoFlip/AutoflipBtn" to="." method="_on_autoflip_btn_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ContainerDown/Back/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ContainerDown/Exit/ExitBtn" to="." method="_on_exit_btn_pressed"]

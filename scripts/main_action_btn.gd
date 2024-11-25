@@ -7,6 +7,9 @@ extends Control
 @onready var keep_btn:= %KeepBtn
 @onready var flip_btn:= %FlipBtn
 
+signal sell_finished
+signal keep_finished
+signal open_pack_finished
 
 func _process(_delta: float) -> void:
 	##SELL n KEEP btn
@@ -56,17 +59,18 @@ func _on_open_pack_pressed() -> void:
 	main.animation_player_main.play("openpack")
 	
 	await main.animation_finished
-	#change GameState to OPENING_BACK
-	GlobalStateController.current_state = GlobalStateController.GameState.OPENING_BACK
 	#show flip btn
 	main.btn_flip.visible = true
 	main.btn_flip.disabled = false
+	#change GameState to OPENING_BACK
+	GlobalStateController.current_state = GlobalStateController.GameState.OPENING_BACK
 	#show cardback of 1st card
 	main.card_display._update_all()
 	
-	##auto flip
-	if Options.auto_flip == true:
-		_flip_card()
+	open_pack_finished.emit()
+	####auto flip
+	#if Options.auto_flip == true:
+		#_flip_card()
 
 ##flip
 func _on_flip_btn_pressed() -> void:
@@ -93,6 +97,7 @@ func _flip_card():
 	sell_price.text =  "$%.2f" % GlobalData.price_dict.get(main.card_display.card_stat.card_codename)
 	
 	await main.animation_finished
+	
 	GlobalStateController.current_state = GlobalStateController.GameState.OPENING_FRONT
 
 ##SELL BTN
@@ -134,9 +139,10 @@ func _on_sell_btn_pressed() -> void:
 		
 		main.card_display.visible = true
 		
-		##auto flip
-		if Options.auto_flip == true:
-			_flip_card()
+		####auto flip
+		#if Options.auto_flip == true:
+			#_flip_card()
+	sell_finished.emit()
 
 ##KEEP BTN
 func _on_keep_btn_pressed() -> void:
@@ -163,6 +169,7 @@ func _on_keep_btn_pressed() -> void:
 		main.btn_flip.disabled = true
 		#hide card
 		main.card_display.visible = false
+		
 	else:
 		#state
 		GlobalStateController.current_state = GlobalStateController.GameState.OPENING_BACK
@@ -172,9 +179,4 @@ func _on_keep_btn_pressed() -> void:
 		
 		main.card_display.visible = true
 		
-		##auto flip
-		if Options.auto_flip == true:
-			_flip_card()
-	
-	##checking fo rcompleted
-	main._completed_check()
+	keep_finished.emit()

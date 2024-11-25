@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c86awidbij8kf"
-path="res://.godot/imported/op-menu-scream.png-55826789bf4c45d4099a12a213fb146e.ctex"
+uid="uid://bxp51df2bayft"
+path="res://.godot/imported/open_cutscene-start_btn-pressed.png-7d2b245bc9e27e8f5609ad8e77c4d459.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/StartMenu/Animation/op-menu-scream.png"
-dest_files=["res://.godot/imported/op-menu-scream.png-55826789bf4c45d4099a12a213fb146e.ctex"]
+source_file="res://assets/OPCutscene/open_cutscene-start_btn-pressed.png"
+dest_files=["res://.godot/imported/open_cutscene-start_btn-pressed.png-7d2b245bc9e27e8f5609ad8e77c4d459.ctex"]
 
 [params]
 

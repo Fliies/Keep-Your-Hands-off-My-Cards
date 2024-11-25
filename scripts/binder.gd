@@ -44,7 +44,10 @@ func _ready() -> void:
 	credit_cutscene.visible = false
 	
 	#completed
-	completed_node.visible = false
+	if GlobalData.completed == true:
+		completed_node.visible = true
+	else:
+		completed_node.visible = false
 	
 	current_page = 1
 	page1.visible = true

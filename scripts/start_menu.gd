@@ -8,6 +8,7 @@ signal animation_finished
 @onready var sprite_scream:= $AnimationPlayer/SpriteScream
 
 @export_category("BUTTON")
+@export var container_normal: MarginContainer
 @export var newgame_btn: Button
 @export var continue_btn: Button
 @export var extras_btn: Button
@@ -18,17 +19,36 @@ signal animation_finished
 @export var moodeng_extra: Sprite2D
 @export var moodeng_extra_area: Area2D
 
+@export_category("Newgame Confirmation")
+@export var container_confirmation: MarginContainer
+@export var confirm_newgame_btn: Button
+@export var comfirm_goback_btn: Button
+
 func _ready() -> void:
-	_startmenu_setup()
+	Options.connect("options_back", _on_options_back_pressed)
+	
+	container_normal.visible = false
+	container_confirmation.visible = false
+	back_btn.visible = false
+	
+	if GlobalStateController.current_state == GlobalStateController.GameState.ANIMATION:
+		await ScreenTransition.animation_finished
+		_startmenu_setup()
+	else:
+		_startmenu_setup()
 
 func _startmenu_setup():
 	GlobalStateController.current_state = GlobalStateController.GameState.STARTING_MENU
+	
+	container_normal.visible = true
+	container_confirmation.visible = false
 	
 	moodeng_extra.visible = false
 	moodeng_extra_area.visible = false
 	
 	back_btn.visible = false
 	hell_mode_lbl.visible = false
+	
 	animation_player.play("idle")
 	
 	
@@ -61,18 +81,34 @@ func _on_newgame_pressed() -> void:
 	#else:
 		#GlobalData.newgame = true
 
-#newgame
-func _on_newgame_btn_pressed() -> void:
-	newgame_btn.visible = false
-	continue_btn.visible = false
-	extras_btn.visible = false
-	option_btn.visible = false
-	hell_mode.visible = false
-	hell_mode_lbl.visible = false
+##CONTINUE
+func _on_continue_btn_pressed() -> void:
+	
+	container_normal.visible = false
+	container_confirmation.visible = false
 	
 	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 	
+	animation_player.play("start")
 	
+	await animation_finished
+	
+	ScreenTransition._transition("main")
+
+##newgame
+func _on_newgame_btn_pressed() -> void:
+	if GlobalData.newgame == true:
+		_newgame_start()
+	else:
+		##confirmation
+		container_normal.visible = false
+		container_confirmation.visible = true
+
+func _newgame_start():
+	container_normal.visible = false
+	container_confirmation.visible = false
+	
+	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 	
 	animation_player.play("start")
 	
@@ -80,17 +116,20 @@ func _on_newgame_btn_pressed() -> void:
 	
 	#temp
 	ScreenTransition._transition("op_cutscene")
-	
-	#transition to cutscene
+
+#NEWGAME CONFIRMATION
+func _on_newgame_confirm_btn_pressed() -> void:
+	GlobalData.newgame = true
+	_newgame_start()
+
+func _on_goback_btn_pressed() -> void:
+	container_normal.visible = true
+	container_confirmation.visible = false
 
 
 func _on_extras_btn_pressed() -> void:
-	newgame_btn.visible = false
-	continue_btn.visible = false
-	extras_btn.visible = false
-	option_btn.visible = false
-	hell_mode.visible = false
-	hell_mode_lbl.visible = false
+	container_normal.visible = false
+	container_confirmation.visible = false
 	
 	moodeng_extra_area.visible = true
 	
@@ -103,15 +142,11 @@ func _on_back_btn_pressed() -> void:
 	animation_player.play("extra_exit")
 	
 	await animation_finished
-	newgame_btn.visible = true
-	continue_btn.visible = true
-	extras_btn.visible = true
-	option_btn.visible = true
-	hell_mode.visible = true
+	
+	container_normal.visible = true
+	container_confirmation.visible = false
 	
 	moodeng_extra_area.visible = false
-	#if GlobalData.hellmode == true:
-		#hell_mode_lbl.visible = true
 	
 	$AnimationPlayer/SpriteExtraBg.visible = false
 	$AnimationPlayer/SpriteExtras.visible = false
@@ -137,6 +172,17 @@ func _on_hell_mode_btn_mouse_exited() -> void:
 ##moo deng
 func _on_area_2d_mouse_entered() -> void:
 	moodeng_extra.visible = true
-
+	
 func _on_area_2d_mouse_exited() -> void:
 	moodeng_extra.visible = false
+
+##OPTIONS
+func _on_options_btn_pressed() -> void:
+	
+	container_normal.visible = false
+	
+	Options._options_start()
+
+func _on_options_back_pressed():
+	
+	container_normal.visible = true

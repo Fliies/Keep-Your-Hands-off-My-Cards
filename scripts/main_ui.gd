@@ -4,6 +4,8 @@ extends CanvasLayer
 @onready var money_current:= %MoneyCurrent
 @onready var money_added:= %MoneyAdded
 
+@onready var hellmode_icon:= $UI/UpperUiMargin/UpperUIVbox/HBoxRight/HellmodeIcon/HellmodeSprite
+
 @onready var pack_have:= %PackHave
 
 @onready var hint_lbl:= %HintLbl
@@ -13,6 +15,12 @@ func _process(_delta: float) -> void:
 	_update_money()
 	_update_pack_have()
 	_hint_lbl_handle()
+	
+	##hellmode icon
+	if GlobalData.hellmode == true:
+		hellmode_icon.visible = true
+	else:
+		hellmode_icon.visible = false
 
 func _update_money():
 	##current money
@@ -20,36 +28,44 @@ func _update_money():
 	if GlobalData.debt == false:
 		money_current.text = "$%.2f" % GlobalData.money_current
 		if GlobalData.money_current >= 0 :
-			money_current.label_settings.font_color = Color("GREEN")
+			money_current.label_settings.font_color = Color(0.584, 0.824, 0.063)
 		else:
 			money_current.label_settings.font_color = Color("RED")
 	else:
 		money_current.label_settings.font_color = Color("RED")
-		money_current.text = "Mom "
+		money_current.text = "Mommy "
 	#color
 	
 	##added money
 	if GlobalData.debt == false:
 		if GlobalData.money_added > 0:
-			money_added.text = "( + $%.2f )" % GlobalData.money_added
 			money_added.visible = true
+			money_added.label_settings.font_color = Color.BLACK
+			money_added.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+			money_added.text = "( + $%.2f )" % GlobalData.money_added
 		else:
 			money_added.visible = false
 	else:
 		money_added.visible = true
+		money_added.label_settings.font_color = Color.RED
 		money_added.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		money_added.label_settings.font_color = Color("RED")
 		money_added.text = "got this"
-	
+
 
 func _update_pack_have():
 	#pack_have.text = str(GlobalData.packcount_box + GlobalData.packcount_single) + " Packs"
-	pack_have.text = "x %s" % (GlobalData.packcount_box + GlobalData.packcount_single)
+	pack_have.text = "x%s" % (GlobalData.packcount_box + GlobalData.packcount_single)
 	
 	if (GlobalData.packcount_box + GlobalData.packcount_single) <= 1:
-		pack_have.label_settings.font_color = Color("RED")
+		pack_have.label_settings.font_color = Color.RED
 	else:
-		pack_have.label_settings.font_color = Color(0, 0.867, 1)
+		pack_have.label_settings.font_color = Color(0, 0.235, 1)
+	
+	#if GlobalData.debt == true:
+		#pack_have.text = "x %s" % min((GlobalData.packcount_box + GlobalData.packcount_single),99)
+	if (GlobalData.packcount_box + GlobalData.packcount_single) > 99:
+		pack_have.text = "x99+"
+	
 
 ##hint label
 func _hint_lbl_handle():

@@ -1,13 +1,13 @@
-[gd_scene load_steps=98 format=3 uid="uid://t37wtu303voa"]
+[gd_scene load_steps=123 format=3 uid="uid://t37wtu303voa"]
 
 [ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_6sujd"]
-[ext_resource type="Texture2D" uid="uid://cbd745ybp76ia" path="res://assets/StartMenu/animation/op-menu-sheet.png" id="2_5ygwa"]
+[ext_resource type="Texture2D" uid="uid://cbd745ybp76ia" path="res://assets/StartMenu/Animation/op-menu-sheet.png" id="2_5ygwa"]
 [ext_resource type="Texture2D" uid="uid://buy1km0uhv2s" path="res://assets/StartMenu/start_menu_title.png" id="2_erob5"]
-[ext_resource type="Texture2D" uid="uid://c86awidbij8kf" path="res://assets/StartMenu/animation/op-menu-scream.png" id="3_7ivjh"]
+[ext_resource type="Texture2D" uid="uid://c86awidbij8kf" path="res://assets/StartMenu/Animation/op-menu-scream.png" id="3_7ivjh"]
 [ext_resource type="Texture2D" uid="uid://bbtwwgi2r38dy" path="res://assets/BaseBG.png" id="5_3fsho"]
-[ext_resource type="Texture2D" uid="uid://klkcfm1rbuol" path="res://assets/StartMenu/animation/extras-spritesheet.png" id="5_qxicn"]
+[ext_resource type="Texture2D" uid="uid://klkcfm1rbuol" path="res://assets/StartMenu/Animation/extras-spritesheet.png" id="5_qxicn"]
 [ext_resource type="Texture2D" uid="uid://bop2uge4fmo6s" path="res://assets/StartMenu/Button/newgame-hover.png" id="6_1rmoy"]
-[ext_resource type="Texture2D" uid="uid://babgg5k6c3lmf" path="res://assets/StartMenu/animation/extra05.png" id="7_47seu"]
+[ext_resource type="Texture2D" uid="uid://babgg5k6c3lmf" path="res://assets/StartMenu/Animation/extra05.png" id="7_47seu"]
 [ext_resource type="Texture2D" uid="uid://clbnufe430hot" path="res://assets/StartMenu/Button/newgame-normal.png" id="7_lcpis"]
 [ext_resource type="Texture2D" uid="uid://d33y4uv6rel2c" path="res://assets/StartMenu/Button/continue-disabled.png" id="8_7xwdk"]
 [ext_resource type="Texture2D" uid="uid://bvgb10m5e1oah" path="res://assets/StartMenu/Button/hellmode-toggle.png" id="9_24vyc"]
@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://degkemvdplh3o" path="res://assets/Binder/btn/binder_arrow_left-hover.png" id="15_8tpc0"]
 [ext_resource type="Texture2D" uid="uid://dldnr0uwiijo3" path="res://assets/Binder/btn/binder_arrow_left-press.png" id="16_3b7ej"]
 [ext_resource type="Texture2D" uid="uid://r4eep2ufhwj7" path="res://assets/Binder/btn/binder_arrow_left.png" id="17_i32lp"]
+[ext_resource type="Texture2D" uid="uid://cqdu45o27c4a5" path="res://assets/StartMenu/Button/goback-hover.png" id="23_ig140"]
+[ext_resource type="Texture2D" uid="uid://321kgg0go3vq" path="res://assets/StartMenu/Button/goback-normal.png" id="24_d5xvv"]
 
 [sub_resource type="Animation" id="Animation_br1e7"]
 length = 0.001
@@ -449,7 +451,8 @@ radius = 160.012
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mhike"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fy1hh"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2qyhd"]
+texture = ExtResource("6_1rmoy")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_em70h"]
 
@@ -458,7 +461,8 @@ texture = ExtResource("6_1rmoy")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_63db8"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kjvnf"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8cbvb"]
+texture = ExtResource("6_1rmoy")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlo7h"]
 
@@ -505,7 +509,8 @@ texture = ExtResource("8_7xwdk")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hfeox"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qgl6h"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pyfxa"]
+texture = ExtResource("9_j7gbf")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n6ti1"]
 
@@ -514,7 +519,8 @@ texture = ExtResource("9_j7gbf")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dgdga"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wdni"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rggtx"]
+texture = ExtResource("9_j7gbf")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5sssd"]
 
@@ -529,7 +535,8 @@ texture = ExtResource("10_yp0aa")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7e7wj"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2fqjg"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_66fnl"]
+texture = ExtResource("11_bfuv7")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cooak"]
 
@@ -538,7 +545,8 @@ texture = ExtResource("11_bfuv7")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fartb"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_soa2h"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ovwb"]
+texture = ExtResource("11_bfuv7")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_650np"]
 
@@ -553,7 +561,8 @@ texture = ExtResource("12_pgmgv")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cwb5r"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjw4h"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0md7l"]
+texture = ExtResource("13_422jr")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ly2e5"]
 
@@ -562,7 +571,8 @@ texture = ExtResource("13_422jr")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2dqv7"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcu8l"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kjquf"]
+texture = ExtResource("13_422jr")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_srvak"]
 
@@ -594,8 +604,67 @@ texture = ExtResource("16_3b7ej")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwuoq"]
 texture = ExtResource("17_i32lp")
 
-[node name="StartMenu" type="Node2D" node_paths=PackedStringArray("newgame_btn", "continue_btn", "extras_btn", "option_btn", "back_btn", "hell_mode", "hell_mode_lbl", "moodeng_extra", "moodeng_extra_area")]
+[sub_resource type="LabelSettings" id="LabelSettings_pesp7"]
+font = ExtResource("11_v6wbj")
+font_size = 43
+font_color = Color(0, 0, 0, 1)
+outline_size = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e5e5q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rwssx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ewytk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbryr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owmp7"]
+texture = ExtResource("6_1rmoy")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06leo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r22b4"]
+texture = ExtResource("6_1rmoy")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ckfwg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y41vi"]
+texture = ExtResource("6_1rmoy")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jtiy1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ecrf1"]
+texture = ExtResource("7_lcpis")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_st7wx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_abocl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55sg3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p3jq4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e1rlh"]
+texture = ExtResource("23_ig140")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qabsm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0fytk"]
+texture = ExtResource("23_ig140")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hyatm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xicnr"]
+texture = ExtResource("23_ig140")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qwp7e"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j6ixd"]
+texture = ExtResource("24_d5xvv")
+
+[node name="StartMenu" type="Node2D" node_paths=PackedStringArray("container_normal", "newgame_btn", "continue_btn", "extras_btn", "option_btn", "back_btn", "hell_mode", "hell_mode_lbl", "moodeng_extra", "moodeng_extra_area", "container_confirmation", "confirm_newgame_btn", "comfirm_goback_btn")]
 script = ExtResource("1_6sujd")
+container_normal = NodePath("CanvasLayer/MarginContainer")
 newgame_btn = NodePath("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/NewgameBtn")
 continue_btn = NodePath("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer2/ContinueBtn")
 extras_btn = NodePath("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer3/ExtrasBtn")
@@ -605,6 +674,9 @@ hell_mode = NodePath("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/H
 hell_mode_lbl = NodePath("CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/Label")
 moodeng_extra = NodePath("AnimationPlayer/SpriteExtras05")
 moodeng_extra_area = NodePath("AnimationPlayer/SpriteExtras05Area")
+container_confirmation = NodePath("CanvasLayer/NewgameComfirmation")
+confirm_newgame_btn = NodePath("CanvasLayer/NewgameComfirmation/VBoxContainer/HBoxContainer2/NewgameBtn")
+comfirm_goback_btn = NodePath("CanvasLayer/NewgameComfirmation/VBoxContainer/HBoxContainer2/GobackBtn")
 
 [node name="BG" type="Sprite2D" parent="."]
 texture = ExtResource("2_erob5")
@@ -702,11 +774,11 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y54dl")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_58id6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_1ede1")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_mhike")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_fy1hh")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_2qyhd")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_em70h")
 theme_override_styles/hover = SubResource("StyleBoxTexture_tmyyb")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_63db8")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_kjvnf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8cbvb")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_nlo7h")
 theme_override_styles/normal = SubResource("StyleBoxTexture_gohse")
 
@@ -754,11 +826,11 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_stt3e")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_5db5c")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_fwwnl")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_hfeox")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_qgl6h")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_pyfxa")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_n6ti1")
 theme_override_styles/hover = SubResource("StyleBoxTexture_j6cv1")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dgdga")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_1wdni")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rggtx")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_5sssd")
 theme_override_styles/normal = SubResource("StyleBoxTexture_e5bc5")
 
@@ -774,11 +846,11 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_5rpaq")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_5um4c")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_bo7xe")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_7e7wj")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_2fqjg")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_66fnl")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_cooak")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ogyt8")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_fartb")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_soa2h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4ovwb")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_650np")
 theme_override_styles/normal = SubResource("StyleBoxTexture_1qbdf")
 
@@ -791,11 +863,11 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_swp87")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_qwhbf")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_kqd84")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_cwb5r")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rjw4h")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_0md7l")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_ly2e5")
 theme_override_styles/hover = SubResource("StyleBoxTexture_5fslg")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_2dqv7")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_lcu8l")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kjquf")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_srvak")
 theme_override_styles/normal = SubResource("StyleBoxTexture_0s352")
 
@@ -820,6 +892,84 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_h6s1f")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xwuoq")
 text = "BACK"
 
+[node name="NewgameComfirmation" type="MarginContainer" parent="CanvasLayer"]
+visible = false
+custom_minimum_size = Vector2(600, 300)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -605.0
+offset_top = -275.0
+offset_bottom = 275.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/NewgameComfirmation"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer1" type="Control" parent="CanvasLayer/NewgameComfirmation/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Label" type="Label" parent="CanvasLayer/NewgameComfirmation/VBoxContainer/HBoxContainer1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start a newgame 
+will erase 
+the previous progress"
+label_settings = SubResource("LabelSettings_pesp7")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/NewgameComfirmation/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="NewgameBtn" type="Button" parent="CanvasLayer/NewgameComfirmation/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e5e5q")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_rwssx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ewytk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_tbryr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_owmp7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_06leo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_r22b4")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ckfwg")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y41vi")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_jtiy1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ecrf1")
+
+[node name="GobackBtn" type="Button" parent="CanvasLayer/NewgameComfirmation/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_st7wx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_abocl")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_55sg3")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_p3jq4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_e1rlh")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_qabsm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0fytk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_hyatm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xicnr")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_qwp7e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_j6ixd")
+
 [connection signal="mouse_entered" from="AnimationPlayer/SpriteExtras05Area" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="AnimationPlayer/SpriteExtras05Area" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="pressed" from="debug/newgameToggle" to="." method="_on_newgame_pressed"]
@@ -827,5 +977,9 @@ text = "BACK"
 [connection signal="mouse_entered" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/HellModeBtn" to="." method="_on_hell_mode_btn_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/HellModeBtn" to="." method="_on_hell_mode_btn_mouse_exited"]
 [connection signal="toggled" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/HellModeBtn" to="." method="_on_hell_mode_btn_toggled"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer2/ContinueBtn" to="." method="_on_continue_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer3/ExtrasBtn" to="." method="_on_extras_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer3/OptionsBtn" to="." method="_on_options_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/NewgameComfirmation/VBoxContainer/HBoxContainer2/NewgameBtn" to="." method="_on_newgame_confirm_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/NewgameComfirmation/VBoxContainer/HBoxContainer2/GobackBtn" to="." method="_on_goback_btn_pressed"]

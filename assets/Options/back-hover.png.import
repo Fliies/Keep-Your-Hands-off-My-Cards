@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c86awidbij8kf"
-path="res://.godot/imported/op-menu-scream.png-55826789bf4c45d4099a12a213fb146e.ctex"
+uid="uid://ca2aue1td56qw"
+path="res://.godot/imported/back-hover.png-b3a99f573afe72c9c155da6bf5036438.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/StartMenu/Animation/op-menu-scream.png"
-dest_files=["res://.godot/imported/op-menu-scream.png-55826789bf4c45d4099a12a213fb146e.ctex"]
+source_file="res://assets/Options/back-hover.png"
+dest_files=["res://.godot/imported/back-hover.png-b3a99f573afe72c9c155da6bf5036438.ctex"]
 
 [params]
 

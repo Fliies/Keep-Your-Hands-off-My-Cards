@@ -11,6 +11,7 @@ signal complete_check_finished
 @export var ui_money_rect:TextureRect
 @export var ui_money:Texture2D
 @export var ui_credit: Texture2D
+@export var options_btn: Button
 
 @onready var shop:= %Shop
 @onready var shop_n_house_btn:= %ShopNHouseBtn
@@ -35,7 +36,7 @@ signal complete_check_finished
 @onready var binder_open: bool = false
 @onready var binder:= %Binder
 
-@onready var ui:= %UI
+@onready var ui:= $UI
 
 #@onready var credit_cutscene:= $CreditCutscene
 
@@ -44,6 +45,8 @@ signal complete_check_finished
 
 
 func _ready() -> void:
+	Options.connect("options_back", _on_options_back_pressed)
+	
 	_main_setup()
 
 func _main_setup():
@@ -108,9 +111,15 @@ func _main_setup():
 		#clear seen_arr
 		GlobalData.seen_arr.clear()
 		#add starting pack
+		GlobalData.packcount_box = 0
 		GlobalData.packcount_box = GlobalData.STARTING_packs
+		GlobalData.packcount_single = 0
 		#add starting money
 		GlobalData.money_current = GlobalData.STARTING_money
+		#clear add_money
+		GlobalData.money_added = 0
+		#state
+		GlobalStateController.prev_state = GlobalStateController.GameState.STANDBY
 	else:
 		#continue
 		pass
@@ -118,6 +127,18 @@ func _main_setup():
 func _process(_delta: float) -> void:
 	##debug 
 	_debug_process()
+	
+	##OPTIONS BTN
+	if GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
+		options_btn.disabled = false 
+	elif GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU:
+		options_btn.disabled = false 
+	elif GlobalStateController.current_state == GlobalStateController.GameState.SHOP_OFFER:
+		options_btn.disabled = false 
+	elif GlobalStateController.current_state == GlobalStateController.GameState.SHOP_CARDLIST:
+		options_btn.disabled = false 
+	else:
+		options_btn.disabled = true 
 	
 	##DEBT btn and money
 	if GlobalData.debt == false:
@@ -223,10 +244,13 @@ func _process(_delta: float) -> void:
 	##COLLECTED ICON
 	if GlobalStateController.current_state == GlobalStateController.GameState.OPENING_FRONT:
 		##seen icon
-		_seen_n_collected_icon()
+		if _seen_n_collected_icon() == true:
+			icon_collected.visible = true
+		else:
+			icon_collected.visible = false
 	else:
 		icon_collected.visible = false
-		#icon_seen.visible = false
+
 	
 	# idle animation
 	if GlobalStateController.current_state == GlobalStateController.GameState.OPENING_BACK:
@@ -241,18 +265,13 @@ func _process(_delta: float) -> void:
 func _seen_count():
 	GlobalData.seen_arr.append(card_display.card_stat.card_codename)
 
-func _seen_n_collected_icon():
-	###seen
-	#if card_display.card_stat.card_codename in GlobalData.seen_arr:
-		#icon_seen.visible = true
-	#else:
-		#icon_seen.visible = false
-	
+func _seen_n_collected_icon() -> bool:
+	var colllected:= false
 	##collected
 	if card_display.card_stat.card_codename in GlobalData.collection_arr:
-		icon_collected.visible = true
-	else:
-		icon_collected.visible = false
+		colllected = true
+	
+	return colllected
 
 
 ##signal
@@ -361,8 +380,6 @@ func _completed_check():
 			count += 1
 		if GlobalData.collection_arr.has("ex_credit"):
 			count += 1
-	else:
-		complete_check_finished.emit()
 	
 	if GlobalData.completed == false:
 		if count == 26:
@@ -387,18 +404,11 @@ func _completed_check():
 			binder._first_completed(30)
 	else:
 		binder._update_completed(count)
+	
+	complete_check_finished.emit()
 
 func _on_shop_buy_card() -> void:
 	_completed_check()
-
-##FORCE open BINDER when completed
-#func _binder_completed():
-	#GlobalStateController.prev_state = GlobalStateController.current_state
-	#GlobalStateController.current_state = GameStateController.GameState.ANIMATION
-	#
-	##binder._update_price_sheet()
-	#
-	#binder_open = true
 
 
 ##call Mom
@@ -434,5 +444,34 @@ func _debug_process():
 	+ " = " + str(GlobalData.packcount_box + GlobalData.packcount_single) #pack amount
 	+ " OPEN: " + str(GlobalData.total_open_packcount)
 	)
-	if Input.is_action_just_pressed("quick_add_pack"): #quick add pack
-		GlobalData.packcount_box += 1
+	#if Input.is_action_just_pressed("quick_add_pack"): #quick add pack
+		#GlobalData.packcount_box += 1
+
+
+func _on_main_action_btn_keep_finished() -> void:
+	_completed_check()
+	
+	await complete_check_finished
+	
+	
+	if Options.auto_flip == true:
+		if GlobalData.opening_arr.size() != 0:
+			main_action_btn._flip_card()
+func _on_main_action_btn_sell_finished() -> void:
+	if GlobalStateController.current_state == GlobalStateController.GameState.OPENING_BACK:
+		if Options.auto_flip == true:
+			main_action_btn._flip_card()
+
+
+func _on_main_action_btn_open_pack_finished() -> void:
+	if Options.auto_flip == true:
+		main_action_btn._flip_card()
+
+##options BTN
+func _on_options_btn_pressed() -> void:
+	ui.visible = false
+	
+	Options._options_main()
+
+func _on_options_back_pressed():
+	ui.visible = true
