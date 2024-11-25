@@ -6,6 +6,7 @@ signal animation_finished
 @onready var animation_player:= $AnimationPlayer
 @onready var sprite_idle:= $AnimationPlayer/Sprite
 @onready var sprite_scream:= $AnimationPlayer/SpriteScream
+@onready var collision_area:= $AnimationPlayer/SpriteExtras05Area/CollisionShape2D
 
 @export_category("BUTTON")
 @export var container_normal: MarginContainer
@@ -45,6 +46,7 @@ func _startmenu_setup():
 	
 	moodeng_extra.visible = false
 	moodeng_extra_area.visible = false
+	collision_area.disabled = true
 	
 	back_btn.visible = false
 	hell_mode_lbl.visible = false
@@ -135,10 +137,13 @@ func _on_extras_btn_pressed() -> void:
 	
 	animation_player.play("extras")
 	await animation_finished
+	collision_area.disabled = false
 	back_btn.visible = true
 
 
 func _on_back_btn_pressed() -> void:
+	collision_area.disabled = true
+	
 	animation_player.play("extra_exit")
 	
 	await animation_finished
