@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcccw3vy0k4x8"
+path="res://.godot/imported/Card_Swipe_Left - Card Selecting Screen.wav-160ba1176ba8219da621d607fdce0bdb.sample"
+
+[deps]
+
+source_file="res://sounds/Effects/Main/Card_Swipe_Left - Card Selecting Screen.wav"
+dest_files=["res://.godot/imported/Card_Swipe_Left - Card Selecting Screen.wav-160ba1176ba8219da621d607fdce0bdb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

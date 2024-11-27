@@ -194,6 +194,9 @@ func _first_driver():
 	#self.visible = true
 	animation_player.play("completed_before")
 	await flip_finished
+	
+	SoundManager._play_sfx(SoundManager.license_acquired, 0.0)
+	
 	animation_player.play("driver_got")
 	await animation_finished
 	
@@ -330,6 +333,8 @@ func _update_all_slot_visual():
 
 ##Change page btn
 func _on_left_page_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.birthday_card_flip, 0.0)
+	
 	if current_page == 23:
 		left_btn.disabled = true
 		animation_player.play("backward1")
@@ -350,6 +355,8 @@ func _on_left_page_pressed() -> void:
 	_update_inspect_btn_whole_page(current_page)
 
 func _on_right_page_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.birthday_card_flip, 0.0)
+	
 	if current_page == 1:
 		right_btn.disabled = true
 		animation_player.play("forward1")
@@ -568,76 +575,94 @@ func _show_inspect_card(codename:String):
 
 
 func _on_left_1_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 23:
 		_show_inspect_card("jj")
 	elif current_page == 4:
 		_show_inspect_card("ex_misprint")
 func _on_left_2_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 23:
 		_show_inspect_card("kk")
 func _on_left_3_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 23:
 		_show_inspect_card("ll")
 func _on_left_4_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 23:
 		_show_inspect_card("mm")
 func _on_left_5_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 23:
 		_show_inspect_card("nn")
 func _on_left_6_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 23:
 		_show_inspect_card("oo")
 func _on_left_7_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 23:
 		_show_inspect_card("pp")
 func _on_left_8_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 23:
 		_show_inspect_card("qq")
 func _on_left_9_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 23:
 		_show_inspect_card("rr")
 
 func _on_right_1_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 1:
 		_show_inspect_card("aa")
 	elif current_page == 23:
 		_show_inspect_card("ss")
 func _on_right_2_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 1:
 		_show_inspect_card("bb")
 	elif current_page == 23:
 		_show_inspect_card("tt")
 func _on_right_3_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 1:
 		_show_inspect_card("cc")
 	elif current_page == 23:
 		_show_inspect_card("uu")
 func _on_right_4_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 1:
 		_show_inspect_card("dd")
 	elif current_page == 23:
 		_show_inspect_card("vv")
 func _on_right_5_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 1:
 		_show_inspect_card("ee")
 	elif current_page == 23:
 		_show_inspect_card("ww")
 func _on_right_6_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 1:
 		_show_inspect_card("ff")
 	elif current_page == 23:
 		_show_inspect_card("xx")
 func _on_right_7_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 1:
 		_show_inspect_card("gg")
 	elif current_page == 23:
 		_show_inspect_card("yy")
 func _on_right_8_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 1:
 		_show_inspect_card("hh")
 	elif current_page == 23:
 		_show_inspect_card("zz")
 func _on_right_9_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	if current_page == 1:
 		_show_inspect_card("ii")
 	elif current_page == 23:

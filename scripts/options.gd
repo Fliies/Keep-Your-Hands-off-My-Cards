@@ -48,6 +48,8 @@ func _options_main():
 
 
 func _on_back_btn_pressed() -> void:
+	SoundManager._play_ui_click()
+	
 	##start menu
 	if GlobalStateController.current_state == GlobalStateController.GameState.OPTIONS_START:
 		GlobalStateController.current_state = GlobalStateController.GameState.STARTING_MENU
@@ -70,6 +72,7 @@ func _on_back_btn_pressed() -> void:
 
 
 func _on_exit_btn_pressed() -> void:
+	SoundManager._play_ui_click()
 	if GlobalStateController.current_state == GlobalStateController.GameState.OPTIONS_START:
 		get_tree().quit()
 	elif GlobalStateController.current_state == GlobalStateController.GameState.OPTIONS_MAIN:
@@ -80,6 +83,8 @@ func _on_exit_btn_pressed() -> void:
 
 
 func _on_autoflip_btn_toggled(toggled_on: bool) -> void:
+	SoundManager._play_ui_click()
+	
 	if toggled_on == true:
 		auto_flip = true
 	else:

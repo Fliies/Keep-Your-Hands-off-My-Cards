@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d36messtpw5hb"
+path="res://.godot/imported/Motorcycle_Right_to_Left - General.wav-4e44d1f4d88ec7889797ddab0f5cedb9.sample"
+
+[deps]
+
+source_file="res://sounds/Effects/Transitions/Motorcycle_Right_to_Left - General.wav"
+dest_files=["res://.godot/imported/Motorcycle_Right_to_Left - General.wav-4e44d1f4d88ec7889797ddab0f5cedb9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://1liodv38rvsm"
+path="res://.godot/imported/Credit_Card_Acquired - Special.wav-9997c7ddc38c47f4adb648e6e68b9191.sample"
+
+[deps]
+
+source_file="res://sounds/Effects/Extras/Credit_Card_Acquired - Special.wav"
+dest_files=["res://.godot/imported/Credit_Card_Acquired - Special.wav-9997c7ddc38c47f4adb648e6e68b9191.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

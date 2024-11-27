@@ -21,6 +21,7 @@ GlobalData="*res://scripts/global_data.gd"
 GlobalStateController="*res://scripts/global_state_controller.gd"
 ScreenTransition="*res://scenes/screen_transition.tscn"
 Options="*res://scenes/options.tscn"
+SoundManager="*res://scenes/sound_manager.tscn"
 
 [display]
 

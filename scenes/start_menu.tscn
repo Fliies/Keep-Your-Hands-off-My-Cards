@@ -1,9 +1,11 @@
-[gd_scene load_steps=123 format=3 uid="uid://t37wtu303voa"]
+[gd_scene load_steps=125 format=3 uid="uid://t37wtu303voa"]
 
 [ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_6sujd"]
 [ext_resource type="Texture2D" uid="uid://cbd745ybp76ia" path="res://assets/StartMenu/Animation/op-menu-sheet.png" id="2_5ygwa"]
 [ext_resource type="Texture2D" uid="uid://buy1km0uhv2s" path="res://assets/StartMenu/start_menu_title.png" id="2_erob5"]
+[ext_resource type="AudioStream" uid="uid://dq6qyuehav1gp" path="res://sounds/Effects/StartMenu/Hippo_idle - Menu and Intro.wav" id="2_m1l5x"]
 [ext_resource type="Texture2D" uid="uid://c86awidbij8kf" path="res://assets/StartMenu/Animation/op-menu-scream.png" id="3_7ivjh"]
+[ext_resource type="AudioStream" uid="uid://cwxc60ouxp8o4" path="res://sounds/Effects/StartMenu/Hippo_Start_Game - Menu and Intro.wav" id="3_pqf7a"]
 [ext_resource type="Texture2D" uid="uid://bbtwwgi2r38dy" path="res://assets/BaseBG.png" id="5_3fsho"]
 [ext_resource type="Texture2D" uid="uid://klkcfm1rbuol" path="res://assets/StartMenu/Animation/extras-spritesheet.png" id="5_qxicn"]
 [ext_resource type="Texture2D" uid="uid://bop2uge4fmo6s" path="res://assets/StartMenu/Button/newgame-hover.png" id="6_1rmoy"]
@@ -314,7 +316,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_5d0bd"]
 resource_name = "start"
-step = 0.05
+length = 2.0
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -322,7 +325,7 @@ tracks/0/path = NodePath("AnimationPlayer/SpriteScream:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, true]
@@ -334,7 +337,7 @@ tracks/1/path = NodePath("AnimationPlayer/SpriteScream:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, -0.0872665, -0.0872665]
@@ -346,7 +349,7 @@ tracks/2/path = NodePath("AnimationPlayer/SpriteScream:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.7, 1),
+"times": PackedFloat32Array(0, 1.1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(25, 25)]
@@ -358,7 +361,7 @@ tracks/3/path = NodePath("AnimationPlayer/SpriteScreenWipe:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -370,7 +373,7 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -384,7 +387,7 @@ tracks/5/path = NodePath("AnimationPlayer/Sprite:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -677,6 +680,16 @@ moodeng_extra_area = NodePath("AnimationPlayer/SpriteExtras05Area")
 container_confirmation = NodePath("CanvasLayer/NewgameComfirmation")
 confirm_newgame_btn = NodePath("CanvasLayer/NewgameComfirmation/VBoxContainer/HBoxContainer2/NewgameBtn")
 comfirm_goback_btn = NodePath("CanvasLayer/NewgameComfirmation/VBoxContainer/HBoxContainer2/GobackBtn")
+
+[node name="HippoIdle-MenuAndIntro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_m1l5x")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="HippoStartGame-MenuAndIntro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pqf7a")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="BG" type="Sprite2D" parent="."]
 texture = ExtResource("2_erob5")
@@ -973,6 +986,8 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_j6ixd")
 [connection signal="mouse_entered" from="AnimationPlayer/SpriteExtras05Area" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="AnimationPlayer/SpriteExtras05Area" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="pressed" from="debug/newgameToggle" to="." method="_on_newgame_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/NewgameBtn" to="." method="_on_newgame_btn_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/NewgameBtn" to="." method="_on_newgame_btn_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/NewgameBtn" to="." method="_on_newgame_btn_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/HellModeBtn" to="." method="_on_hell_mode_btn_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer1/HellModeBtn" to="." method="_on_hell_mode_btn_mouse_exited"]

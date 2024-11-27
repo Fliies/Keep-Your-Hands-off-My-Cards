@@ -1,0 +1,73 @@
+[gd_scene load_steps=15 format=3 uid="uid://ddvqi2flewldt"]
+
+[ext_resource type="Script" path="res://scripts/sound_manager.gd" id="1_7edo2"]
+[ext_resource type="AudioStream" uid="uid://bi3ra2j1sim82" path="res://sounds/Effects/UI_Click - General.wav" id="2_ebyn4"]
+[ext_resource type="AudioStream" uid="uid://dcng6cmsm53ti" path="res://sounds/Effects/Main/Card_Flip - Card Selecting Screen.wav" id="3_386gn"]
+[ext_resource type="AudioStream" uid="uid://dcccw3vy0k4x8" path="res://sounds/Effects/Main/Card_Swipe_Left - Card Selecting Screen.wav" id="4_l3svq"]
+[ext_resource type="AudioStream" uid="uid://d8bouh3crbo5" path="res://sounds/Effects/Main/Card_Pack_Wiggle_Randomize_1 - Card Selecting Screen.wav" id="4_q30u8"]
+[ext_resource type="AudioStream" uid="uid://bkflkf6nhhyat" path="res://sounds/Effects/Main/Card_Swipe_Right - Card Selecting Screen.wav" id="5_gdu0y"]
+[ext_resource type="AudioStream" uid="uid://dbyjnvb12eb6q" path="res://sounds/Effects/Main/Open_Package - Card Selecting Screen.wav" id="6_h418n"]
+[ext_resource type="AudioStream" uid="uid://1liodv38rvsm" path="res://sounds/Effects/Extras/Credit_Card_Acquired - Special.wav" id="8_v64kr"]
+[ext_resource type="AudioStream" uid="uid://c6dfphneooirn" path="res://sounds/Effects/Extras/License_Acquired - Special.wav" id="9_ut1bq"]
+[ext_resource type="AudioStream" uid="uid://bcytyudiqjx4j" path="res://sounds/Effects/Main/openbox.wav" id="10_snqnr"]
+[ext_resource type="AudioStream" uid="uid://bq0xp5lb6euod" path="res://sounds/Effects/Main/Binder_Enter - General.wav" id="11_s3k1l"]
+[ext_resource type="AudioStream" uid="uid://cqtoh5vjfbi01" path="res://sounds/Effects/StartMenu/Birthday_Card_Flip - Menu and Intro.wav" id="12_8o6b0"]
+[ext_resource type="AudioStream" uid="uid://dmq253jyfmisr" path="res://sounds/Effects/Transitions/Motorcycle_Left_to_Right - General.wav" id="13_rbmof"]
+[ext_resource type="AudioStream" uid="uid://d36messtpw5hb" path="res://sounds/Effects/Transitions/Motorcycle_Right_to_Left - General.wav" id="14_xkdcg"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_7edo2")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="UiClick" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("2_ebyn4")
+bus = &"SFX"
+
+[node name="CardFlip" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_386gn")
+bus = &"SFX"
+
+[node name="CardPackIdle" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_q30u8")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="CardSell" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_l3svq")
+bus = &"SFX"
+
+[node name="CardCollect" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_gdu0y")
+bus = &"SFX"
+
+[node name="OpenPackage" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_h418n")
+bus = &"SFX"
+
+[node name="CreditCardAcquired-Special" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("8_v64kr")
+bus = &"SFX"
+
+[node name="LicenseAcquired-Special" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_ut1bq")
+bus = &"SFX"
+
+[node name="Openbox" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("10_snqnr")
+bus = &"SFX"
+
+[node name="BinderEnter-General" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("11_s3k1l")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="BirthdayCardFlip-MenuAndIntro" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("12_8o6b0")
+bus = &"SFX"
+
+[node name="MotorcycleBackHome" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("13_rbmof")
+
+[node name="MotorcycleToShop" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("14_xkdcg")

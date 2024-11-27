@@ -1,4 +1,4 @@
-[gd_scene load_steps=155 format=3 uid="uid://tvuo7n21uk0v"]
+[gd_scene load_steps=158 format=3 uid="uid://tvuo7n21uk0v"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_fbqc6"]
 [ext_resource type="Texture2D" uid="uid://01mn6gmm53vw" path="res://assets/HandHolder.png" id="3_ij8wy"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cpyorpde3h8g" path="res://scenes/binder.tscn" id="9_4ap63"]
 [ext_resource type="Texture2D" uid="uid://b7hajfj14qu7s" path="res://assets/AnimationSheet/new-openpack-spritesheet01.png" id="9_o76s0"]
 [ext_resource type="Script" path="res://scripts/debug_main.gd" id="9_picq5"]
+[ext_resource type="AudioStream" uid="uid://d8bouh3crbo5" path="res://sounds/Effects/Main/Card_Pack_Wiggle_Randomize_1 - Card Selecting Screen.wav" id="10_n13dm"]
 [ext_resource type="Script" path="res://scripts/main_ui.gd" id="11_186pn"]
 [ext_resource type="Script" path="res://scripts/main_action_btn.gd" id="12_nkjrv"]
 [ext_resource type="Texture2D" uid="uid://beggerq7w7bmw" path="res://assets/Shop/icon_collected.png" id="13_tinv2"]
@@ -551,11 +552,14 @@ tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
 "method": &"_animation_finished"
+}, {
+"args": [],
+"method": &"_pack_wiggle"
 }]
 }
 tracks/2/type = "value"
@@ -638,15 +642,151 @@ tracks/4/keys = {
 "values": [Vector2(1, 1), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_yk315"]
+resource_name = "keep_2"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%CardDisplay/CardSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(680, 400), Vector2(1450, 600), Vector2(680, 400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%CardDisplay/CardSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.174533, 1.0472, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%CardDisplay/CardSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_animation_finished"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%CardDisplay/CardSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5o44j"]
+resource_name = "sell_2"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%CardDisplay/CardSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(680, 400), Vector2(-100, 600), Vector2(680, 400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%CardDisplay/CardSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.261799, -1.0472, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%CardDisplay/CardSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_animation_finished"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%CardDisplay/CardSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_23uw2"]
 _data = {
 "RESET": SubResource("Animation_1uqbn"),
 "flip_main": SubResource("Animation_t4lc8"),
 "keep": SubResource("Animation_ek7jk"),
+"keep_2": SubResource("Animation_yk315"),
 "openpack": SubResource("Animation_7mjky"),
 "pack_loop": SubResource("Animation_6bn5p"),
 "pack_loop_2": SubResource("Animation_nl2b2"),
-"sell": SubResource("Animation_f7mw5")
+"sell": SubResource("Animation_f7mw5"),
+"sell_2": SubResource("Animation_5o44j")
 }
 
 [sub_resource type="Animation" id="Animation_lxlii"]
@@ -966,7 +1106,7 @@ texture = ExtResource("34_wc4be")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dfqjw"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dogdn"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r5pdl"]
 texture = ExtResource("28_3vi3b")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4t6pi"]
@@ -1047,6 +1187,10 @@ hframes = 3
 
 [node name="Animation" type="Node2D" parent="."]
 
+[node name="CardPackWiggle" type="AudioStreamPlayer" parent="Animation"]
+stream = ExtResource("10_n13dm")
+volume_db = -15.0
+
 [node name="MainPlayer" type="AnimationPlayer" parent="Animation"]
 unique_name_in_owner = true
 libraries = {
@@ -1080,6 +1224,7 @@ position = Vector2(680, 400)
 texture = ExtResource("6_xvwsk")
 
 [node name="CardSprite" type="Sprite2D" parent="CardDisplay"]
+visible = false
 position = Vector2(680, 400)
 texture = ExtResource("8_b015w")
 
@@ -1456,7 +1601,7 @@ offset_bottom = 719.0
 focus_mode = 0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gy4jd")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_dfqjw")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_dogdn")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_r5pdl")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_4t6pi")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ekf53")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_n80nu")
@@ -1490,6 +1635,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="debug" type="Control" parent="UI"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1910,6 +2056,11 @@ offset_top = 5.0
 offset_right = 350.0
 offset_bottom = 36.0
 text = "+ money"
+
+[node name="FailSafe" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="FailSafe"]
+one_shot = true
 
 [connection signal="mouse_entered" from="CardDisplay/CardArea" to="CardDisplay" method="_on_card_area_mouse_entered"]
 [connection signal="mouse_exited" from="CardDisplay/CardArea" to="CardDisplay" method="_on_card_area_mouse_exited"]

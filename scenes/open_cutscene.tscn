@@ -1,11 +1,14 @@
-[gd_scene load_steps=45 format=3 uid="uid://boxovuoea2l3c"]
+[gd_scene load_steps=49 format=3 uid="uid://boxovuoea2l3c"]
 
 [ext_resource type="Texture2D" uid="uid://n6svxyfwfaav" path="res://assets/OPCutscene/open_cutscene-spritesheet.png" id="1_3xqbf"]
 [ext_resource type="Script" path="res://scripts/open_cutscene.gd" id="1_qng6x"]
-[ext_resource type="Texture2D" uid="uid://cq5ur22bmxo48" path="res://assets/OPCutscene/open_cutscene-box_close.png" id="2_dgh7s"]
+[ext_resource type="Texture2D" uid="uid://c2sw8by5b522k" path="res://assets/OPCutscene/small-open_cutscene-box_close.png" id="2_o0c2d"]
+[ext_resource type="Texture2D" uid="uid://dbjwbky0aaj4d" path="res://assets/OPCutscene/small-open_cutscene-box_open.png" id="3_ktmtl"]
 [ext_resource type="Texture2D" uid="uid://be54ho63uagu7" path="res://assets/Binder/btn/binder_arrow_right-hover.png" id="3_mcrvo"]
-[ext_resource type="Texture2D" uid="uid://duo5fpkhciim2" path="res://assets/OPCutscene/open_cutscene-box_open.png" id="3_s8gwx"]
+[ext_resource type="AudioStream" uid="uid://bn053qjb7vo6p" path="res://sounds/Effects/StartMenu/Lights_Off_intro - Menu and Intro.wav" id="4_f1nrk"]
+[ext_resource type="Texture2D" uid="uid://c7ds4re58ou16" path="res://assets/OPCutscene/opening_cutscene-BG.png" id="4_tiowr"]
 [ext_resource type="Texture2D" uid="uid://dqy3hntu7w38p" path="res://assets/Binder/btn/binder_arrow_right-press.png" id="4_vtpr6"]
+[ext_resource type="AudioStream" uid="uid://cqtoh5vjfbi01" path="res://sounds/Effects/StartMenu/Birthday_Card_Flip - Menu and Intro.wav" id="5_4juun"]
 [ext_resource type="Texture2D" uid="uid://d06xb885sug21" path="res://assets/Binder/btn/binder_arrow_right.png" id="5_78lbq"]
 [ext_resource type="Texture2D" uid="uid://bov3lbc8vilc6" path="res://assets/OPCutscene/open_cutscene-card.png" id="5_jjskg"]
 [ext_resource type="Shader" path="res://scripts/shop.gdshader" id="6_30rfv"]
@@ -100,6 +103,54 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LetsStart:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BoxOpenLbl:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BoxOpenLbl:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("OPBoxOpen:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_wvnck"]
 resource_name = "op_00"
@@ -158,11 +209,14 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.9, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"_disable_next_btn"
+}, {
+"args": [],
+"method": &"_lightout"
 }, {
 "args": [],
 "method": &"_eneble_next_btn"
@@ -204,6 +258,20 @@ tracks/1/keys = {
 "method": &"_finished"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_bdcard_flip"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_vvdph"]
 resource_name = "op_03"
@@ -241,6 +309,20 @@ tracks/1/keys = {
 "method": &"_finished"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_bdcard_flip"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_fem3h"]
 resource_name = "op_04"
@@ -252,17 +334,14 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
 "method": &"_disable_next_btn"
 }, {
 "args": [],
 "method": &"_finished"
-}, {
-"args": [],
-"method": &"_eneble_next_btn"
 }]
 }
 tracks/1/type = "method"
@@ -352,6 +431,73 @@ tracks/7/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_72nt7"]
+resource_name = "op_05"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LetsStart:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BoxOpenLbl:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BoxOpenLbl:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OPBoxOpen:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -68)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_finished"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l314r"]
 _data = {
 "RESET": SubResource("Animation_yoar7"),
@@ -359,7 +505,8 @@ _data = {
 "op_01": SubResource("Animation_1m6ck"),
 "op_02": SubResource("Animation_4tlcq"),
 "op_03": SubResource("Animation_vvdph"),
-"op_04": SubResource("Animation_fem3h")
+"op_04": SubResource("Animation_fem3h"),
+"op_05": SubResource("Animation_72nt7")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r42wu"]
@@ -403,33 +550,49 @@ outline_size = 3
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2fsx1"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_te4f4"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_via25"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68354"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jmjjf"]
 texture = ExtResource("8_wxrac")
+texture_margin_bottom = 360.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rajkr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vg3ei"]
 texture = ExtResource("9_mcp14")
+texture_margin_bottom = 360.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8wxoi"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n2ajq"]
 texture = ExtResource("8_wxrac")
+texture_margin_bottom = 360.0
+axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v0dae"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xl7m4"]
 texture = ExtResource("10_y4pwl")
+texture_margin_bottom = 360.0
+axis_stretch_vertical = 1
 
 [node name="OpenCutscene" type="Node2D" node_paths=PackedStringArray("open_card")]
 script = ExtResource("1_qng6x")
-box_close = ExtResource("2_dgh7s")
-box_open = ExtResource("3_s8gwx")
+box_close = ExtResource("2_o0c2d")
+box_open = ExtResource("3_ktmtl")
 open_card = NodePath("OPcard")
+
+[node name="LightsOffIntro-MenuAndIntro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_f1nrk")
+
+[node name="BirthdayCardFlip-MenuAndIntro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4juun")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture = ExtResource("4_tiowr")
+centered = false
 
 [node name="OPcutsceneSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_3xqbf")
@@ -437,7 +600,7 @@ centered = false
 vframes = 8
 
 [node name="OPBoxOpen" type="Sprite2D" parent="."]
-texture = ExtResource("3_s8gwx")
+texture = ExtResource("3_ktmtl")
 centered = false
 
 [node name="OPcard" type="Sprite2D" parent="."]
@@ -451,6 +614,7 @@ libraries = {
 }
 
 [node name="NextBtn" type="Button" parent="."]
+visible = false
 custom_minimum_size = Vector2(130, 130)
 anchors_preset = 15
 anchor_right = 1.0
@@ -473,7 +637,8 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_aqqpb")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_rgxfw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_n84t8")
 
-[node name="Label" type="Label" parent="."]
+[node name="BoxOpenLbl" type="Label" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_r76gg")
 anchors_preset = 8
 anchor_left = 0.5
@@ -481,9 +646,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 383.0
-offset_top = 160.0
+offset_top = 79.0
 offset_right = 932.0
-offset_bottom = 322.0
+offset_bottom = 241.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "There are 
@@ -493,20 +658,20 @@ label_settings = SubResource("LabelSettings_msbko")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="LetsStart" type="Button" parent="."]
 custom_minimum_size = Vector2(500, 120)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 395.0
-offset_top = 583.0
+offset_top = 187.0
 offset_right = 895.0
-offset_bottom = 703.0
+offset_bottom = 667.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_g071q")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_2fsx1")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_te4f4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_via25")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_68354")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_jmjjf")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_rajkr")
@@ -517,6 +682,6 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_v0dae")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xl7m4")
 
 [connection signal="pressed" from="NextBtn" to="." method="_on_next_btn_pressed"]
-[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="LetsStart" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="LetsStart" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="LetsStart" to="." method="_on_button_pressed"]

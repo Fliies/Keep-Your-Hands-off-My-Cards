@@ -2,6 +2,9 @@ extends Node2D
 
 signal animation_finished
 
+@onready var sound_hippo_newgame: AudioStreamPlayer = $"HippoIdle-MenuAndIntro"
+@onready var sound_hippo_start_game: AudioStreamPlayer = $"HippoStartGame-MenuAndIntro"
+
 @onready var BG:= $BG
 @onready var animation_player:= $AnimationPlayer
 @onready var sprite_idle:= $AnimationPlayer/Sprite
@@ -85,6 +88,9 @@ func _on_newgame_pressed() -> void:
 
 ##CONTINUE
 func _on_continue_btn_pressed() -> void:
+	##start sound
+	sound_hippo_newgame.stop()
+	sound_hippo_start_game.play(0.07)
 	
 	container_normal.visible = false
 	container_confirmation.visible = false
@@ -99,14 +105,20 @@ func _on_continue_btn_pressed() -> void:
 
 ##newgame
 func _on_newgame_btn_pressed() -> void:
+	
 	if GlobalData.newgame == true:
 		_newgame_start()
 	else:
+		SoundManager._play_ui_click()
 		##confirmation
 		container_normal.visible = false
 		container_confirmation.visible = true
 
 func _newgame_start():
+	##start sound
+	sound_hippo_newgame.stop()
+	sound_hippo_start_game.play(0.07)
+	
 	container_normal.visible = false
 	container_confirmation.visible = false
 	
@@ -121,15 +133,21 @@ func _newgame_start():
 
 #NEWGAME CONFIRMATION
 func _on_newgame_confirm_btn_pressed() -> void:
+	SoundManager._play_ui_click()
+	
 	GlobalData.newgame = true
 	_newgame_start()
 
 func _on_goback_btn_pressed() -> void:
+	SoundManager._play_ui_click()
+	
 	container_normal.visible = true
 	container_confirmation.visible = false
 
 
 func _on_extras_btn_pressed() -> void:
+	SoundManager._play_ui_click()
+	
 	container_normal.visible = false
 	container_confirmation.visible = false
 	
@@ -142,6 +160,9 @@ func _on_extras_btn_pressed() -> void:
 
 
 func _on_back_btn_pressed() -> void:
+	SoundManager._play_ui_click()
+	back_btn.visible = false
+	
 	collision_area.disabled = true
 	
 	animation_player.play("extra_exit")
@@ -155,12 +176,13 @@ func _on_back_btn_pressed() -> void:
 	
 	$AnimationPlayer/SpriteExtraBg.visible = false
 	$AnimationPlayer/SpriteExtras.visible = false
-	back_btn.visible = false
 	
 	animation_player.play("idle")
 
 
 func _on_hell_mode_btn_toggled(toggled_on: bool) -> void:
+	SoundManager._play_ui_click()
+	
 	if toggled_on == true:
 		GlobalData.hellmode = true
 	else:
@@ -183,11 +205,30 @@ func _on_area_2d_mouse_exited() -> void:
 
 ##OPTIONS
 func _on_options_btn_pressed() -> void:
+	SoundManager._play_ui_click()
 	
 	container_normal.visible = false
 	
 	Options._options_start()
 
 func _on_options_back_pressed():
+	SoundManager._play_ui_click()
 	
 	container_normal.visible = true
+
+
+##newgame mouse hover
+func _on_newgame_btn_mouse_entered() -> void:
+	sprite_idle.visible = false
+	sprite_scream.visible = true
+	
+	sound_hippo_newgame.play()
+	
+	animation_player.stop()
+
+
+func _on_newgame_btn_mouse_exited() -> void:
+	sprite_idle.visible = true
+	sprite_scream.visible = false
+	
+	animation_player.play("idle")

@@ -2693,6 +2693,7 @@ texture = ExtResource("39_274l5")
 centered = false
 
 [node name="debug" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -3090,6 +3091,8 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_a7nor")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_xojbd")
 theme_override_styles/normal = SubResource("StyleBoxTexture_8ek7w")
 shortcut = SubResource("Shortcut_coimo")
+shortcut_feedback = false
+shortcut_in_tooltip = false
 
 [node name="RightPage" type="Button" parent="."]
 offset_left = 1152.0
@@ -3109,6 +3112,8 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_25cr4")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ubdpf")
 theme_override_styles/normal = SubResource("StyleBoxTexture_wl2b8")
 shortcut = SubResource("Shortcut_mrc07")
+shortcut_feedback = false
+shortcut_in_tooltip = false
 
 [node name="InspectBG" type="Button" parent="."]
 visible = false

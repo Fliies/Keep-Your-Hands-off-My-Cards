@@ -37,6 +37,7 @@ func _process(_delta: float) -> void:
 
 ##OPEN PACK
 func _on_open_pack_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.open_package, 0.3)
 	#change GameState
 	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 	#hide btn
@@ -76,6 +77,7 @@ func _on_open_pack_pressed() -> void:
 func _on_flip_btn_pressed() -> void:
 	_flip_card()
 func _flip_card():
+	SoundManager._play_sfx_random_pitch(SoundManager.card_flip, 0.0)
 	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 	#last card
 	if main.card_display.cardback_next != null:
@@ -102,10 +104,11 @@ func _flip_card():
 
 ##SELL BTN
 func _on_sell_btn_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_sell, 0.0)
 	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 	
 	#collect animation
-	main.animation_player_main.play("sell")
+	main.animation_player_main.play("sell_2")
 	
 	#update card displaying
 	await main.animation_finished
@@ -146,6 +149,7 @@ func _on_sell_btn_pressed() -> void:
 
 ##KEEP BTN
 func _on_keep_btn_pressed() -> void:
+	SoundManager._play_sfx_random_pitch(SoundManager.card_collect, 0.0)
 	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 	
 	#collect
@@ -153,7 +157,7 @@ func _on_keep_btn_pressed() -> void:
 	GlobalData.collection_arr.append(card)
 	
 	#collect animation
-	main.animation_player_main.play("keep")
+	main.animation_player_main.play("keep_2")
 	
 	#update card displaying
 	await main.animation_finished

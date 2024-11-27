@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcng6cmsm53ti"
+path="res://.godot/imported/Card_Flip - Card Selecting Screen.wav-869f30a29d69a23b5417d41985fc325a.sample"
+
+[deps]
+
+source_file="res://sounds/Effects/Main/Card_Flip - Card Selecting Screen.wav"
+dest_files=["res://.godot/imported/Card_Flip - Card Selecting Screen.wav-869f30a29d69a23b5417d41985fc325a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

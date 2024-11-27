@@ -3,6 +3,7 @@ extends Node2D
 signal animation_finished
 signal show_cardback
 signal complete_check_finished
+signal pack_wiggle
 
 @export var to_shop_theme: Theme
 @export var to_house_theme: Theme
@@ -12,6 +13,10 @@ signal complete_check_finished
 @export var ui_money:Texture2D
 @export var ui_credit: Texture2D
 @export var options_btn: Button
+
+@onready var failsafe_timer: Timer = $FailSafe/Timer
+
+@onready var completed_count:int = 0
 
 @onready var shop:= %Shop
 @onready var shop_n_house_btn:= %ShopNHouseBtn
@@ -46,6 +51,9 @@ signal complete_check_finished
 
 func _ready() -> void:
 	Options.connect("options_back", _on_options_back_pressed)
+	
+	#idle pack sound
+	connect("pack_wiggle", _idle_cardpack_sfx)
 	
 	_main_setup()
 
@@ -241,6 +249,8 @@ func _process(_delta: float) -> void:
 		btn_open_pack.visible = false
 		btn_open_pack.disabled = true
 	
+	
+	
 	##COLLECTED ICON
 	if GlobalStateController.current_state == GlobalStateController.GameState.OPENING_FRONT:
 		##seen icon
@@ -284,6 +294,7 @@ func _animation_finished():
 func _on_binder_btn_pressed() -> void:
 	_binder_handle()
 func _binder_handle():
+	SoundManager._play_sfx_random_pitch(SoundManager.binder, 0.0)
 	if binder_open == false:
 		
 		#halt state
@@ -317,6 +328,8 @@ func _binder_handle():
 
 ##shop BTN
 func _on_shop_n_house_btn_pressed() -> void:
+	SoundManager._play_ui_click()
+	
 	##driver 1st time 
 	if GlobalData.driver == false:
 		GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
@@ -333,6 +346,8 @@ func _on_shop_n_house_btn_pressed() -> void:
 	
 	##to SHOP
 	if GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
+		SoundManager._play_sfx(SoundManager.motorcycle_to_shop, 0.0)
+		
 		shop_n_house_btn.disabled = true
 		#gas fee
 		GlobalData.money_current -= 3
@@ -351,6 +366,8 @@ func _on_shop_n_house_btn_pressed() -> void:
 	
 	##to house
 	elif GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU or GlobalStateController.GameState.SHOP_OFFER or GlobalStateController.GameState.SHOP_CARDLIST:
+		SoundManager._play_sfx(SoundManager.motorcycle_back_home, 0.0)
+		
 		shop_n_house_btn.disabled = true
 		#animation transition
 		GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
@@ -366,44 +383,45 @@ func _on_shop_n_house_btn_pressed() -> void:
 
 ##completed
 func _completed_check():
-	var count = 0
+	
+	completed_count = 0
+	
 	for codename in GlobalData.codename_arr:
 		if GlobalData.collection_arr.has(codename):
-			count += 1
+			completed_count += 1
 	
-	if count >= 26:
+	if completed_count >= 26:
 		if GlobalData.collection_arr.has("ex_misprint"):
-			count += 1
+			completed_count += 1
 		if GlobalData.collection_arr.has("ex_promo"):
-			count += 1
+			completed_count += 1
 		if GlobalData.collection_arr.has("ex_driver"):
-			count += 1
+			completed_count += 1
 		if GlobalData.collection_arr.has("ex_credit"):
-			count += 1
+			completed_count += 1
 	
 	if GlobalData.completed == false:
-		if count == 26:
-			#_binder_completed()
+		if completed_count == 26:
 			binder_open = true
 			binder._first_completed(26)
-		elif count == 27:
-			#_binder_completed()
+		elif completed_count == 27:
 			binder_open = true
 			binder._first_completed(27)
-		elif count == 28:
-			#_binder_completed()
+		elif completed_count == 28:
 			binder_open = true
 			binder._first_completed(28)
-		elif count == 29:
-			#_binder_completed()
+		elif completed_count == 29:
 			binder_open = true
 			binder._first_completed(29)
-		elif count == 30:
-			#_binder_completed()
+		elif completed_count == 30:
 			binder_open = true
 			binder._first_completed(30)
+		
+		#complete_check_finished.emit()
 	else:
-		binder._update_completed(count)
+		binder._update_completed(completed_count)
+		
+		#complete_check_finished.emit()
 	
 	complete_check_finished.emit()
 
@@ -449,23 +467,29 @@ func _debug_process():
 
 
 func _on_main_action_btn_keep_finished() -> void:
+	#print(0)
 	_completed_check()
-	
+	#print(1)
 	await complete_check_finished
-	
-	
+	#print(2)
 	if Options.auto_flip == true:
 		if GlobalData.opening_arr.size() != 0:
 			main_action_btn._flip_card()
+			#print("FLIP")
+	
+	###fail safe
+	#_failsafe_autoflip()
+	##print("PASS")
+
 func _on_main_action_btn_sell_finished() -> void:
 	if GlobalStateController.current_state == GlobalStateController.GameState.OPENING_BACK:
 		if Options.auto_flip == true:
 			main_action_btn._flip_card()
 
-
 func _on_main_action_btn_open_pack_finished() -> void:
 	if Options.auto_flip == true:
 		main_action_btn._flip_card()
+
 
 ##options BTN
 func _on_options_btn_pressed() -> void:
@@ -475,3 +499,16 @@ func _on_options_btn_pressed() -> void:
 
 func _on_options_back_pressed():
 	ui.visible = true
+
+
+##idle pack sound
+func _pack_wiggle():
+	pack_wiggle.emit()
+
+func _idle_cardpack_sfx():
+	if GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
+		$Animation/CardPackWiggle.pitch_scale = randf_range(0.8,1.2)
+		
+		$Animation/CardPackWiggle.play()
+	else:
+		$Animation/CardPackWiggle.stop()
