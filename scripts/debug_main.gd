@@ -7,9 +7,7 @@ func _on_addpackto_box_pressed() -> void:
 func _on_addpackto_single_pressed() -> void:
 	GlobalData.packcount_single += 1
 func _on_test_pressed() -> void:
-	GlobalData.collection_arr.erase("ex_credit")
-	GlobalData.collection_arr.erase("ex_promo")
-	main._completed_check()
+	print(GlobalData.hellmode)
 
 func _count_all():
 	#if GlobalData.seen_arr.size() != 0:

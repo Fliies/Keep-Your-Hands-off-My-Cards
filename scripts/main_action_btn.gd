@@ -105,6 +105,7 @@ func _flip_card():
 ##SELL BTN
 func _on_sell_btn_pressed() -> void:
 	SoundManager._play_sfx_random_pitch(SoundManager.card_sell, 0.0)
+	SoundManager._play_handle_money()
 	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 	
 	#collect animation

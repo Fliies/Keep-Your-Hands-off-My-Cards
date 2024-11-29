@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://cpyorpde3h8g"]
+[gd_scene load_steps=120 format=3 uid="uid://cpyorpde3h8g"]
 
 [ext_resource type="Script" path="res://scripts/binder.gd" id="1_1h60k"]
 [ext_resource type="Texture2D" uid="uid://dd6reruiixn83" path="res://assets/Binder/Sprite/base.png" id="1_8gl4p"]
@@ -57,6 +57,11 @@
 [ext_resource type="Texture2D" uid="uid://d06xb885sug21" path="res://assets/Binder/btn/binder_arrow_right.png" id="49_xckw0"]
 [ext_resource type="PackedScene" uid="uid://brphnt4fr1v1n" path="res://scenes/credit_cutscene.tscn" id="56_wo6cp"]
 [ext_resource type="Texture2D" uid="uid://ll2r2blhttuh" path="res://assets/AnimationSheet/callmom_spritesheet.png" id="57_e0jum"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j6dcc"]
+font = ExtResource("19_llbnk")
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_y7qhl"]
 font_size = 12
@@ -1190,6 +1195,15 @@ texture = ExtResource("1_8gl4p")
 centered = false
 
 [node name="Cover" type="Node2D" parent="."]
+
+[node name="PlayTimerLbl" type="Label" parent="Cover"]
+visible = false
+offset_left = 287.0
+offset_top = 414.0
+offset_right = 504.0
+offset_bottom = 437.0
+text = "COMPLETED TIME 00.00.00 "
+label_settings = SubResource("LabelSettings_j6dcc")
 
 [node name="Credit" type="Sprite2D" parent="Cover"]
 visible = false
@@ -2693,7 +2707,6 @@ texture = ExtResource("39_274l5")
 centered = false
 
 [node name="debug" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -3147,6 +3160,8 @@ texture = ExtResource("57_e0jum")
 centered = false
 vframes = 26
 frame = 25
+
+[node name="PlayTimer" type="Timer" parent="."]
 
 [connection signal="pressed" from="debug/test 2" to="." method="_on_test_2_pressed"]
 [connection signal="pressed" from="debug/test 3" to="." method="_on_test_3_pressed"]

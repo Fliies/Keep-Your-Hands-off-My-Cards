@@ -80,7 +80,7 @@ func _chang_bg():
 
 
 func _on_button_pressed() -> void:
-	SoundManager._play_ui_click()
+	SoundManager._play_ui_click_2()
 	
 	ScreenTransition._transition("main")
 

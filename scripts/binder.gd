@@ -26,6 +26,8 @@ signal credit_to_slot_finished
 
 @onready var animation_player:= $AnimationPlayer
 @onready var timer:= $Timer
+@onready var play_timer: Timer = $PlayTimer
+@onready var play_timer_lbl: Label = $Cover/PlayTimerLbl
 
 @export_category("NODE")
 @export var sprite_node: Array[Sprite2D] 
@@ -123,14 +125,15 @@ func _first_completed(amount:int):
 	animation_player.play("completed_before")
 	timer.start(1)
 	await timer.timeout
+	SoundManager._play_binder_flip("LEFT")
 	
 	animation_player.play("backward2")
 	await flip_finished
-	
 	#current_page = 23
 	
 	timer.start(1.5)
 	await timer.timeout
+	SoundManager._play_binder_flip("LEFT")
 	
 	animation_player.play("backward1")
 	await flip_finished
@@ -144,6 +147,7 @@ func _first_completed(amount:int):
 	
 	
 	animation_player.play("completed")
+	SoundManager._acquired_card()
 	await flip_finished
 	
 	##lower z index
@@ -191,14 +195,17 @@ func _first_driver():
 	$Cover/Driver.visible = false
 	
 	##animation
-	#self.visible = true
+	
+	SoundManager._play_sfx_random_pitch(SoundManager.binder, 0.1)
+	
 	animation_player.play("completed_before")
 	await flip_finished
 	
-	SoundManager._play_sfx(SoundManager.license_acquired, 0.0)
 	
 	animation_player.play("driver_got")
+	
 	await animation_finished
+	SoundManager._play_sfx(SoundManager.license_acquired, 0.0)
 	
 	timer.start(1.0)
 	await timer.timeout
@@ -232,7 +239,11 @@ func _first_callmom():
 	$Cover/Credit.visible = false
 	
 	##animation
-	self.visible = true
+	#self.visible = true
+	
+	SoundManager._play_sfx_random_pitch(SoundManager.binder, 0.1)
+	animation_player.play("completed_before")
+	await flip_finished
 	
 	credit_cutscene.visible = true
 	credit_cutscene.animation_player.play("callmom_1")
@@ -246,12 +257,14 @@ func _first_callmom():
 	await credit_cutscene.show_credit
 	animation_player.play("credit_showing")
 	await animation_finished
+	
 	timer.start(1)
 	await  timer.timeout
 	credit_cutscene.visible = false
 	animation_player.play("credit_to_slot")
 	
 	await credit_to_slot_finished
+	SoundManager._play_sfx(SoundManager.license_acquired, 0.0)
 	timer.start(1)
 	await timer.timeout
 	
@@ -333,7 +346,8 @@ func _update_all_slot_visual():
 
 ##Change page btn
 func _on_left_page_pressed() -> void:
-	SoundManager._play_sfx_random_pitch(SoundManager.birthday_card_flip, 0.0)
+	#SoundManager._play_sfx_random_pitch(SoundManager.binder_page_flip, 0.0)
+	SoundManager._play_binder_flip("LEFT")
 	
 	if current_page == 23:
 		left_btn.disabled = true
@@ -355,7 +369,8 @@ func _on_left_page_pressed() -> void:
 	_update_inspect_btn_whole_page(current_page)
 
 func _on_right_page_pressed() -> void:
-	SoundManager._play_sfx_random_pitch(SoundManager.birthday_card_flip, 0.0)
+	#SoundManager._play_sfx_random_pitch(SoundManager.binder_page_flip, 0.0)
+	SoundManager._play_binder_flip("RIGHT")
 	
 	if current_page == 1:
 		right_btn.disabled = true

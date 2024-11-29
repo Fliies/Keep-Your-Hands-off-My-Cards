@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://djdj66w74pklm"
+path="res://.godot/imported/06-Credit_Card_Acquired.wav-2e48f45183550224b57f64d3ad864d5a.sample"
+
+[deps]
+
+source_file="res://sounds/Effects/Extras/Phone Call Sequence/06-Credit_Card_Acquired.wav"
+dest_files=["res://.godot/imported/06-Credit_Card_Acquired.wav-2e48f45183550224b57f64d3ad864d5a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

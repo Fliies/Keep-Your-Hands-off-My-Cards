@@ -10,6 +10,7 @@ signal animation_finished
 @onready var sprite_idle:= $AnimationPlayer/Sprite
 @onready var sprite_scream:= $AnimationPlayer/SpriteScream
 @onready var collision_area:= $AnimationPlayer/SpriteExtras05Area/CollisionShape2D
+@onready var hell_mode_continue: TextureRect = $CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer2/HellmodeContinue
 
 @export_category("BUTTON")
 @export var container_normal: MarginContainer
@@ -52,7 +53,9 @@ func _startmenu_setup():
 	collision_area.disabled = true
 	
 	back_btn.visible = false
+	GlobalData.hellmode = false
 	hell_mode_lbl.visible = false
+	hell_mode_continue.visible = false
 	
 	animation_player.play("idle")
 	
@@ -61,11 +64,14 @@ func _startmenu_setup():
 		continue_btn.disabled = true
 	else:
 		continue_btn.disabled = false
+		if GlobalData.hellmode_continue == true:
+			hell_mode_continue.visible = true
 	
-	if GlobalData.hellmode == true:
-		hell_mode_lbl.visible = true
-	else: 
-		hell_mode_lbl.visible = false
+	
+	#if GlobalData.hellmode == true:
+		#hell_mode_lbl.visible = true
+	#else: 
+		#hell_mode_lbl.visible = false
 
 
 func _process(_delta: float) -> void:
@@ -90,7 +96,10 @@ func _on_newgame_pressed() -> void:
 func _on_continue_btn_pressed() -> void:
 	##start sound
 	sound_hippo_newgame.stop()
-	sound_hippo_start_game.play(0.07)
+	sound_hippo_start_game.play(0.2)
+	
+	##hellmode
+	GlobalData.hellmode = GlobalData.hellmode_continue
 	
 	container_normal.visible = false
 	container_confirmation.visible = false
@@ -117,7 +126,13 @@ func _on_newgame_btn_pressed() -> void:
 func _newgame_start():
 	##start sound
 	sound_hippo_newgame.stop()
-	sound_hippo_start_game.play(0.07)
+	sound_hippo_start_game.play(0.2)
+	
+	##hellmode
+	if GlobalData.hellmode == true:
+		GlobalData.hellmode_continue = true
+	else:
+		GlobalData.hellmode_continue = false
 	
 	container_normal.visible = false
 	container_confirmation.visible = false
@@ -181,7 +196,7 @@ func _on_back_btn_pressed() -> void:
 
 
 func _on_hell_mode_btn_toggled(toggled_on: bool) -> void:
-	SoundManager._play_ui_click()
+	SoundManager._play_ui_click_2()
 	
 	if toggled_on == true:
 		GlobalData.hellmode = true
@@ -222,7 +237,7 @@ func _on_newgame_btn_mouse_entered() -> void:
 	sprite_idle.visible = false
 	sprite_scream.visible = true
 	
-	sound_hippo_newgame.play()
+	sound_hippo_newgame.play(0.25)
 	
 	animation_player.stop()
 

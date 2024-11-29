@@ -23,6 +23,9 @@ func _animation_finished():
 	animation_finished.emit()
 
 func _on_buy_btn_pressed() -> void:
+	SoundManager._play_buycard()
+	SoundManager._play_handle_money()
+	
 	buy_btn.disabled = true
 	animation_palyer.play("buy")
 	
@@ -30,6 +33,8 @@ func _on_buy_btn_pressed() -> void:
 	buy_cardlist_slot.emit(self)
 
 func _on_sell_btn_pressed() -> void:
+	SoundManager._play_handle_money()
+	
 	sell_btn.disabled = true
 	#animation_palyer.play("sell")
 	#

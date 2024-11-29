@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://ddvqi2flewldt"]
+[gd_scene load_steps=18 format=3 uid="uid://ddvqi2flewldt"]
 
 [ext_resource type="Script" path="res://scripts/sound_manager.gd" id="1_7edo2"]
 [ext_resource type="AudioStream" uid="uid://bi3ra2j1sim82" path="res://sounds/Effects/UI_Click - General.wav" id="2_ebyn4"]
 [ext_resource type="AudioStream" uid="uid://dcng6cmsm53ti" path="res://sounds/Effects/Main/Card_Flip - Card Selecting Screen.wav" id="3_386gn"]
+[ext_resource type="AudioStream" uid="uid://d2lbadkiusgtj" path="res://sounds/Effects/UI_Click-new - General.wav" id="3_iperk"]
 [ext_resource type="AudioStream" uid="uid://dcccw3vy0k4x8" path="res://sounds/Effects/Main/Card_Swipe_Left - Card Selecting Screen.wav" id="4_l3svq"]
 [ext_resource type="AudioStream" uid="uid://d8bouh3crbo5" path="res://sounds/Effects/Main/Card_Pack_Wiggle_Randomize_1 - Card Selecting Screen.wav" id="4_q30u8"]
 [ext_resource type="AudioStream" uid="uid://bkflkf6nhhyat" path="res://sounds/Effects/Main/Card_Swipe_Right - Card Selecting Screen.wav" id="5_gdu0y"]
@@ -14,9 +15,17 @@
 [ext_resource type="AudioStream" uid="uid://cqtoh5vjfbi01" path="res://sounds/Effects/StartMenu/Birthday_Card_Flip - Menu and Intro.wav" id="12_8o6b0"]
 [ext_resource type="AudioStream" uid="uid://dmq253jyfmisr" path="res://sounds/Effects/Transitions/Motorcycle_Left_to_Right - General.wav" id="13_rbmof"]
 [ext_resource type="AudioStream" uid="uid://d36messtpw5hb" path="res://sounds/Effects/Transitions/Motorcycle_Right_to_Left - General.wav" id="14_xkdcg"]
+[ext_resource type="AudioStream" uid="uid://cinr84qy3tt52" path="res://sounds/Effects/Shop/handleMoney.wav" id="15_uge30"]
+[ext_resource type="AudioStream" uid="uid://dqtovrqn6ttjf" path="res://sounds/GAMEPLAY-loop.wav" id="17_8g3ix"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_7edo2")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="music_bg" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("17_8g3ix")
+bus = &"Music"
 
 [node name="SFX" type="Node" parent="."]
 
@@ -24,50 +33,104 @@ script = ExtResource("1_7edo2")
 stream = ExtResource("2_ebyn4")
 bus = &"SFX"
 
-[node name="CardFlip" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("3_386gn")
+[node name="UIClick2" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_q30u8")
 bus = &"SFX"
+
+[node name="UiClick-new-General" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_iperk")
+volume_db = 24.0
+bus = &"SFX"
+
+[node name="shopCardlistHover" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_386gn")
+
+[node name="shopCardpackHover" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_q30u8")
+
+[node name="ShopBoxHover" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_h418n")
+
+[node name="ShopOfferSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_ut1bq")
+volume_db = 10.0
+pitch_scale = 2.0
 
 [node name="CardPackIdle" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("4_q30u8")
 volume_db = -10.0
 bus = &"SFX"
 
+[node name="OpenPackage" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_h418n")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="CardFlip" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_386gn")
+volume_db = 10.0
+bus = &"SFX"
+
 [node name="CardSell" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("4_l3svq")
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="CardCollect" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("5_gdu0y")
-bus = &"SFX"
-
-[node name="OpenPackage" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("6_h418n")
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="CreditCardAcquired-Special" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("8_v64kr")
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="LicenseAcquired-Special" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("9_ut1bq")
+volume_db = 15.0
 bus = &"SFX"
 
 [node name="Openbox" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("10_snqnr")
+volume_db = 15.0
 bus = &"SFX"
 
 [node name="BinderEnter-General" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("11_s3k1l")
-volume_db = -10.0
+volume_db = 10.0
 bus = &"SFX"
 
-[node name="BirthdayCardFlip-MenuAndIntro" type="AudioStreamPlayer" parent="SFX"]
+[node name="BinderPageFlip" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("12_8o6b0")
+volume_db = 20.0
 bus = &"SFX"
 
 [node name="MotorcycleBackHome" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("13_rbmof")
+volume_db = 15.0
+
+[node name="HandleMoney" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("15_uge30")
 
 [node name="MotorcycleToShop" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("14_xkdcg")
+volume_db = 15.0
+
+[node name="debug" type="Node" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="debug"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="test1" type="Button" parent="debug/VBoxContainer"]
+layout_mode = 2
+text = "test1"
+
+[node name="test2" type="Button" parent="debug/VBoxContainer"]
+layout_mode = 2
+text = "test2"
+
+[connection signal="pressed" from="debug/VBoxContainer/test1" to="." method="_on_test_1_pressed"]
+[connection signal="pressed" from="debug/VBoxContainer/test2" to="." method="_on_test_2_pressed"]

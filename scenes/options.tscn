@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://baeelhpj44jwr"]
+[gd_scene load_steps=47 format=3 uid="uid://baeelhpj44jwr"]
 
 [ext_resource type="Script" path="res://scripts/options.gd" id="1_am7yq"]
 [ext_resource type="FontFile" uid="uid://bafa8t46i5ktu" path="res://assets/font/ChelseaMarket-Regular.ttf" id="2_c8uy2"]
@@ -8,8 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://c6klwrg2lmak7" path="res://assets/Options/check_box-empty.png" id="4_csjm2"]
 [ext_resource type="Texture2D" uid="uid://ca2aue1td56qw" path="res://assets/Options/back-hover.png" id="5_4qaid"]
 [ext_resource type="Texture2D" uid="uid://dtjne2sge6ojv" path="res://assets/Options/back-normal.png" id="6_vovfc"]
+[ext_resource type="PackedScene" uid="uid://qb4v1lpv4d0s" path="res://scenes/volume_slider.tscn" id="7_i2rp5"]
 [ext_resource type="Texture2D" uid="uid://clp5m5i2vhahk" path="res://assets/Options/quit-hover.png" id="7_ynens"]
 [ext_resource type="Texture2D" uid="uid://psdrkpyj2ihf" path="res://assets/Options/quit-normal.png" id="8_sssp3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a158w"]
+font = ExtResource("2_c8uy2")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+outline_size = 4
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_icvml"]
 
@@ -176,6 +183,49 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 5
+
+[node name="Audio" type="MarginContainer" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox/LeftBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="AudioVbox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox/LeftBox/Audio"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="MasterLbl" type="Label" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox/LeftBox/Audio/AudioVbox"]
+layout_mode = 2
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_a158w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterSlider" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox/LeftBox/Audio/AudioVbox" instance=ExtResource("7_i2rp5")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="MusicLbl" type="Label" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox/LeftBox/Audio/AudioVbox"]
+layout_mode = 2
+text = "Music"
+label_settings = SubResource("LabelSettings_a158w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSlider" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox/LeftBox/Audio/AudioVbox" instance=ExtResource("7_i2rp5")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="SFXLbl" type="Label" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox/LeftBox/Audio/AudioVbox"]
+layout_mode = 2
+text = "sfx"
+label_settings = SubResource("LabelSettings_a158w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXSlider" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox/LeftBox/Audio/AudioVbox" instance=ExtResource("7_i2rp5")]
+layout_mode = 2
+bus_name = "SFX"
 
 [node name="AutoFlip" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ContainerUp/Options/OptionsContainer/LeftBox/LeftBox"]
 custom_minimum_size = Vector2(0, 50)

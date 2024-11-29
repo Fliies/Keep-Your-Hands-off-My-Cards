@@ -140,6 +140,7 @@ extends Node
 @onready var driver: bool = false
 @onready var completed: bool = false
 @onready var hellmode: bool = false
+@onready var hellmode_continue: bool = false
 @onready var debt: bool = false
 
 

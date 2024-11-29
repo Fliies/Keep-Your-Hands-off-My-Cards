@@ -144,6 +144,7 @@ func _initial_stock_cardlist():
 ##BUY n SELL BTN ACTION
 #PRESSED BTN in slot
 func _on_buy_cardlist_slot(node: Variant) -> void:
+	
 	#var index = cardlist_slot.find(node)
 	_buy_card(GlobalData.codename_arr[cardlist_slot.find(node)])
 	
@@ -155,6 +156,7 @@ func _on_buy_cardlist_slot(node: Variant) -> void:
 	buy_card.emit()
 
 func _on_sell_cardlist_slot(node: Variant) -> void:
+	
 	#var index = cardlist_slot.find(node)
 	_sell_card(GlobalData.codename_arr[cardlist_slot.find(node)])
 	

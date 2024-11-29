@@ -72,7 +72,7 @@ func _on_back_btn_pressed() -> void:
 
 
 func _on_exit_btn_pressed() -> void:
-	SoundManager._play_ui_click()
+	SoundManager._play_ui_click_2()
 	if GlobalStateController.current_state == GlobalStateController.GameState.OPTIONS_START:
 		get_tree().quit()
 	elif GlobalStateController.current_state == GlobalStateController.GameState.OPTIONS_MAIN:
@@ -83,7 +83,7 @@ func _on_exit_btn_pressed() -> void:
 
 
 func _on_autoflip_btn_toggled(toggled_on: bool) -> void:
-	SoundManager._play_ui_click()
+	SoundManager._play_ui_click_2()
 	
 	if toggled_on == true:
 		auto_flip = true

@@ -44,28 +44,21 @@ func _update_shop_btn():
 
 #Buy and Sell BTN
 func _on_buy_1_pack_pressed() -> void:
+	SoundManager._play_handle_money()
 	# - money
 	GlobalData.money_current -= GlobalData.price_pack
 	#add pack
 	GlobalData.packcount_single += 1
-	##cap pack count
-	#if GlobalData.debt == true:
-		#GlobalData.packcount_single = min(GlobalData.packcount_single, 99)
 func _on_buy_5_packs_pressed() -> void:
+	SoundManager._play_handle_money()
 	# - money
 	GlobalData.money_current -= (GlobalData.price_pack * 5)
 	#add pack
 	GlobalData.packcount_single += 5
-	##cap pack count
-	#if GlobalData.debt == true:
-		#GlobalData.packcount_single = min(GlobalData.packcount_single, 99)
 func _on_buy_box_pressed() -> void:
+	SoundManager._play_handle_money()
 	# - money
 	GlobalData.money_current -= GlobalData.price_box
 	#add pack
 	GlobalData.packcount_single += 2
 	GlobalData.packcount_box += 10
-	##cap pack count
-	#if GlobalData.debt == true:
-		#GlobalData.packcount_single = min(GlobalData.packcount_single, 99)
-		#GlobalData.packcount_box = min(GlobalData.packcount_box, 99)

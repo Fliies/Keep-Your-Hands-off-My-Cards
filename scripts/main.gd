@@ -58,9 +58,6 @@ func _ready() -> void:
 	_main_setup()
 
 func _main_setup():
-	##credit
-	#credit_cutscene.visible = false
-	
 	##BTN
 	btn_open_pack.visible = false
 	btn_keep.visible = false
@@ -294,7 +291,7 @@ func _animation_finished():
 func _on_binder_btn_pressed() -> void:
 	_binder_handle()
 func _binder_handle():
-	SoundManager._play_sfx_random_pitch(SoundManager.binder, 0.0)
+	SoundManager._play_sfx_random_pitch(SoundManager.binder, 0.1)
 	if binder_open == false:
 		
 		#halt state
@@ -328,7 +325,7 @@ func _binder_handle():
 
 ##shop BTN
 func _on_shop_n_house_btn_pressed() -> void:
-	SoundManager._play_ui_click()
+	#SoundManager._play_ui_click()
 	
 	##driver 1st time 
 	if GlobalData.driver == false:
@@ -346,6 +343,7 @@ func _on_shop_n_house_btn_pressed() -> void:
 	
 	##to SHOP
 	if GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
+		SoundManager._play_handle_money()
 		SoundManager._play_sfx(SoundManager.motorcycle_to_shop, 0.0)
 		
 		shop_n_house_btn.disabled = true
@@ -467,19 +465,14 @@ func _debug_process():
 
 
 func _on_main_action_btn_keep_finished() -> void:
-	#print(0)
+	
 	_completed_check()
-	#print(1)
+	
 	await complete_check_finished
-	#print(2)
+	
 	if Options.auto_flip == true:
 		if GlobalData.opening_arr.size() != 0:
 			main_action_btn._flip_card()
-			#print("FLIP")
-	
-	###fail safe
-	#_failsafe_autoflip()
-	##print("PASS")
 
 func _on_main_action_btn_sell_finished() -> void:
 	if GlobalStateController.current_state == GlobalStateController.GameState.OPENING_BACK:
@@ -493,11 +486,15 @@ func _on_main_action_btn_open_pack_finished() -> void:
 
 ##options BTN
 func _on_options_btn_pressed() -> void:
+	SoundManager._play_ui_click()
+	
 	ui.visible = false
 	
 	Options._options_main()
 
 func _on_options_back_pressed():
+	SoundManager._play_ui_click()
+	
 	ui.visible = true
 
 

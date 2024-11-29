@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b4enyg64t1jng"
+path="res://.godot/imported/04-Message_You.wav-57717018b8c2a286971ed41c573fc27e.sample"
+
+[deps]
+
+source_file="res://sounds/Effects/Extras/Phone Call Sequence/04-Message_You.wav"
+dest_files=["res://.godot/imported/04-Message_You.wav-57717018b8c2a286971ed41c573fc27e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

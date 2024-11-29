@@ -41,6 +41,12 @@ signal buy_card
 @export var btn_buy_box: Button
 
 func _ready() -> void:
+	if GlobalData.shop_promo == true:
+		shop_offer_btn.disabled = false
+		#update visual
+		shop_offer_lbl.label_settings.font_color = Color.RED
+		shop_offer_lbl.label_settings.outline_size = 2
+	
 	
 	shop_menu.visible = true
 	
@@ -88,6 +94,7 @@ func _enter_shop() -> void:
 ##OFFER STUFFS
 #offerBTN in menu
 func _on_offer_btn_pressed() -> void:
+	SoundManager._play_ui_click()
 	GlobalStateController.current_state = GlobalStateController.GameState.SHOP_OFFER
 	shop_menu.visible = false
 	shop_offer.visible = true
@@ -97,17 +104,13 @@ func _on_offer_btn_pressed() -> void:
 
 #BUY OFFER
 func _on_buy_offer_btn_pressed() -> void:
-	#disable offer_btn in menu
-	shop_offer_btn.disabled = true
-	#update visual
-	#shop_offer_lbl.visible = false
-	#shop_offer_lbl.text = "restock date: TBD"
-	shop_offer_lbl.label_settings.font_color = Color.WHITE_SMOKE
-	shop_offer_lbl.label_settings.outline_size = 0
-	
-	
-	#change base shop BG
+	##disable offer_btn in menu
+	#shop_offer_btn.disabled = true
+	##change base shop BG
+	await shop_offer.buy_offer_finished
 	node_shop_bg.texture = shop_base_sold
+	
+	pass
 
 
 
@@ -130,6 +133,9 @@ func _on_offer_btn_mouse_entered() -> void:
 		#if GlobalData.shop_promo == true:
 			#assign sprite
 		node_shop_hilight.texture = shop_offer_hilight
+		
+		if shop_offer_btn.disabled == false:
+			SoundManager._shop_offer_sfx()
 
 #offer mouse out
 func _on_offer_btn_mouse_exited() -> void:
@@ -152,6 +158,8 @@ func _on_offer_back_btn_pressed() -> void:
 ##TRADING cardList STUFFS
 #TRADING BTN in Menu
 func _on_shop_cardlist_btn_pressed() -> void:
+	SoundManager._play_ui_click()
+	
 	GlobalStateController.current_state = GlobalStateController.GameState.SHOP_CARDLIST
 	#visiblility
 	shop_menu.visible = false
@@ -163,6 +171,8 @@ func _on_shop_cardlist_btn_pressed() -> void:
 #trading mouse in
 func _on_shop_cardlist_btn_mouse_entered() -> void:
 	if GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU:
+		SoundManager._play_sfx_random_pitch(SoundManager.shop_cardlist_hover, 0.15)
+		
 		##text
 		text_idle.visible = false
 		text_dyn.visible = true
@@ -218,8 +228,12 @@ func _on_buy_1_pack_mouse_entered() -> void:
 		text_dyn_low.label_settings.font_color = Color.FOREST_GREEN
 		text_dyn_low.text = "for $10"
 		
-		##hilight
+		##hilight BG
 		node_shop_hilight.texture = shop_pack_hilight
+		
+		##SFX
+		if btn_buy_1_pack.disabled == false:
+			SoundManager._play_sfx_random_pitch(SoundManager.shop_cardpack_hover, 0.1)
 func _on_buy_5_packs_mouse_entered() -> void:
 	if GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU:
 		##text
@@ -230,8 +244,11 @@ func _on_buy_5_packs_mouse_entered() -> void:
 		text_dyn_low.label_settings.font_color = Color.FOREST_GREEN
 		text_dyn_low.text = "for $50"
 		
-		##hilight
+		##hilight BG
 		node_shop_hilight.texture = shop_pack_hilight
+		##SFX
+		if btn_buy_5_packs.disabled == false:
+			SoundManager._play_sfx_random_pitch(SoundManager.shop_cardpack_hover, 0.1)
 #box
 func _on_buy_box_mouse_entered() -> void:
 	if GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU:
@@ -241,10 +258,17 @@ func _on_buy_box_mouse_entered() -> void:
 		
 		text_dyn_up.text = "BUY 1 BOX"
 		text_dyn_low.label_settings.font_color = Color.FIREBRICK
-		text_dyn_low.text = "10+2 packs for only $90!"
+		if GlobalData.shop_promo == true:
+			text_dyn_low.text = "checking our SPECIAL OFFER!"
+		else:
+			text_dyn_low.text = "10+2 packs for only $90!"
 		
-		##hilight
+		##hilight BG
 		node_shop_hilight.texture = shop_box_hilight
+		
+		##SFX
+		if btn_buy_box.disabled == false:
+			SoundManager._play_sfx_random_pitch(SoundManager.shop_box_hover, 0.46)
 
 ##mouse out
 func _mouse_out():
