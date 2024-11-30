@@ -58,10 +58,10 @@ func _play_sfx(sfx_sound:AudioStreamPlayer, from_position:float):
 
 func _play_binder_flip(page:String):
 	if page == "RIGHT":
-		binder_page_flip.pitch_scale += 0.2
+		binder_page_flip.pitch_scale += 0.1
 		binder_page_flip.play()
 	else:
-		binder_page_flip.pitch_scale -= 0.2
+		binder_page_flip.pitch_scale -= 0.1
 		binder_page_flip.play()
 	
 
@@ -72,19 +72,19 @@ func _acquired_card():
 
 func _play_buycard():
 	
-	card_flip.pitch_scale = randf_range(0.7,1.3)
+	card_flip.pitch_scale = randf_range(0.9,1.2)
 	
 	card_flip.play(0.1)
 
 func _play_handle_money():
 	
-	handle_money.pitch_scale = randf_range(0.7,1.3)
+	handle_money.pitch_scale = randf_range(0.9,1.2)
 	
 	handle_money.play()
 
 func _shop_offer_sfx():
 	
-	shop_offer_sfx.pitch_scale = randf_range(1.5,2.0)
+	shop_offer_sfx.pitch_scale = randf_range(1.9,1.2)
 	
 	shop_offer_sfx.play(0.03)
 

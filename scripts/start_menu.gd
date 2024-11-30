@@ -5,7 +5,6 @@ signal animation_finished
 @onready var sound_hippo_newgame: AudioStreamPlayer = $"HippoIdle-MenuAndIntro"
 @onready var sound_hippo_start_game: AudioStreamPlayer = $"HippoStartGame-MenuAndIntro"
 
-@onready var BG:= $BG
 @onready var animation_player:= $AnimationPlayer
 @onready var sprite_idle:= $AnimationPlayer/Sprite
 @onready var sprite_scream:= $AnimationPlayer/SpriteScream
@@ -30,6 +29,9 @@ signal animation_finished
 @export var comfirm_goback_btn: Button
 
 func _ready() -> void:
+	$AnimationPlayer/BG.visible = true
+	#animation_player.play("idle")
+	
 	Options.connect("options_back", _on_options_back_pressed)
 	
 	container_normal.visible = false
