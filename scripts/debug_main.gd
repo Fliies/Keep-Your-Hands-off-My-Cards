@@ -7,7 +7,7 @@ func _on_addpackto_box_pressed() -> void:
 func _on_addpackto_single_pressed() -> void:
 	GlobalData.packcount_single += 1
 func _on_test_pressed() -> void:
-	print(GlobalData.hellmode)
+	main.binder._first_callmom()
 
 func _count_all():
 	#if GlobalData.seen_arr.size() != 0:

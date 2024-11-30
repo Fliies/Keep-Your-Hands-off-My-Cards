@@ -724,7 +724,6 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_11hhf")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_hu44c")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_a273s")
 theme_override_styles/normal = SubResource("StyleBoxTexture_dmcx3")
-text = "5 packs"
 
 [node name="BuyBox" type="Button" parent="ShopMenu/VBoxContainer/Button/VBoxContainer/LowerBtn/LowerRightGroup"]
 unique_name_in_owner = true

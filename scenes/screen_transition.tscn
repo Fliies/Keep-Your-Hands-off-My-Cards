@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c7alwgqva2fj5"]
+[gd_scene load_steps=24 format=3 uid="uid://c7alwgqva2fj5"]
 
 [ext_resource type="Script" path="res://scripts/screen_transition.gd" id="1_xrqmt"]
 [ext_resource type="Texture2D" uid="uid://blim2lgkxy1vy" path="res://assets/ScreenTransition/pink_circle.png" id="2_8cxgf"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://0l3wyfnjg1ux" path="res://assets/ScreenTransition/open_cutscene-ref.png" id="8_o6ega"]
 [ext_resource type="Texture2D" uid="uid://cxempi8vq2pia" path="res://assets/OPCutscene/opening_cutscene-BG-transition.png" id="8_vtdm5"]
 [ext_resource type="Texture2D" uid="uid://h4cf7yewn84i" path="res://assets/ScreenTransition/transition_green-small.png" id="9_3psh5"]
+[ext_resource type="Texture2D" uid="uid://d4nvh5qvhb3" path="res://assets/UI/ui_base.png" id="9_u3qtu"]
 [ext_resource type="Texture2D" uid="uid://dqffcf1xw4q3c" path="res://assets/new-pack.png" id="12_u7677"]
 
 [sub_resource type="Animation" id="Animation_xv30b"]
@@ -565,10 +566,10 @@ tracks/5/path = NodePath("Pack:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(640, 360)]
+"values": [Vector2(640, 360), Vector2(751, 25)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -724,6 +725,10 @@ temp_shop_sprite = ExtResource("6_gavi5")
 temp_main_sprite = ExtResource("6_vc7gj")
 temp_opencutscene_sprite = ExtResource("8_vtdm5")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("9_u3qtu")
+centered = false
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_h8bi0")
@@ -758,7 +763,7 @@ offset = Vector2(-56, -23)
 
 [node name="Pack" type="Sprite2D" parent="."]
 visible = false
-z_index = 5
+z_index = 6
 position = Vector2(640, 360)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("12_u7677")

@@ -16,6 +16,8 @@ signal pack_wiggle
 
 @onready var failsafe_timer: Timer = $FailSafe/Timer
 
+@onready var complete_check:= $CompleteCheck
+
 @onready var completed_count:int = 0
 
 @onready var shop:= %Shop
@@ -50,6 +52,9 @@ signal pack_wiggle
 
 
 func _ready() -> void:
+	#music
+	SoundManager.music.switch_to_clip_by_name(&"MainTheme")
+	
 	Options.connect("options_back", _on_options_back_pressed)
 	
 	#idle pack sound
@@ -128,6 +133,19 @@ func _main_setup():
 	else:
 		#continue
 		pass
+	
+	await ScreenTransition.animation_finished
+	
+	if GlobalData.packcount_box != 0 or GlobalData.packcount_single != 0:
+		animation_player_main.play("rising_pack")
+		await animation_finished
+		
+		btn_open_pack.visible = true
+		btn_open_pack.disabled = false
+		
+		animation_player_main.play("pack_loop_2")
+	
+	GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
 
 func _process(_delta: float) -> void:
 	##debug 
@@ -201,11 +219,11 @@ func _process(_delta: float) -> void:
 		gassfee_lbl.visible = false
 	elif GlobalStateController.current_state == GlobalStateController.GameState.OPENING_BACK:
 		shop_n_house_btn.disabled = true
-		shop_n_house_btn.visible = false
+		#shop_n_house_btn.visible = false
 		gassfee_lbl.visible = false
 	elif GlobalStateController.current_state == GlobalStateController.GameState.OPENING_FRONT:
 		shop_n_house_btn.disabled = true
-		shop_n_house_btn.visible = false
+		#shop_n_house_btn.visible = false
 		gassfee_lbl.visible = false
 	elif GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU:
 		shop_n_house_btn.disabled = false
@@ -221,31 +239,28 @@ func _process(_delta: float) -> void:
 		gassfee_lbl.visible = false
 	
 	
-	
 	##open pack btn
 	if GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
 		if GlobalData.packcount_box != 0 or GlobalData.packcount_single != 0:
-			btn_open_pack.visible = true
-			btn_open_pack.disabled = false
+			pass
+			#btn_open_pack.visible = true
+			#btn_open_pack.disabled = false
 			
-			hand_sprite.visible = true
-			pack_sprite.visible = true
+			#hand_sprite.visible = true
+			#pack_sprite.visible = true
 			
 			#idle animation
-			animation_player_main.play("pack_loop_2")
+			#animation_player_main.play("pack_loop_2")
 		elif GlobalData.packcount_box == 0 and GlobalData.packcount_single == 0:
-			btn_open_pack.visible = false
-			btn_open_pack.disabled = true
+			pass
+			#btn_open_pack.visible = false
+			#btn_open_pack.disabled = true
 			
-			hand_sprite.visible = false
-			pack_sprite.visible = false
-			
-			#go to shop noti
-			
+			#hand_sprite.visible = false
+			#pack_sprite.visible = false
 	else:
 		btn_open_pack.visible = false
 		btn_open_pack.disabled = true
-	
 	
 	
 	##COLLECTED ICON
@@ -257,9 +272,9 @@ func _process(_delta: float) -> void:
 			icon_collected.visible = false
 	else:
 		icon_collected.visible = false
-
 	
-	# idle animation
+	
+	## idle animation
 	if GlobalStateController.current_state == GlobalStateController.GameState.OPENING_BACK:
 		animation_player_aux.play("idle_cardback")
 	elif GlobalStateController.current_state == GlobalStateController.GameState.OPENING_FRONT:
@@ -321,28 +336,45 @@ func _binder_handle():
 		binder.visible = false
 		binder_open = false
 		
+		if GlobalStateController.prev_state == GlobalStateController.GameState.STANDBY:
+			if pack_sprite.visible == true:
+				btn_open_pack.visible = true
+				btn_open_pack.disabled = false
+				
+				animation_player_main.play("pack_loop_2")
+		
 		GlobalStateController.current_state = GlobalStateController.prev_state
 
 ##shop BTN
 func _on_shop_n_house_btn_pressed() -> void:
-	#SoundManager._play_ui_click()
 	
 	##driver 1st time 
 	if GlobalData.driver == false:
 		GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
+		
+		##hide hand n pack
+		pack_sprite.visible = false
+		animation_player_main.play("lowering_hand")
+		
 		GlobalData.driver = true
 		##play animation
 		binder._first_driver()
 		
 		##update cover
 		await binder.animation_finished
-		_completed_check()
+		#_completed_check()
+		complete_check._checking()
 		##await animation end
 		await binder.first_driver
 		GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
 	
+	#hide hand n pack
+	hand_sprite.visible = false
+	pack_sprite.visible = false
+	
 	##to SHOP
 	if GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
+		
 		SoundManager._play_handle_money()
 		SoundManager._play_sfx(SoundManager.motorcycle_to_shop, 0.0)
 		
@@ -355,24 +387,42 @@ func _on_shop_n_house_btn_pressed() -> void:
 		#animation transition
 		ScreenTransition.animation_player.play("toShop_transition")
 		
+		SoundManager.music.switch_to_clip_by_name(&"Shop")
 		await ScreenTransition.new_scene
 		shop.visible = true
 		
 		await ScreenTransition.animation_finished
 		GlobalStateController.current_state = GlobalStateController.GameState.SHOP_MENU
 		shop_n_house_btn.theme = to_house_theme
+		
 	
 	##to house
 	elif GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU or GlobalStateController.GameState.SHOP_OFFER or GlobalStateController.GameState.SHOP_CARDLIST:
 		SoundManager._play_sfx(SoundManager.motorcycle_back_home, 0.0)
 		
 		shop_n_house_btn.disabled = true
+		
 		#animation transition
 		GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 		shop.visible = false
 		ScreenTransition.animation_player.play("BackFromShop_transition")
+		SoundManager.music.switch_to_clip_by_name(&"MainTheme")
 		
 		await ScreenTransition.animation_finished
+		
+		if GlobalData.packcount_box != 0 or GlobalData.packcount_single != 0:
+			
+			#hand_sprite.visible = true
+			#pack_sprite.visible = true
+			
+			animation_player_main.play("rising_pack")
+			await animation_finished
+			
+			btn_open_pack.visible = true
+			btn_open_pack.disabled = false
+			
+			animation_player_main.play("pack_loop_2")
+		
 		GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
 		shop_n_house_btn.theme = to_shop_theme
 	else:
@@ -424,19 +474,32 @@ func _completed_check():
 	complete_check_finished.emit()
 
 func _on_shop_buy_card() -> void:
-	_completed_check()
+	#_completed_check()
+	complete_check._checking()
 
 
 ##call Mom
 func _on_call_mom_btn_pressed() -> void:
 	GlobalStateController.prev_state = GlobalStateController.current_state
 	GlobalStateController.current_state = GameStateController.GameState.ANIMATION
+	##hide hand
+	#hand_sprite.visible = false
+	#pack_sprite.visible = false
+	btn_open_pack.visible = false
+	btn_open_pack.disabled = true
+	
+	if pack_sprite.visible == true:
+		pack_sprite.visible = false
+		animation_player_main.play("lowering_hand")
+		await animation_finished
+		
 	##open binder to 1st page
 	
 	##animation
 	binder._first_callmom()
 	await binder.credit_to_slot_finished
-	_completed_check()
+	#_completed_check()
+	complete_check._checking()
 	##set DEBT
 	GlobalData.debt = true
 	ui_money_rect.z_index = 5
@@ -447,7 +510,17 @@ func _on_call_mom_btn_pressed() -> void:
 	
 	call_mom_btn.disabled = true
 	
+	if GlobalData.packcount_box != 0 or GlobalData.packcount_single != 0:
+		#pack_sprite.visible = true
+		animation_player_main.play("rising_pack")
+		await animation_finished
+		#hand_sprite.visible = true
+		btn_open_pack.visible = true
+		btn_open_pack.disabled = false
+		
+		animation_player_main.play("pack_loop_2")
 	GlobalStateController.current_state = GlobalStateController.prev_state 
+	
 
 
 
@@ -465,19 +538,52 @@ func _debug_process():
 
 
 func _on_main_action_btn_keep_finished() -> void:
+	#_completed_check()
+	#await complete_check_finished
+	complete_check._checking()
 	
-	_completed_check()
-	
-	await complete_check_finished
+	await complete_check.complete_check_finished
 	
 	if Options.auto_flip == true:
 		if GlobalData.opening_arr.size() != 0:
 			main_action_btn._flip_card()
+	
+	if GlobalData.opening_arr.size() == 0:
+		if GlobalData.packcount_box != 0 or GlobalData.packcount_single != 0:
+			pack_sprite.visible = true
+			
+			btn_open_pack.visible = true
+			btn_open_pack.disabled = false
+			
+			animation_player_main.play("pack_loop_2")
+		else:
+			pack_sprite.visible = false
+			
+			btn_open_pack.visible = false
+			btn_open_pack.disabled = true
+			animation_player_main.play("lowering_hand")
+		GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
 
 func _on_main_action_btn_sell_finished() -> void:
 	if GlobalStateController.current_state == GlobalStateController.GameState.OPENING_BACK:
 		if Options.auto_flip == true:
 			main_action_btn._flip_card()
+	
+	if GlobalData.opening_arr.size() == 0:
+		if GlobalData.packcount_box != 0 or GlobalData.packcount_single != 0:
+			pack_sprite.visible = true
+			
+			btn_open_pack.visible = true
+			btn_open_pack.disabled = false
+			
+			animation_player_main.play("pack_loop_2")
+		else:
+			pack_sprite.visible = false
+			
+			btn_open_pack.visible = false
+			btn_open_pack.disabled = true
+			animation_player_main.play("lowering_hand")
+		GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
 
 func _on_main_action_btn_open_pack_finished() -> void:
 	if Options.auto_flip == true:
@@ -496,6 +602,14 @@ func _on_options_back_pressed():
 	SoundManager._play_ui_click()
 	
 	ui.visible = true
+	
+	if GlobalData.packcount_box != 0 or GlobalData.packcount_single != 0:
+		pack_sprite.visible = true
+		
+		btn_open_pack.visible = true
+		btn_open_pack.disabled = false
+		
+		animation_player_main.play("pack_loop_2")
 
 
 ##idle pack sound

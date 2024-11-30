@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://cpyorpde3h8g"]
+[gd_scene load_steps=119 format=3 uid="uid://cpyorpde3h8g"]
 
 [ext_resource type="Script" path="res://scripts/binder.gd" id="1_1h60k"]
 [ext_resource type="Texture2D" uid="uid://dd6reruiixn83" path="res://assets/Binder/Sprite/base.png" id="1_8gl4p"]
@@ -56,7 +56,6 @@
 [ext_resource type="Texture2D" uid="uid://dqy3hntu7w38p" path="res://assets/Binder/btn/binder_arrow_right-press.png" id="48_cqjjd"]
 [ext_resource type="Texture2D" uid="uid://d06xb885sug21" path="res://assets/Binder/btn/binder_arrow_right.png" id="49_xckw0"]
 [ext_resource type="PackedScene" uid="uid://brphnt4fr1v1n" path="res://scenes/credit_cutscene.tscn" id="56_wo6cp"]
-[ext_resource type="Texture2D" uid="uid://ll2r2blhttuh" path="res://assets/AnimationSheet/callmom_spritesheet.png" id="57_e0jum"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_j6dcc"]
 font = ExtResource("19_llbnk")
@@ -1665,6 +1664,7 @@ text = "- Uncommon: 0"
 [node name="Page" type="Node2D" parent="."]
 
 [node name="Page1" type="Node2D" parent="Page"]
+visible = false
 scale = Vector2(0.4, 0.4)
 
 [node name="PageRight" type="Sprite2D" parent="Page/Page1"]
@@ -1715,7 +1715,7 @@ texture = ExtResource("15_nhxst")
 centered = false
 
 [node name="AmountRight" type="Node2D" parent="Page/Page1"]
-position = Vector2(2082.5, 710)
+position = Vector2(2107.5, 385)
 scale = Vector2(2.5, 2.5)
 
 [node name="aa" type="Sprite2D" parent="Page/Page1/AmountRight"]
@@ -1967,7 +1967,7 @@ texture = ExtResource("26_p0uo5")
 centered = false
 
 [node name="AmountLeft" type="Node2D" parent="Page/Page2"]
-position = Vector2(705, 710)
+position = Vector2(707.5, 385)
 scale = Vector2(2.5, 2.5)
 
 [node name="jj" type="Sprite2D" parent="Page/Page2/AmountLeft"]
@@ -2219,7 +2219,7 @@ texture = ExtResource("15_nhxst")
 centered = false
 
 [node name="AmountRight2" type="Node2D" parent="Page/Page3"]
-position = Vector2(2082.5, 710)
+position = Vector2(2082.5, 375)
 scale = Vector2(2.5, 2.5)
 
 [node name="ss" type="Sprite2D" parent="Page/Page3/AmountRight2"]
@@ -2420,7 +2420,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Page4" type="Node2D" parent="Page"]
-visible = false
 scale = Vector2(0.4, 0.4)
 
 [node name="PageLeft" type="Sprite2D" parent="Page/Page4"]
@@ -2479,7 +2478,7 @@ texture = ExtResource("26_p0uo5")
 centered = false
 
 [node name="AmountLeft2" type="Node2D" parent="Page/Page4"]
-position = Vector2(705, 710)
+position = Vector2(712.5, 362.5)
 scale = Vector2(2.5, 2.5)
 
 [node name="ex_misprint" type="Sprite2D" parent="Page/Page4/AmountLeft2"]
@@ -2707,6 +2706,7 @@ texture = ExtResource("39_274l5")
 centered = false
 
 [node name="debug" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -3153,13 +3153,7 @@ texture = ExtResource("6_o0bvp")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CreditCutscene" parent="." instance=ExtResource("56_wo6cp")]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("57_e0jum")
-centered = false
-vframes = 26
-frame = 25
 
 [node name="PlayTimer" type="Timer" parent="."]
 

@@ -5,10 +5,12 @@ signal animation_finished
 @onready var sound_hippo_newgame: AudioStreamPlayer = $"HippoIdle-MenuAndIntro"
 @onready var sound_hippo_start_game: AudioStreamPlayer = $"HippoStartGame-MenuAndIntro"
 
-@onready var animation_player:= $AnimationPlayer
-@onready var sprite_idle:= $AnimationPlayer/Sprite
-@onready var sprite_scream:= $AnimationPlayer/SpriteScream
-@onready var collision_area:= $AnimationPlayer/SpriteExtras05Area/CollisionShape2D
+@onready var collision_area:= $SpriteExtras05Area/CollisionShape2D
+
+@onready var bg: Sprite2D = $BG
+
+@onready var start_menu_animation: Node2D = $StartMenuAnimation
+
 @onready var hell_mode_continue: TextureRect = $CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer2/HellmodeContinue
 
 @export_category("BUTTON")
@@ -20,7 +22,7 @@ signal animation_finished
 @export var back_btn: Button
 @export var hell_mode: Button
 @export var hell_mode_lbl :Label
-@export var moodeng_extra: Sprite2D
+#@export var moodeng_extra: Sprite2D
 @export var moodeng_extra_area: Area2D
 
 @export_category("Newgame Confirmation")
@@ -29,8 +31,7 @@ signal animation_finished
 @export var comfirm_goback_btn: Button
 
 func _ready() -> void:
-	$AnimationPlayer/BG.visible = true
-	#animation_player.play("idle")
+	bg.visible = true
 	
 	Options.connect("options_back", _on_options_back_pressed)
 	
@@ -45,12 +46,14 @@ func _ready() -> void:
 		_startmenu_setup()
 
 func _startmenu_setup():
+	##music
+	SoundManager.music.switch_to_clip_by_name(&"StartMenu")
+	
 	GlobalStateController.current_state = GlobalStateController.GameState.STARTING_MENU
 	
 	container_normal.visible = true
 	container_confirmation.visible = false
 	
-	moodeng_extra.visible = false
 	moodeng_extra_area.visible = false
 	collision_area.disabled = true
 	
@@ -59,8 +62,7 @@ func _startmenu_setup():
 	hell_mode_lbl.visible = false
 	hell_mode_continue.visible = false
 	
-	animation_player.play("idle")
-	
+	start_menu_animation._play_idle()
 	
 	if GlobalData.newgame == true:
 		continue_btn.disabled = true
@@ -68,12 +70,6 @@ func _startmenu_setup():
 		continue_btn.disabled = false
 		if GlobalData.hellmode_continue == true:
 			hell_mode_continue.visible = true
-	
-	
-	#if GlobalData.hellmode == true:
-		#hell_mode_lbl.visible = true
-	#else: 
-		#hell_mode_lbl.visible = false
 
 
 func _process(_delta: float) -> void:
@@ -108,9 +104,10 @@ func _on_continue_btn_pressed() -> void:
 	
 	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 	
-	animation_player.play("start")
+	#animation_player.play("start")
+	start_menu_animation.animation_player.play("start_game")
 	
-	await animation_finished
+	await start_menu_animation.animation_finished
 	
 	ScreenTransition._transition("main")
 
@@ -141,9 +138,10 @@ func _newgame_start():
 	
 	GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 	
-	animation_player.play("start")
+	#animation_player.play("start")
+	start_menu_animation.animation_player.play("start_game")
 	
-	await animation_finished
+	await start_menu_animation.animation_finished
 	
 	#temp
 	ScreenTransition._transition("op_cutscene")
@@ -170,8 +168,13 @@ func _on_extras_btn_pressed() -> void:
 	
 	moodeng_extra_area.visible = true
 	
-	animation_player.play("extras")
-	await animation_finished
+	#animation_player.play("extras")
+	#await animation_finished
+	start_menu_animation.animation_player.play("extras_enter")
+	start_menu_animation.moodeng_extra.visible = false
+	
+	await start_menu_animation.animation_finished
+	
 	collision_area.disabled = false
 	back_btn.visible = true
 
@@ -182,19 +185,21 @@ func _on_back_btn_pressed() -> void:
 	
 	collision_area.disabled = true
 	
-	animation_player.play("extra_exit")
+	#animation_player.play("extra_exit")
 	
-	await animation_finished
+	start_menu_animation.animation_player.play("extras_exit")
+	await start_menu_animation.animation_finished
 	
 	container_normal.visible = true
 	container_confirmation.visible = false
 	
 	moodeng_extra_area.visible = false
 	
-	$AnimationPlayer/SpriteExtraBg.visible = false
-	$AnimationPlayer/SpriteExtras.visible = false
+	#$AnimationSprite/SpriteExtraBg.visible = false
+	#$AnimationSprite/SpriteExtras.visible = false
 	
-	animation_player.play("idle")
+	#animation_player.play("idle")
+	start_menu_animation._play_idle()
 
 
 func _on_hell_mode_btn_toggled(toggled_on: bool) -> void:
@@ -215,10 +220,12 @@ func _on_hell_mode_btn_mouse_exited() -> void:
 
 ##moo deng
 func _on_area_2d_mouse_entered() -> void:
-	moodeng_extra.visible = true
-	
+	#moodeng_extra.visible = true
+	start_menu_animation.moodeng_extra.visible = true
+	sound_hippo_start_game.play(1.0)
 func _on_area_2d_mouse_exited() -> void:
-	moodeng_extra.visible = false
+	#moodeng_extra.visible = false
+	start_menu_animation.moodeng_extra.visible = false
 
 ##OPTIONS
 func _on_options_btn_pressed() -> void:
@@ -236,16 +243,18 @@ func _on_options_back_pressed():
 
 ##newgame mouse hover
 func _on_newgame_btn_mouse_entered() -> void:
-	sprite_idle.visible = false
-	sprite_scream.visible = true
+	start_menu_animation._play_scream()
 	
 	sound_hippo_newgame.play(0.25)
 	
-	animation_player.stop()
+	#sprite_idle.visible = false
+	#sprite_scream.visible = true
+	#animation_player.stop()
 
 
 func _on_newgame_btn_mouse_exited() -> void:
-	sprite_idle.visible = true
-	sprite_scream.visible = false
+	#sprite_idle.visible = true
+	#sprite_scream.visible = false
 	
-	animation_player.play("idle")
+	#animation_player.play("idle")
+	start_menu_animation._play_idle()

@@ -59,6 +59,8 @@ func _on_buy_offer_btn_pressed() -> void:
 	
 	await timer.timeout
 	
+	SoundManager._play_sfx(SoundManager.card_collect, 0.0)
+	
 	promo_lbl.text = "T H A N K  Y O U !"
 	promo_lbl.visible = true
 	

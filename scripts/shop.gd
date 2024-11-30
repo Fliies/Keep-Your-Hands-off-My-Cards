@@ -109,8 +109,7 @@ func _on_buy_offer_btn_pressed() -> void:
 	##change base shop BG
 	await shop_offer.buy_offer_finished
 	node_shop_bg.texture = shop_base_sold
-	
-	pass
+
 
 
 
@@ -134,8 +133,8 @@ func _on_offer_btn_mouse_entered() -> void:
 			#assign sprite
 		node_shop_hilight.texture = shop_offer_hilight
 		
-		if shop_offer_btn.disabled == false:
-			SoundManager._shop_offer_sfx()
+		#if shop_offer_btn.disabled == false:
+			#SoundManager._shop_offer_sfx()
 
 #offer mouse out
 func _on_offer_btn_mouse_exited() -> void:

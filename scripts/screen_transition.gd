@@ -29,6 +29,7 @@ func _transition(scene:String):
 			get_tree().change_scene_to_packed(op_cutscene)
 			
 		"main":
+			GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 			if GlobalData.newgame == true:
 				##opneing cutscene
 				
@@ -48,9 +49,9 @@ func _transition(scene:String):
 				
 				animation_player.play("pack_shrinking")
 				
-				await animation_finished
-				
-				GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
+				#await animation_finished
+				#
+				#GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
 				
 			else:
 				animation_player.play("pink_shrinking")

@@ -3,6 +3,7 @@ extends Node
 signal sound_finished
 
 @onready var music_bg: AudioStreamPlayer = $Music/music_bg
+@onready var music = music_bg.get_stream_playback()
 
 @onready var ui_click: AudioStreamPlayer = $SFX/UiClick
 @onready var ui_click_new: AudioStreamPlayer = $"SFX/UiClick-new-General"
@@ -29,12 +30,11 @@ signal sound_finished
 
 
 func _ready() -> void:
-	music_bg.play()
-	
 	#set to sfx bus
 	var all_audio = $SFX.get_children()
 	for audio in all_audio:
 		audio.bus = "SFX"
+
 
 func _play_ui_click():
 	
@@ -84,7 +84,7 @@ func _play_handle_money():
 
 func _shop_offer_sfx():
 	
-	shop_offer_sfx.pitch_scale = randf_range(1.9,1.2)
+	shop_offer_sfx.pitch_scale = randf_range(0.25,0.26)
 	
 	shop_offer_sfx.play(0.03)
 

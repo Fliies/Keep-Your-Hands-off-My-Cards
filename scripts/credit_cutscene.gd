@@ -12,6 +12,12 @@ signal animation_finished
 @onready var _05_mom_angry: AudioStreamPlayer = $"05-momAngry"
 @onready var _06_credit_card_acquired: AudioStreamPlayer = $"06-creditCardAcquired"
 
+func _ready() -> void:
+	$CallMom01.visible = false
+	$CallMom02.visible = false
+	$CallMom03.visible = false
+	$CallMom04.visible = false
+
 func _play_phonecall():
 	_01_phone_call.play()
 func _play_pickup():
@@ -37,14 +43,3 @@ func _pause_music():
 
 func _resume_music():
 	SoundManager._resume_music()
-
-#func _ready() -> void:
-	#$Binder.visible = true
-	#animation_player.play("callmom_1")
-	#await animation_finished
-	#animation_player.play("callmom_2")
-	#await animation_finished
-	#animation_player.play("callmom_3")
-	#await animation_finished
-	#animation_player.play("callmom_4")
-	#await animation_finished
