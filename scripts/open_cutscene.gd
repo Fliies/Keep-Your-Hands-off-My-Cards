@@ -19,7 +19,15 @@ signal finished
 
 @onready var op_state: int = 0
 
+@onready var tutorial_hints: Node2D = $TutorialHints
+@onready var tutorial_sprite: Sprite2D = $TutorialHints/TutorialSprite
+@onready var gotit_btn: Button = $TutorialHints/GotitBtn
+
+
 func _ready() -> void:
+	tutorial_hints.visible = false
+	gotit_btn.visible = false
+	
 	box_open_sprite.visible = false
 	box_open_lbl.visible = false
 	start_btn.visible = false
@@ -73,6 +81,8 @@ func _on_next_btn_pressed() -> void:
 		animation_player.play("op_05")
 		
 		await finished
+		
+		start_btn.visible = true
 
 func _chang_bg():
 	cutscene_sprite.set_frame(2)
@@ -80,15 +90,32 @@ func _chang_bg():
 
 
 func _on_button_pressed() -> void:
-	#SoundManager._play_ui_click()
+	#SoundManager._play_sfx(SoundManager.open_package,0.3)
+	#
+	#ScreenTransition._transition("main")
+	box_open_lbl.visible = false
+	start_btn.visible = false
+	
+	tutorial_hints.visible = true
+	
+	SoundManager._acquired_card()
+	animation_player.play("tutorial")
+	
+	await finished
+	
+	gotit_btn.visible = true
+
+func _on_gotit_btn_pressed() -> void:
 	SoundManager._play_sfx(SoundManager.open_package,0.3)
 	
 	ScreenTransition._transition("main")
 
+
 func _on_button_mouse_entered() -> void:
 	if op_state == 3:
-		SoundManager._play_sfx_random_pitch(SoundManager.open_box, 0.0)
-		box_open_sprite.texture = box_open
+		if start_btn.visible == true:
+			SoundManager._play_sfx_random_pitch(SoundManager.open_box, 0.0)
+			box_open_sprite.texture = box_open
 
 func _on_button_mouse_exited() -> void:
 	box_open_sprite.texture = box_close

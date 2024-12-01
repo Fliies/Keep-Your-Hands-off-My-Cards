@@ -63,7 +63,7 @@ func _transition(scene:String):
 				
 				await animation_finished
 				
-				GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
+				#GlobalStateController.current_state = GlobalStateController.GameState.STANDBY
 		"startmenu":
 			GlobalStateController.current_state = GlobalStateController.GameState.ANIMATION
 			

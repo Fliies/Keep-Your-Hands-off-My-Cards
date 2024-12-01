@@ -1,0 +1,60 @@
+[gd_scene load_steps=16 format=3 uid="uid://bv4gwpgcvcnha"]
+
+[ext_resource type="Script" path="res://scripts/tutorial_hints.gd" id="1_xujdc"]
+[ext_resource type="Texture2D" uid="uid://bycr6cyt0p3kd" path="res://assets/Hints/hints.png" id="2_6hkuf"]
+[ext_resource type="Texture2D" uid="uid://cfpc2vil5crqa" path="res://assets/Hints/hints_gotit_btn-normal.png" id="3_35web"]
+[ext_resource type="Texture2D" uid="uid://cmhopao53nk5r" path="res://assets/Hints/hints_gotit_btn-hover.png" id="4_dpxd4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s1udu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pyqf3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kq2d1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_riw13"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3f0pv"]
+texture = ExtResource("3_35web")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0aq3c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_00dfo"]
+texture = ExtResource("4_dpxd4")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s77cj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2in5o"]
+texture = ExtResource("3_35web")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bi3lk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_klxjc"]
+texture = ExtResource("3_35web")
+
+[node name="TutorialHints" type="Node2D"]
+visible = false
+script = ExtResource("1_xujdc")
+
+[node name="HintSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_6hkuf")
+centered = false
+
+[node name="GotitBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(280, 100)
+offset_left = 525.0
+offset_top = 570.0
+offset_right = 805.0
+offset_bottom = 670.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s1udu")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pyqf3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kq2d1")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_riw13")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_3f0pv")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_0aq3c")
+theme_override_styles/hover = SubResource("StyleBoxTexture_00dfo")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_s77cj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2in5o")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_bi3lk")
+theme_override_styles/normal = SubResource("StyleBoxTexture_klxjc")
+
+[connection signal="pressed" from="GotitBtn" to="." method="_on_gotit_btn_pressed"]

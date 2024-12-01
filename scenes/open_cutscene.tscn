@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://boxovuoea2l3c"]
+[gd_scene load_steps=65 format=3 uid="uid://boxovuoea2l3c"]
 
 [ext_resource type="Texture2D" uid="uid://n6svxyfwfaav" path="res://assets/OPCutscene/open_cutscene-spritesheet.png" id="1_3xqbf"]
 [ext_resource type="Script" path="res://scripts/open_cutscene.gd" id="1_qng6x"]
@@ -16,6 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://bxp51df2bayft" path="res://assets/OPCutscene/open_cutscene-start_btn-pressed.png" id="8_wxrac"]
 [ext_resource type="Texture2D" uid="uid://d2hkc4hbo674j" path="res://assets/OPCutscene/open_cutscene-start_btn-hover.png" id="9_mcp14"]
 [ext_resource type="Texture2D" uid="uid://bbuftvpqotdjb" path="res://assets/OPCutscene/open_cutscene-start_btn-normal.png" id="10_y4pwl"]
+[ext_resource type="Texture2D" uid="uid://ei1x5e6umr7l" path="res://assets/Hints/hints01.png" id="17_31rkt"]
+[ext_resource type="Texture2D" uid="uid://brvo6p7cn32s7" path="res://assets/Hints/hints02.png" id="18_6aet1"]
+[ext_resource type="Texture2D" uid="uid://cfpc2vil5crqa" path="res://assets/Hints/hints_gotit_btn-normal.png" id="18_iw5n3"]
+[ext_resource type="Texture2D" uid="uid://cmhopao53nk5r" path="res://assets/Hints/hints_gotit_btn-hover.png" id="19_byk6l"]
 
 [sub_resource type="Animation" id="Animation_yoar7"]
 length = 0.001
@@ -150,6 +154,42 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = false
+tracks/11/path = NodePath("TutorialHints/TutorialSprite:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TutorialHints/TutorialSprite:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = false
+tracks/13/path = NodePath("TutorialHints/TutorialSprite2:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_wvnck"]
@@ -498,6 +538,61 @@ tracks/4/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_g6lk1"]
+resource_name = "tutorial"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialHints/TutorialSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialHints/TutorialSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TutorialHints/TutorialSprite2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_finished"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l314r"]
 _data = {
 "RESET": SubResource("Animation_yoar7"),
@@ -506,7 +601,8 @@ _data = {
 "op_02": SubResource("Animation_4tlcq"),
 "op_03": SubResource("Animation_vvdph"),
 "op_04": SubResource("Animation_fem3h"),
-"op_05": SubResource("Animation_72nt7")
+"op_05": SubResource("Animation_72nt7"),
+"tutorial": SubResource("Animation_g6lk1")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r42wu"]
@@ -577,6 +673,32 @@ axis_stretch_vertical = 1
 texture = ExtResource("10_y4pwl")
 texture_margin_bottom = 360.0
 axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jwbn0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_413av"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ub162"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ea5vg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xlkmg"]
+texture = ExtResource("18_iw5n3")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvevf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_psgg3"]
+texture = ExtResource("19_byk6l")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tp4e1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qgbsw"]
+texture = ExtResource("18_iw5n3")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5wpqc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gowda"]
+texture = ExtResource("18_iw5n3")
 
 [node name="OpenCutscene" type="Node2D" node_paths=PackedStringArray("open_card")]
 script = ExtResource("1_qng6x")
@@ -684,7 +806,38 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_n2ajq")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_v0dae")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xl7m4")
 
+[node name="TutorialHints" type="Node2D" parent="."]
+
+[node name="TutorialSprite" type="Sprite2D" parent="TutorialHints"]
+texture = ExtResource("17_31rkt")
+centered = false
+
+[node name="TutorialSprite2" type="Sprite2D" parent="TutorialHints"]
+visible = false
+texture = ExtResource("18_6aet1")
+centered = false
+
+[node name="GotitBtn" type="Button" parent="TutorialHints"]
+custom_minimum_size = Vector2(280, 100)
+offset_left = 514.0
+offset_top = 578.0
+offset_right = 794.0
+offset_bottom = 678.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jwbn0")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_413av")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ub162")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ea5vg")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_xlkmg")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_vvevf")
+theme_override_styles/hover = SubResource("StyleBoxTexture_psgg3")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_tp4e1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qgbsw")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_5wpqc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_gowda")
+
 [connection signal="pressed" from="NextBtn" to="." method="_on_next_btn_pressed"]
 [connection signal="mouse_entered" from="LetsStart" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="LetsStart" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="LetsStart" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="TutorialHints/GotitBtn" to="." method="_on_gotit_btn_pressed"]
