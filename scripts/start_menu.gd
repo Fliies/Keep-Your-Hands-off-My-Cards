@@ -123,6 +123,8 @@ func _on_newgame_btn_pressed() -> void:
 		container_confirmation.visible = true
 
 func _newgame_start():
+	SoundManager.music.switch_to_clip_by_name(&"Silence")
+	
 	##start sound
 	sound_hippo_newgame.stop()
 	sound_hippo_start_game.play(0.2)

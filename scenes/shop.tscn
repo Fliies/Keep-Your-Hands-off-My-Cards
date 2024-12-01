@@ -515,6 +515,7 @@ offset_bottom = 40.0
 
 [node name="ShopMenu" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -908,7 +909,6 @@ vertical_alignment = 1
 
 [node name="ShopOffer" type="Control" parent="." node_paths=PackedStringArray("node_promo_sprite", "promo_lbl", "buy_offer_btn", "buy_offer_lbl", "btm_lbl")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

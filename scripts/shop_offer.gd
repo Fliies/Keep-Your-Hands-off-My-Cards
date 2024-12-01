@@ -81,5 +81,5 @@ func _on_buy_offer_btn_pressed() -> void:
 ##HOVER
 func _on_buy_offer_btn_mouse_entered() -> void:
 	if buy_offer_btn.disabled == false:
-		print(1)
-		SoundManager._shop_offer_sfx()
+		if GlobalStateController.current_state != GlobalStateController.GameState.BINDER:
+			SoundManager._shop_offer_sfx()
