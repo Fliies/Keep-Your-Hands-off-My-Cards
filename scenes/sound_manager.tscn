@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/sound_manager.gd" id="1_7edo2"]
 [ext_resource type="AudioStream" uid="uid://bi3ra2j1sim82" path="res://sounds/Effects/UI_Click - General.wav" id="2_ebyn4"]
-[ext_resource type="AudioStream" uid="uid://c3eymrdghre6l" path="res://sounds/Musics/Wave2/MainMenu.ogg" id="2_lmxkt"]
+[ext_resource type="AudioStream" uid="uid://kqcvep5bympr" path="res://sounds/Musics/Wave3/MainMenu.ogg" id="2_yg10t"]
+[ext_resource type="AudioStream" uid="uid://bj3tbpcu0iln2" path="res://sounds/Musics/Wave3/MainTheme.ogg" id="3_8u1kr"]
 [ext_resource type="AudioStream" uid="uid://dcng6cmsm53ti" path="res://sounds/Effects/Main/Card_Flip - Card Selecting Screen.wav" id="3_386gn"]
-[ext_resource type="AudioStream" uid="uid://blxwo7w8kcfth" path="res://sounds/Musics/Wave2/MainTheme.ogg" id="3_agj3x"]
 [ext_resource type="AudioStream" uid="uid://d2lbadkiusgtj" path="res://sounds/Effects/UI_Click-new - General.wav" id="3_iperk"]
+[ext_resource type="AudioStream" uid="uid://bwdjw0uey6t32" path="res://sounds/Musics/Wave3/Shop.ogg" id="4_etq5k"]
 [ext_resource type="AudioStream" uid="uid://dcccw3vy0k4x8" path="res://sounds/Effects/Main/Card_Swipe_Left - Card Selecting Screen.wav" id="4_l3svq"]
-[ext_resource type="AudioStream" uid="uid://dxn526b2s54a0" path="res://sounds/Musics/Wave2/Shop.ogg" id="4_p2hc4"]
 [ext_resource type="AudioStream" uid="uid://d8bouh3crbo5" path="res://sounds/Effects/Main/Card_Pack_Wiggle_Randomize_1 - Card Selecting Screen.wav" id="4_q30u8"]
 [ext_resource type="AudioStream" uid="uid://ct2ariyy5fbp3" path="res://sounds/Musics/Wave2/Silence.ogg" id="5_3udf2"]
 [ext_resource type="AudioStream" uid="uid://bkflkf6nhhyat" path="res://sounds/Effects/Main/Card_Swipe_Right - Card Selecting Screen.wav" id="5_gdu0y"]
@@ -24,13 +24,13 @@
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_eytds"]
 clip_count = 4
 clip_0/name = &"StartMenu"
-clip_0/stream = ExtResource("2_lmxkt")
+clip_0/stream = ExtResource("2_yg10t")
 clip_0/auto_advance = 0
 clip_1/name = &"MainTheme"
-clip_1/stream = ExtResource("3_agj3x")
+clip_1/stream = ExtResource("3_8u1kr")
 clip_1/auto_advance = 0
 clip_2/name = &"Shop"
-clip_2/stream = ExtResource("4_p2hc4")
+clip_2/stream = ExtResource("4_etq5k")
 clip_2/auto_advance = 0
 clip_3/name = &"Silence"
 clip_3/stream = ExtResource("5_3udf2")
