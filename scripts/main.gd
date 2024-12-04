@@ -163,6 +163,7 @@ func _process(_delta: float) -> void:
 	else:
 		options_btn.disabled = true 
 	
+	
 	##DEBT btn and money
 	if GlobalData.debt == false:
 		ui_money_rect.texture = ui_money
@@ -170,7 +171,7 @@ func _process(_delta: float) -> void:
 			if GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
 				call_mom_btn.disabled = false
 			elif GlobalStateController.current_state == GlobalStateController.GameState.BINDER:
-				call_mom_btn.disabled = false
+				call_mom_btn.disabled = true
 			elif GlobalStateController.current_state == GlobalStateController.GameState.SHOP_MENU:
 				call_mom_btn.disabled = false
 			elif GlobalStateController.current_state == GlobalStateController.GameState.SHOP_OFFER:
@@ -186,6 +187,8 @@ func _process(_delta: float) -> void:
 		if GlobalData.money_current <= 100:
 			GlobalData.money_current = GlobalData.money_mom
 	
+	
+	
 	##BINDER BTN
 	if GlobalStateController.current_state == GlobalStateController.GameState.ANIMATION:
 		#binder_btn.visible = false
@@ -197,7 +200,8 @@ func _process(_delta: float) -> void:
 	##to SHOP n HOUSE btn
 	if GlobalStateController.current_state == GlobalStateController.GameState.STANDBY:
 		if GlobalData.debt == false:
-			if (GlobalData.money_current + GlobalData.money_added) <= 3:
+			#if (GlobalData.money_current + GlobalData.money_added) <= 3:
+			if GlobalData.money_current <= 3:
 				shop_n_house_btn.disabled = true
 				shop_n_house_btn.visible = true
 				gassfee_lbl.visible = false
